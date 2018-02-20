@@ -6,11 +6,10 @@
  */
 
 import * as createDebug from 'debug';
-import * as querystring from 'querystring';
+// import * as querystring from 'querystring';
 import * as request from 'request';
 // import * as fetch from 'isomorphic-fetch';
-
-import { BadRequestError } from './error/badRequest';
+// import { BadRequestError } from './error/badRequest';
 
 const debug = createDebug('mvtk:transporters');
 // tslint:disable-next-line
@@ -83,6 +82,7 @@ export class DefaultTransporter implements Transporter {
      */
     public static CONFIGURE(options: request.OptionsWithUrl): request.OptionsWithUrl {
         // set transporter user agent
+
         options.headers = (options.headers !== undefined) ? options.headers : {};
         if (!options.headers['User-Agent']) {
             options.headers['User-Agent'] = DefaultTransporter.USER_AGENT;
@@ -128,14 +128,8 @@ export class DefaultTransporter implements Transporter {
                 err.code = response.statusCode;
                 err.errors = [];
             } else {
-                const result = querystring.parse(body);
-                if (result.ErrCode !== undefined) {
-                    // エラー結果
-                    err = new BadRequestError(body);
-                } else {
-                    // 結果をオブジェクトとして返却
-                    return result;
-                }
+                // 結果をオブジェクトとして返却
+                return JSON.parse(body);
             }
         }
 

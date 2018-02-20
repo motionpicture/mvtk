@@ -16,6 +16,10 @@ export interface IOptions {
      */
     endpoint: string;
     /**
+     * accessKey
+     */
+    accessKey: string;
+    /**
      * transporter object
      */
     transporter?: Transporter;
@@ -54,6 +58,11 @@ export class Service {
             url: `${this.options.endpoint}${options.uri}`,
             ...this.requestOptions,
             ...options
+        };
+
+        requestOptions.headers = {
+            Authorization: `ApiKey ${this.options.accessKey}`,
+            'Content-Type': 'application/json'
         };
 
         delete requestOptions.uri;

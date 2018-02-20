@@ -16,23 +16,6 @@ export class BadRequestError extends Error {
     constructor(message?: string) {
         super(message);
         this.name = 'mvtkServiceBadRequestError';
-        this.errors = this.parseErrorMessage();
-    }
-    /**
-     * エラーメッセージパース
-     * @method parseErrorMessage
-     * @returns {IError[]}
-     */
-    private parseErrorMessage(): IError[] {
-        // 継承元のErrorでmessageはstringに変換される
-        if (this.message.length === 0) {
-            return [];
-        }
-        // const errorMessage = querystring.parse(this.message);
-        // const codeArray: string[] = (<string>errorMessage.ErrCode).split('|');
-        // const infoArray: string[] = (<string>errorMessage.ErrInfo).split('|');
-
-        return <any>{};
     }
 }
 
@@ -42,17 +25,9 @@ export class BadRequestError extends Error {
  */
 export interface IError {
     /**
-     * エラー番号
-     */
-    errorNumber: string;
-    /**
      * コード
      */
     code: string;
-    /**
-     * 詳細コード
-     */
-    info: string;
     /**
      * メッセージ
      */

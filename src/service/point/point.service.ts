@@ -17,7 +17,9 @@ export class PointService extends Service {
      */
     public async accountCreate(args: pointFactory.IAccountCreateArgs): Promise<pointFactory.IAccountCreateResult> {
         debug('requesting...', args);
-        const form = args;
+        const form = {
+            kiin_cd: args.kiinCd
+        };
         const options = {
             expectedStatusCodes: [OK],
             uri: '/api/point/accountCreate',
@@ -27,7 +29,13 @@ export class PointService extends Service {
         const result = await this.request(options);
         debug('result...', result);
 
-        return result;
+        return {
+            khzNo: result.khz_no,
+            resultInfo: {
+                status: result.result_info.status,
+                message: result.result_info.message
+            }
+        };
     }
 
     /**
@@ -35,7 +43,9 @@ export class PointService extends Service {
      */
     public async accountStop(args: pointFactory.IAccountStopArgs): Promise<pointFactory.IAccountStopResult> {
         debug('requesting...', args);
-        const form = args;
+        const form = {
+            kiin_cd: args.kiinCd
+        };
         const options = {
             expectedStatusCodes: [OK],
             uri: '/api/point/accountStop',
@@ -45,7 +55,12 @@ export class PointService extends Service {
         const result = await this.request(options);
         debug('result...', result);
 
-        return result;
+        return {
+            resultInfo: {
+                status: result.result_info.status,
+                message: result.result_info.message
+            }
+        };
     }
 
     /**
@@ -53,7 +68,10 @@ export class PointService extends Service {
      */
     public async accountRestart(args: pointFactory.IAccountRestartArgs): Promise<pointFactory.IAccountRestartResult> {
         debug('requesting...', args);
-        const form = args;
+        const form = {
+            kiin_cd: args.kiinCd,
+            tntsha_cd: args.tntshaCd
+        };
         const options = {
             expectedStatusCodes: [OK],
             uri: '/api/point/accountRestart',
@@ -63,7 +81,12 @@ export class PointService extends Service {
         const result = await this.request(options);
         debug('result...', result);
 
-        return result;
+        return {
+            resultInfo: {
+                status: result.result_info.status,
+                message: result.result_info.message
+            }
+        };
     }
 
     /**
@@ -71,7 +94,9 @@ export class PointService extends Service {
      */
     public async accountNumber(args: pointFactory.IAccountNumberArgs): Promise<pointFactory.IAccountNumberResult> {
         debug('requesting...', args);
-        const form = args;
+        const form = {
+            kiin_cd: args.kiinCd
+        };
         const options = {
             expectedStatusCodes: [OK],
             uri: '/api/point/accountNumber',
@@ -81,7 +106,13 @@ export class PointService extends Service {
         const result = await this.request(options);
         debug('result...', result);
 
-        return result;
+        return {
+            khzNo: result.khz_no,
+            resultInfo: {
+                status: result.result_info.status,
+                message: result.result_info.message
+            }
+        };
     }
 
     /**
@@ -89,7 +120,9 @@ export class PointService extends Service {
      */
     public async balance(args: pointFactory.IBalanceArgs): Promise<pointFactory.IBalanceResult> {
         debug('requesting...', args);
-        const form = args;
+        const form = {
+            kiin_cd: args.kiinCd
+        };
         const options = {
             expectedStatusCodes: [OK],
             uri: '/api/point/balance',
@@ -99,7 +132,21 @@ export class PointService extends Service {
         const result = await this.request(options);
         debug('result...', result);
 
-        return result;
+        return {
+            khzNo: result.khz_no,
+            krjhthPt: result.krjhth_pt,
+            tujptZndk: result.tujpt_zndk,
+            kkngntiptZndkLst: result.kkngntiptzndk_lst.map((kkngntiptZndk: any) => {
+                return {
+                    ykkgnshryYm: kkngntiptZndk.ykkgnshry_ym,
+                    kkngntiptZndk: kkngntiptZndk.ykkgnshry_ym
+                };
+            }),
+            resultInfo: {
+                status: result.result_info.status,
+                message: result.result_info.message
+            }
+        };
     }
 
     /**
@@ -107,7 +154,11 @@ export class PointService extends Service {
      */
     public async info(args: pointFactory.IInfoArgs): Promise<pointFactory.IInfoResult> {
         debug('requesting...', args);
-        const form = args;
+        const form = {
+            kiin_cd: args.kiinCd,
+            shtkKish_ym: args.shtkKishYm,
+            shtkShry_ym: args.shtkShryYm
+        };
         const options = {
             expectedStatusCodes: [OK],
             uri: '/api/point/info',
@@ -117,7 +168,34 @@ export class PointService extends Service {
         const result = await this.request(options);
         debug('result...', result);
 
-        return result;
+        return {
+            khzNo: result.khz_no,
+            krjhthPt: result.krjhth_pt,
+            tujptZndk: result.tujpt_zndk,
+            kkngntiptZndkLst: result.kkngntiptzndk_lst.map((kkngntiptZndk: any) => {
+                return {
+                    ykkgnshryYm: kkngntiptZndk.ykkgnshry_ym,
+                    kkngntiptZndk: kkngntiptZndk.ykkgnshry_ym
+                };
+            }),
+            ptRrkLst: result.ptrrk_lst.map((ptRrk: any) => {
+                return {
+                    rrkDt: ptRrk.rrk_dt,
+                    ptTyp: ptRrk.pt_typ,
+                    ptKbnNm: ptRrk.ptkbn_nm,
+                    rrkTyp: ptRrk.rrk_typ,
+                    rrkkbnNm: ptRrk.rrkkbn_nm,
+                    pt: ptRrk.pt,
+                    ryCd: ptRrk.ry_cd,
+                    ryTxt: ptRrk.ry_txt,
+                    ykkgnshryYm: ptRrk.ykkgnshry_ym
+                };
+            }),
+            resultInfo: {
+                status: result.result_info.status,
+                message: result.result_info.message
+            }
+        };
     }
 
     /**
@@ -125,7 +203,11 @@ export class PointService extends Service {
      */
     public async history(args: pointFactory.IHistoryArgs): Promise<pointFactory.IHistoryResult> {
         debug('requesting...', args);
-        const form = args;
+        const form = {
+            kiin_cd: args.kiinCd,
+            shtkKish_ym: args.shtkKishYm,
+            shtkShry_ym: args.shtkShryYm
+        };
         const options = {
             expectedStatusCodes: [OK],
             uri: '/api/point/history',
@@ -135,7 +217,25 @@ export class PointService extends Service {
         const result = await this.request(options);
         debug('result...', result);
 
-        return result;
+        return {
+            ptRrkLst: result.ptrrk_lst.map((ptRrk: any) => {
+                return {
+                    rrkDt: ptRrk.rrk_dt,
+                    ptTyp: ptRrk.pt_typ,
+                    ptKbnNm: ptRrk.ptkbn_nm,
+                    rrkTyp: ptRrk.rrk_typ,
+                    rrkkbnNm: ptRrk.rrkkbn_nm,
+                    pt: ptRrk.pt,
+                    ryCd: ptRrk.ry_cd,
+                    ryTxt: ptRrk.ry_txt,
+                    ykkgnshryYm: ptRrk.ykkgnshry_ym
+                };
+            }),
+            resultInfo: {
+                status: result.result_info.status,
+                message: result.result_info.message
+            }
+        };
     }
 
     /**
@@ -143,7 +243,12 @@ export class PointService extends Service {
      */
     public async tempRedeem(args: pointFactory.ITempRedeemArgs): Promise<pointFactory.ITempRedeemResult> {
         debug('requesting...', args);
-        const form = args;
+        const form = {
+            kiin_cd: args.kiinCd,
+            krjuth_pt: args.krjhthPt,
+            tran_dt: args.tranDt,
+            tkn_id: args.tknId
+        };
         const options = {
             expectedStatusCodes: [OK],
             uri: '/api/point/tempRedeem',
@@ -153,7 +258,13 @@ export class PointService extends Service {
         const result = await this.request(options);
         debug('result...', result);
 
-        return result;
+        return {
+            uuid: result.uuid,
+            resultInfo: {
+                status: result.result_info.status,
+                message: result.result_info.message
+            }
+        };
     }
 
     /**
@@ -161,7 +272,10 @@ export class PointService extends Service {
      */
     public async tempRedeemCancel(args: pointFactory.ITempRedeemCancelArgs): Promise<pointFactory.ITempRedeemCancelResult> {
         debug('requesting...', args);
-        const form = args;
+        const form = {
+            kiin_cd: args.kiinCd,
+            uuid: args.uuid
+        };
         const options = {
             expectedStatusCodes: [OK],
             uri: '/api/point/tempRedeemCancel',
@@ -171,7 +285,12 @@ export class PointService extends Service {
         const result = await this.request(options);
         debug('result...', result);
 
-        return result;
+        return {
+            resultInfo: {
+                status: result.result_info.status,
+                message: result.result_info.message
+            }
+        };
     }
 
     /**

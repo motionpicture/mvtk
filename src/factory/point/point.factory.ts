@@ -3,11 +3,8 @@
  */
 // import * as util from '../../utils/point/point.util';
 
+// tslint:disable-next-line:no-empty-interface
 export interface IPointRequest {
-    /**
-     * アクセスキー
-     */
-    accessKey: string;
 }
 
 export interface IKkngntiPtZndk {
@@ -16,9 +13,9 @@ export interface IKkngntiPtZndk {
      */
     ykkgnshryYm: string;
     /**
-     * kkngntiPtZndk
+     * kkngntiptZndk
      */
-    kkngntiPtZndk: string;
+    kkngntiptZndk: string;
 }
 
 export interface IPtRrk {
@@ -39,9 +36,9 @@ export interface IPtRrk {
      */
     rrkTyp: string;
     /**
-     * rrkKbnNm
+     * rrkkbnNm
      */
-    rrkKbnNm: string;
+    rrkkbnNm: string;
     /**
      * pt
      */
@@ -55,9 +52,9 @@ export interface IPtRrk {
      */
     ryTxt: string;
     /**
-     * ykkgnShryYm
+     * ykkgnshryYm
      */
-    ykkgnShryYm: null;
+    ykkgnshryYm: null;
 }
 
 export interface IPointResult {
@@ -151,13 +148,13 @@ export interface IBalanceResult extends IPointResult {
      */
     krjhthPt: string;
     /**
-     * tujPtZndk
+     * tujptZndk
      */
-    tujPtZndk: string;
+    tujptZndk: string;
     /**
-     * kkngntiPtZndkLst
+     * kkngntiptZndkLst
      */
-    kkngntiPtZndkLst: IKkngntiPtZndk[];
+    kkngntiptZndkLst: IKkngntiPtZndk[];
 }
 
 export interface IInfoArgs extends IPointRequest {
@@ -185,13 +182,13 @@ export interface IInfoResult extends IPointResult {
      */
     krjhthPt: string;
     /**
-     * tujPtZndk
+     * tujptZndk
      */
-    tujPtZndk: string;
+    tujptZndk: string;
     /**
-     * kkngntiPtZndkLst
+     * kkngntiptZndkLst
      */
-    kkngntiPtZndkLst: IKkngntiPtZndk[];
+    kkngntiptZndkLst: IKkngntiPtZndk[];
     /**
      * ptRrkLst
      */
@@ -230,13 +227,9 @@ export interface ITempRedeemArgs extends IPointRequest {
      */
     krjhthPt: string;
     /**
-     * tujPtRyFlg
+     * tranDt
      */
-    tujPtRyFlg: string;
-    /**
-     * knyDt YYYY/MM/DD HH:mm:ss
-     */
-    knyDt: string;
+    tranDt: string;
     /**
      * tknId
      */
@@ -255,6 +248,10 @@ export interface ITempRedeemCancelArgs extends IPointRequest {
      * uuid
      */
     uuid: string;
+    /**
+     * 会員コード
+     */
+    kiinCd: string;
 }
 
 export type ITempRedeemCancelResult = IPointResult;
