@@ -136,13 +136,9 @@ export interface IBalanceArgs extends IPointRequest {
 
 export interface IBalanceResult extends IPointResult {
     /**
-     * 口座No
+     * krjuthchPt
      */
-    khzNo: string;
-    /**
-     * krjhthPt
-     */
-    krjhthPt: string;
+    krjuthchPt: string;
     /**
      * tujptZndk
      */
@@ -219,9 +215,9 @@ export interface ITempRedeemArgs extends IPointRequest {
      */
     kiinCd: string;
     /**
-     * krjhthPt
+     * krjuthchPt
      */
-    krjhthPt: string;
+    krjuthchPt: string;
     /**
      * tranDt
      */

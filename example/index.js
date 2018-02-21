@@ -17,5 +17,9 @@ async function main() {
     const accountCreateResult = await point.accountCreate({
         kiinCd: '12345678'
     });
-    return(accountCreateResult);
+    const balanceResult = await point.balance({
+        kiinCd: '12345678'
+    });
+    console.log(balanceResult);
+    return;
 }
