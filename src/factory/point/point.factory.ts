@@ -132,10 +132,6 @@ export interface IBalanceArgs extends IPointRequest {
      * 会員コード
      */
     kiinCd: string;
-    /**
-     * tntshaCd
-     */
-    tntshaCd: string;
 }
 
 export interface IBalanceResult extends IPointResult {
