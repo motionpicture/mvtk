@@ -18,7 +18,7 @@ async function main() {
         kiinCd: '12345678'
     });
     const balanceResult = await point.balance({
-        kiinCd: '12345678'
+        kiinCd: '18845678'
     });
     console.log(balanceResult);
     return;

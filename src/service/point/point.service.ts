@@ -135,7 +135,7 @@ export class PointService extends Service {
         return {
             krjuthchPt: result.krjuthch_pt,
             tujptZndk: result.tujpt_zndk,
-            kkngntiptZndkLst: result.kkngntiptzndk_lst.map((kkngntiptZndk: any) => {
+            kkngntiptZndkLst: (result.kkngntiptzndk_lst === null) ? [] : result.kkngntiptzndk_lst.map((kkngntiptZndk: any) => {
                 return {
                     ykkgnshryYm: kkngntiptZndk.ykkgnshry_ym,
                     kkngntiptZndk: kkngntiptZndk.ykkgnshry_ym
@@ -171,13 +171,13 @@ export class PointService extends Service {
             khzNo: result.khz_no,
             krjhthPt: result.krjuthch_pt,
             tujptZndk: result.tujpt_zndk,
-            kkngntiptZndkLst: result.kkngntiptzndk_lst.map((kkngntiptZndk: any) => {
+            kkngntiptZndkLst: (result.kkngntiptzndk_lst === null) ? [] : result.kkngntiptzndk_lst.map((kkngntiptZndk: any) => {
                 return {
                     ykkgnshryYm: kkngntiptZndk.ykkgnshry_ym,
                     kkngntiptZndk: kkngntiptZndk.ykkgnshry_ym
                 };
             }),
-            ptRrkLst: result.ptrrk_lst.map((ptRrk: any) => {
+            ptRrkLst: (result.ptrrk_lst === null) ? [] : result.ptrrk_lst.map((ptRrk: any) => {
                 return {
                     rrkDt: ptRrk.rrk_dt,
                     ptTyp: ptRrk.pt_typ,
@@ -217,7 +217,7 @@ export class PointService extends Service {
         debug('result...', result);
 
         return {
-            ptRrkLst: result.ptrrk_lst.map((ptRrk: any) => {
+            ptRrkLst: (result.ptrrk_lst === null) ? [] : result.ptrrk_lst.map((ptRrk: any) => {
                 return {
                     rrkDt: ptRrk.rrk_dt,
                     ptTyp: ptRrk.pt_typ,
