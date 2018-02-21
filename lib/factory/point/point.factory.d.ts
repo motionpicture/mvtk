@@ -122,11 +122,11 @@ export interface IBalanceResult extends IPointResult {
     /**
      * krjuthchPt
      */
-    krjuthchPt: string;
+    krjuthchPt: number;
     /**
      * tujptZndk
      */
-    tujptZndk: string;
+    tujptZndk: number;
     /**
      * kkngntiptZndkLst
      */
@@ -154,11 +154,11 @@ export interface IInfoResult extends IPointResult {
     /**
      * krjhthPt
      */
-    krjhthPt: string;
+    krjhthPt: number;
     /**
      * tujptZndk
      */
-    tujptZndk: string;
+    tujptZndk: number;
     /**
      * kkngntiptZndkLst
      */

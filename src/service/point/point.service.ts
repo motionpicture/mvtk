@@ -133,8 +133,8 @@ export class PointService extends Service {
         debug('result...', result);
 
         return {
-            krjuthchPt: result.krjuthch_pt,
-            tujptZndk: result.tujpt_zndk,
+            krjuthchPt: (result.krjuthch_pt === null) ? 0 : Number(result.krjuthch_pt),
+            tujptZndk: (result.tujpt_zndk === null) ? 0 : Number(result.tujpt_zndk),
             kkngntiptZndkLst: (result.kkngntiptzndk_lst === null) ? [] : result.kkngntiptzndk_lst.map((kkngntiptZndk: any) => {
                 return {
                     ykkgnshryYm: kkngntiptZndk.ykkgnshry_ym,
@@ -169,8 +169,8 @@ export class PointService extends Service {
 
         return {
             khzNo: result.khz_no,
-            krjhthPt: result.krjuthch_pt,
-            tujptZndk: result.tujpt_zndk,
+            krjhthPt: (result.krjuthch_pt === null) ? 0 : Number(result.krjuthch_pt),
+            tujptZndk: (result.tujpt_zndk === null) ? 0 : Number(result.tujpt_zndk),
             kkngntiptZndkLst: (result.kkngntiptzndk_lst === null) ? [] : result.kkngntiptzndk_lst.map((kkngntiptZndk: any) => {
                 return {
                     ykkgnshryYm: kkngntiptZndk.ykkgnshry_ym,
