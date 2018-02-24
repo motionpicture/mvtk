@@ -8,7 +8,7 @@
 // }
 
 import * as factory from './factory';
-// import * as pointUtil from './utils/point';
+import * as pointUtil from './utils/point/point.util';
 
 import { PointService } from './service/point/point.service';
 
@@ -23,5 +23,5 @@ export namespace service {
 }
 
 export namespace utils {
-    // export import point = pointUtil;
+    export import point = pointUtil;
 }

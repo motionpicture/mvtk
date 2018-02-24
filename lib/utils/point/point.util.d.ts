@@ -5,7 +5,7 @@
 /**
  * ステータス
  */
-declare enum Status {
+export declare enum Status {
     /**
      * 正常
      */
