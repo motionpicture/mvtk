@@ -13,7 +13,7 @@ const debug = createDebug('mvtk:service:point');
  */
 export class PointService extends Service {
     /**
-     * 口座作成
+     * 1.口座作成
      */
     public async accountCreate(args: pointFactory.IAccountCreateArgs): Promise<pointFactory.IAccountCreateResult> {
         debug('requesting...', args);
@@ -39,7 +39,7 @@ export class PointService extends Service {
     }
 
     /**
-     * 口座停止
+     * 2.口座停止
      */
     public async accountStop(args: pointFactory.IAccountStopArgs): Promise<pointFactory.IAccountStopResult> {
         debug('requesting...', args);
@@ -64,7 +64,7 @@ export class PointService extends Service {
     }
 
     /**
-     * 口座再開
+     * 3.口座再開
      */
     public async accountRestart(args: pointFactory.IAccountRestartArgs): Promise<pointFactory.IAccountRestartResult> {
         debug('requesting...', args);
@@ -90,33 +90,7 @@ export class PointService extends Service {
     }
 
     /**
-     * 口座番号取得
-     */
-    public async accountNumber(args: pointFactory.IAccountNumberArgs): Promise<pointFactory.IAccountNumberResult> {
-        debug('requesting...', args);
-        const form = {
-            kiin_cd: args.kiinCd
-        };
-        const options = {
-            expectedStatusCodes: [OK],
-            uri: '/api/point/accountNumber',
-            method: 'POST',
-            form: form
-        };
-        const result = await this.request(options);
-        debug('result...', result);
-
-        return {
-            khzNo: result.khz_no,
-            resultInfo: {
-                status: result.result_info.status,
-                message: result.result_info.message
-            }
-        };
-    }
-
-    /**
-     * 残高取得
+     * 4.残高取得
      */
     public async balance(args: pointFactory.IBalanceArgs): Promise<pointFactory.IBalanceResult> {
         debug('requesting...', args);
@@ -135,7 +109,7 @@ export class PointService extends Service {
         return {
             krjuthchPt: (result.krjuthch_pt === null) ? 0 : Number(result.krjuthch_pt),
             tujptZndk: (result.tujpt_zndk === null) ? 0 : Number(result.tujpt_zndk),
-            kkngntiptZndkLst: (result.kkngntiptzndk_lst === null) ? [] : result.kkngntiptzndk_lst.map((kkngntiptZndk: any) => {
+            kkngntiptZndkLst: (result.kkngntiptzndk_lst === null) ? [] : result.kkngntiptzndk_lst.map((kkngntiptZndk: any): pointFactory.IKkngntiPtZndk => {
                 return {
                     ykkgnshryYm: kkngntiptZndk.ykkgnshry_ym,
                     kkngntiptZndk: kkngntiptZndk.ykkgnshry_ym
@@ -149,7 +123,7 @@ export class PointService extends Service {
     }
 
     /**
-     * 残高取得
+     * 5.情報取得
      */
     public async info(args: pointFactory.IInfoArgs): Promise<pointFactory.IInfoResult> {
         debug('requesting...', args);
@@ -169,24 +143,23 @@ export class PointService extends Service {
 
         return {
             khzNo: result.khz_no,
-            krjhthPt: (result.krjuthch_pt === null) ? 0 : Number(result.krjuthch_pt),
+            krjuthchPt: (result.krjuthch_pt === null) ? 0 : Number(result.krjuthch_pt),
             tujptZndk: (result.tujpt_zndk === null) ? 0 : Number(result.tujpt_zndk),
-            kkngntiptZndkLst: (result.kkngntiptzndk_lst === null) ? [] : result.kkngntiptzndk_lst.map((kkngntiptZndk: any) => {
+            kkngntiptZndkLst: (result.kkngntiptzndk_lst === null) ? [] : result.kkngntiptzndk_lst.map((kkngntiptZndk: any): pointFactory.IKkngntiPtZndk => {
                 return {
                     ykkgnshryYm: kkngntiptZndk.ykkgnshry_ym,
                     kkngntiptZndk: kkngntiptZndk.ykkgnshry_ym
                 };
             }),
-            ptRrkLst: (result.ptrrk_lst === null) ? [] : result.ptrrk_lst.map((ptRrk: any) => {
+            ptRrkLst: (result.ptrrk_lst === null) ? [] : result.ptrrk_lst.map((ptRrk: any): pointFactory.IPtRrk => {
                 return {
                     rrkDt: ptRrk.rrk_dt,
                     ptTyp: ptRrk.pt_typ,
-                    ptKbnNm: ptRrk.ptkbn_nm,
+                    ptkbnNm: ptRrk.ptkbn_nm,
                     rrkTyp: ptRrk.rrk_typ,
                     rrkkbnNm: ptRrk.rrkkbn_nm,
-                    pt: ptRrk.pt,
-                    ryCd: ptRrk.ry_cd,
-                    ryTxt: ptRrk.ry_txt,
+                    rykktkPt: Number(ptRrk.rykktk_pt),
+                    jyTxt: ptRrk.jy_txt,
                     ykkgnshryYm: ptRrk.ykkgnshry_ym
                 };
             }),
@@ -198,7 +171,7 @@ export class PointService extends Service {
     }
 
     /**
-     * ポイント履歴取得
+     * 6.ポイント履歴取得
      */
     public async history(args: pointFactory.IHistoryArgs): Promise<pointFactory.IHistoryResult> {
         debug('requesting...', args);
@@ -217,16 +190,15 @@ export class PointService extends Service {
         debug('result...', result);
 
         return {
-            ptRrkLst: (result.ptrrk_lst === null) ? [] : result.ptrrk_lst.map((ptRrk: any) => {
+            ptRrkLst: (result.ptrrk_lst === null) ? [] : result.ptrrk_lst.map((ptRrk: any): pointFactory.IPtRrk => {
                 return {
                     rrkDt: ptRrk.rrk_dt,
                     ptTyp: ptRrk.pt_typ,
-                    ptKbnNm: ptRrk.ptkbn_nm,
+                    ptkbnNm: ptRrk.ptkbn_nm,
                     rrkTyp: ptRrk.rrk_typ,
                     rrkkbnNm: ptRrk.rrkkbn_nm,
-                    pt: ptRrk.pt,
-                    ryCd: ptRrk.ry_cd,
-                    ryTxt: ptRrk.ry_txt,
+                    rykktkPt: Number(ptRrk.rykktk_pt),
+                    jyTxt: ptRrk.jy_txt,
                     ykkgnshryYm: ptRrk.ykkgnshry_ym
                 };
             }),
@@ -238,13 +210,13 @@ export class PointService extends Service {
     }
 
     /**
-     * 仮充当
+     * 7.仮充当
      */
     public async tempRedeem(args: pointFactory.ITempRedeemArgs): Promise<pointFactory.ITempRedeemResult> {
         debug('requesting...', args);
         const form = {
             kiin_cd: args.kiinCd,
-            krjuth_pt: args.krjuthchPt,
+            krjuth_pt: String(args.krjuthchPt),
             tran_dt: args.tranDt,
             tkn_id: args.tknId
         };
@@ -267,7 +239,7 @@ export class PointService extends Service {
     }
 
     /**
-     * 仮充当解除
+     * 8.仮充当解除
      */
     public async tempRedeemCancel(args: pointFactory.ITempRedeemCancelArgs): Promise<pointFactory.ITempRedeemCancelResult> {
         debug('requesting...', args);
@@ -292,48 +264,54 @@ export class PointService extends Service {
         };
     }
 
+    // /**
+    //  * 充当
+    //  */
+    // public async redeem(args: pointFactory.IRedeemArgs): Promise<pointFactory.IRedeemResult> {
+    //     debug('requesting...', args);
+    //     const form = args;
+    //     const options = {
+    //         expectedStatusCodes: [OK],
+    //         uri: '/api/point/redeem',
+    //         method: 'POST',
+    //         form: form
+    //     };
+    //     const result = await this.request(options);
+    //     debug('result...', result);
+
+    //     return result;
+    // }
+
+    // /**
+    //  * 通常ポイント獲得
+    //  */
+    // public async accumulate(args: pointFactory.IAccumulateArgs): Promise<pointFactory.IAccumulateResult> {
+    //     debug('requesting...', args);
+    //     const form = args;
+    //     const options = {
+    //         expectedStatusCodes: [OK],
+    //         uri: '/api/point/accumulate',
+    //         method: 'POST',
+    //         form: form
+    //     };
+    //     const result = await this.request(options);
+    //     debug('result...', result);
+
+    //     return result;
+    // }
+
     /**
-     * 充当
-     */
-    public async redeem(args: pointFactory.IRedeemArgs): Promise<pointFactory.IRedeemResult> {
-        debug('requesting...', args);
-        const form = args;
-        const options = {
-            expectedStatusCodes: [OK],
-            uri: '/api/point/redeem',
-            method: 'POST',
-            form: form
-        };
-        const result = await this.request(options);
-        debug('result...', result);
-
-        return result;
-    }
-
-    /**
-     * 通常ポイント獲得
-     */
-    public async accumulate(args: pointFactory.IAccumulateArgs): Promise<pointFactory.IAccumulateResult> {
-        debug('requesting...', args);
-        const form = args;
-        const options = {
-            expectedStatusCodes: [OK],
-            uri: '/api/point/accumulate',
-            method: 'POST',
-            form: form
-        };
-        const result = await this.request(options);
-        debug('result...', result);
-
-        return result;
-    }
-
-    /**
-     * 通常ポイント付与
+     * 10.通常ポイント付与
      */
     public async grant(args: pointFactory.IGrantArgs): Promise<pointFactory.IGrantResult> {
         debug('requesting...', args);
-        const form = args;
+        const form = {
+            kiin_cd: args.kiinCd,
+            fy_pt: String(args.fyPt),
+            jy_typ: args.jyTyp,
+            jy_txt: args.jyTyp,
+            tntsha_cd: args.tntshaCd
+        };
         const options = {
             expectedStatusCodes: [OK],
             uri: '/api/point/grant',
@@ -343,15 +321,26 @@ export class PointService extends Service {
         const result = await this.request(options);
         debug('result...', result);
 
-        return result;
+        return {
+            resultInfo: {
+                status: result.result_info.status,
+                message: result.result_info.message
+            }
+        };
     }
 
     /**
-     * 通常ポイント削除
+     * 11.通常ポイント削除
      */
     public async revoke(args: pointFactory.IRevokeArgs): Promise<pointFactory.IRevokeResult> {
         debug('requesting...', args);
-        const form = args;
+        const form = {
+            kiin_cd: args.kiinCd,
+            skj_pt: String(args.skjPt),
+            jy_typ: args.jyTyp,
+            jy_txt: args.jyTyp,
+            tntsha_cd: args.tntshaCd
+        };
         const options = {
             expectedStatusCodes: [OK],
             uri: '/api/point/revoke',
@@ -361,15 +350,27 @@ export class PointService extends Service {
         const result = await this.request(options);
         debug('result...', result);
 
-        return result;
+        return {
+            resultInfo: {
+                status: result.result_info.status,
+                message: result.result_info.message
+            }
+        };
     }
 
     /**
-     * 期間限定ポイント付与
+     * 12.期間限定ポイント付与
      */
     public async grantLimited(args: pointFactory.IGrantLimitedArgs): Promise<pointFactory.IGrantLimitedResult> {
         debug('requesting...', args);
-        const form = args;
+        const form = {
+            kiin_cd: args.kiinCd,
+            ykkgnshry_ym: args.ykkgnshryYm,
+            fy_pt: String(args.fyPt),
+            jy_typ: args.jyTyp,
+            jy_txt: args.jyTyp,
+            tntsha_cd: args.tntshaCd
+        };
         const options = {
             expectedStatusCodes: [OK],
             uri: '/api/point/grantLimited',
@@ -379,15 +380,27 @@ export class PointService extends Service {
         const result = await this.request(options);
         debug('result...', result);
 
-        return result;
+        return {
+            resultInfo: {
+                status: result.result_info.status,
+                message: result.result_info.message
+            }
+        };
     }
 
     /**
-     * 期間限定ポイント削除
+     * 13.期間限定ポイント削除
      */
     public async revokeLimited(args: pointFactory.IRevokeLimitedArgs): Promise<pointFactory.IRevokeLimitedResult> {
         debug('requesting...', args);
-        const form = args;
+        const form = {
+            kiin_cd: args.kiinCd,
+            ykkgnshry_ym: args.ykkgnshryYm,
+            skj_pt: String(args.skjPt),
+            jy_typ: args.jyTyp,
+            jy_txt: args.jyTyp,
+            tntsha_cd: args.tntshaCd
+        };
         const options = {
             expectedStatusCodes: [OK],
             uri: '/api/point/revokeLimited',
@@ -397,6 +410,11 @@ export class PointService extends Service {
         const result = await this.request(options);
         debug('result...', result);
 
-        return result;
+        return {
+            resultInfo: {
+                status: result.result_info.status,
+                message: result.result_info.message
+            }
+        };
     }
 }
