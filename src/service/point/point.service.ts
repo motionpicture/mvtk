@@ -112,7 +112,7 @@ export class PointService extends Service {
             kkngntiptZndkLst: (result.kkngntiptzndk_lst === null) ? [] : result.kkngntiptzndk_lst.map((kkngntiptZndk: any): pointFactory.IKkngntiPtZndk => {
                 return {
                     ykkgnshryYm: kkngntiptZndk.ykkgnshry_ym,
-                    kkngntiptZndk: kkngntiptZndk.ykkgnshry_ym
+                    kkngntiptZndk: Number(kkngntiptZndk.kkngntipt_zndk)
                 };
             }),
             resultInfo: {
@@ -148,7 +148,7 @@ export class PointService extends Service {
             kkngntiptZndkLst: (result.kkngntiptzndk_lst === null) ? [] : result.kkngntiptzndk_lst.map((kkngntiptZndk: any): pointFactory.IKkngntiPtZndk => {
                 return {
                     ykkgnshryYm: kkngntiptZndk.ykkgnshry_ym,
-                    kkngntiptZndk: kkngntiptZndk.ykkgnshry_ym
+                    kkngntiptZndk: Number(kkngntiptZndk.kkngntipt_zndk)
                 };
             }),
             ptRrkLst: (result.ptrrk_lst === null) ? [] : result.ptrrk_lst.map((ptRrk: any): pointFactory.IPtRrk => {
