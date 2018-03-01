@@ -139,11 +139,11 @@ export interface IInfoArgs extends IPointRequest {
     /**
      * 取得開始年月 YYYY/MM
      */
-    shtkKishYm: string;
+    shtkkishYm: string;
     /**
      * 取得終了年月 YYYY/MM
      */
-    shtkShryYm: string;
+    shtkshryYm: string;
 }
 
 export interface IInfoResult extends IPointResult {
@@ -177,11 +177,11 @@ export interface IHistoryArgs extends IPointRequest {
     /**
      * 取得開始年月 YYYY/MM
      */
-    shtkKishYm: string;
+    shtkkishYm: string;
     /**
      * 取得終了年月 YYYY/MM
      */
-    shtkShryYm: string;
+    shtkshryYm: string;
 }
 
 export interface IHistoryResult extends IPointResult {

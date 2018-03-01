@@ -129,8 +129,8 @@ export class PointService extends Service {
         debug('requesting...', args);
         const form = {
             kiin_cd: args.kiinCd,
-            shtkKish_ym: args.shtkKishYm,
-            shtkShry_ym: args.shtkShryYm
+            shtkkish_ym: args.shtkkishYm,
+            shtkshry_ym: args.shtkshryYm
         };
         const options = {
             expectedStatusCodes: [OK],
@@ -177,8 +177,8 @@ export class PointService extends Service {
         debug('requesting...', args);
         const form = {
             kiin_cd: args.kiinCd,
-            shtkKish_ym: args.shtkKishYm,
-            shtkShry_ym: args.shtkShryYm
+            shtkkish_ym: args.shtkkishYm,
+            shtkshry_ym: args.shtkshryYm
         };
         const options = {
             expectedStatusCodes: [OK],
