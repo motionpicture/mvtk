@@ -375,3 +375,11 @@ export interface IRevokeLimitedArgs extends IPointRequest {
 }
 
 export type IRevokeLimitedResult = IPointResult;
+
+export interface IPercentageArgs extends IPointRequest {
+    skhnCd: string;
+}
+
+export interface IPercentageResult extends IPointResult {
+    kktkptRt: number;
+}

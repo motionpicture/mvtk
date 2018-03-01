@@ -307,3 +307,9 @@ export interface IRevokeLimitedArgs extends IPointRequest {
     tntshaCd: string;
 }
 export declare type IRevokeLimitedResult = IPointResult;
+export interface IPercentageArgs extends IPointRequest {
+    skhnCd: string;
+}
+export interface IPercentageResult extends IPointResult {
+    kktkptRt: number;
+}

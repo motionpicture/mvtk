@@ -109,12 +109,14 @@ export class PointService extends Service {
         return {
             krjuthchPt: (result.krjuthch_pt === null) ? 0 : Number(result.krjuthch_pt),
             tujptZndk: (result.tujpt_zndk === null) ? 0 : Number(result.tujpt_zndk),
-            kkngntiptZndkLst: (result.kkngntiptzndk_lst === null) ? [] : result.kkngntiptzndk_lst.map((kkngntiptZndk: any): pointFactory.IKkngntiPtZndk => {
-                return {
-                    ykkgnshryYm: kkngntiptZndk.ykkgnshry_ym,
-                    kkngntiptZndk: Number(kkngntiptZndk.kkngntipt_zndk)
-                };
-            }),
+            kkngntiptZndkLst: (result.kkngntiptzndk_lst === null)
+                ? []
+                : result.kkngntiptzndk_lst.map((kkngntiptZndk: any): pointFactory.IKkngntiPtZndk => {
+                    return {
+                        ykkgnshryYm: kkngntiptZndk.ykkgnshry_ym,
+                        kkngntiptZndk: Number(kkngntiptZndk.kkngntipt_zndk)
+                    };
+                }),
             resultInfo: {
                 status: result.result_info.status,
                 message: result.result_info.message
@@ -145,12 +147,14 @@ export class PointService extends Service {
             khzNo: result.khz_no,
             krjuthchPt: (result.krjuthch_pt === null) ? 0 : Number(result.krjuthch_pt),
             tujptZndk: (result.tujpt_zndk === null) ? 0 : Number(result.tujpt_zndk),
-            kkngntiptZndkLst: (result.kkngntiptzndk_lst === null) ? [] : result.kkngntiptzndk_lst.map((kkngntiptZndk: any): pointFactory.IKkngntiPtZndk => {
-                return {
-                    ykkgnshryYm: kkngntiptZndk.ykkgnshry_ym,
-                    kkngntiptZndk: Number(kkngntiptZndk.kkngntipt_zndk)
-                };
-            }),
+            kkngntiptZndkLst: (result.kkngntiptzndk_lst === null)
+                ? []
+                : result.kkngntiptzndk_lst.map((kkngntiptZndk: any): pointFactory.IKkngntiPtZndk => {
+                    return {
+                        ykkgnshryYm: kkngntiptZndk.ykkgnshry_ym,
+                        kkngntiptZndk: Number(kkngntiptZndk.kkngntipt_zndk)
+                    };
+                }),
             ptRrkLst: (result.ptrrk_lst === null) ? [] : result.ptrrk_lst.map((ptRrk: any): pointFactory.IPtRrk => {
                 return {
                     rrkDt: ptRrk.rrk_dt,
@@ -411,6 +415,32 @@ export class PointService extends Service {
         debug('result...', result);
 
         return {
+            resultInfo: {
+                status: result.result_info.status,
+                message: result.result_info.message
+            }
+        };
+    }
+
+    /**
+     * 14.獲得率取得
+     */
+    public async percentage(args: pointFactory.IPercentageArgs): Promise<pointFactory.IPercentageResult> {
+        debug('requesting...', args);
+        const form = {
+            skhn_cd: args.skhnCd
+        };
+        const options = {
+            expectedStatusCodes: [OK],
+            uri: '/api/point/percentage',
+            method: 'POST',
+            form: form
+        };
+        const result = await this.request(options);
+        debug('result...', result);
+
+        return {
+            kktkptRt: Number(result.kktkpt_rt),
             resultInfo: {
                 status: result.result_info.status,
                 message: result.result_info.message

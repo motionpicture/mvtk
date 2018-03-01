@@ -53,4 +53,8 @@ export declare class PointService extends Service {
      * 13.期間限定ポイント削除
      */
     revokeLimited(args: pointFactory.IRevokeLimitedArgs): Promise<pointFactory.IRevokeLimitedResult>;
+    /**
+     * 14.獲得率取得
+     */
+    percentage(args: pointFactory.IPercentageArgs): Promise<pointFactory.IPercentageResult>;
 }
