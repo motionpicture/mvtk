@@ -147,6 +147,7 @@ export class PointService extends Service {
             khzNo: result.khz_no,
             krjuthchPt: (result.krjuthch_pt === null) ? 0 : Number(result.krjuthch_pt),
             tujptZndk: (result.tujpt_zndk === null) ? 0 : Number(result.tujpt_zndk),
+            tujptykkgnshryYmd: (result.tujptykkgnshry_ymd === null) ? undefined : result.tujptykkgnshry_ymd,
             kkngntiptZndkLst: (result.kkngntiptzndk_lst === null)
                 ? []
                 : result.kkngntiptzndk_lst.map((kkngntiptZndk: any): pointFactory.IKkngntiPtZndk => {

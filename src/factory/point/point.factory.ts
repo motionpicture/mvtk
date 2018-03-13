@@ -139,11 +139,11 @@ export interface IInfoArgs extends IPointRequest {
     /**
      * 取得開始年月 YYYY/MM
      */
-    shtkkishYm: string;
+    shtkkishYm?: string;
     /**
      * 取得終了年月 YYYY/MM
      */
-    shtkshryYm: string;
+    shtkshryYm?: string;
 }
 
 export interface IInfoResult extends IPointResult {
@@ -159,6 +159,10 @@ export interface IInfoResult extends IPointResult {
      * 通常ポイント残高
      */
     tujptZndk: number;
+    /**
+     * 通常ポイント有効期限終了年月日
+     */
+    tujptykkgnshryYmd?: string;
     /**
      * 期間限定ポイント残高リスト
      */
