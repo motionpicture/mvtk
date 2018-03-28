@@ -23,14 +23,6 @@ const MVTK = require('@motionpicture/mvtk');
 
 When using the MVTK Service SDK, you must provide connection information. This can be provided using:
 
-### Environment variables
-
-| Name           | Required | Value         | Purpose          |
-| -------------- | -------- | ------------- | ---------------- |
-| `DEBUG`        | false    | mvtk:* | Debug            |
-
-### クレジットカード決済(即時売上)の例
-
 ```js
 const mvtk = require('@motionpicture/mvtk');
 
