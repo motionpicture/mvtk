@@ -78,7 +78,7 @@ jobs:
     #   - run:
     #       command: npm version 1.0.0-alpha.$CIRCLE_BUILD_NUM
       - run:
-          command: npm publish --tag next --access public
+          command: npm publish --tag next
   deploy:
     docker:
       - image: circleci/node:8.4
@@ -92,7 +92,7 @@ jobs:
             npm config set //registry.npmjs.org/:_authToken=$NPM_TOKEN
             npm whoami
       - run:
-          command: npm publish --access public
+          command: npm publish
 # Used for orchestrating all jobs.
 workflows:
   version: 2
