@@ -67,7 +67,7 @@
     "nyc": "nyc mocha \"src/**/*.spec.ts\"",
     "coverage": "npm run nyc | coveralls",
     "snyk": "snyk wizard",
-    "test": "npm run check && npm run coverage",
+    "test": "npm run check",
     "tslint": "tslint --project tsconfig.json -c tslint.json --exclude \"**/*.spec.ts\" \"src/**/*.ts\"",
     "preversion": "npm run clean && npm run build && npm test",
     "version": "git add -A",
