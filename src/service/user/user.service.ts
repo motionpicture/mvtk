@@ -19,7 +19,7 @@ export class UserService extends Service {
         const form: {kiin_mladdr: string; kiintrkmekssiknr_no?: string} = {
             kiin_mladdr: args.kiinMladdr
         };
-        if (args.kiintrkmekssiknrNo) {
+        if (args.kiintrkmekssiknrNo !== undefined) {
             form.kiintrkmekssiknr_no = args.kiintrkmekssiknrNo;
         }
         const options = {
@@ -87,13 +87,13 @@ export class UserService extends Service {
             kiinsi_ymd: args.kiinsiYmd,
             kiin_mladdr: args.kiinMladdr,
             mlmgznkb_flg: args.mlmgznkbFlg,
-            ...(args.kiinsiNm && {kiinsi_nm: args.kiinsiNm}),
-            ...(args.kiimmiNm && {kiimmi_nm: args.kiimmiNm}),
-            ...(args.sibtsTyp && {sibts_typ: args.sibtsTyp}),
-            ...(args.tdfknCd && {tdfkn_cd: args.tdfknCd}),
-            ...(args.kiinshgikykNo && {kiinshgikyk_no: args.kiinshgikykNo}),
-            ...(args.kiinshnikykNo && {kiinshnikyk_no: args.kiinshnikykNo}),
-            ...(args.kiinknyshNo && {kiinknysh_no: args.kiinknyshNo})
+            ...(args.kiinsiNm !== undefined ? {kiinsi_nm: args.kiinsiNm} : {}),
+            ...(args.kiimmiNm !== undefined ? {kiimmi_nm: args.kiimmiNm} : {}),
+            ...(args.sibtsTyp !== undefined ? {sibts_typ: args.sibtsTyp} : {}),
+            ...(args.tdfknCd !== undefined ? {tdfkn_cd: args.tdfknCd} : {}),
+            ...(args.kiinshgikykNo !== undefined ? {kiinshgikyk_no: args.kiinshgikykNo} : {}),
+            ...(args.kiinshnikykNo !== undefined ? {kiinshnikyk_no: args.kiinshnikykNo} : {}),
+            ...(args.kiinknyshNo !== undefined ? {kiinknysh_no: args.kiinknyshNo} : {})
         };
         const options = {
             expectedStatusCodes: [OK],
