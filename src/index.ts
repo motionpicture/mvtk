@@ -10,8 +10,8 @@
 import * as factory from './factory';
 import * as pointUtil from './utils/point/point.util';
 
-import { AuthService } from './service/auth/auth.service';
 import { PointService } from './service/point/point.service';
+import { UserService } from './service/user/user.service';
 
 export import factory = factory;
 
@@ -20,7 +20,7 @@ export namespace service {
      * Authサービス
      * @class
      */
-    export class Auth extends AuthService { }
+    export class User extends UserService { }
     /**
      * ポイントサービス
      * @class

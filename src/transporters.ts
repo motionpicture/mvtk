@@ -129,7 +129,14 @@ export class DefaultTransporter implements Transporter {
                 err.errors = [];
             } else {
                 // 結果をオブジェクトとして返却
-                return JSON.parse(body);
+                let result;
+                try {
+                    result = JSON.parse(body);
+                } catch {
+                    result = {};
+                }
+
+                return result;
             }
         }
 
