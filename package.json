@@ -12,7 +12,7 @@
     "@types/request": "^2.47.0",
     "debug": "^3.1.0",
     "http-status": "^1.0.1",
-    "request": "^2.83.0"
+    "request": "^2.87.0"
   },
   "description": "mvtk Client Library for Node.js",
   "devDependencies": {
