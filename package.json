@@ -12,7 +12,7 @@
     "@types/request": "^2.47.0",
     "debug": "^3.1.0",
     "http-status": "^1.0.1",
-    "request": "^2.83.0"
+    "request": "^2.87.0"
   },
   "description": "mvtk Client Library for Node.js",
   "devDependencies": {
@@ -74,7 +74,7 @@
     "postversion": "git push origin --tags",
     "prepublishOnly": "npm run clean && npm run build && npm test && npm run doc"
   },
-  "version": "1.0.1",
+  "version": "1.0.2",
   "repository": {
     "type": "git",
     "url": "https://github.com/motionpicture/mvtk.git"

@@ -16,6 +16,9 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
 ### Security
 
+## v1.0.2 - 2018-06-29
+### Added
+ - 会員簡素化対応
 ## v1.0.0 - 2018-03-28
 ### Added
  - ファーストリリース
