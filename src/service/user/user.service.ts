@@ -129,7 +129,7 @@ export class UserService extends Service {
         return {
             kiinCd: result.kiin_cd,
             kiinMladdr: result.kiin_mladdr,
-            encryptKiinCd: result.encrypt_kiinCd,
+            encryptKiinCd: result.encrypt_kiin_cd,
             mvtckthsskmknshFlg: result.mvtckthsskmknsh_flg
         };
     }
