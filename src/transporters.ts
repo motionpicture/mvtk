@@ -1,19 +1,23 @@
 // tslint:disable:max-classes-per-file
-
 /**
  * transporters
  * @ignore
  */
 
 import * as createDebug from 'debug';
+import * as fs from 'fs-extra';
+import * as moment from 'moment';
 // import * as querystring from 'querystring';
 import * as request from 'request';
+import { URL } from 'url';
 // import * as fetch from 'isomorphic-fetch';
 // import { BadRequestError } from './error/badRequest';
 
 const debug = createDebug('mvtk:transporters');
 // tslint:disable-next-line
 const pkg = require('../package.json');
+// tslint:disable-next-line:variable-name no-var-requires no-require-imports
+const log4js = require('log4js');
 
 /**
  * transporter abstract class
@@ -66,6 +70,7 @@ export class StubTransporter implements Transporter {
  * @class
  */
 export class DefaultTransporter implements Transporter {
+
     /**
      * Default user agent.
      */
@@ -98,7 +103,14 @@ export class DefaultTransporter implements Transporter {
      */
     public async request(options: request.OptionsWithUrl) {
         const requestOptions = DefaultTransporter.CONFIGURE(options);
-        debug('requesting...', requestOptions);
+
+        if (process.env.REST_LOGGING_ENABLED === '1') {
+            const logger4rest: any = await this.setRestlogger(<string>requestOptions.url)
+                .catch((err) => {
+                    throw new Error(err);
+                });
+            logger4rest.info('MvtkService calling...', <string>requestOptions.url, requestOptions);
+        }
 
         return new Promise<any>((resolve, reject) => {
             request(requestOptions, (error, response, body) => {
@@ -109,6 +121,51 @@ export class DefaultTransporter implements Transporter {
                 } catch (err) {
                     reject(err);
                 }
+            });
+        });
+
+        // debug('requesting...', requestOptions);
+    }
+
+    /**
+     * rest用のロガーを設定する
+     * endpoint毎に1ログファイル
+     */
+    protected setRestlogger = async (endpoint: string) => {
+        const url = new URL(endpoint);
+        const env = process.env.NODE_ENV !== undefined ? process.env.NODE_ENV : 'dev';
+        let logDir = `${process.cwd()}/logs/${env}/frontend/rest/${moment().format('YYYYMMDD')}`;
+
+        // host以下のpathをdir構造でログ出力
+        const path = url.pathname.split('/');
+        if (path.length > 1) {
+            for (let i = 0; i < path.length - 1; i += 1) {
+                logDir += `/${path[i]}`;
+            }
+        }
+
+        return new Promise<void | any>((resolve, reject) => {
+            fs.mkdirs(logDir, (err: any) => {
+                if (err) {
+                    reject(new Error('ログの作成に失敗しました。'));
+                }
+
+                log4js.configure({
+                    appenders: [
+                        {
+                            category: 'rest',
+                            type: 'dateFile',
+                            filename: `${logDir} /${path[path.length - 1]}.log`,
+                            pattern: '-yyyy-MM-dd',
+                            backups: 3
+                        }
+                    ],
+                    levels: {
+                        wsdl: 'ALL'
+                    }
+                });
+
+                resolve(log4js.getLogger('rest'));
             });
         });
     }
