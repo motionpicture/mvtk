@@ -10,7 +10,7 @@ const debug = createDebug('mvtk:service:auth');
  * 購入関連サービス
  * @class
  */
-export class PurchaseService extends Service{
+export class PurchaseService extends Service {
     /**
      * 1.決済情報仮登録
      */
@@ -46,7 +46,7 @@ export class PurchaseService extends Service{
             gkkn_gk: args.gkknGk,
             mltmplt_cd: args.mltmpltCd,
             tktncdkkh_inf: args.tktncdkkhInf
-        }
+        };
 
         const options = {
             expectedStatusCodes: [OK],
@@ -62,7 +62,7 @@ export class PurchaseService extends Service{
             status: 'OK'
         };
     }
-    
+
     /**
      * 2.購入情報取得
      */
@@ -70,7 +70,7 @@ export class PurchaseService extends Service{
         debug('requesting...', args);
         const form = {
             kssiknr_no: args.kssiknrNo
-        }
+        };
 
         const options = {
             expectedStatusCodes: [OK],

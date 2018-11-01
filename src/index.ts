@@ -11,8 +11,8 @@ import * as factory from './factory';
 import * as pointUtil from './utils/point/point.util';
 
 import { PointService } from './service/point/point.service';
-import { UserService } from './service/user/user.service';
 import { PurchaseService } from './service/purchase/purchase.service';
+import { UserService } from './service/user/user.service';
 
 export import factory = factory;
 
