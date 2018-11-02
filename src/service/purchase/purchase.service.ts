@@ -31,6 +31,7 @@ export class PurchaseService extends Service {
             knysh_cd: args.knyshCd,
             kiin_flg: args.kiinFlg,
             skhn_cd: args.skhnCd,
+            skhn_nm: args.skhnNm,
             knshknknr_no: args.knshknknrNo,
             knshkn_inf: args.knshknInf,
             kssihh_typ: args.kssihhTyp,
@@ -75,7 +76,7 @@ export class PurchaseService extends Service {
         const options = {
             expectedStatusCodes: [OK],
             uri: 'api/purchase/info',
-            method: 'POST',
+            method: 'GET',
             form: form
         };
 

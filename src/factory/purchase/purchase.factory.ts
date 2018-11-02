@@ -59,6 +59,10 @@ export interface ITempSettlementRegistArgs {
      */
     skhnCd: string;
     /**
+     * 作品名称（最大120文字）
+     */
+    skhnNm: string;
+    /**
      * "鑑賞券管理番号（8桁固定）
      */
     knshknknrNo: string;
