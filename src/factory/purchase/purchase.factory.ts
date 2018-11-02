@@ -49,11 +49,11 @@ export interface ITempSettlementRegistArgs {
     /**
      * 購入者コード（会員の場合は 8桁の固定値 を それ以外は null をセット）
      */
-    knyshCd: string;
+    knyshCd: string | null;
     /**
      * 会員フラグ（会員の場合は 1 を それ以外は null または 0 をセット）
      */
-    kiinFlg: string;
+    kiinFlg: string | null;
     /**
      * 作品コード（6桁固定）
      */
@@ -73,11 +73,11 @@ export interface ITempSettlementRegistArgs {
     /**
      * 併用決済フラグ（ギフトカード利用時は 1 をそれ以外は null をセット）
      */
-    hiykssiFlg: string;
+    hiykssiFlg: string | null;
     /**
      * 併用決済方法区分（ギフトカード利用時は 04 を それ以外は null をセット）
      */
-    hiykssihhTyp: string;
+    hiykssihhTyp: string | null;
     /**
      * 併用決済利用合計金額
      */
@@ -85,11 +85,11 @@ export interface ITempSettlementRegistArgs {
     /**
      * ギフトカード情報（ギフト利用がない場合は null をセット）
      */
-    gftInf: {};
+    gftInf: {} | null;
     /**
      * ポイント利用フラグ（ポイント利用時は 1 をそれ以外は null または 0 をセット）
      */
-    pintryFlg: string;
+    pintryFlg: string | null;
     /**
      * ポイント決済UUID
      */
