@@ -76,8 +76,6 @@ export class PurchaseService extends Service {
             form: {}
         };
 
-        
-
         const result = await this.request(options);
         debug('result...', result);
 
