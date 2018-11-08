@@ -74,7 +74,7 @@
     "postversion": "git push origin --tags",
     "prepublishOnly": "npm run clean && npm run build && npm test && npm run doc"
   },
-  "version": "1.0.4-MVSR-244-alpha.3",
+  "version": "1.0.4-MVSR-244-alpha.4",
   "repository": {
     "type": "git",
     "url": "https://github.com/motionpicture/mvtk.git"

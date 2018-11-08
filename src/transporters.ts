@@ -117,6 +117,9 @@ export class DefaultTransporter implements Transporter {
      * Wraps the response callback.
      */
     private wrapCallback(error: any, response: request.RequestResponse, body: any): any {
+        if (response === null || response === undefined) {
+            return new Error('LibratoMetrics.Error: Request failed without a response. Network Connected?');
+        }
         debug('request processed.', error, response.statusCode, body);
         let err: any = new RequestError('An unexpected error occurred');
 

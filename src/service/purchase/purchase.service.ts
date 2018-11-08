@@ -69,16 +69,14 @@ export class PurchaseService extends Service {
      */
      public async info (args: purchaseFactory.IInfoArgs): Promise<purchaseFactory.IInfoResult> {
         debug('requesting...', args);
-        const form = {
-            kssiknr_no: args.kssiknrNo
-        };
-
         const options = {
             expectedStatusCodes: [OK],
-            uri: 'api/purchase/info',
+            uri: `/api/purchase/info${args.kssiknrNo}`,
             method: 'GET',
-            form: form
+            form: {}
         };
+
+        
 
         const result = await this.request(options);
         debug('result...', result);
