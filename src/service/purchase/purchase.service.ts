@@ -71,7 +71,7 @@ export class PurchaseService extends Service {
         debug('requesting...', args);
         const options = {
             expectedStatusCodes: [OK],
-            uri: `/api/purchase/info${args.kssiknrNo}`,
+            uri: `/api/purchase/info?kssiknr_no=${args.kssiknrNo}`,
             method: 'GET',
             form: {}
         };
