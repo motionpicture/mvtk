@@ -15,7 +15,9 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 ### Fixed
 
 ### Security
-
+## v1.1.0 - 2018-11-22
+### Added
+ - 楽天ペイ対応
 ## v1.0.3 - 2018-08-20
 ### Added
  - 会員簡素化不具合対応
