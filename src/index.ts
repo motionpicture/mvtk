@@ -11,6 +11,7 @@ import * as factory from './factory';
 import * as pointUtil from './utils/point/point.util';
 
 import { PointService } from './service/point/point.service';
+import { PurchaseService } from './service/purchase/purchase.service';
 import { UserService } from './service/user/user.service';
 
 export import factory = factory;
@@ -26,6 +27,11 @@ export namespace service {
      * @class
      */
     export class Point extends PointService { }
+    /**
+     * 決済関連サービス
+     * @class
+     */
+    export class Purchase extends PurchaseService { }
 }
 
 export namespace utils {
