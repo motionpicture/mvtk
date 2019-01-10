@@ -86,4 +86,25 @@ export class PurchaseService extends Service {
             kktkPt: result.kktk_pt
         };
      }
+
+     /**
+      * 3.決済管理番号採番
+      */
+     public async numberingSettlementNo (rnkimt_typ: string): Promise<purchaseFactory.INumberingSettlementNoResult> {
+        const options = {
+            expectedStatusCodes: [OK],
+            uri: '/api/purchase/numberingSettlementNo',
+            method: 'POST',
+            form: {
+                rnkimt_typ: rnkimt_typ
+            }
+        }
+
+        const result = await this.request(options);
+        debug('result...', result);
+
+        return {
+            kssiknr_no: result.kssiknr_no
+        }
+     }
 }
