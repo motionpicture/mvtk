@@ -90,21 +90,21 @@ export class PurchaseService extends Service {
      /**
       * 3.決済管理番号採番
       */
-     public async numberingSettlementNo (rnkimt_typ: string): Promise<purchaseFactory.INumberingSettlementNoResult> {
+     public async numberingSettlementNo (rnkimtTyp: string): Promise<purchaseFactory.INumberingSettlementNoResult> {
         const options = {
             expectedStatusCodes: [OK],
             uri: '/api/purchase/numberingSettlementNo',
             method: 'POST',
             form: {
-                rnkimt_typ: rnkimt_typ
+                rnkimt_typ: rnkimtTyp
             }
-        }
+        };
 
         const result = await this.request(options);
         debug('result...', result);
 
         return {
             kssiknr_no: result.kssiknr_no
-        }
+        };
      }
 }
