@@ -90,14 +90,12 @@ export class PurchaseService extends Service {
      /**
       * 3.決済管理番号採番
       */
-     public async numberingSettlementNo (rnkimtTyp: string): Promise<purchaseFactory.INumberingSettlementNoResult> {
+     public async numberingSettlementNo (): Promise<purchaseFactory.INumberingSettlementNoResult> {
         const options = {
             expectedStatusCodes: [OK],
             uri: '/api/purchase/numberingSettlementNo',
             method: 'POST',
-            form: {
-                rnkimt_typ: rnkimtTyp
-            }
+            form: {}
         };
 
         const result = await this.request(options);

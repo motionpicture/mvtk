@@ -156,12 +156,3 @@ export interface INumberingSettlementNoResult {
      */
     kssiknr_no: string;
 }
-
-export enum rnkimtTyp {
-    // ムビチケサイト
-    SITE = '00',
-    // Mitaiアプリ
-    APPS = '01',
-    // その他
-    OTHER = '99'
-}
