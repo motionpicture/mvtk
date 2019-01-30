@@ -15,6 +15,10 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 ### Fixed
 
 ### Security
+## v1.2.0 - 2019-01-30
+### Added
+ - 決済管理番号採番api追加
+
 ## v1.1.0 - 2018-11-22
 ### Added
  - 楽天ペイ対応
