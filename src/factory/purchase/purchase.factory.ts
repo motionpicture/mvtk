@@ -149,3 +149,10 @@ export interface IInfoResult {
      */
     kktkPt: string;
 }
+
+export interface INumberingSettlementNoResult {
+    /**
+     * 決済管理番号
+     */
+    kssiknr_no: string;
+}
