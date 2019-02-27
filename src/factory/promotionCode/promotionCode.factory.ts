@@ -200,11 +200,6 @@ export interface IValidationResult {
     prmtncd_txt: string;
 
     /**
-     * 割引区分（00：円／01：％）
-     */
-    wrbk_typ: wrbkTyp;
-
-    /**
      * 割引数
      */
     wrbk_num: number;
@@ -253,6 +248,11 @@ export interface IAvailableResult extends IValidationResult {
      * 有効期限記述（有効期限が残り7日以下の場合のみ）
      */
     ykkgn_dspt: string | null;
+
+    /**
+     * 割引区分（00：円／01：％）
+     */
+    wrbk_typ: wrbkTyp;
 }
 
 /**
