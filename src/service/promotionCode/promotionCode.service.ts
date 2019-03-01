@@ -172,7 +172,7 @@ export class PromotionCodeService extends Service {
         return {
             prmtncd_cd: result.prmtncd_cd,
             prmtncd_txt: result.prmtncd_txt,
-            wrbk_num: result.wrbk_num,
+            wrbk_gk: result.wrbk_gk,
             wrbk_dspt: result.wrbk_dspt
         };
     }

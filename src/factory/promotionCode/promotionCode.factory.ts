@@ -200,9 +200,9 @@ export interface IValidationResult {
     prmtncd_txt: string;
 
     /**
-     * 割引数
+     * 割引額（円）
      */
-    wrbk_num: number;
+    wrbk_gk: number;
 
     /**
      * 割引記述
@@ -238,7 +238,31 @@ export interface IAvailableArgs {
 /**
  * 利用可能コード一覧レスポンス
  */
-export interface IAvailableResult extends IValidationResult {
+export interface IAvailableResult {
+    /**
+     * プロモーションコード
+     */
+    prmtncd_cd: string;
+
+    /**
+     * プロモーションコード内容
+     */
+    prmtncd_txt: string;
+    /**
+     * 割引区分（00：円／01：％）
+     */
+    wrbk_typ: wrbkTyp;
+
+    /**
+     * 割引数
+     */
+    wrbk_num: number;
+
+    /**
+     * 割引記述
+     */
+    wrbk_dspt: string;
+
     /**
      * 有効期限年月日
      */
@@ -248,11 +272,6 @@ export interface IAvailableResult extends IValidationResult {
      * 有効期限記述（有効期限が残り7日以下の場合のみ）
      */
     ykkgn_dspt: string | null;
-
-    /**
-     * 割引区分（00：円／01：％）
-     */
-    wrbk_typ: wrbkTyp;
 }
 
 /**
