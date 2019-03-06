@@ -122,6 +122,22 @@ export interface ITempSettlementRegistArgs {
      * 特典情報
      */
     tktncdkkhInf: {};
+    /**
+     * プロモーションコード利用フラグ
+     */
+    prmtncdryFlg: string;
+    /**
+     * プロモーションコード
+     */
+    prmtnCd: string;
+    /**
+     * プロモーションコード決済UUID
+     */
+    prmtncdkssiUuid: string;
+    /**
+     * プロモーションコード割引額
+     */
+    prmtncdwrbkGk: number;
 }
 
 export interface IInfoArgs {
