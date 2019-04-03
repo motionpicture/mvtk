@@ -16,10 +16,10 @@ export class ScheduleService extends Service {
      * 42.お気に入り劇場上映スケジュール検索
      */
     public async favorite(args: scheduleFactory.IFavoriteArgs): Promise<scheduleFactory.IScheduleFavoriteResult> {
-        debug('requesting...', args.kiin_cd);
+        debug('requesting...', args.kiinCd);
         const options = {
             expectedStatusCodes: [OK],
-            uri: `/api/schedule/favorite?kiin_cd=${args.kiin_cd}`,
+            uri: `/api/schedule/favorite?kiin_cd=${args.kiinCd}`,
             method: 'GET',
             form: {}
         };
@@ -27,11 +27,11 @@ export class ScheduleService extends Service {
         debug('result...', result);
 
         return {
-            st_cd: result.st_cd,
-            st_nm: result.st_nm,
-            mdgchtrykn_flg: result.mdgchtrykn_flg,
-            ntrykn_flg: result.ntrykn_flg,
-            jeiskhn_inf: result.jeiskhn_inf
+            stCd: result.st_cd,
+            stNm: result.st_nm,
+            mdgchtryknFlg: result.mdgchtrykn_flg,
+            ntryknFlg: result.ntrykn_flg,
+            jeiskhnInf: result.jeiskhn_inf
         };
     }
 
@@ -42,7 +42,7 @@ export class ScheduleService extends Service {
         debug('requesting...', args);
         const options = {
             expectedStatusCodes: [OK],
-            uri: `/api/schedule/nearest?gnzichi_do=${args.gnzichi_do}&gnzichki_do=${args.gnzichki_do}&kiin_cd=${args.kiin_cd}`,
+            uri: `/api/schedule/nearest?gnzichi_do=${args.gnzichiDo}&gnzichki_do=${args.gnzichkiDo}&kiin_cd=${args.kiinCd}`,
             method: 'GET',
             form: {}
         };
@@ -50,9 +50,9 @@ export class ScheduleService extends Service {
         debug('result...', result);
 
         return {
-            are_cd: result.are_cd,
-            are_nm: result.are_nm,
-            st_inf: result.st_inf
+            areCd: result.are_cd,
+            areNm: result.are_nm,
+            stInf: result.st_inf
         };
     }
 
@@ -64,7 +64,7 @@ export class ScheduleService extends Service {
         const options = {
             expectedStatusCodes: [OK],
             // tslint:disable-next-line: max-line-length
-            uri: `/api/schedule/area?skhn_cd=${args.skhn_cd}&kik_cd=${args.kik_cd}&tdfkn_cd=${args.tdfkn_cd}&are_cd=${args.are_cd}&kiin_cd=${args.kiin_cd}`,
+            uri: `/api/schedule/area?skhn_cd=${args.skhnCd}&kik_cd=${args.kikCd}&tdfkn_cd=${args.tdfknCd}&are_cd=${args.areCd}&kiin_cd=${args.kiinCd}`,
             method: 'GET',
             form: {}
         };
@@ -72,12 +72,12 @@ export class ScheduleService extends Service {
         debug('result...', result);
 
         return {
-            st_cd: result.st_cd,
-            st_nm: result.st_nm,
-            mdgchtrykn_flg: result.mdgchtrykn_flg,
-            ntrykn_flg: result.ntrykn_flg,
-            oknirstturkzm_flg: result.oknirstturkzm_flg,
-            jeiskhn_inf: result.jeiskhn_inf
+            stCd: result.st_cd,
+            stNm: result.st_nm,
+            mdgchtryknFlg: result.mdgchtrykn_flg,
+            ntryknFlg: result.ntrykn_flg,
+            oknirstturkzmFlg: result.oknirstturkzm_flg,
+            jeiskhnInf: result.jeiskhn_inf
         };
     }
 
@@ -89,7 +89,7 @@ export class ScheduleService extends Service {
         const options = {
             expectedStatusCodes: [OK],
             // tslint:disable-next-line: max-line-length
-            uri: `/api/schedule/favoriteForFilm?skhn_cd=${args.skhn_cd}&kiin_cd=${args.kiin_cd}`,
+            uri: `/api/schedule/favoriteForFilm?skhn_cd=${args.skhnCd}&kiin_cd=${args.kiinCd}`,
             method: 'GET',
             form: {}
         };
@@ -97,11 +97,11 @@ export class ScheduleService extends Service {
         debug('result...', result);
 
         return {
-            st_cd: result.st_cd,
-            st_nm: result.st_nm,
-            mdgchtrykn_flg: result.mdgchtrykn_flg,
-            ntrykn_flg: result.ntrykn_flg,
-            jei_inf: result.jei_inf
+            stCd: result.st_cd,
+            stNm: result.st_nm,
+            mdgchtryknFlg: result.mdgchtrykn_flg,
+            ntryknFlg: result.ntrykn_flg,
+            jeiInf: result.jei_inf
         };
     }
 
@@ -113,7 +113,7 @@ export class ScheduleService extends Service {
         const options = {
             expectedStatusCodes: [OK],
             // tslint:disable-next-line: max-line-length
-            uri: `/api/schedule/nearestForFilm?skhn_cd=${args.skhn_cd}&gnzichi_do=${args.gnzichi_do}&gnzichki_do=${args.gnzichki_do}`,
+            uri: `/api/schedule/nearestForFilm?skhn_cd=${args.skhnCd}&gnzichi_do=${args.gnzichiDo}&gnzichki_do=${args.gnzichkiDo}`,
             method: 'GET',
             form: {}
         };
@@ -121,9 +121,9 @@ export class ScheduleService extends Service {
         debug('result...', result);
 
         return {
-            are_cd: result.are_cd,
-            are_nm: result.are_nm,
-            st_inf: result.st_inf
+            areCd: result.are_cd,
+            areNm: result.are_nm,
+            stInf: result.st_inf
         };
     }
 
@@ -134,7 +134,7 @@ export class ScheduleService extends Service {
         debug('requesting...', args);
         const options = {
             expectedStatusCodes: [OK],
-            uri: `/api/schedule/areaForFilm?skhn_cd=${args.skhn_cd}&kik_cd=${args.kik_cd}&tdfkn_cd=${args.tdfkn_cd}&are_cd=${args.are_cd}`,
+            uri: `/api/schedule/areaForFilm?skhn_cd=${args.skhnCd}&kik_cd=${args.kikCd}&tdfkn_cd=${args.tdfknCd}&are_cd=${args.areCd}`,
             method: 'GET',
             form: {}
         };
@@ -142,11 +142,11 @@ export class ScheduleService extends Service {
         debug('result...', result);
 
         return {
-            st_cd: result.st_cd,
-            st_nm: result.st_nm,
-            mdgchtrykn_flg: result.mdgchtrykn_flg,
-            ntrykn_flg: result.ntrykn_flg,
-            jei_inf: result.jei_inf
+            stCd: result.st_cd,
+            stNm: result.st_nm,
+            mdgchtryknFlg: result.mdgchtrykn_flg,
+            ntryknFlg: result.ntrykn_flg,
+            jeiInf: result.jei_inf
         };
     }
 

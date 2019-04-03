@@ -20,7 +20,7 @@ export class TheaterService extends Service {
         const options = {
             expectedStatusCodes: [OK],
             // tslint:disable-next-line: max-line-length
-            uri: `/api/theater/searchCondition?kik_cd=${args.kik_cd}&tdfkn_cd=${args.tdfkn_cd}&are_cd=${args.are_cd}&skhn_cd=${args.skhn_cd}`,
+            uri: `/api/theater/searchCondition?kik_cd=${args.kikCd}&tdfkn_cd=${args.tdfknCd}&are_cd=${args.areCd}&skhn_cd=${args.skhnCd}`,
             method: 'GET',
             form: {}
         };
@@ -28,9 +28,9 @@ export class TheaterService extends Service {
         debug('result...', result);
 
         return {
-            kik_cd: result.kik_cd,
-            kik_nm: result.kik_nm,
-            tdfkn_inf: result.tdfkn_inf
+            kikCd: result.kik_cd,
+            kikNm: result.kik_nm,
+            tdfknInf: result.tdfkn_inf
         };
     }
 
@@ -48,9 +48,9 @@ export class TheaterService extends Service {
         debug('result...', result);
 
         return {
-            kik_cd: result.kik_cd,
-            kik_nm: result.kik_nm,
-            tdfkn_inf: result.tdfkn_inf
+            kikCd: result.kik_cd,
+            kikNm: result.kik_nm,
+            tdfknInf: result.tdfkn_inf
         };
     }
 
@@ -60,7 +60,7 @@ export class TheaterService extends Service {
     public async detail(args: theaterFactory.IDetailArgs): Promise<theaterFactory.IDetailsResult> {
         const options = {
             expectedStatusCodes: [OK],
-            uri: `/api/theater/details?st_cd=${args.st_cd}&skhn_cd=${args.skhn_cd}&kiin_cd=${args.kiin_cd}`,
+            uri: `/api/theater/details?st_cd=${args.stCd}&skhn_cd=${args.skhnCd}&kiin_cd=${args.kiinCd}`,
             method: 'GET',
             form: {}
         };
@@ -68,18 +68,18 @@ export class TheaterService extends Service {
         debug('result...', result);
 
         return {
-            st_cd: result.st_cd,
-            st_nm: result.st_nm,
-            stybn_no: result.stybn_no,
-            st_addr: result.st_addr,
-            stjshi_do: result.stjshi_do,
-            stjshki_do: result.stjshki_do,
-            stdnw_no: result.stdnw_no,
-            stkshkst_url: result.stkshkst_url,
-            mdgchtrykn_flg: result.mdgchtrykn_flg,
-            ntrykn_flg: result.ntrykn_flg,
-            oknirstturkzm_flg: result.oknirstturkzm_flg,
-            jeischdl_inf: result.jeischdl_inf
+            stCd: result.st_cd,
+            stNm: result.st_nm,
+            stybnNo: result.stybn_no,
+            stAddr: result.st_addr,
+            stjshiDo: result.stjshi_do,
+            stjshkiDo: result.stjshki_do,
+            stdnwNo: result.stdnw_no,
+            stkshkstUrl: result.stkshkst_url,
+            mdgchtryknFlg: result.mdgchtrykn_flg,
+            ntryknFlg: result.ntrykn_flg,
+            oknirstturkzmFlg: result.oknirstturkzm_flg,
+            jeischdlInf: result.jeischdl_inf
         };
     }
 

@@ -15,10 +15,10 @@ export class FavoriteService extends Service {
      * 観たい作品情報取得
      */
     public async filmInfo (args: favoriteFactory.IFilmInfoArgs): Promise<favoriteFactory.IFilmInfoResult> {
-        debug('requesting...', args.kiin_cd);
+        debug('requesting...', args.kiinCd);
         const options = {
             expectedStatusCodes: [OK],
-            uri: `/api/favorite/filmInfo?kiin_cd=${args.kiin_cd}`,
+            uri: `/api/favorite/filmInfo?kiin_cd=${args.kiinCd}`,
             method: 'GET',
             form: {}
         };
@@ -26,13 +26,13 @@ export class FavoriteService extends Service {
         debug('result...', result);
 
         return {
-            hmbi_typ: result.hmbi_typ,
-            hmbistts_typ: result.hmbistts_typ,
-            skhn_cd: result.skhn_cd,
-            skhn_nm: result.skhn_nm,
-            pstrgz_url: result.pstrgz_url,
-            znkkkkikish_dspt: result.znkkkkikish_dspt,
-            knshknhmbishry_ymd: result.knshknhmbishry_ymd
+            hmbiTyp: result.hmbi_typ,
+            hmbisttsTyp: result.hmbistts_typ,
+            skhnCd: result.skhn_cd,
+            skhnNm: result.skhn_nm,
+            pstrgzUrl: result.pstrgz_url,
+            znkkkkikishDspt: result.znkkkkikish_dspt,
+            knshknhmbishryYmd: result.knshknhmbishry_ymd
         };
     }
 
@@ -42,8 +42,8 @@ export class FavoriteService extends Service {
     public async filmRegister (args: favoriteFactory.IFilmRegisterArgs): Promise<{}> {
         debug('requesting...', args);
         const form = {
-            skhn_cd: args.skhn_cd,
-            kiin_cd: args.kiin_cd
+            skhn_cd: args.skhnCd,
+            kiin_cd: args.kiinCd
         };
         const options = {
             expectedStatusCodes: [OK],
@@ -65,8 +65,8 @@ export class FavoriteService extends Service {
     public async filmDelete (args: favoriteFactory.IFilmDeleteArgs): Promise<{}> {
         debug('requesting...', args);
         const form = {
-            skhn_cd: args.skhn_cd,
-            kiin_cd: args.kiin_cd
+            skhn_cd: args.skhnCd,
+            kiin_cd: args.kiinCd
         };
         const options = {
             expectedStatusCodes: [OK],

@@ -24,60 +24,60 @@ export interface IJeiskhnInf {
     /**
      * 作品コード
      */
-    skhn_cd: string;
+    skhnCd: string;
     /**
      * 作品名称（最大240文字）
      */
-    skhn_nm: string;
+    skhnNm: string;
     /**
      * ポスター画像URL
      */
-    pstrgz_url?: string;
+    pstrgzUrl?: string;
 }
 
 export interface IScheduleCommonResult {
     /**
      * 劇場コード
      */
-    st_cd: string;
+    stCd: string;
     /**
      * 劇場名称
      */
-    st_nm: string;
+    stNm: string;
     /**
      * 劇場窓口利用可能フラグ
      */
-    mdgchtrykn_flg?: string;
+    mdgchtryknFlg?: string;
     /**
      * ネット利用可能フラグ
      */
-    ntrykn_flg?: string;
+    ntryknFlg?: string;
 }
 
 export interface IScheduleFavoriteResult extends IScheduleCommonResult {
     /**
      * お気に入り劇場登録済フラグ
      */
-    oknirstturkzm_flg?: string;
+    oknirstturkzmFlg?: string;
     /**
      * 上映作品情報
      */
-    jeiskhn_inf?: IJeiskhnInf[];
+    jeiskhnInf?: IJeiskhnInf[];
 }
 
 export interface IStInf extends IScheduleCommonResult {
     /**
      * 地点間距離
      */
-    chtnknkyr_num?: number;
+    chtnknkyrNum?: number;
     /**
      * お気に入り劇場登録済フラグ
      */
-    oknirstturkzm_flg?: string;
+    oknirstturkzmFlg?: string;
     /**
      * 上映作品情報
      */
-    jeiskhn_inf?: IJeiskhnInf[];
+    jeiskhnInf?: IJeiskhnInf[];
 }
 
 export type IAreaResult = IScheduleFavoriteResult;
@@ -86,46 +86,46 @@ export interface IJeihmInf {
     /**
      * 上映開始時間
      */
-    jeikish_hm: string;
+    jeikishHm: string;
     /**
      * 上映終了時間（最終上映回のみ設定される）
      */
-    jeishry_hm?: string;
+    jeishryHm?: string;
     /**
      * 残席状況区分（◎：残席率 50~100%、〇：残席率 30~49%、△：残席率 1~29%、×：残席なし、／：販売期間外）
      * ※TOHOシネマズのみ
      */
-    znskjky_typ?: string;
+    znskjkyTyp?: string;
 }
 
 export interface IJeiymdInf {
     /**
      * 上映日
      */
-    jei_md: string;
+    jeiMd: string;
     /**
      * 上映時刻情報
      */
-    jeihm_inf?: IJeihmInf[];
+    jeihmInf?: IJeihmInf[];
 }
 
 export interface IJeiInf {
     /**
      * 上映形式リスト
      */
-    jeikishk_lst: string[];
+    jeikishkLst: string[];
     /**
      * 上映スケジュール備考
      */
-    jeischdl_rmk: string;
+    jeischdlRmk: string;
     /**
      * 上映日情報（１週間分）
      */
-    jeiymd_inf: IJeiymdInf[];
+    jeiymdInf: IJeiymdInf[];
 }
 
 export interface IFavoriteForFilmResult extends IScheduleCommonResult {
-    jei_inf?: IJeiInf[];
+    jeiInf?: IJeiInf[];
 }
 
 export type IAreaForFilmResult = IFavoriteForFilmResult;
@@ -134,33 +134,33 @@ export interface IAreaCommonResult {
     /**
      * エリアコード
      */
-    are_cd: string;
+    areCd: string;
     /**
      * エリア名称
      */
-    are_nm: string;
+    areNm: string;
 }
 
 export interface INearestResult extends IAreaCommonResult {
     /**
      * エリア劇場情報
      */
-    st_inf?: IStInf[];
+    stInf?: IStInf[];
 }
 
 export interface IStInfNearestForFilm extends IScheduleCommonResult {
     /**
      * 地点間距離
      */
-    chtnknkyr_num?: number;
+    chtnknkyrNum?: number;
     /**
      * 上映作品情報
      */
-    jei_inf?: IJeiInf[];
+    jeiInf?: IJeiInf[];
 }
 
 export interface INearestForFilmResult extends IAreaCommonResult {
-    st_inf: IStInfNearestForFilm[];
+    stInf: IStInfNearestForFilm[];
 }
 
 /**
@@ -171,7 +171,7 @@ export interface IKiinCd {
     /**
      * 会員コード（8桁固定）
      */
-    kiin_cd: string;
+    kiinCd: string;
 }
 
 export interface IGeoLocation {
@@ -179,83 +179,83 @@ export interface IGeoLocation {
      * 現在地緯度
      * Example: 35.699456
      */
-    gnzichi_do: number;
+    gnzichiDo: number;
     /**
      * 現在地経度
      * Example: 139.746627
      */
-    gnzichki_do: number;
+    gnzichkiDo: number;
 }
 
 export interface INearestArgs extends IGeoLocation {
     /**
      * 会員コード（8桁固定）
      */
-    kiin_cd?: string;
+    kiinCd?: string;
 }
 
 export interface INearestForFilmArgs extends IGeoLocation {
     /**
      * 作品コード（6桁固定）
      */
-    skhn_cd: string;
+    skhnCd: string;
 }
 
 export interface IFavoriteArgs {
     /**
      * 会員コード（8桁固定）
      */
-    kiin_cd: string;
+    kiinCd: string;
 }
 
 export interface IScheduleCommonArgs extends IKiinCd {
     /**
      * 作品コード（6桁固定）
      */
-    skhn_cd: string;
+    skhnCd: string;
 }
 
 export interface IFavoriteForFilmArgs {
     /**
      * 作品コード（6桁固定）
      */
-    skhn_cd: string;
+    skhnCd: string;
     /**
      * 会員コード（8桁固定）
      */
-    kiin_cd: string;
+    kiinCd: string;
 }
 
 export interface IAreaArgs extends IScheduleCommonArgs {
     /**
      * 区域コード（2桁固定）※検索レベル 大
      */
-    kik_cd: string;
+    kikCd: string;
     /**
      * 都道府県コード（2桁固定）※検索レベル 中
      */
-    tdfkn_cd: string;
+    tdfknCd: string;
     /**
      * エリアコード（5桁固定）※検索レベル 小
      */
-    are_cd: string;
+    areCd: string;
 }
 
 export interface IAreaForFilmArgs {
     /**
      * 作品コード（6桁固定）
      */
-    skhn_cd: string;
+    skhnCd: string;
     /**
      * 区域コード（2桁固定）※検索レベル 大
      */
-    kik_cd: string;
+    kikCd: string;
     /**
      * 都道府県コード（2桁固定）※検索レベル 中
      */
-    tdfkn_cd: string;
+    tdfknCd: string;
     /**
      * エリアコード（5桁固定）※検索レベル 小
      */
-    are_cd: string;
+    areCd: string;
 }

@@ -19,7 +19,7 @@ export class FilmService extends Service {
         debug('requesting...', args);
         const options = {
             expectedStatusCodes: [OK],
-            uri: `/api/film/details?skhn_cd=${args.skhn_cd}&kiin_cd=${args.kiin_cd}`,
+            uri: `/api/film/details?skhn_cd=${args.skhnCd}&kiin_cd=${args.kiinCd}`,
             method: 'GET',
             form: {}
         };
@@ -27,35 +27,35 @@ export class FilmService extends Service {
         debug('result...', result);
 
         return {
-            hmbi_typ: result.hmbi_typ,
-            hmbistts_typ: result.hmbistts_typ,
-            skhn_cd: result.skhn_cd,
-            skhn_nm: result.skhn_nm,
-            pstrgz_url: result.pstrgz_url,
-            eirnrtng_cd: result.eirnrtng_cd,
-            slscpy1_txt: result.slscpy1_txt,
-            znkkkkikish_dspt: result.znkkkkikish_dspt,
-            skhnkists_txt: result.skhnkists_txt,
-            skhnmngtr_txt: result.skhnmngtr_txt,
-            skhnchshkkytsu_txt: result.skhnchshkkytsu_txt,
-            skhnchshkshsi_txt: result.skhnchshkshsi_txt,
-            mtitrksy_num: result.mtitrksy_num,
-            mtitrkzm_flg: result.mtitrkzm_flg,
-            kshkst_url: result.kshkst_url,
-            stff_inf: result.stff_inf,
-            cst_inf: result.cst_inf,
-            skhmmiorgnl_nm: result.skhmmiorgnl_nm,
-            sisk_y: result.sisk_y,
-            siskkk_nm: result.siskkk_nm,
-            hikygish_nm: result.hikygish_nm,
-            jei_tmm: result.jei_tmm,
-            skhnchskkn_dspt: result.skhnchskkn_dspt,
-            shknhikygish_cd: result.shknhikygish_cd,
-            tktnzikjkymsg_txt: result.tktnzikjkymsg_txt,
-            knshknhmbishry_ymd: result.knshknhmbishry_ymd,
-            knyjgmmi_num: result.knyjgmmi_num,
-            knshknknr_no: result.knshknknr_no,
-            knshkn_inf: result.knshkn_inf
+            hmbiTyp: result.hmbi_typ,
+            hmbisttsTyp: result.hmbistts_typ,
+            skhnCd: result.skhn_cd,
+            skhnNm: result.skhn_nm,
+            pstrgzUrl: result.pstrgz_url,
+            eirnrtngCd: result.eirnrtng_cd,
+            slscpy1Txt: result.slscpy1_txt,
+            znkkkkikishDspt: result.znkkkkikish_dspt,
+            skhnkistsTxt: result.skhnkists_txt,
+            skhnmngtrTxt: result.skhnmngtr_txt,
+            skhnchshkkytsuTxt: result.skhnchshkkytsu_txt,
+            skhnchshkshsiTxt: result.skhnchshkshsi_txt,
+            mtitrksyNum: result.mtitrksy_num,
+            mtitrkzmFlg: result.mtitrkzm_flg,
+            kshkstUrl: result.kshkst_url,
+            stffInf: result.stff_inf,
+            cstInf: result.cst_inf,
+            skhmmiorgnlNm: result.skhmmiorgnl_nm,
+            siskY: result.sisk_y,
+            siskkkNm: result.siskkk_nm,
+            hikygishNm: result.hikygish_nm,
+            jeiTmm: result.jei_tmm,
+            skhnchskknDspt: result.skhnchskkn_dspt,
+            shknhikygishCd: result.shknhikygish_cd,
+            tktnzikjkymsgTxt: result.tktnzikjkymsg_txt,
+            knshknhmbishryYmd: result.knshknhmbishry_ymd,
+            knyjgmmiNum: result.knyjgmmi_num,
+            knshknknrNo: result.knshknknr_no,
+            knshknInf: result.knshkn_inf
         };
     }
 
