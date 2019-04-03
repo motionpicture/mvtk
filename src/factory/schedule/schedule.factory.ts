@@ -65,6 +65,8 @@ export interface IScheduleFavoriteResult extends IScheduleCommonResult {
     jeiskhnInf?: IJeiskhnInf[];
 }
 
+export type IScheduleFavoriteLstResult = IScheduleFavoriteResult[];
+
 export interface IStInf extends IScheduleCommonResult {
     /**
      * 地点間距離
@@ -81,7 +83,7 @@ export interface IStInf extends IScheduleCommonResult {
 }
 
 export type IAreaResult = IScheduleFavoriteResult;
-
+export type IAreaLstResult = IAreaResult[];
 export interface IJeihmInf {
     /**
      * 上映開始時間
@@ -128,7 +130,10 @@ export interface IFavoriteForFilmResult extends IScheduleCommonResult {
     jeiInf?: IJeiInf[];
 }
 
+export type IFavoriteForFilmLstResult = IFavoriteForFilmResult[];
+
 export type IAreaForFilmResult = IFavoriteForFilmResult;
+export type IAreaForFilmLstResult = IAreaForFilmResult[];
 
 export interface IAreaCommonResult {
     /**
@@ -148,6 +153,8 @@ export interface INearestResult extends IAreaCommonResult {
     stInf?: IStInf[];
 }
 
+export type INearestLstResult = INearestResult[];
+
 export interface IStInfNearestForFilm extends IScheduleCommonResult {
     /**
      * 地点間距離
@@ -162,6 +169,8 @@ export interface IStInfNearestForFilm extends IScheduleCommonResult {
 export interface INearestForFilmResult extends IAreaCommonResult {
     stInf: IStInfNearestForFilm[];
 }
+
+export type INearestForFilmLstResult = INearestForFilmResult[];
 
 /**
  * args

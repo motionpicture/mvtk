@@ -67,3 +67,5 @@ export interface IFilmInfoResult {
      */
     knshknhmbishryYmd?: string;
 }
+
+export type IFilmInfoLstRes = IFilmInfoResult[];

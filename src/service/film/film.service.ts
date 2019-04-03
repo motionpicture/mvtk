@@ -17,9 +17,10 @@ export class FilmService extends Service {
     // tslint:disable-next-line: max-func-body-length
     public async detail(args: filmFactory.IFilmDetailArgs): Promise<filmFactory.IFilmDetailResult> {
         debug('requesting...', args);
+        const kiinCd: string = (args.kiinCd === undefined && args.kiinCd === null) ? '' : `&kiin_cd=${args.kiinCd}`;
         const options = {
             expectedStatusCodes: [OK],
-            uri: `/api/film/details?skhn_cd=${args.skhnCd}&kiin_cd=${args.kiinCd}`,
+            uri: `/api/film/details?skhn_cd=${args.skhnCd}${kiinCd}`,
             method: 'GET',
             form: {}
         };
@@ -42,8 +43,24 @@ export class FilmService extends Service {
             mtitrksyNum: result.mtitrksy_num,
             mtitrkzmFlg: result.mtitrkzm_flg,
             kshkstUrl: result.kshkst_url,
-            stffInf: result.stff_inf,
-            cstInf: result.cst_inf,
+            stffInf: (result.stff_inf === null) ? [] : result.stff_inf.map(
+                (res: any): filmFactory.IStffInf => {
+                    return {
+                        hyjjnNo: res.hyjjn_no,
+                        jmbtsNm: res.jmbts_nm,
+                        ykwrNm: res.ykwr_nm
+                    };
+                }
+            ),
+            cstInf: (result.cst_inf === null) ? [] : result.cst_inf.map(
+                (res: any): filmFactory.ICstInf => {
+                    return {
+                        hyjjnNo: res.hyjjn_no,
+                        jmbtsNm: res.jmbts_nm,
+                        shenFlg: res.shen_flg
+                    };
+                }
+            ),
             skhmmiorgnlNm: result.skhmmiorgnl_nm,
             siskY: result.sisk_y,
             siskkkNm: result.siskkk_nm,

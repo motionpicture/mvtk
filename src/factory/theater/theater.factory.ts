@@ -85,6 +85,8 @@ export interface ISearchConditionResult extends IKuiki {
     tdfknInf: ITdfknInf[];
 }
 
+export type ISearchConditionLstResult = ISearchConditionResult[];
+
 export interface IStCommon {
     /**
      * 劇場コード
@@ -130,6 +132,8 @@ export interface ITheaterInfoResult extends IKuiki {
      */
     tdfknInf: ITheaterTdfknInf[];
 }
+
+export type ITheaterInfoLstResult = ITheaterInfoResult[];
 
 export interface IJeihmInf {
     /**

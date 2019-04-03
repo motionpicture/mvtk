@@ -14,7 +14,7 @@ export class FavoriteService extends Service {
     /**
      * 観たい作品情報取得
      */
-    public async filmInfo (args: favoriteFactory.IFilmInfoArgs): Promise<favoriteFactory.IFilmInfoResult> {
+    public async filmInfo (args: favoriteFactory.IFilmInfoArgs): Promise<favoriteFactory.IFilmInfoLstRes> {
         debug('requesting...', args.kiinCd);
         const options = {
             expectedStatusCodes: [OK],
@@ -25,15 +25,19 @@ export class FavoriteService extends Service {
         const result = await this.request(options);
         debug('result...', result);
 
-        return {
-            hmbiTyp: result.hmbi_typ,
-            hmbisttsTyp: result.hmbistts_typ,
-            skhnCd: result.skhn_cd,
-            skhnNm: result.skhn_nm,
-            pstrgzUrl: result.pstrgz_url,
-            znkkkkikishDspt: result.znkkkkikish_dspt,
-            knshknhmbishryYmd: result.knshknhmbishry_ymd
-        };
+        return (result === null) ? [] : result.map(
+            (film: any): favoriteFactory.IFilmInfoResult => {
+                return {
+                    hmbiTyp: film.hmbi_typ,
+                    hmbisttsTyp: film.hmbistts_typ,
+                    skhnCd: film.skhn_cd,
+                    skhnNm: film.skhn_nm,
+                    pstrgzUrl: film.pstrgz_url,
+                    znkkkkikishDspt: film.znkkkkikish_dspt,
+                    knshknhmbishryYmd: film.knshknhmbishry_ymd
+                };
+            }
+        );
     }
 
     /**

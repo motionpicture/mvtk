@@ -15,7 +15,7 @@ export class ScheduleService extends Service {
     /**
      * 42.お気に入り劇場上映スケジュール検索
      */
-    public async favorite(args: scheduleFactory.IFavoriteArgs): Promise<scheduleFactory.IScheduleFavoriteResult> {
+    public async favorite(args: scheduleFactory.IFavoriteArgs): Promise<scheduleFactory.IScheduleFavoriteLstResult> {
         debug('requesting...', args.kiinCd);
         const options = {
             expectedStatusCodes: [OK],
@@ -26,19 +26,23 @@ export class ScheduleService extends Service {
         const result = await this.request(options);
         debug('result...', result);
 
-        return {
-            stCd: result.st_cd,
-            stNm: result.st_nm,
-            mdgchtryknFlg: result.mdgchtrykn_flg,
-            ntryknFlg: result.ntrykn_flg,
-            jeiskhnInf: result.jeiskhn_inf
-        };
+        return (result === null) ? [] : result.map(
+            (res: any): scheduleFactory.IScheduleFavoriteResult => {
+                return {
+                    stCd: res.st_cd,
+                    stNm: res.st_nm,
+                    mdgchtryknFlg: res.mdgchtrykn_flg,
+                    ntryknFlg: res.ntrykn_flg,
+                    jeiskhnInf: res.jeiskhn_inf
+                };
+            }
+        );
     }
 
     /**
      * 43 現在地周辺劇場上映スケジュール検索
      */
-    public async nearest(args: scheduleFactory.INearestArgs): Promise<scheduleFactory.INearestResult> {
+    public async nearest(args: scheduleFactory.INearestArgs): Promise<scheduleFactory.INearestLstResult> {
         debug('requesting...', args);
         const options = {
             expectedStatusCodes: [OK],
@@ -49,17 +53,21 @@ export class ScheduleService extends Service {
         const result = await this.request(options);
         debug('result...', result);
 
-        return {
-            areCd: result.are_cd,
-            areNm: result.are_nm,
-            stInf: result.st_inf
-        };
+        return (result === null) ? [] : result.map(
+            (res: any): scheduleFactory.INearestResult => {
+                return {
+                    areCd: res.are_cd,
+                    areNm: res.are_nm,
+                    stInf: res.st_inf
+                };
+            }
+        );
     }
 
     /**
      * 44 エリア内劇場上映スケジュール検索
      */
-    public async area(args: scheduleFactory.IAreaArgs): Promise<scheduleFactory.IAreaResult> {
+    public async area(args: scheduleFactory.IAreaArgs): Promise<scheduleFactory.IAreaLstResult> {
         debug('requesting...', args);
         const options = {
             expectedStatusCodes: [OK],
@@ -71,20 +79,24 @@ export class ScheduleService extends Service {
         const result = await this.request(options);
         debug('result...', result);
 
-        return {
-            stCd: result.st_cd,
-            stNm: result.st_nm,
-            mdgchtryknFlg: result.mdgchtrykn_flg,
-            ntryknFlg: result.ntrykn_flg,
-            oknirstturkzmFlg: result.oknirstturkzm_flg,
-            jeiskhnInf: result.jeiskhn_inf
-        };
+        return (result === null) ? [] : result.map(
+            (res: any): scheduleFactory.IAreaResult => {
+                return {
+                    stCd: res.st_cd,
+                    stNm: res.st_nm,
+                    mdgchtryknFlg: res.mdgchtrykn_flg,
+                    ntryknFlg: res.ntrykn_flg,
+                    oknirstturkzmFlg: res.oknirstturkzm_flg,
+                    jeiskhnInf: res.jeiskhn_inf
+                };
+            }
+        );
     }
 
     /**
      * 45 お気に入り劇場作品上映スケジュール検索
      */
-    public async favoriteForFilm(args: scheduleFactory.IFavoriteForFilmArgs): Promise<scheduleFactory.IFavoriteForFilmResult> {
+    public async favoriteForFilm(args: scheduleFactory.IFavoriteForFilmArgs): Promise<scheduleFactory.IFavoriteForFilmLstResult> {
         debug('requesting...', args);
         const options = {
             expectedStatusCodes: [OK],
@@ -96,19 +108,23 @@ export class ScheduleService extends Service {
         const result = await this.request(options);
         debug('result...', result);
 
-        return {
-            stCd: result.st_cd,
-            stNm: result.st_nm,
-            mdgchtryknFlg: result.mdgchtrykn_flg,
-            ntryknFlg: result.ntrykn_flg,
-            jeiInf: result.jei_inf
-        };
+        return (result === null) ? [] : result.map(
+            (res: any): scheduleFactory.IFavoriteForFilmResult => {
+                return {
+                    stCd: res.st_cd,
+                    stNm: res.st_nm,
+                    mdgchtryknFlg: res.mdgchtrykn_flg,
+                    ntryknFlg: res.ntrykn_flg,
+                    jeiInf: res.jei_inf
+                };
+            }
+        );
     }
 
     /**
      * 46 現在地周辺劇場作品上映スケジュール検索
      */
-    public async nearestForFilm(args: scheduleFactory.INearestForFilmArgs): Promise<scheduleFactory.INearestForFilmResult> {
+    public async nearestForFilm(args: scheduleFactory.INearestForFilmArgs): Promise<scheduleFactory.INearestForFilmLstResult> {
         debug('requesting...', args);
         const options = {
             expectedStatusCodes: [OK],
@@ -120,17 +136,21 @@ export class ScheduleService extends Service {
         const result = await this.request(options);
         debug('result...', result);
 
-        return {
-            areCd: result.are_cd,
-            areNm: result.are_nm,
-            stInf: result.st_inf
-        };
+        return (result === null) ? [] : result.map(
+            (area: any): scheduleFactory.INearestForFilmResult => {
+                return {
+                    areCd: area.are_cd,
+                    areNm: area.are_nm,
+                    stInf: area.st_inf
+                };
+            }
+        );
     }
 
     /**
      * 47 エリア内劇場作品上映スケジュール検索
      */
-    public async areaForFilm(args: scheduleFactory.IAreaForFilmArgs): Promise<scheduleFactory.IAreaForFilmResult> {
+    public async areaForFilm(args: scheduleFactory.IAreaForFilmArgs): Promise<scheduleFactory.IAreaForFilmLstResult> {
         debug('requesting...', args);
         const options = {
             expectedStatusCodes: [OK],
@@ -141,13 +161,17 @@ export class ScheduleService extends Service {
         const result = await this.request(options);
         debug('result...', result);
 
-        return {
-            stCd: result.st_cd,
-            stNm: result.st_nm,
-            mdgchtryknFlg: result.mdgchtrykn_flg,
-            ntryknFlg: result.ntrykn_flg,
-            jeiInf: result.jei_inf
-        };
+        return (result === null) ? [] : result.map(
+            (area: any): scheduleFactory.IAreaForFilmResult => {
+                return {
+                    stCd: area.st_cd,
+                    stNm: area.st_nm,
+                    mdgchtryknFlg: area.mdgchtrykn_flg,
+                    ntryknFlg: area.ntrykn_flg,
+                    jeiInf: area.jei_inf
+                };
+            }
+        );
     }
 
 }

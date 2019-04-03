@@ -15,7 +15,7 @@ export class TheaterService extends Service {
     /**
      * 48 劇場検索条件取得
      */
-    public async searchCondition(args: theaterFactory.ISearchConditionArgs): Promise<theaterFactory.ISearchConditionResult> {
+    public async searchCondition(args: theaterFactory.ISearchConditionArgs): Promise<theaterFactory.ISearchConditionLstResult> {
         debug('requesting...', args);
         const options = {
             expectedStatusCodes: [OK],
@@ -27,17 +27,21 @@ export class TheaterService extends Service {
         const result = await this.request(options);
         debug('result...', result);
 
-        return {
-            kikCd: result.kik_cd,
-            kikNm: result.kik_nm,
-            tdfknInf: result.tdfkn_inf
-        };
+        return (result === null) ? [] : result.map(
+            (res: any): theaterFactory.ISearchConditionResult => {
+                return {
+                    kikCd: res.kik_cd,
+                    kikNm: res.kik_nm,
+                    tdfknInf: res.tdfkn_inf
+                };
+            }
+        );
     }
 
     /**
      * 49 対応劇場情報取得
      */
-    public async info(): Promise<theaterFactory.ITheaterInfoResult> {
+    public async info(): Promise<theaterFactory.ITheaterInfoLstResult> {
         const options = {
             expectedStatusCodes: [OK],
             uri: '/api/theater/info',
@@ -47,11 +51,15 @@ export class TheaterService extends Service {
         const result = await this.request(options);
         debug('result...', result);
 
-        return {
-            kikCd: result.kik_cd,
-            kikNm: result.kik_nm,
-            tdfknInf: result.tdfkn_inf
-        };
+        return (result == null) ? [] : result.map(
+            (res: any): theaterFactory.ITheaterInfoResult => {
+                return {
+                    kikCd: res.kik_cd,
+                    kikNm: res.kik_nm,
+                    tdfknInf: res.tdfkn_inf
+                };
+            }
+        );
     }
 
     /**
