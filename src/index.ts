@@ -11,6 +11,7 @@ import * as factory from './factory';
 import * as pointUtil from './utils/point/point.util';
 
 import { FavoriteService } from './service/favorite/favorite.service';
+import { FilmService } from './service/film/film.service';
 import { PointService } from './service/point/point.service';
 import { PurchaseService } from './service/purchase/purchase.service';
 import { ScheduleService } from './service/schedule/schedule.service';
@@ -22,10 +23,14 @@ export import factory = factory;
 //tslint:disable:max-classes-per-file
 export namespace service {
     /**
-     * Authサービス
+     * お気に入りサービス
      * @class
      */
-    export class User extends UserService { }
+    export class Favorite extends FavoriteService { }
+    /**
+     * 作品情報サービス
+     */
+    export class Film extends FilmService { }
     /**
      * ポイントサービス
      * @class
@@ -37,10 +42,10 @@ export namespace service {
      */
     export class Purchase extends PurchaseService { }
     /**
-     * お気に入りサービス
+     * Authサービス
      * @class
      */
-    export class Favorite extends FavoriteService { }
+    export class User extends UserService { }
     /**
      * 上映スケジュールサービス
      * @class
