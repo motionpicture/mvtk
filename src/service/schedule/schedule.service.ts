@@ -29,11 +29,21 @@ export class ScheduleService extends Service {
         return (result === null) ? [] : result.map(
             (res: any): scheduleFactory.IScheduleFavoriteResult => {
                 return {
+                    sthyjjnNo: res.sthyjjn_no,
                     stCd: res.st_cd,
                     stNm: res.st_nm,
                     mdgchtryknFlg: res.mdgchtrykn_flg,
                     ntryknFlg: res.ntrykn_flg,
-                    jeiskhnInf: res.jeiskhn_inf
+                    jeiskhnInf: (res.jeiskhn_inf === null) ? [] : res.jeiskhn_inf.map(
+                        (jeiskhnInfo: any): scheduleFactory.IJeiskhnInf => {
+                            return {
+                                srtkkikishYmd: jeiskhnInfo.srtkkikish_ymd,
+                                skhnCd: jeiskhnInfo.skhn_cd,
+                                skhnNm: jeiskhnInfo.skhn_nm,
+                                pstrgzUrl: jeiskhnInfo.pstrgz_url
+                            };
+                        }
+                    )
                 };
             }
         );
@@ -56,6 +66,7 @@ export class ScheduleService extends Service {
         return (result === null) ? [] : result.map(
             (res: any): scheduleFactory.INearestResult => {
                 return {
+                    arehyjjnNo: res.arehyjjn_no,
                     areCd: res.are_cd,
                     areNm: res.are_nm,
                     stInf: res.st_inf
@@ -82,6 +93,7 @@ export class ScheduleService extends Service {
         return (result === null) ? [] : result.map(
             (res: any): scheduleFactory.IAreaResult => {
                 return {
+                    sthyjjnNo: res.sthyjjn_no,
                     stCd: res.st_cd,
                     stNm: res.st_nm,
                     mdgchtryknFlg: res.mdgchtrykn_flg,
@@ -111,11 +123,20 @@ export class ScheduleService extends Service {
         return (result === null) ? [] : result.map(
             (res: any): scheduleFactory.IFavoriteForFilmResult => {
                 return {
+                    sthyjjnNo: res.sthyjjn_no,
                     stCd: res.st_cd,
                     stNm: res.st_nm,
                     mdgchtryknFlg: res.mdgchtrykn_flg,
                     ntryknFlg: res.ntrykn_flg,
-                    jeiInf: res.jei_inf
+                    jeiInf: (res.jei_inf === null) ? [] : res.jei_inf.map(
+                        (jeiInfo: any): scheduleFactory.IJeiInfoFavorite => {
+                            return {
+                                jeischdlRmk: jeiInfo.jeischdl_rmk,
+                                jeikishkInf: jeiInfo.jeikishk_inf,
+                                jeiymdInf: jeiInfo.jeiymd_inf
+                            };
+                        }
+                    )
                 };
             }
         );
@@ -139,6 +160,7 @@ export class ScheduleService extends Service {
         return (result === null) ? [] : result.map(
             (area: any): scheduleFactory.INearestForFilmResult => {
                 return {
+                    arehyjjnNo: area.arehyjjn_no,
                     areCd: area.are_cd,
                     areNm: area.are_nm,
                     stInf: area.st_inf
@@ -164,6 +186,7 @@ export class ScheduleService extends Service {
         return (result === null) ? [] : result.map(
             (area: any): scheduleFactory.IAreaForFilmResult => {
                 return {
+                    sthyjjnNo: area.sthyjjn_no,
                     stCd: area.st_cd,
                     stNm: area.st_nm,
                     mdgchtryknFlg: area.mdgchtrykn_flg,

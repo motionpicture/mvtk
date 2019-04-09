@@ -20,22 +20,56 @@ export interface IScheduleResult {
     };
 }
 
-export interface IJeiskhnInf {
+export interface IJeihmJnf {
     /**
-     * 作品コード
+     * 上映開始時間
      */
-    skhnCd: string;
+    jeikishHm: string;
     /**
-     * 作品名称（最大240文字）
+     * 上映終了時間（最終上映回のみ設定される）
      */
-    skhnNm: string;
+    jeishryHm?: string;
+    /**
+     * 残席状況区分（◎：残席率 50~100%、〇：残席率 30~49%、△：残席率 1~29%、×：残席なし、／：販売期間外）※TOHOシネマズのみ
+     */
+    znskjkyTyp?: string;
+}
+
+export interface IJeiymdInf {
+    /**
+     * ソート用上映年月日
+     */
+    srtjeiYmd: number;
+    /**
+     * 上映日
+     */
+    jeiMd: string;
     /**
      * ポスター画像URL
      */
-    pstrgzUrl?: string;
+    jeihmInf?: IJeihmJnf[];
+}
+
+export interface IJeiInfoNearest {
+    /**
+     * 上映形式リスト
+     */
+    jeikishkLst: string[];
+    /**
+     * 上映スケジュール備考
+     */
+    jeischdlRmk: string;
+    /**
+     * 上映日情報（１週間分）
+     */
+    jeiymdInf: IJeiymdInf[];
 }
 
 export interface IScheduleCommonResult {
+    /**
+     * 劇場表示順番号（ソート用）
+     */
+    sthyjjnNo: number;
     /**
      * 劇場コード
      */
@@ -82,7 +116,17 @@ export interface IStInf extends IScheduleCommonResult {
     jeiskhnInf?: IJeiskhnInf[];
 }
 
-export type IAreaResult = IScheduleFavoriteResult;
+export interface IAreaResult extends IScheduleCommonResult {
+    /**
+     * お気に入り劇場登録済フラグ
+     */
+    oknirstturkzmFlg?: string;
+    /**
+     * 上映作品情報
+     */
+    jeiskhnInf?: IJeiskhnInf[];
+}
+
 export type IAreaLstResult = IAreaResult[];
 export interface IJeihmInf {
     /**
@@ -102,6 +146,10 @@ export interface IJeihmInf {
 
 export interface IJeiymdInf {
     /**
+     * ソート用上映年月日
+     */
+    srtjeiYmd: number;
+    /**
      * 上映日
      */
     jeiMd: string;
@@ -111,23 +159,53 @@ export interface IJeiymdInf {
     jeihmInf?: IJeihmInf[];
 }
 
-export interface IJeiInf {
+export interface IJeiskhnInf {
     /**
-     * 上映形式リスト
+     * ソート用公開年月日
      */
-    jeikishkLst: string[];
+    srtkkikishYmd: string;
+    /**
+     * 作品コード
+     */
+    skhnCd: string;
+    /**
+     * 作品名称（最大240文字）
+     */
+    skhnNm: string;
+    /**
+     * ポスター画像URL
+     */
+    pstrgzUrl: string;
+}
+
+export interface IJeikishkInf {
+    /**
+     * 上映形式コード
+     */
+    jeikishkCd: string;
+    /**
+     * 上映形式名称
+     */
+    jeikishkNm: string;
+}
+
+export interface IJeiInfoFavorite {
     /**
      * 上映スケジュール備考
      */
-    jeischdlRmk: string;
+    jeischdlRmk?: string;
+    /**
+     * 上映形式情報
+     */
+    jeikishkInf: IJeikishkInf[];
     /**
      * 上映日情報（１週間分）
      */
-    jeiymdInf: IJeiymdInf[];
+    jeiymdInf?: IJeiymdInf[];
 }
 
 export interface IFavoriteForFilmResult extends IScheduleCommonResult {
-    jeiInf?: IJeiInf[];
+    jeiInf?: IJeiInfoFavorite[];
 }
 
 export type IFavoriteForFilmLstResult = IFavoriteForFilmResult[];
@@ -136,6 +214,10 @@ export type IAreaForFilmResult = IFavoriteForFilmResult;
 export type IAreaForFilmLstResult = IAreaForFilmResult[];
 
 export interface IAreaCommonResult {
+    /**
+     * エリア表示順番号（ソート用）
+     */
+    arehyjjnNo: number;
     /**
      * エリアコード
      */
@@ -163,7 +245,7 @@ export interface IStInfNearestForFilm extends IScheduleCommonResult {
     /**
      * 上映作品情報
      */
-    jeiInf?: IJeiInf[];
+    jeiInf?: IJeiInfoNearest[];
 }
 
 export interface INearestForFilmResult extends IAreaCommonResult {
