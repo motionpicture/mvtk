@@ -87,6 +87,13 @@ export interface IEditArgs {
     mlmgznkbFlg: string;
 }
 
+export interface ITopInfoArgs {
+    /**
+     * 会員コード（8桁固定）
+     */
+    kiinCd: string;
+}
+
 export interface IEditResult {
     /**
      * 会員コード
@@ -190,4 +197,23 @@ export interface IInfoResult {
      * メルマガ希望フラグ
      */
     mlmgznkbFlg: string;
+}
+
+export interface ITopInfoResult {
+    /**
+     * 表示名
+     */
+    hyjNm: string;
+    /**
+     * ポイント残高
+     */
+    ptZndk: number;
+    /**
+     * 「観たい」登録数
+     */
+    mtitrkNum: number;
+    /**
+     * 利用前作品数
+     */
+    rymeskhnNum: number;
 }
