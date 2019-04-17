@@ -210,7 +210,100 @@ export interface IFavoriteForFilmResult extends IScheduleCommonResult {
 
 export type IFavoriteForFilmLstResult = IFavoriteForFilmResult[];
 
-export type IAreaForFilmResult = IFavoriteForFilmResult;
+export interface IJeihmInfAreaForFilm {
+    /**
+     * 上映開始時間
+     */
+    jeikishHm: string;
+    /**
+     * 残席状況区分（◎：残席率 50~100%、〇：残席率 30~49%、△：残席率 1~29%、×：残席なし、／：販売期間外）※TOHOシネマズのみ
+     */
+    znskjkyTyp?: string;
+}
+export interface IJeiInf {
+    /**
+     * 字幕音声区分
+     */
+    jmkonsiTyp: string;
+    /**
+     * 字幕音声区分名称
+     */
+    jmkonsikbnNm: string;
+    /**
+     * 映写方式区分
+     */
+    eishhshkTyp: string;
+    /**
+     * 映写方式区分名称
+     */
+    eishhshkkbnNm: string;
+    /**
+     * 特殊上映形式区分
+     */
+    tkshjeikishkTyp: string;
+    /**
+     * 特殊上映形式区分名称
+     */
+    tkshjeikishkkbnNm: string;
+    /**
+     * 上映スケジュール備考
+     */
+    jeischdlRmk?: string;
+    /**
+     * 上映時刻情報
+     */
+    jeihmInf?: IJeihmInfAreaForFilm[];
+}
+export interface IJeistInf {
+    /**
+     * 劇場表示順番号（劇場ソート用）
+     */
+    sthyjjnNo: number;
+    /**
+     * 劇場コード
+     */
+    stCd: string;
+    /**
+     * 劇場名称
+     */
+    stNm: string;
+    /**
+     * 窓口利用可能フラグ
+     */
+    mdgchryknFlg: string;
+    /**
+     * ネット利用可能フラグ
+     */
+    ntryknFlg: string;
+    /**
+     * 上映情報
+     */
+    jeiInf?: IJeiInf[];
+}
+
+export interface IAreaForFilmResult {
+    /**
+     * 上映年月日（日付ソート用）
+     */
+    jeiYmd: string;
+    /**
+     * 上映日付（表示用）
+     */
+    jeiMd: string;
+    /**
+     * 上映曜日名称（表示用）
+     */
+    jeiybNm: string;
+    /**
+     * 最終ページフラグ
+     */
+    sishpgFlg: string;
+    /**
+     * 上映劇場情報
+     */
+    jeistInf?: IJeistInf[];
+}
+
 export type IAreaForFilmLstResult = IAreaForFilmResult[];
 
 export interface IAreaCommonResult {
@@ -237,19 +330,65 @@ export interface INearestResult extends IAreaCommonResult {
 
 export type INearestLstResult = INearestResult[];
 
-export interface IStInfNearestForFilm extends IScheduleCommonResult {
+export interface IJeistInfNearestForFilm {
     /**
-     * 地点間距離
+     * 地点間距離（単位：キロメートル）（距離ソート用）
      */
     chtnknkyrNum?: number;
     /**
-     * 上映作品情報
+     * 劇場コード
      */
-    jeiInf?: IJeiInfoNearest[];
+    stCd: string;
+    /**
+     * 劇場名称
+     */
+    stNm: string;
+    /**
+     * 窓口利用可能フラグ
+     */
+    mdgchryknFlg: string;
+    /**
+     * ネット利用可能フラグ
+     */
+    ntryknFlg: string;
+    /**
+     * 上映時刻情報
+     */
+    jeiInf?: IJeiInf[];
 }
 
-export interface INearestForFilmResult extends IAreaCommonResult {
-    stInf: IStInfNearestForFilm[];
+export interface IAreInf {
+    /**
+     * エリアコード
+     */
+    areCd: string;
+    /**
+     * エリア名称
+     */
+    areNm: string;
+    /**
+     * 上映劇場情報
+     */
+    jeistInf?: IJeistInfNearestForFilm[];
+}
+
+export interface INearestForFilmResult {
+    /**
+     * 上映年月日（日付ソート用）
+     */
+    jeiYmd: string;
+    /**
+     * 上映日付（表示用）
+     */
+    jeiMd: string;
+    /**
+     * 上映曜日名称（表示用）
+     */
+    jeiybNm: string;
+    /**
+     * エリア情報
+     */
+    areInf?: IAreInf[];
 }
 
 export type INearestForFilmLstResult = INearestForFilmResult[];
@@ -338,10 +477,6 @@ export interface IAreaForFilmArgs {
      */
     skhnCd: string;
     /**
-     * 区域コード（2桁固定）※検索レベル 大
-     */
-    kikCd: string;
-    /**
      * 都道府県コード（2桁固定）※検索レベル 中
      */
     tdfknCd: string;
@@ -349,4 +484,8 @@ export interface IAreaForFilmArgs {
      * エリアコード（5桁固定）※検索レベル 小
      */
     areCd: string;
+    /**
+     * ページ番号
+     */
+    pgNo?: number;
 }

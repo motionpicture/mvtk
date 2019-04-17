@@ -160,10 +160,16 @@ export class ScheduleService extends Service {
         return (result === null) ? [] : result.map(
             (area: any): scheduleFactory.INearestForFilmResult => {
                 return {
-                    arehyjjnNo: area.arehyjjn_no,
-                    areCd: area.are_cd,
-                    areNm: area.are_nm,
-                    stInf: area.st_inf
+                    jeiYmd: area.jei_ymd,
+                    jeiMd: area.jei_md,
+                    jeiybNm: area.jeiyb_nm,
+                    areInf: (area.are_inf === null) ? [] : area.are_inf.map((areInf: any): scheduleFactory.IAreInf => {
+                        return {
+                            areCd: areInf.are_cd,
+                            areNm: areInf.are_nm,
+                            jeistInf: areInf.jeist_inf
+                        };
+                    })
                 };
             }
         );
@@ -174,9 +180,10 @@ export class ScheduleService extends Service {
      */
     public async areaForFilm(args: scheduleFactory.IAreaForFilmArgs): Promise<scheduleFactory.IAreaForFilmLstResult> {
         debug('requesting...', args);
+        const pgNo: string = (args.pgNo !== undefined && args.pgNo !== null) ? `&pg_no=${args.pgNo}` : '';
         const options = {
             expectedStatusCodes: [OK],
-            uri: `/api/schedule/areaForFilm?skhn_cd=${args.skhnCd}&kik_cd=${args.kikCd}&tdfkn_cd=${args.tdfknCd}&are_cd=${args.areCd}`,
+            uri: `/api/schedule/areaForFilm?skhn_cd=${args.skhnCd}&tdfkn_cd=${args.tdfknCd}&are_cd=${args.areCd}${pgNo}`,
             method: 'GET',
             form: {}
         };
@@ -186,12 +193,20 @@ export class ScheduleService extends Service {
         return (result === null) ? [] : result.map(
             (area: any): scheduleFactory.IAreaForFilmResult => {
                 return {
-                    sthyjjnNo: area.sthyjjn_no,
-                    stCd: area.st_cd,
-                    stNm: area.st_nm,
-                    mdgchtryknFlg: area.mdgchtrykn_flg,
-                    ntryknFlg: area.ntrykn_flg,
-                    jeiInf: area.jei_inf
+                    jeiYmd: area.jei_ymd,
+                    jeiMd: area.jei_md,
+                    jeiybNm: area.jeiyb_nm,
+                    sishpgFlg: area.sishpg_flg,
+                    jeistInf: (area.jeist_inf === null) ? [] : area.jeist_inf.map((jeistInf: any): scheduleFactory.IJeistInf => {
+                        return {
+                            sthyjjnNo: jeistInf.sthyjjn_no,
+                            stCd: jeistInf.st_cd,
+                            stNm: jeistInf.st_nm,
+                            mdgchryknFlg: jeistInf.mdgchrykn_flg,
+                            ntryknFlg: jeistInf.ntrykn_flg,
+                            jeiInf: jeistInf.jei_inf
+                        };
+                    })
                 };
             }
         );
