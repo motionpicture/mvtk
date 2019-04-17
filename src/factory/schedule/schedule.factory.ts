@@ -204,8 +204,54 @@ export interface IJeiInfoFavorite {
     jeiymdInf?: IJeiymdInf[];
 }
 
-export interface IFavoriteForFilmResult extends IScheduleCommonResult {
-    jeiInf?: IJeiInfoFavorite[];
+export interface IJeistInfFavoriteForFilm {
+    /**
+     * お気に入り登録日時（劇場ソート用）（日時形式 format：yyyyMMddHHmmss）
+     */
+    oknirtrkDt: string;
+    /**
+     * 劇場コード
+     */
+    stCd: string;
+    /**
+     * 劇場名称
+     */
+    stNm: string;
+    /**
+     * 窓口利用可能フラグ
+     */
+    mdgchryknFlg: string;
+    /**
+     * ネット利用可能フラグ
+     */
+    ntryknFlg: string;
+    /**
+     * 上映情報
+     */
+    jeiInf?: IJeiInf[];
+}
+
+export interface IFavoriteForFilmResult {
+    /**
+     * 上映年月日（日付ソート用）
+     */
+    jeiYmd: string;
+    /**
+     * 上映日付（表示用）
+     */
+    jeiMd: string;
+    /**
+     * 上映曜日名称（表示用）
+     */
+    jeiybNm: string;
+    /**
+     * 最終ページフラグ
+     */
+    sishpgFlg: string;
+    /**
+     * 上映劇場情報
+     */
+    jeistInf?: IJeistInfFavoriteForFilm[];
 }
 
 export type IFavoriteForFilmLstResult = IFavoriteForFilmResult[];
@@ -454,6 +500,10 @@ export interface IFavoriteForFilmArgs {
      * 会員コード（8桁固定）
      */
     kiinCd: string;
+    /**
+     * ページ番号
+     */
+    pgNo: number;
 }
 
 export interface IAreaArgs extends IScheduleCommonArgs {

@@ -110,10 +110,11 @@ export class ScheduleService extends Service {
      */
     public async favoriteForFilm(args: scheduleFactory.IFavoriteForFilmArgs): Promise<scheduleFactory.IFavoriteForFilmLstResult> {
         debug('requesting...', args);
+        const pgNo = (args.pgNo !== null && args.pgNo !== undefined) ? `&pg_no=${args.pgNo}` : '';
         const options = {
             expectedStatusCodes: [OK],
             // tslint:disable-next-line: max-line-length
-            uri: `/api/schedule/favoriteForFilm?skhn_cd=${args.skhnCd}&kiin_cd=${args.kiinCd}`,
+            uri: `/api/schedule/favoriteForFilm?skhn_cd=${args.skhnCd}&kiin_cd=${args.kiinCd}${pgNo}`,
             method: 'GET',
             form: {}
         };
@@ -121,19 +122,21 @@ export class ScheduleService extends Service {
         debug('result...', result);
 
         return (result === null) ? [] : result.map(
-            (res: any): scheduleFactory.IFavoriteForFilmResult => {
+            (favorite: any): scheduleFactory.IAreaForFilmResult => {
                 return {
-                    sthyjjnNo: res.sthyjjn_no,
-                    stCd: res.st_cd,
-                    stNm: res.st_nm,
-                    mdgchtryknFlg: res.mdgchtrykn_flg,
-                    ntryknFlg: res.ntrykn_flg,
-                    jeiInf: (res.jei_inf === null) ? [] : res.jei_inf.map(
-                        (jeiInfo: any): scheduleFactory.IJeiInfoFavorite => {
+                    jeiYmd: favorite.jei_ymd,
+                    jeiMd: favorite.jei_md,
+                    jeiybNm: favorite.jeiyb_nm,
+                    sishpgFlg: favorite.sishpg_flg,
+                    jeistInf: (favorite.jeist_inf === null) ? [] : favorite.jeist_inf.map(
+                        (jeistInf: any): scheduleFactory.IJeistInfFavoriteForFilm => {
                             return {
-                                jeischdlRmk: jeiInfo.jeischdl_rmk,
-                                jeikishkInf: jeiInfo.jeikishk_inf,
-                                jeiymdInf: jeiInfo.jeiymd_inf
+                                oknirtrkDt: jeistInf.oknirtrk_dt,
+                                stCd: jeistInf.st_cd,
+                                stNm: jeistInf.st_nm,
+                                mdgchryknFlg: jeistInf.mdgchrykn_flg,
+                                ntryknFlg: jeistInf.ntrykn_flg,
+                                jeiInf: jeistInf.jei_inf
                             };
                         }
                     )
