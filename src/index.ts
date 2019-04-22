@@ -10,13 +10,20 @@
 import * as factory from './factory';
 import * as pointUtil from './utils/point/point.util';
 
+import { EigagiftService } from './service/eigagift/eigagift.service';
 import { PointService } from './service/point/point.service';
 import { PurchaseService } from './service/purchase/purchase.service';
 import { UserService } from './service/user/user.service';
 
 export import factory = factory;
 
+// tslint:disable:max-classes-per-file
 export namespace service {
+    /**
+     * 映画ギフトサービス
+     * @class
+     */
+    export class Eigagift extends EigagiftService { }
     /**
      * Authサービス
      * @class
