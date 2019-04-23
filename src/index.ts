@@ -8,6 +8,7 @@
 // }
 
 import * as factory from './factory';
+import * as eigagiftUtil from './utils/eigagift/eigagift.util';
 import * as pointUtil from './utils/point/point.util';
 
 import { EigagiftService } from './service/eigagift/eigagift.service';
@@ -42,5 +43,6 @@ export namespace service {
 }
 
 export namespace utils {
+    export import eigagift = eigagiftUtil;
     export import point = pointUtil;
 }
