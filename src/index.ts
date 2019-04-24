@@ -14,6 +14,7 @@ import * as pointUtil from './utils/point/point.util';
 import { EigagiftService } from './service/eigagift/eigagift.service';
 import { PointService } from './service/point/point.service';
 import { PurchaseService } from './service/purchase/purchase.service';
+import { TheaterService } from './service/theater/theater.service';
 import { UserService } from './service/user/user.service';
 
 export import factory = factory;
@@ -40,6 +41,11 @@ export namespace service {
      * @class
      */
     export class Purchase extends PurchaseService { }
+    /**
+     * 劇場サービス
+     * @class
+     */
+    export class Theater extends TheaterService { }
 }
 
 export namespace utils {
