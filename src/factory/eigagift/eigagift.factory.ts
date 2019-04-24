@@ -115,3 +115,19 @@ export interface ISendMailArgs {
      */
     knyshMladdr?: string;
 }
+
+//******************************* 映画ギフトチャージ状況取得 *******************************//
+export interface IStatusArgs {
+    /**
+     * 映画ギフト決済管理番号（16桁固定）
+     * ※映画ギフト金額指定チャージ時のみセット
+     */
+    eggftkssiknrNo: string;
+}
+
+export interface IStatusResult {
+    /**
+     * チャージ金額
+     */
+    chrgGk: number;
+}

@@ -140,4 +140,24 @@ export class EigagiftService extends Service {
             status: 'OK'
         };
     }
+
+    /**
+     * 14 映画ギフトチャージ状況取得
+     */
+    public async status(args: eigagiftFactory.IStatusArgs): Promise<eigagiftFactory.IStatusResult> {
+        debug('requesting...', args);
+        const options = {
+            expectedStatusCodes: [OK],
+            uri: `/api/eigagift/status?eggftkssiknr_no=${args.eggftkssiknrNo}`,
+            method: 'GET',
+            form: {}
+        };
+        const result = await this.request(options);
+        debug('result', result);
+
+        return {
+            chrgGk: result.chrg_gk
+        };
+    }
+
 }
