@@ -36,9 +36,9 @@ export interface ITheaterInfoResult {
      */
     stNm: string;
     /**
-     * 劇場窓口利用可能フラグ
+     * 窓口利用可能フラグ
      */
-    mdgchtryknFlg: string;
+    mdgchryknFlg: string;
     /**
      * ネット利用可能フラグ
      */

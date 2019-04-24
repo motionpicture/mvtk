@@ -31,7 +31,7 @@ export class FavoriteService extends Service {
                     sthyjjnNo: res.sthyjjn_no,
                     stCd: res.st_cd,
                     stNm: res.st_nm,
-                    mdgchtryknFlg: res.mdgchtrykn_flg,
+                    mdgchryknFlg: res.mdgchrykn_flg,
                     ntryknFlg: res.ntrykn_flg
                 };
             }
