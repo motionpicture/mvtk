@@ -65,7 +65,109 @@ export interface IJeiInfoNearest {
     jeiymdInf: IJeiymdInf[];
 }
 
-export interface IScheduleCommonResult {
+export interface IJeiskhnInfFavoriteResult {
+    /**
+     * 公開年月日（作品ソート用）
+     */
+    kkikishYmd: string;
+    /**
+     * 作品コード
+     */
+    skhnCd: string;
+    /**
+     * 作品名称（最大240文字）
+     */
+    skhnNm: string;
+    /**
+     * ポスター画像URL
+     */
+    pstrgzUrl: string;
+    /**
+     * 作品著作権記述
+     */
+    skhnchskknDspt?: string;
+}
+
+export interface IScheduleFavoriteResult {
+    /**
+     * お気に入り登録日時（劇場ソート用）（日時形式 format：yyyyMMddHHmmss）
+     */
+    oknirtrkDt: string;
+    /**
+     * 劇場コード
+     */
+    stCd: string;
+    /**
+     * 劇場名称
+     */
+    stNm: string;
+    /**
+     * 劇場窓口利用可能フラグ
+     */
+    mdgchtryknFlg: string;
+    /**
+     * ネット利用可能フラグ
+     */
+    ntryknFlg: string;
+    /**
+     * 上映作品情報
+     */
+    jeiskhnInf?: IJeiskhnInfFavoriteResult[];
+}
+
+export type IScheduleFavoriteLstResult = IScheduleFavoriteResult[];
+
+export interface IJeiskhnInfNearestResult {
+    /**
+     * 公開年月日（作品ソート用）
+     */
+    kkikishYmd: string;
+    /**
+     * 作品コード
+     */
+    skhnCd: string;
+    /**
+     * 作品名称（最大240文字）
+     */
+    skhnNm: string;
+    /**
+     * ポスター画像URL
+     */
+    pstrgzUrl: string;
+    /**
+     * 作品著作権記述
+     */
+    skhnchskknDspt?: string;
+}
+
+export interface IStInf {
+    /**
+     * 劇場表示順番号（ソート用）
+     */
+    chtnknkyrNum?: number;
+    /**
+     * 劇場コード
+     */
+    stCd: string;
+    /**
+     * 劇場名称
+     */
+    stNm: string;
+    /**
+     * 窓口利用可能フラグ
+     */
+    mdgchryknFlg: string;
+    /**
+     * ネット利用可能フラグ
+     */
+    ntryknFlg: string;
+    /**
+     * 上映作品情報
+     */
+    jeiskhnInf?: IJeiskhnInfNearestResult[];
+}
+
+export interface IStInfAreaResult {
     /**
      * 劇場表示順番号（ソート用）
      */
@@ -79,55 +181,44 @@ export interface IScheduleCommonResult {
      */
     stNm: string;
     /**
-     * 劇場窓口利用可能フラグ
+     * 窓口利用可能フラグ
      */
-    mdgchtryknFlg?: string;
+    mdgchryknFlg: string;
     /**
      * ネット利用可能フラグ
      */
-    ntryknFlg?: string;
-}
-
-export interface IScheduleFavoriteResult extends IScheduleCommonResult {
-    /**
-     * お気に入り劇場登録済フラグ
-     */
-    oknirstturkzmFlg?: string;
+    ntryknFlg: string;
     /**
      * 上映作品情報
      */
     jeiskhnInf?: IJeiskhnInf[];
 }
 
-export type IScheduleFavoriteLstResult = IScheduleFavoriteResult[];
-
-export interface IStInf extends IScheduleCommonResult {
+export interface IAreaResult {
     /**
-     * 地点間距離
+     * エリアコード
      */
-    chtnknkyrNum?: number;
+    areCd: string;
     /**
-     * お気に入り劇場登録済フラグ
+     * エリア名称
      */
-    oknirstturkzmFlg?: string;
+    areNm: string;
     /**
-     * 上映作品情報
+     * エリア表示順番号（エリアソート用）
      */
-    jeiskhnInf?: IJeiskhnInf[];
-}
-
-export interface IAreaResult extends IScheduleCommonResult {
+    arehyjjnNo: number;
     /**
-     * お気に入り劇場登録済フラグ
+     * 最終ページフラグ
      */
-    oknirstturkzmFlg?: string;
+    sishpgFlg: string;
     /**
-     * 上映作品情報
+     * 劇場情報
      */
-    jeiskhnInf?: IJeiskhnInf[];
+    stInf?: IStInfAreaResult[];
 }
 
 export type IAreaLstResult = IAreaResult[];
+
 export interface IJeihmInf {
     /**
      * 上映開始時間
@@ -163,7 +254,7 @@ export interface IJeiskhnInf {
     /**
      * ソート用公開年月日
      */
-    srtkkikishYmd: string;
+    kkikishYmd: string;
     /**
      * 作品コード
      */
@@ -176,6 +267,10 @@ export interface IJeiskhnInf {
      * ポスター画像URL
      */
     pstrgzUrl: string;
+    /**
+     * 作品著作権記述
+     */
+    skhnchskknDspt?: string;
 }
 
 export interface IJeikishkInf {
@@ -352,11 +447,7 @@ export interface IAreaForFilmResult {
 
 export type IAreaForFilmLstResult = IAreaForFilmResult[];
 
-export interface IAreaCommonResult {
-    /**
-     * エリア表示順番号（ソート用）
-     */
-    arehyjjnNo: number;
+export interface INearestResult {
     /**
      * エリアコード
      */
@@ -365,9 +456,6 @@ export interface IAreaCommonResult {
      * エリア名称
      */
     areNm: string;
-}
-
-export interface INearestResult extends IAreaCommonResult {
     /**
      * エリア劇場情報
      */
@@ -508,17 +596,17 @@ export interface IFavoriteForFilmArgs {
 
 export interface IAreaArgs extends IScheduleCommonArgs {
     /**
-     * 区域コード（2桁固定）※検索レベル 大
-     */
-    kikCd: string;
-    /**
      * 都道府県コード（2桁固定）※検索レベル 中
      */
     tdfknCd: string;
     /**
      * エリアコード（5桁固定）※検索レベル 小
      */
-    areCd: string;
+    areCd?: string;
+    /**
+     * ページ番号
+     */
+    pgNo?: string;
 }
 
 export interface IAreaForFilmArgs {

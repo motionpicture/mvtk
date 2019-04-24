@@ -29,18 +29,19 @@ export class ScheduleService extends Service {
         return (result === null) ? [] : result.map(
             (res: any): scheduleFactory.IScheduleFavoriteResult => {
                 return {
-                    sthyjjnNo: res.sthyjjn_no,
+                    oknirtrkDt: res.oknirtrk_dt,
                     stCd: res.st_cd,
                     stNm: res.st_nm,
                     mdgchtryknFlg: res.mdgchtrykn_flg,
                     ntryknFlg: res.ntrykn_flg,
                     jeiskhnInf: (res.jeiskhn_inf === null) ? [] : res.jeiskhn_inf.map(
-                        (jeiskhnInfo: any): scheduleFactory.IJeiskhnInf => {
+                        (jeiskhnInfo: any): scheduleFactory.IJeiskhnInfFavoriteResult => {
                             return {
-                                srtkkikishYmd: jeiskhnInfo.srtkkikish_ymd,
+                                kkikishYmd: jeiskhnInfo.kkikish_ymd,
                                 skhnCd: jeiskhnInfo.skhn_cd,
                                 skhnNm: jeiskhnInfo.skhn_nm,
-                                pstrgzUrl: jeiskhnInfo.pstrgz_url
+                                pstrgzUrl: jeiskhnInfo.pstrgz_url,
+                                skhnchskknDspt: jeiskhnInfo.skhnchskkn_dspt
                             };
                         }
                     )
@@ -66,10 +67,28 @@ export class ScheduleService extends Service {
         return (result === null) ? [] : result.map(
             (res: any): scheduleFactory.INearestResult => {
                 return {
-                    arehyjjnNo: res.arehyjjn_no,
                     areCd: res.are_cd,
                     areNm: res.are_nm,
-                    stInf: res.st_inf
+                    stInf: (res.st_inf === null) ? [] : res.st_inf.map((stInfo: any): scheduleFactory.IStInf => {
+                        return {
+                            chtnknkyrNum: stInfo.chtnknkyr_num,
+                            stCd: stInfo.st_cd,
+                            stNm: stInfo.st_nm,
+                            mdgchryknFlg: stInfo.mdgchrykn_flg,
+                            ntryknFlg: stInfo.ntrykn_flg,
+                            jeiskhnInf: (stInfo.jeiskhn_inf === null) ? [] : stInfo.jeiskhn_inf.map(
+                                (jeiskhnInfo: any): scheduleFactory.IJeiskhnInfNearestResult => {
+                                    return {
+                                        kkikishYmd: jeiskhnInfo.kkikish_ymd,
+                                        skhnCd: jeiskhnInfo.kkikish_ymd,
+                                        skhnNm: jeiskhnInfo.kkikish_ymd,
+                                        pstrgzUrl: jeiskhnInfo.kkikish_ymd,
+                                        skhnchskknDspt: jeiskhnInfo.kkikish_ymd
+                                    };
+                                }
+                            )
+                        };
+                    })
                 };
             }
         );
@@ -80,10 +99,11 @@ export class ScheduleService extends Service {
      */
     public async area(args: scheduleFactory.IAreaArgs): Promise<scheduleFactory.IAreaLstResult> {
         debug('requesting...', args);
+        const areCd = (args.areCd !== undefined && args.areCd !== null) ? `&are_cd=${args.areCd}` : '';
+        const pgNo = (args.pgNo !== undefined && args.pgNo !== null) ? `&pg_no=${args.pgNo}` : '';
         const options = {
             expectedStatusCodes: [OK],
-            // tslint:disable-next-line: max-line-length
-            uri: `/api/schedule/area?skhn_cd=${args.skhnCd}&kik_cd=${args.kikCd}&tdfkn_cd=${args.tdfknCd}&are_cd=${args.areCd}&kiin_cd=${args.kiinCd}`,
+            uri: `/api/schedule/area?tdfkn_cd=${args.tdfknCd}${areCd}${pgNo}`,
             method: 'GET',
             form: {}
         };
@@ -93,13 +113,30 @@ export class ScheduleService extends Service {
         return (result === null) ? [] : result.map(
             (res: any): scheduleFactory.IAreaResult => {
                 return {
-                    sthyjjnNo: res.sthyjjn_no,
-                    stCd: res.st_cd,
-                    stNm: res.st_nm,
-                    mdgchtryknFlg: res.mdgchtrykn_flg,
-                    ntryknFlg: res.ntrykn_flg,
-                    oknirstturkzmFlg: res.oknirstturkzm_flg,
-                    jeiskhnInf: res.jeiskhn_inf
+                    areCd: res.are_cd,
+                    areNm: res.are_nm,
+                    arehyjjnNo: res.arehyjjn_no,
+                    sishpgFlg: res.sishpg_flg,
+                    stInf: (res.st_inf === null) ? [] : res.st_inf.map((stInfo: any): scheduleFactory.IStInfAreaResult => {
+                        return {
+                            sthyjjnNo: stInfo.sthyjjn_no,
+                            stCd: stInfo.st_cd,
+                            stNm: stInfo.st_nm,
+                            mdgchryknFlg: stInfo.mdgchrykn_flg,
+                            ntryknFlg: stInfo.ntrykn_flg,
+                            jeiskhnInf: (stInfo.jeiskhn_inf === null) ? [] : stInfo.jeiskhn_inf.map(
+                                (jeiskhnInfo: any): scheduleFactory.IJeiskhnInf => {
+                                    return {
+                                        kkikishYmd: jeiskhnInfo.kkikish_ymd,
+                                        skhnCd: jeiskhnInfo.skhn_cd,
+                                        skhnNm: jeiskhnInfo.skhn_nm,
+                                        pstrgzUrl: jeiskhnInfo.pstrgz_url,
+                                        skhnchskknDspt: jeiskhnInfo.skhnchskkn_dspt
+                                    };
+                                }
+                            )
+                        };
+                    })
                 };
             }
         );

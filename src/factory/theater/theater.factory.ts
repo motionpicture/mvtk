@@ -33,6 +33,10 @@ export interface IDetailArgs extends ISkhnCd {
      */
     stCd: string;
     /**
+     * 会員フラグ
+     */
+    kiinFlg?: string;
+    /**
      * 会員コード（8桁固定）
      */
     kiinCd?: string;
@@ -137,48 +141,52 @@ export type ITheaterInfoLstResult = ITheaterInfoResult[];
 
 export interface IJeihmInf {
     /**
-     * 上映開始時間
+     * 上映開始時間（36時間表示）
      */
     jeikishHm: string;
     /**
-     * 上映終了時間（最終上映回のみ設定される）
-     */
-    jeishryHm?: string;
-    /**
-     * 残席状況区分
-     * （◎：残席率 50~100%、〇：残席率 30~49%、△：残席率 1~29%、×：残席なし、／：販売期間外）
-     * TOHOシネマズのみ
+     * 残席状況区分（◎：残席率 50~100%、〇：残席率 30~49%、△：残席率 1~29%、×：残席なし、／：販売期間外）
+     * ※TOHOシネマズのみ
      */
     znskjkyTyp?: string;
 }
 
-export interface IJeiymdInf {
+export interface IJeiInf {
     /**
-     * 上映日
+     * 字幕音声区分
      */
-    jeiMd: string;
+    jmkonsiTyp: string;
+    /**
+     * 字幕音声区分名称
+     */
+    jmkonsikbnNm: string;
+    /**
+     * 映写方式区分
+     */
+    eishhshkTyp: string;
+    /**
+     * 映写方式区分名称
+     */
+    eishhshkkbnNm: string;
+    /**
+     * 特殊上映形式区分
+     */
+    tkshjeikishkTyp: string;
+    /**
+     * 特殊上映形式区分名称
+     */
+    tkshjeikishkkbnNm: string;
+    /**
+     * 上映スケジュール備考
+     */
+    jeischdlRmk?: string;
     /**
      * 上映時刻情報
      */
     jeihmInf?: IJeihmInf[];
 }
 
-export interface IJeiInf {
-    /**
-     * ムビチケ販売中フラグ
-     */
-    hmbichFlg: string;
-    /**
-     * 上映形式リスト
-     */
-    jeikishkLst: string[];
-    /**
-     * 上映日情報（１週間分）
-     */
-    jeiymdInf: IJeiymdInf[];
-}
-
-export interface IJeischdlInf {
+export interface IJeiskhnInf {
     /**
      * 作品コード
      */
@@ -192,12 +200,63 @@ export interface IJeischdlInf {
      */
     pstrgzUrl?: string;
     /**
+     * 作品著作権記述
+     */
+    skhnchskknDspt?: string;
+    /**
+     * 上映時間
+     */
+    jeiTmm?: string;
+    /**
+     * 映倫レイティングコード
+     */
+    eirnrtngCd?: string;
+    /**
+     * 前売券販売フラグ
+     */
+    meurknhmbiFlg: string;
+    /**
+     * 当日券販売フラグ
+     */
+    tjtsknhmbiFlg: string;
+    /**
      * 上映情報
      */
     jeiInf?: IJeiInf[];
 }
 
-export interface IDetailsResult extends IStCommon {
+export interface IJeischdlInf {
+    /**
+     * 上映年月日（日付ソート用）
+     */
+    jeiYmd: string;
+    /**
+     * 上映日付（表示用）
+     */
+    jeiMd: string;
+    /**
+     * 上映曜日名称（表示用）
+     */
+    jeiybNm: string;
+    /**
+     * 上映スケジュール情報
+     */
+    jeiskhnInf?: IJeiskhnInf[];
+}
+
+export interface IDetailsResult {
+    /**
+     * 劇場コード
+     */
+    stCd: string;
+    /**
+     * 劇場名称
+     */
+    stNm: string;
+    /**
+     * 劇場公式サイトURL
+     */
+    stkshkstUrl?: string;
     /**
      * 劇場郵便番号
      */
@@ -210,11 +269,22 @@ export interface IDetailsResult extends IStCommon {
      * 劇場住所緯度
      */
     stjshiDo?: number;
+    /**
+     * 劇場住所経度
+     */
     stjshkiDo?: number;
     /**
      * 劇場電話番号
      */
     stdnwNo?: string;
+    /**
+     * 窓口利用可能フラグ
+     */
+    mdgchryknFlg: string;
+    /**
+     * ネット利用可能フラグ
+     */
+    ntryknFlg: string;
     /**
      * お気に入り劇場登録済フラグ
      */
