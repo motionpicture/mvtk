@@ -551,12 +551,7 @@ export interface IGeoLocation {
     gnzichkiDo: number;
 }
 
-export interface INearestArgs extends IGeoLocation {
-    /**
-     * 会員コード（8桁固定）
-     */
-    kiinCd?: string;
-}
+export type INearestArgs = IGeoLocation;
 
 export interface INearestForFilmArgs extends IGeoLocation {
     /**
@@ -594,7 +589,7 @@ export interface IFavoriteForFilmArgs {
     pgNo: number;
 }
 
-export interface IAreaArgs extends IScheduleCommonArgs {
+export interface IAreaArgs {
     /**
      * 都道府県コード（2桁固定）※検索レベル 中
      */

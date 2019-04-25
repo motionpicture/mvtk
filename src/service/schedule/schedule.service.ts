@@ -57,7 +57,7 @@ export class ScheduleService extends Service {
         debug('requesting...', args);
         const options = {
             expectedStatusCodes: [OK],
-            uri: `/api/schedule/nearest?gnzichi_do=${args.gnzichiDo}&gnzichki_do=${args.gnzichkiDo}&kiin_cd=${args.kiinCd}`,
+            uri: `/api/schedule/nearest?gnzichi_do=${args.gnzichiDo}&gnzichki_do=${args.gnzichkiDo}`,
             method: 'GET',
             form: {}
         };
@@ -147,11 +147,10 @@ export class ScheduleService extends Service {
      */
     public async favoriteForFilm(args: scheduleFactory.IFavoriteForFilmArgs): Promise<scheduleFactory.IFavoriteForFilmLstResult> {
         debug('requesting...', args);
-        const pgNo = (args.pgNo !== null && args.pgNo !== undefined) ? `&pg_no=${args.pgNo}` : '';
         const options = {
             expectedStatusCodes: [OK],
             // tslint:disable-next-line: max-line-length
-            uri: `/api/schedule/favoriteForFilm?skhn_cd=${args.skhnCd}&kiin_cd=${args.kiinCd}${pgNo}`,
+            uri: `/api/schedule/favoriteForFilm?skhn_cd=${args.skhnCd}&kiin_cd=${args.kiinCd}`,
             method: 'GET',
             form: {}
         };
