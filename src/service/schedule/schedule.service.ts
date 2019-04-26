@@ -267,14 +267,14 @@ export class ScheduleService extends Service {
                     jeiMd: area.jei_md,
                     jeiybNm: area.jeiyb_nm,
                     sishpgFlg: area.sishpg_flg,
-                    jeistInf: (area.jeist_inf === null) ? [] : area.jeist_inf.map((jeistInf: any): scheduleFactory.IJeistInf => {
+                    jeistInf: (area.jeist_inf === null) ? [] : area.jeist_inf.map((jeistInfo: any): scheduleFactory.IJeistInf => {
                         return {
-                            sthyjjnNo: jeistInf.sthyjjn_no,
-                            stCd: jeistInf.st_cd,
-                            stNm: jeistInf.st_nm,
-                            mdgchryknFlg: jeistInf.mdgchrykn_flg,
-                            ntryknFlg: jeistInf.ntrykn_flg,
-                            jeiInf: (jeistInf.jei_inf === null) ? [] : jeistInf.jei_inf.map(
+                            sthyjjnNo: jeistInfo.sthyjjn_no,
+                            stCd: jeistInfo.st_cd,
+                            stNm: jeistInfo.st_nm,
+                            mdgchryknFlg: jeistInfo.mdgchrykn_flg,
+                            ntryknFlg: jeistInfo.ntrykn_flg,
+                            jeiInf: (jeistInfo.jei_inf === null) ? [] : jeistInfo.jei_inf.map(
                                 (jeiInfo: any): scheduleFactory.IJeiInf => {
                                     return {
                                         jmkonsiTyp: jeiInfo.jmkonsi_typ,
