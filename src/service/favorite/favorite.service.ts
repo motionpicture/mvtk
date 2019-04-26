@@ -34,7 +34,8 @@ export class FavoriteService extends Service {
                     skhnNm: film.skhn_nm,
                     pstrgzUrl: film.pstrgz_url,
                     znkkkkikishDspt: film.znkkkkikish_dspt,
-                    knshknhmbishryYmd: film.knshknhmbishry_ymd
+                    znkkkkikishYmd: film.znkkkkikish_ymd,
+                    hmbishryYmd: film.hmbishry_ymd
                 };
             }
         );

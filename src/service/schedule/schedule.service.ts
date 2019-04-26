@@ -32,7 +32,7 @@ export class ScheduleService extends Service {
                     oknirtrkDt: res.oknirtrk_dt,
                     stCd: res.st_cd,
                     stNm: res.st_nm,
-                    mdgchtryknFlg: res.mdgchtrykn_flg,
+                    mdgchryknFlg: res.mdgchrykn_flg,
                     ntryknFlg: res.ntrykn_flg,
                     jeiskhnInf: (res.jeiskhn_inf === null) ? [] : res.jeiskhn_inf.map(
                         (jeiskhnInfo: any): scheduleFactory.IJeiskhnInfFavoriteResult => {
@@ -206,7 +206,38 @@ export class ScheduleService extends Service {
                         return {
                             areCd: areInf.are_cd,
                             areNm: areInf.are_nm,
-                            jeistInf: areInf.jeist_inf
+                            jeistInf: (areInf.jeist_inf === null) ? [] : areInf.jeist_inf.map(
+                                (jeistInf: any): scheduleFactory.IJeistInfNearestForFilm => {
+                                    return {
+                                        chtnknkyrNum: jeistInf.chtnknkyr_num,
+                                        stCd: jeistInf.st_cd,
+                                        stNm: jeistInf.st_nm,
+                                        mdgchryknFlg: jeistInf.mdgchrykn_flg,
+                                        ntryknFlg: jeistInf.ntrykn_flg,
+                                        jeiInf: (jeistInf.jei_inf === null) ? [] : jeistInf.jei_inf.map(
+                                            (jeiInf: any): scheduleFactory.IJeiInf => {
+                                                return {
+                                                    jmkonsiTyp: jeiInf.jmkonsi_typ,
+                                                    jmkonsikbnNm: jeiInf.jmkonsikbn_nm,
+                                                    eishhshkTyp: jeiInf.eishhshk_typ,
+                                                    eishhshkkbnNm: jeiInf.eishhshkkbn_nm,
+                                                    tkshjeikishkTyp: jeiInf.tkshjeikishk_typ,
+                                                    tkshjeikishkkbnNm: jeiInf.tkshjeikishkkbn_nm,
+                                                    jeischdlRmk: jeiInf.jeischdl_rmk,
+                                                    jeihmInf: (jeiInf.jeihm_inf === null) ? [] : jeiInf.jeihm_inf.map(
+                                                        (jeihmInf: any): scheduleFactory.IJeihmInfAreaForFilm => {
+                                                            return {
+                                                                jeikishHm: jeihmInf.jeikish_hm,
+                                                                znskjkyTyp: jeihmInf.znskjky_typ
+                                                            };
+                                                        }
+                                                    )
+                                                };
+                                            }
+                                        )
+                                    };
+                                }
+                            )
                         };
                     })
                 };
@@ -243,7 +274,27 @@ export class ScheduleService extends Service {
                             stNm: jeistInf.st_nm,
                             mdgchryknFlg: jeistInf.mdgchrykn_flg,
                             ntryknFlg: jeistInf.ntrykn_flg,
-                            jeiInf: jeistInf.jei_inf
+                            jeiInf: (jeistInf.jei_inf === null) ? [] : jeistInf.jei_inf.map(
+                                (jeiInf: any): scheduleFactory.IJeiInf => {
+                                    return {
+                                        jmkonsiTyp: jeiInf.jmkonsi_typ,
+                                        jmkonsikbnNm: jeiInf.jmkonsikbn_nm,
+                                        eishhshkTyp: jeiInf.eishhshk_typ,
+                                        eishhshkkbnNm: jeiInf.eishhshkkbn_nm,
+                                        tkshjeikishkTyp: jeiInf.tkshjeikishk_typ,
+                                        tkshjeikishkkbnNm: jeiInf.tkshjeikishkkbn_nm,
+                                        jeischdlRmk: jeiInf.jeischdl_rmk,
+                                        jeihmInf: (jeiInf.jeihm_inf === null) ? [] : jeiInf.jeihm_inf.map(
+                                            (jeihmInf: any): scheduleFactory.IJeihmInfAreaForFilm => {
+                                                return {
+                                                    jeikishHm: jeihmInf.jeikish_hm,
+                                                    znskjkyTyp: jeihmInf.znskjky_typ
+                                                };
+                                            }
+                                        )
+                                    };
+                                }
+                            )
                         };
                     })
                 };

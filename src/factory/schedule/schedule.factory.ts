@@ -102,9 +102,9 @@ export interface IScheduleFavoriteResult {
      */
     stNm: string;
     /**
-     * 劇場窓口利用可能フラグ
+     * 窓口利用可能フラグ
      */
-    mdgchtryknFlg: string;
+    mdgchryknFlg: string;
     /**
      * ネット利用可能フラグ
      */
@@ -361,6 +361,7 @@ export interface IJeihmInfAreaForFilm {
      */
     znskjkyTyp?: string;
 }
+
 export interface IJeiInf {
     /**
      * 字幕音声区分
@@ -583,10 +584,6 @@ export interface IFavoriteForFilmArgs {
      * 会員コード（8桁固定）
      */
     kiinCd: string;
-    /**
-     * ページ番号
-     */
-    pgNo: number;
 }
 
 export interface IAreaArgs {
@@ -601,7 +598,7 @@ export interface IAreaArgs {
     /**
      * ページ番号
      */
-    pgNo?: string;
+    pgNo?: number;
 }
 
 export interface IAreaForFilmArgs {
