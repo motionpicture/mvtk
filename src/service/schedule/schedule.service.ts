@@ -202,11 +202,11 @@ export class ScheduleService extends Service {
                     jeiYmd: area.jei_ymd,
                     jeiMd: area.jei_md,
                     jeiybNm: area.jeiyb_nm,
-                    areInf: (area.are_inf === null) ? [] : area.are_inf.map((areInf: any): scheduleFactory.IAreInf => {
+                    areInf: (area.are_inf === null) ? [] : area.are_inf.map((areInfo: any): scheduleFactory.IAreInf => {
                         return {
-                            areCd: areInf.are_cd,
-                            areNm: areInf.are_nm,
-                            jeistInf: (areInf.jeist_inf === null) ? [] : areInf.jeist_inf.map(
+                            areCd: areInfo.are_cd,
+                            areNm: areInfo.are_nm,
+                            jeistInf: (areInfo.jeist_inf === null) ? [] : areInfo.jeist_inf.map(
                                 (jeistInfo: any): scheduleFactory.IJeistInfNearestForFilm => {
                                     return {
                                         chtnknkyrNum: jeistInfo.chtnknkyr_num,
