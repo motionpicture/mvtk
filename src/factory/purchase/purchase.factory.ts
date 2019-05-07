@@ -157,7 +157,6 @@ export interface INumberingSettlementNoResult {
     kssiknr_no: string;
 }
 
-// ************************************* 購入日時チェック ************************************* //
 export interface IPurchasableDateTimeArgs {
     /**
      * 作品コード（6桁固定）
