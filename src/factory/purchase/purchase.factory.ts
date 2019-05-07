@@ -156,3 +156,22 @@ export interface INumberingSettlementNoResult {
      */
     kssiknr_no: string;
 }
+
+// ************************************* 購入日時チェック ************************************* //
+export interface IPurchasableDateTimeArgs {
+    /**
+     * 作品コード（6桁固定）
+     */
+    skhnCd: string;
+    /**
+     * 販売区分（00:前売り券／01:当日券）
+     */
+    hmbiTyp: string;
+}
+
+export interface IPurchasableDateTimeResult {
+    /**
+     * 購入日時（日時形式 format: yyyy/MM/dd HH:mm:ss）
+     */
+    knyDt: string;
+}
