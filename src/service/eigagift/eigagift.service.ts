@@ -17,8 +17,8 @@ export class EigagiftService extends Service {
     public async authentication(args: eigagiftFactory.IAuthenticationArgs): Promise<eigagiftFactory.IAuthenticationResult> {
         debug('requesting...', args);
         const form = {
-            eggift_cd: args.eggiftCd,
-            eggiftpin_cd: args.eggiftpinCd,
+            eggft_cd: args.eggftCd,
+            eggftpin_cd: args.eggftpinCd,
             kiin_flg: args.kiinFlg,
             ...(args.kiinCd !== undefined ? {kiin_cd: args.kiinCd} : {})
         };
@@ -32,8 +32,8 @@ export class EigagiftService extends Service {
         debug('result...', result);
 
         return {
-            eggiftCd: result.eggift_cd,
-            eggiftpinCd: result.eggiftpin_cd,
+            eggftCd: result.eggft_cd,
+            eggftpinCd: result.eggftpin_cd,
             eggftZndk: result.eggft_zndk,
             chrgFlg: result.chrg_flg
         };
@@ -47,15 +47,15 @@ export class EigagiftService extends Service {
         const form = {
             myeggftry_flg: args.myeggftryFlg,
             eggft_inf: args.eggftInf.map((params: eigagiftFactory.IEggftInf): {
-                eggift_cd: string;
-                eggiftpin_cd: string;
+                eggft_cd: string;
+                eggftpin_cd: string;
                 eggftkssiknr_no: string;
                 eggftykkgn_ymd: string;
                 rykn_gk: number;
             } => {
                 return {
-                    eggift_cd: params.eggiftCd,
-                    eggiftpin_cd: params.eggiftpinCd,
+                    eggft_cd: params.eggftCd,
+                    eggftpin_cd: params.eggftpinCd,
                     eggftkssiknr_no: params.eggftkssiknrNo,
                     eggftykkgn_ymd: params.eggftykkgnYmd,
                     rykn_gk: params.ryknGk
@@ -75,8 +75,8 @@ export class EigagiftService extends Service {
             errjharFlg: result.errjharFlg,
             eggftInf: result.eggftInf.map((info: any): eigagiftFactory.IEggftInfResult => {
                 return {
-                    eggiftCd: info.eggift_cd,
-                    eggiftpinCd: info.eggiftpin_cd,
+                    eggftCd: info.eggft_cd,
+                    eggftpinCd: info.eggftpin_cd,
                     eggftkssiknrNo: info.eggftkssiknr_no,
                     ryknGk: info.rykn_gk,
                     rymeZndk: info.ryme_zndk,
@@ -102,16 +102,16 @@ export class EigagiftService extends Service {
         const form = {
             eggft_inf: args.eggftInf.map((params: eigagiftFactory.IEggftInfArgs): {
                 shgitrksh_flg: string;
-                eggift_cd: string;
-                eggiftpin_cd: string;
+                eggft_cd: string;
+                eggftpin_cd: string;
                 eggftkssiknr_no: string;
                 rykn_gk: number;
                 tppnshryky_dt: string;
             } => {
                 return {
                     shgitrksh_flg: params.shgitrkshFlg,
-                    eggift_cd: params.eggiftCd,
-                    eggiftpin_cd: params.eggiftpinCd,
+                    eggft_cd: params.eggftCd,
+                    eggftpin_cd: params.eggftpinCd,
                     eggftkssiknr_no: params.eggftkssiknrNo,
                     rykn_gk: params.ryknGk,
                     tppnshryky_dt: params.tppnshrykyDt
@@ -131,8 +131,8 @@ export class EigagiftService extends Service {
             errjharFlg: result.errjhar_flg,
             eggftInf: (result.eggft_inf === undefined) ? [] : result.eggft_inf.map((info: any): eigagiftFactory.IEggftInfCancelResult => {
                 return {
-                    eggiftCd: info.eggift_cd,
-                    eggiftpinCd: info.eggiftpin_cd,
+                    eggftCd: info.eggft_cd,
+                    eggftpinCd: info.eggftpin_cd,
                     eggftkssiknrNo: info.eggftkssiknr_no,
                     rymeZndk: info.ryme_zndk,
                     rygZndk: info.ryg_zndk,
@@ -154,8 +154,8 @@ export class EigagiftService extends Service {
         debug('requesting...', args);
         const form = {
             kiin_cd: args.kiinCd,
-            eggift_cd: args.eggiftCd,
-            eggiftpin_cd: args.eggiftpinCd
+            eggft_cd: args.eggftCd,
+            eggftpin_cd: args.eggftpinCd
         };
         const options = {
             expectedStatusCodes: [OK],
@@ -213,8 +213,8 @@ export class EigagiftService extends Service {
             gkZndk: result.gk_zndk,
             eggftInf: result.eggft_inf.map((info: any): eigagiftFactory.IEggftInfInfoResult => {
                 return {
-                    eggiftCd: info.eggift_cd,
-                    eggiftpinCd: info.eggiftpin_cd,
+                    eggftCd: info.eggft_cd,
+                    eggftpinCd: info.eggftpin_cd,
                     eggftykkgnYmd: info.eggftykkgn_ymd,
                     eggftZndk: info.eggft_zndk
                 };

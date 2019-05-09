@@ -6,11 +6,11 @@ export interface IEigagiftCommon {
     /**
      * 映画ギフトコード（16桁固定）
      */
-    eggiftCd: string;
+    eggftCd: string;
     /**
      * 映画ギフトPINコード（4桁固定）
      */
-    eggiftpinCd: string;
+    eggftpinCd: string;
 }
 
 //-------------------------------- 映画ギフト認証 --------------------------------//
