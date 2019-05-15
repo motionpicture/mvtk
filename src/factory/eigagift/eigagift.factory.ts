@@ -151,15 +151,15 @@ export interface IEggftInfCancelResult extends IEigagiftCommon {
     /**
      * 映画ギフト利用前残高
      */
-    rymeZndk: number;
+    rymeZndk?: number;
     /**
      * 映画ギフト利用後残高
      */
-    rygZndk: number;
+    rygZndk?: number;
     /**
      * 映画ギフトエラー情報
      */
-    errInf: IErrInf[];
+    errInf?: IErrInf[];
 }
 
 export interface ICancelResult {
@@ -232,4 +232,56 @@ export interface IInfoResult {
      * 保有映画ギフト情報
      */
     eggftInf: IEggftInfInfoResult[];
+}
+
+export interface IEggftInfArgs {
+    /**
+     * 映画ギフトコード（16桁固定）
+     */
+    eggftCd: string;
+    /**
+     * 映画ギフトPINコード（4桁固定）
+     */
+    eggftpinCd: string;
+    /**
+     * 映画ギフトチャージ金額
+     */
+    chrgknGk: number;
+}
+
+export interface IActivateArgs {
+    /**
+     * 映画ギフト情報
+     */
+    eggftInf: IEggftInfArgs[];
+}
+
+export interface IEggftInfActivate {
+    /**
+     * 映画ギフトコード（16桁固定）
+     */
+    eggftCd: string;
+    /**
+     * 映画ギフトPINコード（4桁固定）
+     */
+    eggftpinCd: string;
+    /**
+     * 映画ギフトチャージ金額
+     */
+    chrgknGk: number;
+    /**
+     * 映画ギフトエラー情報
+     */
+    errInf?: IErrInf[];
+}
+
+export interface IActivateResult {
+    /**
+     * 映画ギフトエラー情報ありフラグ
+     */
+    errjharFlg: string;
+    /**
+     * 映画ギフト情報
+     */
+    eggftInf: IEggftInfActivate[];
 }

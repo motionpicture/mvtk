@@ -12,6 +12,41 @@ const debug = createDebug('mvtk:service:eigagift');
  */
 export class EigagiftService extends Service {
     /**
+     * 映画ギフトアクティベート
+     */
+    public async activate(args: eigagiftFactory.IActivateArgs): Promise<eigagiftFactory.IActivateResult> {
+        debug('requesting...', args);
+        const form = {
+
+        };
+        const options = {
+            expectedStatusCodes: [OK],
+            uri: '/api/eigagift/activate',
+            method: 'POST',
+            form: form
+        };
+        const result = await this.request(options);
+        debug('result...', result);
+
+        return {
+            errjharFlg: result.errjhar_flg,
+            eggftInf: result.eggft_inf.map((res: any): eigagiftFactory.IEggftInfActivate => {
+                return {
+                    eggftCd: res.eggft_cd,
+                    eggftpinCd: res.eggftpin_cd,
+                    chrgknGk: res.chrgkn_gk,
+                    errInf: (res.err_inf === undefined) ? [] : res.err_inf.map((err: any): eigagiftFactory.IErrInf => {
+                        return {
+                            errCd: err.err_cd,
+                            errMsg: err.err_msg
+                        };
+                    })
+                };
+            })
+        };
+    }
+
+    /**
      * 2 映画ギフト認証
      */
     public async authentication(args: eigagiftFactory.IAuthenticationArgs): Promise<eigagiftFactory.IAuthenticationResult> {
@@ -50,14 +85,14 @@ export class EigagiftService extends Service {
                 eggft_cd: string;
                 eggftpin_cd: string;
                 eggftkssiknr_no: string;
-                eggftykkgn_ymd: string;
+                eggftykkgn_ymd?: string;
                 rykn_gk: number;
             } => {
                 return {
                     eggft_cd: params.eggftCd,
                     eggftpin_cd: params.eggftpinCd,
                     eggftkssiknr_no: params.eggftkssiknrNo,
-                    eggftykkgn_ymd: params.eggftykkgnYmd,
+                    ...(params.eggftykkgnYmd !== undefined ? {eggftykkgn_ymd: params.eggftykkgnYmd} : {}),
                     rykn_gk: params.ryknGk
                 };
             })

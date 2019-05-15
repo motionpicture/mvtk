@@ -24,9 +24,9 @@ export type ITheaterDeleteArgs = ITheaterRegisterArgs;
 
 export interface ITheaterInfoResult {
     /**
-     * 劇場表示順番号（ソート用）
+     * お気に入り登録日時（ソート用）（日時形式 format：yyyyMMddHHmmss）
      */
-    sthyjjnNo: number;
+    oknirtrkDt: string;
     /**
      * 劇場コード
      */

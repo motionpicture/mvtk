@@ -28,7 +28,7 @@ export class FavoriteService extends Service {
         return (result === null) ? [] : result.map(
             (res: any): favoriteFactory.ITheaterInfoResult => {
                 return {
-                    sthyjjnNo: res.sthyjjn_no,
+                    oknirtrkDt: res.oknirtrk_dt,
                     stCd: res.st_cd,
                     stNm: res.st_nm,
                     mdgchryknFlg: res.mdgchrykn_flg,
