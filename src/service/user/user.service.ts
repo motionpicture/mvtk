@@ -182,4 +182,27 @@ export class UserService extends Service {
             kiinCd: result.kiin_cd
         };
     }
+
+    /**
+     * 51 会員ヘッダー情報取得
+     */
+    public async topInfo(args: userFactory.ITopInfoArgs): Promise<userFactory.ITopInfoResult> {
+        debug('requesting...', args);
+        const options = {
+            expectedStatusCodes: [OK],
+            uri: `/api/user/topInfo?kiin_cd=${args.kiinCd}`,
+            method: 'GET',
+            form: {}
+        };
+        const result = await this.request(options);
+        debug('result...', result);
+
+        return {
+            hyjNm: result.hyj_nm,
+            ptZndk: result.pt_zndk,
+            mtitrkNum: result.mtitrk_num,
+            rymeskhnNum: result.rymeskhn_num
+        };
+    }
+
 }

@@ -22,41 +22,49 @@ import { UserService } from './service/user/user.service';
 
 export import factory = factory;
 
+//tslint:disable:max-classes-per-file
 export namespace service {
     /**
      * 映画ギフトサービス
      * @class
      */
     export class Eigagift extends EigagiftService { }
+
     /**
      * Authサービス
      * @class
      */
     export class Favorite extends FavoriteService { }
+
     /**
      * 作品情報サービス
      */
     export class Film extends FilmService { }
+
     /**
      * ポイントサービス
      * @class
      */
     export class Point extends PointService { }
+
     /**
      * 決済関連サービス
      * @class
      */
     export class Purchase extends PurchaseService { }
+
     /**
      * Authサービス
      * @class
      */
     export class User extends UserService { }
+
     /**
      * 上映スケジュールサービス
      * @class
      */
     export class Schedule extends ScheduleService { }
+
     /**
      * 劇場サービス
      * @class
