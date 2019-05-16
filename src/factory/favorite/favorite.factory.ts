@@ -61,11 +61,15 @@ export interface IFilmInfoResult {
     /**
      * 全国公開開始日記述
      */
-    znkkkkikishDspt?: string;
+    znkkkkikishDspt: string;
     /**
-     * 鑑賞券販売終了年月日（日付形式 format: yyyyMMdd）
+     * 全国公開年月日
      */
-    knshknhmbishryYmd?: string;
+    znkkkkikishYmd: string;
+    /**
+     * 販売終了年月日
+     */
+    hmbishryYmd: string;
 }
 
 export type IFilmInfoLstRes = IFilmInfoResult[];
