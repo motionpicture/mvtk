@@ -87,7 +87,7 @@ export class FavoriteService extends Service {
         };
     }
 
-        /**
+    /**
      * 13 お気に入り劇場情報取得
      */
     public async theaterInfo(args: favoriteFactory.ITheaterInfoArgs): Promise<favoriteFactory.ITheaterInfoLstResult> {

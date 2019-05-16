@@ -53,7 +53,7 @@ jobs:
       #     prefix: coverage
   doc:
     docker:
-      - image: circleci/node:latest
+      - image: circleci/node:8.4
     steps:
       - checkout
       - restore_cache:
