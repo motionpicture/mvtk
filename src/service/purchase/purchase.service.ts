@@ -46,7 +46,11 @@ export class PurchaseService extends Service {
             rykn_gk: args.ryknGk,
             gkkn_gk: args.gkknGk,
             mltmplt_cd: args.mltmpltCd,
-            tktncdkkh_inf: args.tktncdkkhInf
+            tktncdkkh_inf: args.tktncdkkhInf,
+            prmtncdry_flg: args.prmtncdryFlg,
+            prmtn_cd: args.prmtnCd,
+            prmtncdkssi_uuid: args.prmtncdkssiUuid,
+            prmtncdwrbk_gk: args.prmtncdwrbkGk
         };
 
         const options = {

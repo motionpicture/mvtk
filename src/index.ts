@@ -15,6 +15,7 @@ import { EigagiftService } from './service/eigagift/eigagift.service';
 import { FavoriteService } from './service/favorite/favorite.service';
 import { FilmService } from './service/film/film.service';
 import { PointService } from './service/point/point.service';
+import { PromotionCodeService } from './service/promotionCode/promotionCode.service';
 import { PurchaseService } from './service/purchase/purchase.service';
 import { ScheduleService } from './service/schedule/schedule.service';
 import { TheaterService } from './service/theater/theater.service';
@@ -70,6 +71,12 @@ export namespace service {
      * @class
      */
     export class Theater extends TheaterService { }
+
+    /**
+     * プロモーションコード関連サービス
+     * @class
+     */
+    export class PromotionCode extends PromotionCodeService { }
 }
 
 export namespace utils {

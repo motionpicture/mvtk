@@ -197,6 +197,10 @@ export interface IInfoResult {
      * メルマガ希望フラグ
      */
     mlmgznkbFlg: string;
+    /**
+     * 会員コード(暗号化)
+     */
+    encryptKiinCd: string;
 }
 
 export interface ITopInfoResult {
