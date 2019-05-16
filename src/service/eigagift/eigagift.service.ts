@@ -12,7 +12,7 @@ const debug = createDebug('mvtk:service:eigagift');
  */
 export class EigagiftService extends Service {
     /**
-     * 映画ギフトアクティベート
+     * 1 映画ギフトアクティベート
      */
     public async activate(args: eigagiftFactory.IActivateArgs): Promise<eigagiftFactory.IActivateResult> {
         debug('requesting...', args);
@@ -228,6 +228,37 @@ export class EigagiftService extends Service {
             chrgytiGk: result.chrgyti_gk,
             evuchrkknykkgnDt: result.evuchrkknykkgn_dt
         };
+    }
+
+    /**
+     * 8 映画ギフト履歴取得
+     */
+    public async history(args: eigagiftFactory.IHistoryArgs): Promise<eigagiftFactory.IHistoryResultLst> {
+        debug('requesting...', args);
+        const shtkkishYm = (args.shtkkishYm !== undefined && args.shtkkishYm !== null) ? `&shtkkish_ym=${args.shtkkishYm}` : '';
+        const shtkshryYm = (args.shtkshryYm !== undefined && args.shtkshryYm !== null) ? `&shtkshry_ym=${args.shtkshryYm}` : '';
+        const options = {
+            expectedStatusCodes: [OK],
+            uri: `/api/eigagift/history?kiin_cd=${args.kiinCd}${shtkkishYm}${shtkshryYm}`,
+            method: 'GET',
+            form: {}
+        };
+        const result = await this.request(options);
+        debug('result', result);
+
+        return (result === null) ? [] : result.map((res: any): eigagiftFactory.IHistoryResult => {
+            return {
+                rrkYm: res.rrk_ym,
+                rrkInf: (res.rrk_inf === null) ? [] : res.rrk_inf.map((rrkInfo: any): eigagiftFactory.IRrkInf => {
+                    return {
+                        rrkYmd: rrkInfo.rrk_ymd,
+                        rrkTyp: rrkInfo.rrk_typ,
+                        rrkTxt: rrkInfo.rrk_txt,
+                        tratskiknGk: rrkInfo.tratskikn_gk
+                    };
+                })
+            };
+        });
     }
 
     /**
