@@ -8,8 +8,10 @@
 // }
 
 import * as factory from './factory';
+import * as eigagiftUtil from './utils/eigagift/eigagift.util';
 import * as pointUtil from './utils/point/point.util';
 
+import { EigagiftService } from './service/eigagift/eigagift.service';
 import { FavoriteService } from './service/favorite/favorite.service';
 import { FilmService } from './service/film/film.service';
 import { PointService } from './service/point/point.service';
@@ -20,10 +22,14 @@ import { UserService } from './service/user/user.service';
 
 export import factory = factory;
 
-//tslint:disable:max-classes-per-file
 export namespace service {
     /**
-     * お気に入りサービス
+     * 映画ギフトサービス
+     * @class
+     */
+    export class Eigagift extends EigagiftService { }
+    /**
+     * Authサービス
      * @class
      */
     export class Favorite extends FavoriteService { }
@@ -59,5 +65,6 @@ export namespace service {
 }
 
 export namespace utils {
+    export import eigagift = eigagiftUtil;
     export import point = pointUtil;
 }

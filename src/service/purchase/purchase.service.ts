@@ -67,7 +67,7 @@ export class PurchaseService extends Service {
     /**
      * 2.購入情報取得
      */
-     public async info (args: purchaseFactory.IInfoArgs): Promise<purchaseFactory.IInfoResult> {
+    public async info (args: purchaseFactory.IInfoArgs): Promise<purchaseFactory.IInfoResult> {
         debug('requesting...', args);
         const options = {
             expectedStatusCodes: [OK],
@@ -85,12 +85,12 @@ export class PurchaseService extends Service {
             dgtlincntvdwnlodgmnUrl: result.dgtlincntvdwnlodgmn_url,
             kktkPt: result.kktk_pt
         };
-     }
+    }
 
-     /**
-      * 3.決済管理番号採番
-      */
-     public async numberingSettlementNo (): Promise<purchaseFactory.INumberingSettlementNoResult> {
+    /**
+     * 3.決済管理番号採番
+     */
+    public async numberingSettlementNo (): Promise<purchaseFactory.INumberingSettlementNoResult> {
         const options = {
             expectedStatusCodes: [OK],
             uri: '/api/purchase/numberingSettlementNo',
@@ -104,5 +104,23 @@ export class PurchaseService extends Service {
         return {
             kssiknr_no: result.kssiknr_no
         };
-     }
+    }
+
+    /**
+     * 購入日時チェック
+     */
+    public async purchasableDateTime(args: purchaseFactory.IPurchasableDateTimeArgs): Promise<purchaseFactory.IPurchasableDateTimeResult> {
+        const options = {
+            expectedStatusCodes: [OK],
+            uri: `/api/purchase/purchasableDateTime?skhn_cd=${args.skhnCd}&hmbi_typ=${args.hmbiTyp}`,
+            method: 'GET',
+            form: {}
+        };
+        const result = await this.request(options);
+        debug('result...', result);
+
+        return {
+            knyDt: result.kny_dt
+        };
+    }
 }
