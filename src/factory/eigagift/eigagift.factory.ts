@@ -266,6 +266,10 @@ export interface IEggftInfActivate {
      */
     chrgknGk: number;
     /**
+     * 映画ギフト有効期限
+     */
+    eggftykkgnYmd: string;
+    /**
      * 映画ギフトエラー情報
      */
     errInf?: IErrInf[];

@@ -17,8 +17,21 @@ export class EigagiftService extends Service {
     public async activate(args: eigagiftFactory.IActivateArgs): Promise<eigagiftFactory.IActivateResult> {
         debug('requesting...', args);
         const form = {
-
+            eggft_inf: args.eggftInf.map((params: eigagiftFactory.IEggftInfArgs): {
+                eggftkssiknr_no: string;
+                eggft_cd: string;
+                eggftpin_cd: string;
+                chrgkn_gk: number;
+            } => {
+                return {
+                    eggftkssiknr_no: params.eggftkssiknrNo,
+                    eggft_cd: params.eggftCd,
+                    eggftpin_cd: params.eggftpinCd,
+                    chrgkn_gk: params.chrgknGk
+                };
+            })
         };
+
         const options = {
             expectedStatusCodes: [OK],
             uri: '/api/eigagift/activate',
@@ -35,6 +48,7 @@ export class EigagiftService extends Service {
                     eggftCd: res.eggft_cd,
                     eggftpinCd: res.eggftpin_cd,
                     chrgknGk: res.chrgkn_gk,
+                    eggftykkgnYmd: res.eggftykkgn_ymd,
                     errInf: (res.err_inf === undefined) ? [] : res.err_inf.map((err: any): eigagiftFactory.IErrInf => {
                         return {
                             errCd: err.err_cd,
