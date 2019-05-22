@@ -212,7 +212,6 @@ export class EigagiftService extends Service {
     public async exchangeable(args: eigagiftFactory.IExchangeableArgs): Promise<eigagiftFactory.IExchangeableResult> {
         debug('requesting...', args);
         const form = {
-            kiin_cd: args.kiinCd,
             evuchr_cd: args.evuchrCd
         };
         const options = {
@@ -236,7 +235,7 @@ export class EigagiftService extends Service {
     public async exchange(args: eigagiftFactory.IExchangeArgs): Promise<eigagiftFactory.IExchangeResult> {
         const form = {
             kiin_cd: args.kiinCd,
-            evuchr_cd: args.evuchrCd
+            amccupn_cd: args.amccupnCd
         };
         const options = {
             expectedStatusCodes: [OK],
@@ -248,7 +247,8 @@ export class EigagiftService extends Service {
         debug('result...', result);
 
         return {
-            chrgGk: result.chrg_gk
+            chrgGk: result.chrg_gk,
+            eggftykkgnYmd: result.eggftykkgn_ymd
         };
     }
 
@@ -324,7 +324,15 @@ export class EigagiftService extends Service {
             knyshshgikyk_no: args.knyshshgikykNo,
             knyshshnikyk_no: args.knyshshnikykNo,
             knyshknysh_no: args.knyshknyshNo,
+            hmbichnnl_typ: args.hmbichnnlTyp,
+            hmbigish_cd: args.hmbigishCd,
             kssihh_typ: args.kssihhTyp,
+            accss_id: args.accssId,
+            accss_pwd: args.accssPwd,
+            trn_dt: args.trnDt,
+            frwrd_cd: args.frwrdCd,
+            apprv_no: args.apprvNo,
+            trn_id: args.trnId,
             chrg_gk: args.chrgGk
         };
         const options = {
@@ -337,7 +345,8 @@ export class EigagiftService extends Service {
         debug('result', result);
 
         return {
-            chrgGk: result.chrg_gk
+            chrgGk: result.chrg_gk,
+            eggftykkgnYmd: result.eggftykkgn_ymd
         };
     }
 
@@ -373,6 +382,7 @@ export class EigagiftService extends Service {
             knyshshgikyk_no: args.knyshshgikykNo,
             knyshshnikyk_no: args.knyshshnikykNo,
             knyshknysh_no: args.knyshknyshNo,
+            hmbigish_cd: args.hmbigishCd,
             kssihh_typ: args.kssihhTyp,
             chrg_gk: args.chrgGk
         };
@@ -433,7 +443,8 @@ export class EigagiftService extends Service {
         debug('result', result);
 
         return {
-            chrgGk: result.chrg_gk
+            chrgGk: result.chrg_gk,
+            eggftykkgnYmd: result.eggftykkgn_ymd
         };
     }
 

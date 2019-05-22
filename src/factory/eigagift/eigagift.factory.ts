@@ -184,10 +184,6 @@ export interface IRegisterArgs extends IEigagiftCommon {
 //-------------------------------- 映画ギフト交換可能認証 --------------------------------//
 export interface IExchangeableArgs {
     /**
-     * 会員コード（8桁固定）
-     */
-    kiinCd: string;
-    /**
      * eバウチャーコード
      */
     evuchrCd: string;
@@ -293,9 +289,9 @@ export interface IExchangeArgs {
      */
     kiinCd: string;
     /**
-     * eバウチャーコード
+     * AMCクーポンコード
      */
-    evuchrCd: string;
+    amccupnCd: string;
 }
 
 export interface IExchangeResult {
@@ -303,6 +299,10 @@ export interface IExchangeResult {
      * チャージ金額
      */
     chrgGk: number;
+    /**
+     * 映画ギフト有効期限
+     */
+    eggftykkgnYmd: string;
 }
 
 //******************************* 映画ギフト発行 *******************************//
@@ -340,9 +340,41 @@ export interface IIssueArgs {
      */
     knyshknyshNo: string;
     /**
+     * 販売チャネル区分（2桁固定）
+     */
+    hmbichnnlTyp: string;
+    /**
+     * 販売会社コード（6桁固定）
+     */
+    hmbigishCd: string;
+    /**
      * 決済方法区分（00：クレジット）
      */
     kssihhTyp: string;
+    /**
+     * アクセスID
+     */
+    accssId: string;
+    /**
+     * アクセスパスワード
+     */
+    accssPwd: string;
+    /**
+     * 決済日時
+     */
+    trnDt: string;
+    /**
+     * 仕向先コード
+     */
+    frwrdCd: string;
+    /**
+     * 決済承認番号
+     */
+    apprvNo: string;
+    /**
+     * トランザクションID
+     */
+    trnId: string;
     /**
      * チャージ金額
      */
@@ -360,7 +392,56 @@ export interface INumberingSettlementNoResult {
 }
 
 //******************************* 映画ギフト決済情報仮登録 *******************************//
-export type ITempSettlementRegisterArgs = IIssueArgs;
+export interface ITempSettlementRegisterArgs {
+    /**
+     * 映画ギフト決済管理番号（16桁固定）
+     */
+    eggftkssiknrNo: string;
+    /**
+     * 会員コード（8桁固定）
+     */
+    kiinCd: string;
+    /**
+     * 購入者 姓（最大15文字）
+     */
+    knyshsiNm: string;
+    /**
+     * 購入者 名（最大15文字）
+     */
+    knyshmiNm: string;
+    /**
+     * 購入者メールアドレス（最大128文字）
+     */
+    knyshMladdr: string;
+    /**
+     * 購入者市外局番（最大5文字）
+     */
+    knyshshgikykNo: string;
+    /**
+     * 購入者市内局番（最大4文字）
+     */
+    knyshshnikykNo: string;
+    /**
+     * 購入者加入者番号（最大4文字）
+     */
+    knyshknyshNo: string;
+    /**
+     * 販売チャネル区分（2桁固定）
+     */
+    hmbichnnlTyp: string;
+    /**
+     * 販売会社コード（6桁固定）
+     */
+    hmbigishCd: string;
+    /**
+     * 決済方法区分（00：クレジット）
+     */
+    kssihhTyp: string;
+    /**
+     * チャージ金額
+     */
+    chrgGk: number;
+}
 
 //******************************* 映画ギフト処理完了メール送信 *******************************//
 export interface ISendMailArgs {
@@ -412,6 +493,10 @@ export interface IStatusResult {
      * チャージ金額
      */
     chrgGk: number;
+    /**
+     * 映画ギフト有効期限
+     */
+    eggftykkgnYmd: string;
 }
 
 //******************************** 映画ギフト履歴取得 ********************************//
