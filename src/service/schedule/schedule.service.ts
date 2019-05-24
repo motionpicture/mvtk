@@ -80,10 +80,10 @@ export class ScheduleService extends Service {
                                 (jeiskhnInfo: any): scheduleFactory.IJeiskhnInfNearestResult => {
                                     return {
                                         kkikishYmd: jeiskhnInfo.kkikish_ymd,
-                                        skhnCd: jeiskhnInfo.kkikish_ymd,
-                                        skhnNm: jeiskhnInfo.kkikish_ymd,
-                                        pstrgzUrl: jeiskhnInfo.kkikish_ymd,
-                                        skhnchskknDspt: jeiskhnInfo.kkikish_ymd
+                                        skhnCd: jeiskhnInfo.skhn_cd,
+                                        skhnNm: jeiskhnInfo.skhn_nm,
+                                        pstrgzUrl: jeiskhnInfo.pstrgz_url,
+                                        skhnchskknDspt: jeiskhnInfo.skhnchskkn_dspt
                                     };
                                 }
                             )
