@@ -312,8 +312,8 @@ export class EigagiftService extends Service {
         debug('result...', result);
 
         return {
-            gkZndk: result.gk_zndk,
-            eggftInf: result.eggft_inf.map((info: any): eigagiftFactory.IEggftInfInfoResult => {
+            gkZndk: (result.gk_zndk == null) ? 0 : result.gk_zndk,
+            eggftInf: (result.eggft_inf === null) ? [] : result.eggft_inf.map((info: any): eigagiftFactory.IEggftInfInfoResult => {
                 return {
                     eggftCd: info.eggft_cd,
                     eggftpinCd: info.eggftpin_cd,
