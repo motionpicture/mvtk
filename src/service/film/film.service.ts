@@ -72,7 +72,16 @@ export class FilmService extends Service {
             knshknhmbishryYmd: result.knshknhmbishry_ymd,
             knyjgmmiNum: result.knyjgmmi_num,
             knshknknrNo: result.knshknknr_no,
-            knshknInf: result.knshkn_inf
+            knshknInf: (result.knshkn_inf === null) ? [] : result.knshkn_inf.map(
+                (res: any): filmFactory.IKnshknInf => {
+                    return {
+                        knshknknrmisiNo: res.knshknknrmisi_no,
+                        knshTyp: res.knsh_typ,
+                        knshkbnNm: res.knshkbn_nm,
+                        knshknhmbiUnip: res.knshknhmbi_unip
+                    };
+                }
+            )
         };
     }
 
