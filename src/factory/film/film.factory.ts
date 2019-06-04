@@ -77,6 +77,10 @@ export interface IFilmInfoResult {
      * 注目度ランキング番号
      */
     chmkdrnkngNo?: number;
+    /**
+     * 作品著作権記述
+     */
+    skhnchskknDspt?: string;
 }
 
 export type IFilmInfoLstResult = IFilmInfoResult[];
