@@ -45,7 +45,8 @@ export class FilmService extends Service {
                     znkkkkikishDspt: res.hmbi_typ,
                     mtitrkzmFlg: res.mtitrkzm_flg,
                     srtkkikishYmd: res.srtkkikish_ymd,
-                    srthmbikishYmd: res.srthmbikish_ymd
+                    srthmbikishYmd: res.srthmbikish_ymd,
+                    chmkdrnkngNo: res.chmkdrnkng_no
                 };
             }
         );

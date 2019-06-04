@@ -73,6 +73,10 @@ export interface IFilmInfoResult {
      * 全国公開開始日記述
      */
     znkkkkikishDspt?: string;
+    /**
+     * 注目度ランキング番号
+     */
+    chmkdrnkngNo?: number;
 }
 
 export type IFilmInfoLstResult = IFilmInfoResult[];
