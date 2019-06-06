@@ -1,4 +1,4 @@
-import * as createDebug from './node_modules/debug';
+import * as createDebug from 'debug';
 import { OK } from 'http-status';
 
 import * as scheduleFactory from '../../factory/schedule/schedule.factory';

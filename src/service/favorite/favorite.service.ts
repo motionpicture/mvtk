@@ -1,4 +1,4 @@
-import * as createDebug from './node_modules/debug';
+import * as createDebug from 'debug';
 import { OK } from 'http-status';
 
 import * as favoriteFactory from '../../factory/favorite/favorite.factory';
@@ -42,7 +42,7 @@ export class FavoriteService extends Service {
     }
 
     /**
-     * 11 観たい作品登録
+     * 観たい作品登録
      */
     public async filmRegister (args: favoriteFactory.IFilmRegisterArgs): Promise<{}> {
         debug('requesting...', args);
@@ -65,7 +65,7 @@ export class FavoriteService extends Service {
     }
 
     /**
-     * 12 観たい作品削除
+     * 観たい作品削除
      */
     public async filmDelete (args: favoriteFactory.IFilmDeleteArgs): Promise<{}> {
         debug('requesting...', args);
@@ -88,7 +88,7 @@ export class FavoriteService extends Service {
     }
 
     /**
-     * 13 お気に入り劇場情報取得
+     * お気に入り劇場情報取得
      */
     public async theaterInfo(args: favoriteFactory.ITheaterInfoArgs): Promise<favoriteFactory.ITheaterInfoLstResult> {
         debug('requesting...', args);
@@ -115,7 +115,7 @@ export class FavoriteService extends Service {
     }
 
     /**
-     * 14 お気に入り劇場登録
+     * お気に入り劇場登録
      */
     public async theaterRegister(args: favoriteFactory.ITheaterRegisterArgs): Promise<{}> {
         debug('requesting...', args);
@@ -138,7 +138,7 @@ export class FavoriteService extends Service {
     }
 
     /**
-     * 15 お気に入り劇場削除
+     * お気に入り劇場削除
      */
     public async theaterDelete(args: favoriteFactory.ITheaterDeleteArgs): Promise<{}> {
         debug('requesting...', args);
@@ -160,4 +160,31 @@ export class FavoriteService extends Service {
         };
     }
 
+    /**
+     * お気に入り劇場リンク取得
+     */
+    public async theaterLink(args: favoriteFactory.ITheaterLinkArgs): Promise <favoriteFactory.ITheaterLinkLstResult> {
+        debug('requesting...', args);
+        const options = {
+            expectedStatusCodes: [OK],
+            uri: `/api/favorite/theaterLink?skhn_cd=${args.skhnCd}&kiin_cd=${args.kiinCd}`,
+            method: 'GET',
+            form: {}
+        };
+        const result = await this.request(options);
+        debug('result...', result);
+
+        return (result === null) ? [] : result.map(
+            (res: any): favoriteFactory.ITheaterLinkResult => {
+                return {
+                    oknirtrkDt: res.oknirtrk_dt,
+                    stCd: res.st_cd,
+                    stNm: res.st_nm,
+                    mdgchryknFlg: res.mdgchrykn_flg,
+                    ntryknFlg: res.ntrykn_flg,
+                    stkshkstUrl: res.stkshkst_url
+                };
+            }
+        );
+    }
 }

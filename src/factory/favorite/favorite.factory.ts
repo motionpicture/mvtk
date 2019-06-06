@@ -118,3 +118,34 @@ export interface ITheaterInfoResult {
 }
 
 export type ITheaterInfoLstResult = ITheaterInfoResult[];
+
+export type ITheaterLinkArgs = IFilmRegisterArgs;
+
+export interface ITheaterLinkResult {
+    /**
+     * お気に入り登録日時（ソート用）（日時形式 format：yyyyMMddHHmmss）
+     */
+    oknirtrkDt: string;
+    /**
+     * 劇場コード
+     */
+    stCd: string;
+    /**
+     * 劇場名称
+     */
+    stNm: string;
+    /**
+     * 窓口利用可能フラグ
+     */
+    mdgchryknFlg: string;
+    /**
+     * ネット利用可能フラグ
+     */
+    ntryknFlg: string;
+    /**
+     * 劇場公式サイトURL
+     */
+    stkshkstUrl?: string;
+}
+
+export type ITheaterLinkLstResult = ITheaterLinkResult[];
