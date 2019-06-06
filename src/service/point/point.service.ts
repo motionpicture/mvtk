@@ -1,4 +1,4 @@
-import * as createDebug from 'debug';
+import * as createDebug from './node_modules/debug';
 import { OK } from 'http-status';
 
 import * as pointFactory from '../../factory/point/point.factory';

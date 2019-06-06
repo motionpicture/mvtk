@@ -184,9 +184,9 @@ export interface IRegisterArgs extends IEigagiftCommon {
 //-------------------------------- 映画ギフト交換可能認証 --------------------------------//
 export interface IExchangeableArgs {
     /**
-     * eバウチャーコード
+     * AMCクーポンコード
      */
-    evuchrCd: string;
+    amccupnCd: string;
 }
 
 export interface IExchangeableResult {

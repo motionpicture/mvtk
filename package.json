@@ -20,9 +20,11 @@
     "@types/http-status": "^0.2.30",
     "@types/mocha": "^2.2.48",
     "@types/nock": "^8.2.1",
+    "@types/node": "^12.0.4",
     "@types/power-assert": "^1.5.0",
     "@types/sinon": "^2.3.7",
     "coveralls": "^3.0.2",
+    "espower-typescript": "^9.0.2",
     "ink-docstrap": "^1.3.2",
     "jsdoc": "^3.5.5",
     "mocha": "^5.2.0",
@@ -63,7 +65,7 @@
     "check": "npm run tslint",
     "clean": "rimraf \"src/**/*.js ./lib test/**/*.js npm-debug.log* ./doc ./coverage ./.nyc_output\"",
     "doc": "jsdoc -c jsdoc.json",
-    "mocha": "mocha",
+    "mocha": "mocha --watch-extensions ts -w --require espower-typescript/guess test/**/*.ts",
     "nyc": "nyc mocha \"src/**/*.spec.ts\"",
     "coverage": "npm run nyc | coveralls",
     "snyk": "snyk wizard",
@@ -74,7 +76,7 @@
     "postversion": "git push origin --tags",
     "prepublishOnly": "npm run clean && npm run build && npm test && npm run doc"
   },
-  "version": "1.2.1-MVSR-278-alpha.4",
+  "version": "1.2.1-MVSR-278-alpha.5",
   "repository": {
     "type": "git",
     "url": "https://github.com/motionpicture/mvtk.git"

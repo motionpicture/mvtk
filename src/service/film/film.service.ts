@@ -1,4 +1,4 @@
-import * as createDebug from 'debug';
+import * as createDebug from './node_modules/debug';
 import { OK } from 'http-status';
 
 import * as filmFactory from '../../factory/film/film.factory';
@@ -45,7 +45,9 @@ export class FilmService extends Service {
                     znkkkkikishDspt: res.hmbi_typ,
                     mtitrkzmFlg: res.mtitrkzm_flg,
                     srtkkikishYmd: res.srtkkikish_ymd,
-                    srthmbikishYmd: res.srthmbikish_ymd
+                    srthmbikishYmd: res.srthmbikish_ymd,
+                    chmkdrnkngNo: res.chmkdrnkng_no,
+                    skhnchskknDspt: res.skhnchskkn_dspt
                 };
             }
         );
@@ -95,10 +97,13 @@ export class FilmService extends Service {
     // tslint:disable-next-line: max-func-body-length
     public async detail(args: filmFactory.IFilmDetailArgs): Promise<filmFactory.IFilmDetailResult> {
         debug('requesting...', args);
-        const kiinCd: string = (args.kiinCd === undefined && args.kiinCd === null) ? '' : `&kiin_cd=${args.kiinCd}`;
+        let kiinCdParam: string = '';
+        if (args.kiinCd !== undefined && args.kiinCd !== '') {
+            kiinCdParam = `&kiin_cd=${args.kiinCd}`;
+        }
         const options = {
             expectedStatusCodes: [OK],
-            uri: `/api/film/details?skhn_cd=${args.skhnCd}${kiinCd}`,
+            uri: `/api/film/details?skhn_cd=${args.skhnCd}${kiinCdParam}`,
             method: 'GET',
             form: {}
         };

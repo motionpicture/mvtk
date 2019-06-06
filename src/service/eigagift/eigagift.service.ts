@@ -1,4 +1,4 @@
-import * as createDebug from 'debug';
+import * as createDebug from './node_modules/debug';
 import { OK } from 'http-status';
 
 import * as eigagiftFactory from '../../factory/eigagift/eigagift.factory';
@@ -226,7 +226,7 @@ export class EigagiftService extends Service {
     public async exchangeable(args: eigagiftFactory.IExchangeableArgs): Promise<eigagiftFactory.IExchangeableResult> {
         debug('requesting...', args);
         const form = {
-            evuchr_cd: args.evuchrCd
+            amccupn_cd: args.amccupnCd
         };
         const options = {
             expectedStatusCodes: [OK],
