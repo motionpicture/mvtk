@@ -42,7 +42,7 @@ export class FilmService extends Service {
                     slscpy1Txt: res.slscpy1_txt,
                     slscpy2Txt: res.slscpy2_txt,
                     slscpy3Txt: res.slscpy3_txt,
-                    znkkkkikishDspt: res.hmbi_typ,
+                    znkkkkikishDspt: res.znkkkkikish_dspt,
                     mtitrkzmFlg: res.mtitrkzm_flg,
                     srtkkikishYmd: res.srtkkikish_ymd,
                     srthmbikishYmd: res.srthmbikish_ymd,
