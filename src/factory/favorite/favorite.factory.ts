@@ -70,6 +70,14 @@ export interface IFilmInfoResult {
      * 販売終了年月日
      */
     hmbishryYmd: string;
+    /**
+     * 注目度ランキング番号
+     */
+    chmkdrnkngNo?: number;
+    /**
+     * 作品著作権記述
+     */
+    skhnchskknDspt?: string;
 }
 
 export type IFilmInfoLstRes = IFilmInfoResult[];
