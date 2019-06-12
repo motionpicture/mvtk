@@ -84,7 +84,8 @@ export class EigagiftService extends Service {
             eggftCd: result.eggft_cd,
             eggftpinCd: result.eggftpin_cd,
             eggftZndk: result.eggft_zndk,
-            chrgFlg: result.chrg_flg
+            chrgFlg: result.chrg_flg,
+            eggftykkgnYmd: result.eggftykkgn_ymd
         };
     }
 
@@ -199,7 +200,7 @@ export class EigagiftService extends Service {
     /**
      * 5 映画ギフト登録
      */
-    public async register(args: eigagiftFactory.IRegisterArgs): Promise<{}> {
+    public async register(args: eigagiftFactory.IRegisterArgs): Promise<eigagiftFactory.IRegisterResult> {
         debug('requesting...', args);
         const form = {
             kiin_cd: args.kiinCd,
@@ -216,7 +217,8 @@ export class EigagiftService extends Service {
         debug('result...', result);
 
         return {
-            status: 'OK'
+            chrgGk: result.chrg_gk,
+            eggftykkgnYmd: result.eggftykkgn_ymd
         };
     }
 
