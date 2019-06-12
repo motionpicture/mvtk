@@ -398,6 +398,7 @@ export class EigagiftService extends Service {
             knyshshgikyk_no: args.knyshshgikykNo,
             knyshshnikyk_no: args.knyshshnikykNo,
             knyshknysh_no: args.knyshknyshNo,
+            hmbichnnl_typ: args.hmbichnnlTyp,
             hmbigish_cd: args.hmbigishCd,
             kssihh_typ: args.kssihhTyp,
             chrg_gk: args.chrgGk

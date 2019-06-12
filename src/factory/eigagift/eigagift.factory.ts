@@ -453,7 +453,7 @@ export interface ITempSettlementRegisterArgs {
      */
     hmbigishCd: string;
     /**
-     * 決済方法区分（00：クレジット）
+     * 決済方法区分（22：楽天ペイ）
      */
     kssihhTyp: string;
     /**
