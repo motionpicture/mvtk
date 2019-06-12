@@ -53,7 +53,7 @@ jobs:
       #     prefix: coverage
   doc:
     docker:
-      - image: circleci/node:8.4
+      - image: circleci/node:latest
     steps:
       - checkout
       - restore_cache:
@@ -65,7 +65,7 @@ jobs:
             npm run doc
   prerelease:
     docker:
-      - image: circleci/node:8.4
+      - image: circleci/node:latest
     steps:
       - checkout
       - restore_cache:
@@ -81,7 +81,7 @@ jobs:
           command: npm publish --tag next
   deploy:
     docker:
-      - image: circleci/node:8.4
+      - image: circleci/node:latest
     steps:
       - checkout
       - restore_cache:
