@@ -34,6 +34,10 @@ export interface IAuthenticationResult extends IEigagiftCommon {
      * チャージフラグ
      */
     chrgFlg: string;
+    /**
+     * 映画GIFT有効期限（年月日形式 format：yyyyMMdd）
+     */
+    eggftykkgnYmd?: string;
 }
 
 //-------------------------------- 映画ギフト利用 --------------------------------//
@@ -179,6 +183,17 @@ export interface IRegisterArgs extends IEigagiftCommon {
      * 会員コード（8桁固定）
      */
     kiinCd: string;
+}
+
+export interface IRegisterResult {
+    /**
+     * チャージ金額
+     */
+    chrgGk: number;
+    /**
+     * 映画GIFT有効期限（年月日形式 format：yyyyMMdd）
+     */
+    eggftykkgnYmd?: string;
 }
 
 //-------------------------------- 映画ギフト交換可能認証 --------------------------------//
