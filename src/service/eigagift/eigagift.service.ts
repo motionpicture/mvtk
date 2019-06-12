@@ -97,7 +97,9 @@ export class EigagiftService extends Service {
             knyshshnikyk_no: args.knyshshnikykNo,
             knyshknysh_no: args.knyshknyshNo,
             kssihh_typ: args.kssihhTyp,
-            chrg_gk: args.chrgGk
+            chrg_gk: args.chrgGk,
+            hmbichnnl_typ: args.hmbichnnlTyp,
+            hmbigish_cd: args.hmbigishCd
         };
         const options = {
             expectedStatusCodes: [OK],
@@ -122,6 +124,8 @@ export class EigagiftService extends Service {
             kiin_cd: args.kiinCd,
             chrg_gk: args.chrgGk,
             chrg_typ: args.chrgTyp,
+            eggftykkgn_ymd: args.eggftykkgnYmd,
+            mltmplt_cd: args.mltmpltCd,
             ...(args.eggftkssiknrNo !== undefined ? {eggftkssiknr_no: args.eggftkssiknrNo} : {}),
             ...(args.knyshsiNm !== undefined ? {knyshsi_nm: args.knyshsiNm} : {}),
             ...(args.knyshmiNm !== undefined ? {knyshmi_nm: args.knyshmiNm} : {}),
