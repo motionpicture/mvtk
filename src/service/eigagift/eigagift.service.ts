@@ -422,7 +422,9 @@ export class EigagiftService extends Service {
         const form = {
             kiin_cd: args.kiinCd,
             chrg_gk: args.chrgGk,
+            eggftykkgn_ymd: args.eggftykkgnYmd,
             chrg_typ: args.chrgTyp,
+            mltmplt_cd: args.mltmpltCd,
             ...(args.eggftkssiknrNo !== undefined ? {eggftkssiknr_no: args.eggftkssiknrNo} : {}),
             ...(args.knyshsiNm !== undefined ? {knyshsi_nm: args.knyshsiNm} : {}),
             ...(args.knyshmiNm !== undefined ? {knyshmi_nm: args.knyshmiNm} : {}),

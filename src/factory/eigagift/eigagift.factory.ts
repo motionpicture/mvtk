@@ -454,18 +454,26 @@ export interface ISendMailArgs {
      */
     kiinCd: string;
     /**
-     * チャージ金額
-     */
-    chrgGk: number;
-    /**
-     * チャージ区分（00：金額指定チャージ／01：コードからチャージ／02：eバウチャー交換）
-     */
-    chrgTyp: string;
-    /**
      * 映画ギフト決済管理番号（16桁固定）
      * ※映画ギフト金額指定チャージ時のみセット
      */
     eggftkssiknrNo?: string;
+    /**
+     * チャージ金額
+     */
+    chrgGk: number;
+    /**
+     * 映画GIFT有効期限（年月日形式 format：yyyyMMdd）
+     */
+    eggftykkgnYmd: string;
+    /**
+     * チャージ区分（2桁固定）（00：映画GIFT購入／01：AMCクーポン交換）
+     */
+    chrgTyp: string;
+    /**
+     * メールテンプレートコード（5桁固定）（U0021：映画GIFT購入／U0022：AMCクーポン交換）
+     */
+    mltmpltCd: string;
     /**
      * 購入者 姓（最大15文字）
      * ※映画ギフト金額指定チャージ時のみセット
