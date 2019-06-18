@@ -89,7 +89,7 @@ export class TheaterService extends Service {
             stkshkstUrl: result.stkshkst_url,
             mdgchryknFlg: result.mdgchrykn_flg,
             ntryknFlg: result.ntrykn_flg,
-            oknirstturkzmFlg: result.oknirstturkzm_flg,
+            oknirsttrkzmFlg: result.oknirsttrkzm_flg,
             jeischdlInf: (result.jeischdl_inf === null) ? [] : result.jeischdl_inf.map((jeischdlInfo: any): theaterFactory.IJeischdlInf => {
                 return {
                     jeiYmd: jeischdlInfo.jei_ymd,

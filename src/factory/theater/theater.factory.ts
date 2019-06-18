@@ -288,7 +288,7 @@ export interface IDetailsResult {
     /**
      * お気に入り劇場登録済フラグ
      */
-    oknirstturkzmFlg?: string;
+    oknirsttrkzmFlg?: string;
     /**
      * 上映スケジュール情報
      */
