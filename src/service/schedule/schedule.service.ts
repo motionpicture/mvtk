@@ -172,7 +172,27 @@ export class ScheduleService extends Service {
                                 stNm: jeistInfo.st_nm,
                                 mdgchryknFlg: jeistInfo.mdgchrykn_flg,
                                 ntryknFlg: jeistInfo.ntrykn_flg,
-                                jeiInf: jeistInfo.jei_inf
+                                jeiInf: (jeistInfo.jei_inf === null) ? [] : jeistInfo.jei_inf.map(
+                                    (jeiInfo: any): scheduleFactory.IJeiInf => {
+                                        return {
+                                            jmkonsiTyp: jeiInfo.jmkonsi_typ,
+                                            jmkonsikbnNm: jeiInfo.jmkonsikbn_nm,
+                                            eishhshkTyp: jeiInfo.eishhshk_typ,
+                                            eishhshkkbnNm: jeiInfo.eishhshkkbn_nm,
+                                            tkshjeikishkTyp: jeiInfo.tkshjeikishk_typ,
+                                            tkshjeikishkkbnNm: jeiInfo.tkshjeikishkkbn_nm,
+                                            jeischdlRmk: jeiInfo.jeischdl_rmk,
+                                            jeihmInf: (jeiInfo.jeihm_inf === null) ? [] : jeiInfo.jeihm_inf.map(
+                                                (jeihmInfo: any): scheduleFactory.IJeihmInfAreaForFilm => {
+                                                    return {
+                                                        jeikishHm: jeihmInfo.jeikish_hm,
+                                                        znskjkyTyp: jeihmInfo.znskjky_typ
+                                                    };
+                                                }
+                                            )
+                                        };
+                                    }
+                                )
                             };
                         }
                     )
@@ -214,7 +234,27 @@ export class ScheduleService extends Service {
                                         stNm: jeistInfo.st_nm,
                                         mdgchryknFlg: jeistInfo.mdgchrykn_flg,
                                         ntryknFlg: jeistInfo.ntrykn_flg,
-                                        jeiInf: jeistInfo.jei_inf
+                                        jeiInf: (jeistInfo.jei_inf === null) ? [] : jeistInfo.jei_inf.map(
+                                            (jeiInfo: any): scheduleFactory.IJeiInf => {
+                                                return {
+                                                    jmkonsiTyp: jeiInfo.jmkonsi_typ,
+                                                    jmkonsikbnNm: jeiInfo.jmkonsikbn_nm,
+                                                    eishhshkTyp: jeiInfo.eishhshk_typ,
+                                                    eishhshkkbnNm: jeiInfo.eishhshkkbn_nm,
+                                                    tkshjeikishkTyp: jeiInfo.tkshjeikishk_typ,
+                                                    tkshjeikishkkbnNm: jeiInfo.tkshjeikishkkbn_nm,
+                                                    jeischdlRmk: jeiInfo.jeischdl_rmk,
+                                                    jeihmInf: (jeiInfo.jeihm_inf === null) ? [] : jeiInfo.jeihm_inf.map(
+                                                        (jeihmInfo: any): scheduleFactory.IJeihmInfAreaForFilm => {
+                                                            return {
+                                                                jeikishHm: jeihmInfo.jeikish_hm,
+                                                                znskjkyTyp: jeihmInfo.znskjky_typ
+                                                            };
+                                                        }
+                                                    )
+                                                };
+                                            }
+                                        )
                                     };
                                 }
                             )
