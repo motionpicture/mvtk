@@ -41,7 +41,7 @@ export class TheaterService extends Service {
     /**
      * 49 対応劇場情報取得
      */
-    public async compatible(): Promise<theaterFactory.ITheaterInfoLstResult> {
+    public async compatible(): Promise<theaterFactory.ITheaterInfoResult> {
         const options = {
             expectedStatusCodes: [OK],
             uri: '/api/theater/compatible',
@@ -51,27 +51,23 @@ export class TheaterService extends Service {
         const result = await this.request(options);
         debug('result...', result);
 
-        return (result == null) ? [] : result.map(
-            (result: any): theaterFactory.ITheaterInfoResult => {
+        return {
+            kikCd: result.kik_cd,
+            kikNm: result.kik_nm,
+            kikhyjjnNo: result.kikhyjjn_no,
+            stInf: (result.st_inf === null) ? [] : result.st_inf.map((stInfo: any): theaterFactory.IStInf => {
                 return {
-                    kikCd: result.kik_cd,
-                    kikNm: result.kik_nm,
-                    kikhyjjnNo: result.kikhyjjn_no,
-                    stInf: (result.st_inf === null) ? [] : result.st_inf.map((stInfo: any): theaterFactory.IStInf => {
-                        return {
-                            tdfknhyjjnNo: stInfo.tdfknhyjjn_no,
-                            tdfknNm: stInfo.tdfkn_nm,
-                            sthyjjnNo: stInfo.sthyjjn_no,
-                            stCd: stInfo.st_cd,
-                            stNm: stInfo.st_nm,
-                            stRmk: stInfo.st_rmk,
-                            mdgchryknFlg: stInfo.mdgchrykn_flg,
-                            ntryknFlg: stInfo.ntrykn_flg,
-                        };
-                    })
+                    tdfknhyjjnNo: stInfo.tdfknhyjjn_no,
+                    tdfknNm: stInfo.tdfkn_nm,
+                    sthyjjnNo: stInfo.sthyjjn_no,
+                    stCd: stInfo.st_cd,
+                    stNm: stInfo.st_nm,
+                    stRmk: stInfo.st_rmk,
+                    mdgchryknFlg: stInfo.mdgchrykn_flg,
+                    ntryknFlg: stInfo.ntrykn_flg,
                 };
-            }
-        );
+            })
+        };
     }
 
     /**
