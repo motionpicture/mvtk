@@ -49,12 +49,7 @@ export class EigagiftService extends Service {
                     eggftpinCd: res.eggftpin_cd,
                     chrgknGk: res.chrgkn_gk,
                     eggftykkgnYmd: res.eggftykkgn_ymd,
-                    errInf: (res.err_inf === undefined) ? [] : res.err_inf.map((err: any): eigagiftFactory.IErrInf => {
-                        return {
-                            errCd: err.err_cd,
-                            errMsg: err.err_msg
-                        };
-                    })
+                    errInf: res.err_inf,
                 };
             })
         };
@@ -122,8 +117,8 @@ export class EigagiftService extends Service {
         debug('result...', result);
 
         return {
-            errjharFlg: result.errjharFlg,
-            eggftInf: result.eggftInf.map((info: any): eigagiftFactory.IEggftInfResult => {
+            errjharFlg: result.errjhar_flg,
+            eggftInf: (result.eggft_inf === undefined) ? [] : result.eggft_inf.map((info: any): eigagiftFactory.IEggftInfResult => {
                 return {
                     eggftCd: info.eggft_cd,
                     eggftpinCd: info.eggftpin_cd,
@@ -133,12 +128,7 @@ export class EigagiftService extends Service {
                     rygZndk: info.ryg_zndk,
                     shnnNo: info.shnn_no,
                     tppnshrykyDt: info.tppnshryky_dt,
-                    errInf: (info.err_inf === undefined) ? [] : info.err_inf.map((err: any): eigagiftFactory.IErrInf => {
-                        return {
-                            errCd: err.err_cd,
-                            errMsg: err.err_msg
-                        };
-                    })
+                    errInf: info.err_inf
                 };
             })
         };
@@ -186,12 +176,7 @@ export class EigagiftService extends Service {
                     eggftkssiknrNo: info.eggftkssiknr_no,
                     rymeZndk: info.ryme_zndk,
                     rygZndk: info.ryg_zndk,
-                    errInf: (info.err_inf === undefined) ? [] : info.err_inf.map((err: any): eigagiftFactory.IErrInf => {
-                        return {
-                            errCd: err.err_cd,
-                            errMsg: err.err_msg
-                        };
-                    })
+                    errInf: info.err_inf,
                 };
             })
         };
