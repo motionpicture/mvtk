@@ -326,6 +326,10 @@ export interface IExchangeResult {
      * 映画ギフト有効期限
      */
     eggftykkgnYmd: string;
+    /**
+     * 映画GIFT決済管理番号
+     */
+    eggftkssiknrNo: string;
 }
 
 //******************************* 映画ギフト発行 *******************************//

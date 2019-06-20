@@ -249,7 +249,8 @@ export class EigagiftService extends Service {
 
         return {
             chrgGk: result.chrg_gk,
-            eggftykkgnYmd: result.eggftykkgn_ymd
+            eggftykkgnYmd: result.eggftykkgn_ymd,
+            eggftkssiknrNo: result.eggftkssiknr_no
         };
     }
 
@@ -347,7 +348,8 @@ export class EigagiftService extends Service {
 
         return {
             chrgGk: result.chrg_gk,
-            eggftykkgnYmd: result.eggftykkgn_ymd
+            eggftykkgnYmd: result.eggftykkgn_ymd,
+            eggftkssiknrNo: result.eggftkssiknr_no
         };
     }
 
