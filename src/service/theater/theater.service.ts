@@ -70,8 +70,8 @@ export class TheaterService extends Service {
                         };
                     })
                 }
-            });
-        }
+            }
+        );
     }
 
     /**
