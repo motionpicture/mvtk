@@ -64,7 +64,7 @@ export class TheaterService extends Service {
                     stNm: stInfo.st_nm,
                     stRmk: stInfo.st_rmk,
                     mdgchryknFlg: stInfo.mdgchrykn_flg,
-                    ntryknFlg: stInfo.ntrykn_flg,
+                    ntryknFlg: stInfo.ntrykn_flg
                 };
             })
         };
