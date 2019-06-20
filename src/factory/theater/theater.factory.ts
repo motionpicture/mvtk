@@ -278,7 +278,7 @@ export interface IStInf {
     /**
      * ネット利用可能フラグ
      */
-    ntryknFlg: string;
+    ntryknFlg?: string;
 }
 
 export interface IDetailsResult {

@@ -57,18 +57,20 @@ export class TheaterService extends Service {
                     kikCd: res.kik_cd,
                     kikNm: res.kik_nm,
                     kikhyjjnNo: res.kikhyjjn_no,
-                    stInf: (res.st_inf === null) ? [] : res.st_inf.map((stInfo: any): theaterFactory.IStInf => {
-                        return {
-                            tdfknhyjjnNo: stInfo.tdfknhyjjn_no,
-                            tdfknNm: stInfo.tdfkn_nm,
-                            sthyjjnNo: stInfo.sthyjjn_no,
-                            stCd: stInfo.st_cd,
-                            stNm: stInfo.st_nm,
-                            stRmk: stInfo.st_rmk,
-                            mdgchryknFlg: stInfo.mdgchrykn_flg,
-                            ntryknFlg: stInfo.ntrykn_flg
-                        };
-                    })
+                    stInf: (res.st_inf === null) ? [] : res.st_inf.map(
+                        (stInfo: any): theaterFactory.IStInf => {
+                            return {
+                                tdfknhyjjnNo: stInfo.tdfknhyjjn_no,
+                                tdfknNm: stInfo.tdfkn_nm,
+                                sthyjjnNo: stInfo.sthyjjn_no,
+                                stCd: stInfo.st_cd,
+                                stNm: stInfo.st_nm,
+                                stRmk: stInfo.st_rmk,
+                                mdgchryknFlg: stInfo.mdgchrykn_flg,
+                                ntryknFlg: stInfo.ntrykn_flg
+                            };
+                        }
+                    )
                 };
             }
         );
