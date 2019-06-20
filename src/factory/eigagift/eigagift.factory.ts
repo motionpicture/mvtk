@@ -49,7 +49,7 @@ export interface IEggftInf extends IEigagiftCommon {
     /**
      * 映画ギフト有効期限
      */
-    eggftykkgnYmd: string;
+    eggftykkgnYmd?: string;
     /**
      * 映画ギフト利用金額
      */
@@ -245,7 +245,7 @@ export interface IInfoResult {
     eggftInf: IEggftInfInfoResult[];
 }
 
-export interface IEggftInfArgs {
+export interface IEggftInfActivateArgs {
     /**
      * 映画ギフトコード（16桁固定）
      */
@@ -258,13 +258,17 @@ export interface IEggftInfArgs {
      * 映画ギフトチャージ金額
      */
     chrgknGk: number;
+    /**
+     * 映画GIFT決済管理番号（16桁固定）
+     */
+    eggftkssiknrNo: string;
 }
 
 export interface IActivateArgs {
     /**
      * 映画ギフト情報
      */
-    eggftInf: IEggftInfArgs[];
+    eggftInf: IEggftInfActivateArgs[];
 }
 
 export interface IEggftInfActivate {

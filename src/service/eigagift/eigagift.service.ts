@@ -17,7 +17,7 @@ export class EigagiftService extends Service {
     public async activate(args: eigagiftFactory.IActivateArgs): Promise<eigagiftFactory.IActivateResult> {
         debug('requesting...', args);
         const form = {
-            eggft_inf: args.eggftInf.map((params: eigagiftFactory.IEggftInfArgs): {
+            eggft_inf: args.eggftInf.map((params: eigagiftFactory.IEggftInfActivateArgs): {
                 eggftkssiknr_no: string;
                 eggft_cd: string;
                 eggftpin_cd: string;
