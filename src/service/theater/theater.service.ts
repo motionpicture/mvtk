@@ -69,7 +69,7 @@ export class TheaterService extends Service {
                             ntryknFlg: stInfo.ntrykn_flg
                         };
                     })
-                }
+                };
             }
         );
     }
