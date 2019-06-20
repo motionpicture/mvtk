@@ -114,8 +114,6 @@ export interface IStCommon {
     stkshkstUrl?: string;
 }
 
-export type IStInf = IStCommon;
-
 export interface ITheaterAreInf extends IAreInf {
     /**
      * エリア劇場情報
@@ -132,9 +130,13 @@ export interface ITheaterTdfknInf extends ITodofukenCommon {
 
 export interface ITheaterInfoResult extends IKuiki {
     /**
-     * 都道府県情報
+     * 区域表示順番号（区域ソート用）
      */
-    tdfknInf: ITheaterTdfknInf[];
+    kikhyjjnNo: number;
+    /**
+     * 対応劇場情報
+     */
+    stInf?: IStInf[];
 }
 
 export type ITheaterInfoLstResult = ITheaterInfoResult[];
@@ -242,6 +244,41 @@ export interface IJeischdlInf {
      * 上映スケジュール情報
      */
     jeiskhnInf?: IJeiskhnInf[];
+}
+
+export interface IStInf {
+    /**
+     * 都道府県表示順番号（都道府県ソート用）
+     */
+    tdfknhyjjnNo: number;
+    /**
+     * 都道府県名称
+     */
+    tdfknNm: string;
+    /**
+     * 劇場表示順番号（劇場ソート用）
+     */
+    sthyjjnNo: number;
+    /**
+     * 劇場コード
+     */
+    stCd: string;
+    /**
+     * 劇場名称
+     */
+    stNm: string;
+    /**
+     * サイト備考
+     */
+    stRmk: string;
+    /**
+     * 窓口利用可能フラグ
+     */
+    mdgchryknFlg: string;
+    /**
+     * ネット利用可能フラグ
+     */
+    ntryknFlg: string;
 }
 
 export interface IDetailsResult {
