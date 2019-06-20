@@ -49,7 +49,7 @@ export class EigagiftService extends Service {
                     eggftpinCd: res.eggftpin_cd,
                     chrgknGk: res.chrgkn_gk,
                     eggftykkgnYmd: res.eggftykkgn_ymd,
-                    errInf: res.err_inf,
+                    errInf: res.err_inf
                 };
             })
         };
@@ -176,7 +176,7 @@ export class EigagiftService extends Service {
                     eggftkssiknrNo: info.eggftkssiknr_no,
                     rymeZndk: info.ryme_zndk,
                     rygZndk: info.ryg_zndk,
-                    errInf: info.err_inf,
+                    errInf: info.err_inf
                 };
             })
         };
