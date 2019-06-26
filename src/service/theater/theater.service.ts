@@ -156,9 +156,11 @@ export class TheaterService extends Service {
         debug('requesting...', args);
         const tdfknCd = (args.tdfknCd === undefined) ? '' : `?tdfkn_cd=${args.tdfknCd}`;
         const areCd = (args.areCd === undefined) ? '' : (tdfknCd === '') ? `?are_cd=${args.areCd}` : `&are_cd=${args.areCd}`;
+        // tslint:disable-next-line: max-line-length
+        const skhnCd = (args.skhnCd === undefined) ? '' : (tdfknCd === '' && areCd === '') ? `?skhn_cd=${args.skhnCd}` : `&skhn_cd=${args.skhnCd}`;
         const options = {
             expectedStatusCodes: [OK],
-            uri: `/api/theater/area${tdfknCd}${areCd}`,
+            uri: `/api/theater/area${tdfknCd}${areCd}${skhnCd}`,
             method: 'GET',
             form: {}
         };
