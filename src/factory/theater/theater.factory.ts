@@ -341,6 +341,10 @@ export interface IAreaArgs {
      * エリアコード（5桁固定）※検索レベル 小
      */
     areCd?: string;
+    /**
+     * 作品コード（6桁固定）
+     */
+    skhnCd?: string;
 }
 
 export interface IAreInfAreaResult {
