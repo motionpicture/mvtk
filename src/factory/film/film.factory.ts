@@ -273,6 +273,10 @@ export interface IFilmInfoResult {
      * 作品著作権記述
      */
     skhnchskknDspt?: string;
+    /**
+     * 鑑賞券販売終了年月日
+     */
+    knshknhmbishryYmd?: string;
 }
 
 export type IFilmInfoLstResult = IFilmInfoResult[];
