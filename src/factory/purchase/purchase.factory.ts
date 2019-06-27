@@ -138,6 +138,24 @@ export interface ITempSettlementRegistArgs {
      * プロモーションコード割引額
      */
     prmtncdwrbkGk: number;
+    /**
+     * 映画ギフト利用フラグ
+     */
+    eggftryFlg: string;
+    /**
+     * 保有映画ギフト利用フラグ（保有映画ギフトからの利用の場合：1／それ以外：0）
+     */
+    myeggftryFlg: string;
+    /**
+     * 映画ギフト情報（映画ギフト利用がない場合は null をセット）
+     */
+    eggftInf: [{
+        eggftCd: string;
+        eggftpinCd: string;
+        eggftkssiknrNo: string;
+        eggftykkgnYmd: string;
+        eggftryknGk: string;
+    }];
 }
 
 export interface IInfoArgs {

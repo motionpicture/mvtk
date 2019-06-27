@@ -14,7 +14,7 @@ export class PurchaseService extends Service {
     /**
      * 1.決済情報仮登録
      */
-    public async tempSettlementRegister (args: purchaseFactory.ITempSettlementRegistArgs): Promise<{}> {
+    public async tempSettlementRegister(args: purchaseFactory.ITempSettlementRegistArgs): Promise<{}> {
         debug('requesting...', args);
         const form = {
             kssiknr_no: args.kssiknrNo,
@@ -50,7 +50,10 @@ export class PurchaseService extends Service {
             prmtncdry_flg: args.prmtncdryFlg,
             prmtn_cd: args.prmtnCd,
             prmtncdkssi_uuid: args.prmtncdkssiUuid,
-            prmtncdwrbk_gk: args.prmtncdwrbkGk
+            prmtncdwrbk_gk: args.prmtncdwrbkGk,
+            eggftry_flg: args.eggftryFlg,
+            myeggftry_flg: args.myeggftryFlg,
+            eggft_inf: args.eggftInf
         };
 
         const options = {
@@ -71,7 +74,7 @@ export class PurchaseService extends Service {
     /**
      * 2.購入情報取得
      */
-    public async info (args: purchaseFactory.IInfoArgs): Promise<purchaseFactory.IInfoResult> {
+    public async info(args: purchaseFactory.IInfoArgs): Promise<purchaseFactory.IInfoResult> {
         debug('requesting...', args);
         const options = {
             expectedStatusCodes: [OK],
@@ -94,7 +97,7 @@ export class PurchaseService extends Service {
     /**
      * 3.決済管理番号採番
      */
-    public async numberingSettlementNo (): Promise<purchaseFactory.INumberingSettlementNoResult> {
+    public async numberingSettlementNo(): Promise<purchaseFactory.INumberingSettlementNoResult> {
         const options = {
             expectedStatusCodes: [OK],
             uri: '/api/purchase/numberingSettlementNo',
