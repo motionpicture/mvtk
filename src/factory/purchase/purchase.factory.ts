@@ -149,13 +149,13 @@ export interface ITempSettlementRegistArgs {
     /**
      * 映画ギフト情報（映画ギフト利用がない場合は null をセット）
      */
-    eggftInf: [{
+    eggftInf: {
         eggftCd: string;
         eggftpinCd: string;
         eggftkssiknrNo: string;
         eggftykkgnYmd: string;
         eggftryknGk: string;
-    }];
+    }[];
 }
 
 export interface IInfoArgs {
