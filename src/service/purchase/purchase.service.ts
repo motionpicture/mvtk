@@ -53,7 +53,7 @@ export class PurchaseService extends Service {
             prmtncdwrbk_gk: args.prmtncdwrbkGk,
             eggftry_flg: args.eggftryFlg,
             myeggftry_flg: args.myeggftryFlg,
-            eggft_inf: args.eggftInf.map((info) => {
+            eggft_inf: args.eggftInf ? args.eggftInf.map((info) => {
                 return {
                     eggft_cd: info.eggftCd,
                     eggftpin_cd: info.eggftpinCd,
@@ -61,7 +61,7 @@ export class PurchaseService extends Service {
                     eggftykkgn_ymd: info.eggftykkgnYmd,
                     eggftrykn_gk: info.eggftryknGk
                 };
-            })
+            }) : null
         };
 
         const options = {

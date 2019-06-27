@@ -155,7 +155,7 @@ export interface ITempSettlementRegistArgs {
         eggftkssiknrNo: string;
         eggftykkgnYmd: string;
         eggftryknGk: string;
-    }[];
+    }[] | null;
 }
 
 export interface IInfoArgs {
