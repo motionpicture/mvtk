@@ -61,7 +61,7 @@ export class PurchaseService extends Service {
                     eggftykkgn_ymd: info.eggftykkgnYmd,
                     eggftrykn_gk: info.eggftryknGk
                 };
-            }) : null
+            }) : []
         };
 
         const options = {
