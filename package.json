@@ -62,7 +62,7 @@
     "build": "tsc",
     "check": "npm run tslint",
     "clean": "rimraf \"src/**/*.js ./lib test/**/*.js npm-debug.log* ./doc ./coverage ./.nyc_output\"",
-    "doc": "jsdoc -c jsdoc.json",
+    "doc": "echo \"No docs.\" && exit 0",
     "mocha": "mocha",
     "nyc": "nyc mocha \"src/**/*.spec.ts\"",
     "coverage": "npm run nyc | coveralls",
