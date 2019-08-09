@@ -1,3 +1,6 @@
+/**
+ * theater.factory
+ */
 export interface IAreaArgs {
     /**
      * 都道府県コード（2桁固定）※検索レベル 中
