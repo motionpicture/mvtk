@@ -14,7 +14,7 @@ export class PurchaseService extends Service {
     /**
      * 1.決済情報仮登録
      */
-    public async tempSettlementRegister (args: purchaseFactory.ITempSettlementRegistArgs): Promise<{}> {
+    public async tempSettlementRegister(args: purchaseFactory.ITempSettlementRegistArgs): Promise<{}> {
         debug('requesting...', args);
         const form = {
             kssiknr_no: args.kssiknrNo,
@@ -46,7 +46,22 @@ export class PurchaseService extends Service {
             rykn_gk: args.ryknGk,
             gkkn_gk: args.gkknGk,
             mltmplt_cd: args.mltmpltCd,
-            tktncdkkh_inf: args.tktncdkkhInf
+            tktncdkkh_inf: args.tktncdkkhInf,
+            prmtncdry_flg: args.prmtncdryFlg,
+            prmtn_cd: args.prmtnCd,
+            prmtncdkssi_uuid: args.prmtncdkssiUuid,
+            prmtncdwrbk_gk: args.prmtncdwrbkGk,
+            eggftry_flg: args.eggftryFlg,
+            myeggftry_flg: args.myeggftryFlg,
+            eggft_inf: args.eggftInf != null ? args.eggftInf.map((info) => {
+                return {
+                    eggft_cd: info.eggftCd,
+                    eggftpin_cd: info.eggftpinCd,
+                    eggftkssiknr_no: info.eggftkssiknrNo,
+                    eggftykkgn_ymd: info.eggftykkgnYmd,
+                    eggftrykn_gk: info.eggftryknGk
+                };
+            }) : []
         };
 
         const options = {
@@ -67,7 +82,7 @@ export class PurchaseService extends Service {
     /**
      * 2.購入情報取得
      */
-     public async info (args: purchaseFactory.IInfoArgs): Promise<purchaseFactory.IInfoResult> {
+    public async info(args: purchaseFactory.IInfoArgs): Promise<purchaseFactory.IInfoResult> {
         debug('requesting...', args);
         const options = {
             expectedStatusCodes: [OK],
@@ -85,12 +100,12 @@ export class PurchaseService extends Service {
             dgtlincntvdwnlodgmnUrl: result.dgtlincntvdwnlodgmn_url,
             kktkPt: result.kktk_pt
         };
-     }
+    }
 
-     /**
-      * 3.決済管理番号採番
-      */
-     public async numberingSettlementNo (): Promise<purchaseFactory.INumberingSettlementNoResult> {
+    /**
+     * 3.決済管理番号採番
+     */
+    public async numberingSettlementNo(): Promise<purchaseFactory.INumberingSettlementNoResult> {
         const options = {
             expectedStatusCodes: [OK],
             uri: '/api/purchase/numberingSettlementNo',
@@ -104,5 +119,23 @@ export class PurchaseService extends Service {
         return {
             kssiknr_no: result.kssiknr_no
         };
-     }
+    }
+
+    /**
+     * 購入日時チェック
+     */
+    public async purchasableDateTime(args: purchaseFactory.IPurchasableDateTimeArgs): Promise<purchaseFactory.IPurchasableDateTimeResult> {
+        const options = {
+            expectedStatusCodes: [OK],
+            uri: `/api/purchase/purchasableDateTime?skhn_cd=${args.skhnCd}&hmbi_typ=${args.hmbiTyp}`,
+            method: 'GET',
+            form: {}
+        };
+        const result = await this.request(options);
+        debug('result...', result);
+
+        return {
+            knyDt: result.kny_dt
+        };
+    }
 }

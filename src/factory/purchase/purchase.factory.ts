@@ -122,6 +122,40 @@ export interface ITempSettlementRegistArgs {
      * 特典情報
      */
     tktncdkkhInf: {};
+    /**
+     * プロモーションコード利用フラグ
+     */
+    prmtncdryFlg: string;
+    /**
+     * プロモーションコード
+     */
+    prmtnCd: string;
+    /**
+     * プロモーションコード決済UUID
+     */
+    prmtncdkssiUuid: string;
+    /**
+     * プロモーションコード割引額
+     */
+    prmtncdwrbkGk: number;
+    /**
+     * 映画ギフト利用フラグ
+     */
+    eggftryFlg: string;
+    /**
+     * 保有映画ギフト利用フラグ（保有映画ギフトからの利用の場合：1／それ以外：0）
+     */
+    myeggftryFlg: string;
+    /**
+     * 映画ギフト情報（映画ギフト利用がない場合は null をセット）
+     */
+    eggftInf: {
+        eggftCd: string;
+        eggftpinCd: string;
+        eggftkssiknrNo: string;
+        eggftykkgnYmd: string;
+        eggftryknGk: string;
+    }[] | null;
 }
 
 export interface IInfoArgs {
@@ -155,4 +189,22 @@ export interface INumberingSettlementNoResult {
      * 決済管理番号
      */
     kssiknr_no: string;
+}
+
+export interface IPurchasableDateTimeArgs {
+    /**
+     * 作品コード（6桁固定）
+     */
+    skhnCd: string;
+    /**
+     * 販売区分（00:前売り券／01:当日券）
+     */
+    hmbiTyp: string;
+}
+
+export interface IPurchasableDateTimeResult {
+    /**
+     * 購入日時（日時形式 format: yyyy/MM/dd HH:mm:ss）
+     */
+    knyDt: string;
 }
