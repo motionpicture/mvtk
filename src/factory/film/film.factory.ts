@@ -232,6 +232,10 @@ export interface IFilmInfoResult {
      */
     skhnNm: string;
     /**
+     * 作品名称（かな）
+     */
+    skhnHknnm: string;
+    /**
      * 「観たい」登録済フラグ
      */
     mtitrkzmFlg: string;

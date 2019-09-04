@@ -38,6 +38,7 @@ export class FilmService extends Service {
                     hmbisttsTyp: res.hmbistts_typ,
                     skhnCd: res.skhn_cd,
                     skhnNm: res.skhn_nm,
+                    skhnHknnm: res.skhn_hknnm,
                     pstrgzUrl: res.pstrgz_url,
                     slscpy1Txt: res.slscpy1_txt,
                     slscpy2Txt: res.slscpy2_txt,
