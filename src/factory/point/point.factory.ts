@@ -7,32 +7,32 @@
 export interface IPointRequest {
 }
 
-export interface IKkngntiPtZndk {
+export interface ICpptInf {
     /**
-     * 有効期限終了年月 YYYY/MM
+     * 有効期限終了年月（年月形式 format：yyyy/MM）
      */
     ykkgnshryYm: string;
     /**
-     * 期間限定ポイント残高
+     * キャンペーンポイント残高
      */
-    kkngntiptZndk: number;
+    cpptZndk: number;
 }
 
-export interface IPtRrk {
+export interface IRrkInf {
     /**
-     * 履歴日時 YYYY/MM/DD HH:mm:ss
+     * 履歴日時（日時形式 format：yyyy/MM/dd HH:mm:ss）
      */
     rrkDt: string;
     /**
-     * ポイント区分
+     * ポイント区分（0：購入／1：キャンペーン）
      */
     ptTyp: string;
     /**
-     * ポイント名称
+     * ポイント区分名称
      */
     ptkbnNm: string;
     /**
-     * 履歴区分
+     * 履歴区分（0：利用／1：付与／2：獲得／3：取消／4：失効）
      */
     rrkTyp: string;
     /**
@@ -40,43 +40,27 @@ export interface IPtRrk {
      */
     rrkkbnNm: string;
     /**
-     * 利用・獲得ポイント
+     * 処理ポイント（マイナス表記あり）
      */
-    rykktkPt: number;
+    shrPt: number;
     /**
      * 事由
      */
-    jyTxt: string;
+    jyTxt?: string;
     /**
-     * 有効期限終了年月
+     * 有効期限終了年月（年月形式 format：yyyy/MM）※履歴がキャンペーンポイントの場合のみ設定される
      */
     ykkgnshryYm: null;
 }
 
-export interface IPointResult {
-    /**
-     * 情報
-     */
-    resultInfo: {
-        /**
-         * ステータス
-         */
-        status: string;
-        /**
-         * メッセージ
-         */
-        message: string;
-    };
-}
-
 export interface IAccountCreateArgs extends IPointRequest {
     /**
-     * 会員コード
+     * 会員コード（8桁固定）
      */
     kiinCd: string;
 }
 
-export interface IAccountCreateResult extends IPointResult {
+export interface IAccountCreateResult {
     /**
      * 口座番号
      */
@@ -89,115 +73,80 @@ export interface IAccountStopArgs extends IPointRequest {
      */
     kiinCd: string;
     /**
-     * 担当者コード
+     * 担当ユーザーコード
      */
-    tntshaCd: string;
+    usrCd: string;
 }
 
-export type IAccountStopResult = IPointResult;
-
-export interface IAccountRestartArgs extends IPointRequest {
-    /**
-     * 会員コード
-     */
-    kiinCd: string;
-    /**
-     * 担当者コード
-     */
-    tntshaCd: string;
-}
-
-export type IAccountRestartResult = IPointResult;
+export type IAccountRestartArgs = IAccountStopArgs;
 
 export interface IBalanceArgs extends IPointRequest {
     /**
-     * 会員コード
+     * 会員コード（8桁固定）
      */
     kiinCd: string;
 }
 
-export interface IBalanceResult extends IPointResult {
+export interface IBalanceResult {
     /**
      * 仮充当中ポイント
      */
     krjuthchPt: number;
     /**
-     * 通常ポイント残高
+     * 購入ポイント残高
      */
-    tujptZndk: number;
+    knyptZndk: number;
     /**
-     * 期間限定ポイント残高リスト
+     * キャンペーンポイント情報
      */
-    kkngntiptZndkLst: IKkngntiPtZndk[];
+    cpptInf: ICpptInf[];
 }
 
-export interface IInfoArgs extends IPointRequest {
+export interface IInfoArgs {
     /**
      * 会員コード
      */
     kiinCd: string;
     /**
-     * 取得開始年月 YYYY/MM
+     * 履歴取得開始年月（年月形式 format：yyyy/MM）
      */
-    shtkkishYm?: string;
+    rrksytkkishYm?: string;
     /**
-     * 取得終了年月 YYYY/MM
+     * 履歴取得終了年月（年月形式 format：yyyy/MM）
      */
-    shtkshryYm?: string;
+    rrksytkshryYm?: string;
 }
 
-export interface IInfoResult extends IPointResult {
-    /**
-     * 口座番号
-     */
-    khzNo: string;
+export interface IInfoResult {
     /**
      * 仮充当中ポイント
      */
     krjuthchPt: number;
     /**
-     * 通常ポイント残高
+     * 購入ポイント残高
      */
-    tujptZndk: number;
+    knyptZndk: number;
     /**
-     * 通常ポイント有効期限終了年月日
+     * 購入ポイント有効期限終了年月日（年月日形式 format：yyyy/MM/dd）
      */
-    tujptykkgnshryYmd?: string;
+    knyptykkgnshryYmd: string;
     /**
-     * 期間限定ポイント残高リスト
+     * キャンペーンポイント情報
      */
-    kkngntiptZndkLst: IKkngntiPtZndk[];
+    cpptInf: ICpptInf[];
     /**
-     * ポイント履歴リスト
+     * 履歴情報
      */
-    ptRrkLst: IPtRrk[];
+    rrkInf: IRrkInf[];
 }
 
-export interface IHistoryArgs extends IPointRequest {
-    /**
-     * 会員コード
-     */
-    kiinCd: string;
-    /**
-     * 取得開始年月 YYYY/MM
-     */
-    shtkkishYm: string;
-    /**
-     * 取得終了年月 YYYY/MM
-     */
-    shtkshryYm: string;
-}
+export type IHistoryArgs = IInfoArgs;
 
-export interface IHistoryResult extends IPointResult {
-    /**
-     * ポイント履歴リスト
-     */
-    ptRrkLst: IPtRrk[];
-}
+export type IHistoryResult = IRrkInf[];
 
 export interface ITempRedeemArgs extends IPointRequest {
     /**
-     * 会員コード
+     * 会員コード（8桁固定）
      */
     kiinCd: string;
     /**
@@ -205,185 +154,68 @@ export interface ITempRedeemArgs extends IPointRequest {
      */
     krjuthchPt: number;
     /**
-     * 取引日時 yyyy/MM/dd HH:mm:ss.fff形式
+     * 取引日時（日時形式 format：yyyy/MM/dd HH:mm:ss）
      */
     tranDt: string;
     /**
      * トークンID
      */
-    tknId: string;
+    tknId?: string;
 }
 
-export interface ITempRedeemResult extends IPointResult {
+export interface ITempRedeemResult {
     /**
-     * 仮充当決済UUID
+     * ポイント決済UUID
      */
     uuid: string;
 }
 
-export interface ITempRedeemCancelArgs extends IPointRequest {
-    /**
-     * 仮充当決済UUID
-     */
-    uuid: string;
-    /**
-     * 会員コード
-     */
-    kiinCd: string;
-}
-
-export type ITempRedeemCancelResult = IPointResult;
-
-// export interface IRedeemArgs extends IPointRequest {
-//     /**
-//      * 仮充当決済UUID
-//      */
-//     uuid: string;
-//     /**
-//      * ryCd
-//      */
-//     ryCd: string;
-//     /**
-//      * ryTxt
-//      */
-//     ryTxt: string;
-// }
-
-// export type IRedeemResult = IPointResult;
-
-// export interface IAccumulateArgs extends IPointRequest {
-//     /**
-//      * 会員コード
-//      */
-//     kiinCd: string;
-//     /**
-//      * pt
-//      */
-//     pt: string;
-//     /**
-//      * ptKktkKssiId
-//      */
-//     ptKktkKssiId: string;
-//     /**
-//      * 担当者コード
-//      */
-//     tntshaCd: string;
-// }
-
-// export type IAccumulateResult = IPointResult;
+export type ITempRedeemCancelArgs = ITempRedeemResult;
 
 export interface IGrantArgs extends IPointRequest {
     /**
-     * 会員コード
+     * 会員コード（8桁固定）
      */
     kiinCd: string;
     /**
-     * 付与ポイント
+     * 操作ポイント（付与）
      */
-    fyPt: number;
+    susPt: number;
     /**
      * 事由区分
      */
     jyTyp: string;
     /**
-     * 事由本文
+     * 事由
      */
     jyTxt?: string;
     /**
-     * 担当者コード
+     * 担当ユーザーコード
      */
-    tntshaCd: string;
+    usrCd: string;
 }
 
-export type IGrantResult = IPointResult;
+export type IRevokeArgs = IGrantArgs;
 
-export interface IRevokeArgs extends IPointRequest {
+export interface IGrantLimitedArgs extends IGrantArgs {
     /**
-     * 会員コード
-     */
-    kiinCd: string;
-    /**
-     * 削除ポイント
-     */
-    skjPt: number;
-    /**
-     * 事由区分
-     */
-    jyTyp: string;
-    /**
-     * 事由本文
-     */
-    jyTxt?: string;
-    /**
-     * 担当者コード
-     */
-    tntshaCd: string;
-}
-
-export type IRevokeResult = IPointResult;
-
-export interface IGrantLimitedArgs extends IPointRequest {
-    /**
-     * 会員コード
-     */
-    kiinCd: string;
-    /**
-     * 有効期間終了年月
+     * 有効期限終了年月（年月形式 format：yyyy/MM）
      */
     ykkgnshryYm: string;
-    /**
-     * 付与ポイント
-     */
-    fyPt: number;
-    /**
-     * 事由区分
-     */
-    jyTyp: string;
-    /**
-     * 事由本文
-     */
-    jyTxt?: string;
-    /**
-     * 担当者コード
-     */
-    tntshaCd: string;
 }
 
-export type IGrantLimitedResult = IPointResult;
+export type IRevokeLimitedArgs = IGrantLimitedArgs;
 
-export interface IRevokeLimitedArgs extends IPointRequest {
+export interface IPercentageArgs {
     /**
-     * 会員コード
+     * 作品コード（6桁固定）
      */
-    kiinCd: string;
-    /**
-     * 有効期間終了年月
-     */
-    ykkgnshryYm: string;
-    /**
-     * 削除ポイント
-     */
-    skjPt: number;
-    /**
-     * 事由区分
-     */
-    jyTyp: string;
-    /**
-     * 事由本文
-     */
-    jyTxt?: string;
-    /**
-     * 担当者コード
-     */
-    tntshaCd: string;
-}
-
-export type IRevokeLimitedResult = IPointResult;
-
-export interface IPercentageArgs extends IPointRequest {
     skhnCd: string;
 }
 
-export interface IPercentageResult extends IPointResult {
-    kktkptRt: number;
+export interface IPercentageResult {
+    /**
+     * 獲得率
+     */
+    kktkRt: number;
 }

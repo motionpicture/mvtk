@@ -15,14 +15,14 @@ export class PointService extends Service {
     /**
      * 1.口座作成
      */
-    public async accountCreate(args: pointFactory.IAccountCreateArgs): Promise<pointFactory.IAccountCreateResult> {
+    public async create(args: pointFactory.IAccountCreateArgs): Promise<pointFactory.IAccountCreateResult> {
         debug('requesting...', args);
         const form = {
             kiin_cd: args.kiinCd
         };
         const options = {
             expectedStatusCodes: [OK],
-            uri: '/api/point/accountCreate',
+            uri: '/api/point/create',
             method: 'POST',
             form: form
         };
@@ -30,25 +30,22 @@ export class PointService extends Service {
         debug('result...', result);
 
         return {
-            khzNo: result.khz_no,
-            resultInfo: {
-                status: result.result_info.status,
-                message: result.result_info.message
-            }
+            khzNo: result.khz_no
         };
     }
 
     /**
      * 2.口座停止
      */
-    public async accountStop(args: pointFactory.IAccountStopArgs): Promise<pointFactory.IAccountStopResult> {
+    public async stop(args: pointFactory.IAccountStopArgs): Promise<{}> {
         debug('requesting...', args);
         const form = {
-            kiin_cd: args.kiinCd
+            kiin_cd: args.kiinCd,
+            usr_cd: args.usrCd
         };
         const options = {
             expectedStatusCodes: [OK],
-            uri: '/api/point/accountStop',
+            uri: '/api/point/stop',
             method: 'POST',
             form: form
         };
@@ -56,25 +53,22 @@ export class PointService extends Service {
         debug('result...', result);
 
         return {
-            resultInfo: {
-                status: result.result_info.status,
-                message: result.result_info.message
-            }
+            status: 'OK'
         };
     }
 
     /**
      * 3.口座再開
      */
-    public async accountRestart(args: pointFactory.IAccountRestartArgs): Promise<pointFactory.IAccountRestartResult> {
+    public async restart(args: pointFactory.IAccountRestartArgs): Promise<{}> {
         debug('requesting...', args);
         const form = {
             kiin_cd: args.kiinCd,
-            tntsha_cd: args.tntshaCd
+            usr_cd: args.usrCd
         };
         const options = {
             expectedStatusCodes: [OK],
-            uri: '/api/point/accountRestart',
+            uri: '/api/point/restart',
             method: 'POST',
             form: form
         };
@@ -82,10 +76,7 @@ export class PointService extends Service {
         debug('result...', result);
 
         return {
-            resultInfo: {
-                status: result.result_info.status,
-                message: result.result_info.message
-            }
+            status: 'OK'
         };
     }
 
@@ -94,33 +85,26 @@ export class PointService extends Service {
      */
     public async balance(args: pointFactory.IBalanceArgs): Promise<pointFactory.IBalanceResult> {
         debug('requesting...', args);
-        const form = {
-            kiin_cd: args.kiinCd
-        };
         const options = {
             expectedStatusCodes: [OK],
-            uri: '/api/point/balance',
-            method: 'POST',
-            form: form
+            uri: `/api/point/balance?kiin_cd=${args.kiinCd}`,
+            method: 'GET',
+            form: {}
         };
         const result = await this.request(options);
         debug('result...', result);
 
         return {
-            krjuthchPt: (result.krjuthch_pt === null) ? 0 : Number(result.krjuthch_pt),
-            tujptZndk: (result.tujpt_zndk === null) ? 0 : Number(result.tujpt_zndk),
-            kkngntiptZndkLst: (result.kkngntiptzndk_lst === null)
+            krjuthchPt: Number(result.krjuthch_pt),
+            knyptZndk: Number(result.knypt_zndk),
+            cpptInf: (result.cppt_inf === null)
                 ? []
-                : result.kkngntiptzndk_lst.map((kkngntiptZndk: any): pointFactory.IKkngntiPtZndk => {
+                : result.cppt_inf.map((cpptInfo: any): pointFactory.ICpptInf => {
                     return {
-                        ykkgnshryYm: kkngntiptZndk.ykkgnshry_ym,
-                        kkngntiptZndk: Number(kkngntiptZndk.kkngntipt_zndk)
+                        ykkgnshryYm: cpptInfo.ykkgnshry_ym,
+                        cpptZndk: Number(cpptInfo.cppt_zndk)
                     };
-                }),
-            resultInfo: {
-                status: result.result_info.status,
-                message: result.result_info.message
-            }
+                })
         };
     }
 
@@ -129,49 +113,39 @@ export class PointService extends Service {
      */
     public async info(args: pointFactory.IInfoArgs): Promise<pointFactory.IInfoResult> {
         debug('requesting...', args);
-        const form = {
-            kiin_cd: args.kiinCd,
-            shtkkish_ym: args.shtkkishYm,
-            shtkshry_ym: args.shtkshryYm
-        };
+        const rrksytkkishYm = (args.rrksytkkishYm !== undefined) ? `&rrksytkkish_ym=${args.rrksytkkishYm}` : '';
+        const rrksytkshryYm = (args.rrksytkshryYm !== undefined) ? `&rrksytkshry_ym=${args.rrksytkshryYm}` : '';
         const options = {
             expectedStatusCodes: [OK],
-            uri: '/api/point/info',
-            method: 'POST',
-            form: form
+            uri: `/api/point/info?kiin_cd=${args.kiinCd}${rrksytkkishYm}${rrksytkshryYm}`,
+            method: 'GET',
+            form: {}
         };
         const result = await this.request(options);
         debug('result...', result);
 
         return {
-            khzNo: result.khz_no,
-            krjuthchPt: (result.krjuthch_pt === null) ? 0 : Number(result.krjuthch_pt),
-            tujptZndk: (result.tujpt_zndk === null) ? 0 : Number(result.tujpt_zndk),
-            tujptykkgnshryYmd: (result.tujptykkgnshry_ymd === null) ? undefined : result.tujptykkgnshry_ymd,
-            kkngntiptZndkLst: (result.kkngntiptzndk_lst === null)
-                ? []
-                : result.kkngntiptzndk_lst.map((kkngntiptZndk: any): pointFactory.IKkngntiPtZndk => {
-                    return {
-                        ykkgnshryYm: kkngntiptZndk.ykkgnshry_ym,
-                        kkngntiptZndk: Number(kkngntiptZndk.kkngntipt_zndk)
-                    };
-                }),
-            ptRrkLst: (result.ptrrk_lst === null) ? [] : result.ptrrk_lst.map((ptRrk: any): pointFactory.IPtRrk => {
+            krjuthchPt: Number(result.krjuthch_pt),
+            knyptZndk: Number(result.knypt_zndk),
+            knyptykkgnshryYmd: result.knyptykkgnshry_ymd,
+            cpptInf: (result.cppt_inf === null) ? [] : result.cppt_inf.map((cpptInfo: any): pointFactory.ICpptInf => {
                 return {
-                    rrkDt: ptRrk.rrk_dt,
-                    ptTyp: ptRrk.pt_typ,
-                    ptkbnNm: ptRrk.ptkbn_nm,
-                    rrkTyp: ptRrk.rrk_typ,
-                    rrkkbnNm: ptRrk.rrkkbn_nm,
-                    rykktkPt: Number(ptRrk.rykktk_pt),
-                    jyTxt: ptRrk.jy_txt,
-                    ykkgnshryYm: ptRrk.ykkgnshry_ym
+                    ykkgnshryYm: cpptInfo.ykkgnshry_ym,
+                    cpptZndk: Number(cpptInfo.cppt_zndk)
                 };
             }),
-            resultInfo: {
-                status: result.result_info.status,
-                message: result.result_info.message
-            }
+            rrkInf: (result.rrk_inf === null) ? [] : result.rrk_inf.map((rrkInfo: any): pointFactory.IRrkInf => {
+                return {
+                    rrkDt: rrkInfo.rrk_dt,
+                    ptTyp: rrkInfo.pt_typ,
+                    ptkbnNm: rrkInfo.ptkbn_nm,
+                    rrkTyp: rrkInfo.rrk_typ,
+                    rrkkbnNm: rrkInfo.rrkkbn_nm,
+                    shrPt: Number(rrkInfo.shr_pt),
+                    jyTxt: rrkInfo.jy_txt,
+                    ykkgnshryYm: rrkInfo.ykkgnshry_ym
+                };
+            })
         };
     }
 
@@ -180,38 +154,29 @@ export class PointService extends Service {
      */
     public async history(args: pointFactory.IHistoryArgs): Promise<pointFactory.IHistoryResult> {
         debug('requesting...', args);
-        const form = {
-            kiin_cd: args.kiinCd,
-            shtkkish_ym: args.shtkkishYm,
-            shtkshry_ym: args.shtkshryYm
-        };
+        const rrksytkkishYm = (args.rrksytkkishYm !== undefined) ? `&rrksytkkish_ym=${args.rrksytkkishYm}` : '';
+        const rrksytkshryYm = (args.rrksytkshryYm !== undefined) ? `&rrksytkshry_ym=${args.rrksytkshryYm}` : '';
         const options = {
             expectedStatusCodes: [OK],
-            uri: '/api/point/history',
-            method: 'POST',
-            form: form
+            uri: `/api/point/history?kiin_cd=${args.kiinCd}${rrksytkkishYm}${rrksytkshryYm}`,
+            method: 'GET',
+            form: {}
         };
         const result = await this.request(options);
         debug('result...', result);
 
-        return {
-            ptRrkLst: (result.ptrrk_lst === null) ? [] : result.ptrrk_lst.map((ptRrk: any): pointFactory.IPtRrk => {
+        return (result === null) ? [] : result.map((rrkInfo: any): pointFactory.IRrkInf => {
                 return {
-                    rrkDt: ptRrk.rrk_dt,
-                    ptTyp: ptRrk.pt_typ,
-                    ptkbnNm: ptRrk.ptkbn_nm,
-                    rrkTyp: ptRrk.rrk_typ,
-                    rrkkbnNm: ptRrk.rrkkbn_nm,
-                    rykktkPt: Number(ptRrk.rykktk_pt),
-                    jyTxt: ptRrk.jy_txt,
-                    ykkgnshryYm: ptRrk.ykkgnshry_ym
+                    rrkDt: rrkInfo.rrk_dt,
+                    ptTyp: rrkInfo.pt_typ,
+                    ptkbnNm: rrkInfo.ptkbn_nm,
+                    rrkTyp: rrkInfo.rrk_typ,
+                    rrkkbnNm: rrkInfo.rrkkbn_nm,
+                    shrPt: Number(rrkInfo.shr_pt),
+                    jyTxt: rrkInfo.jy_txt,
+                    ykkgnshryYm: rrkInfo.ykkgnshry_ym
                 };
-            }),
-            resultInfo: {
-                status: result.result_info.status,
-                message: result.result_info.message
-            }
-        };
+            });
     }
 
     /**
@@ -235,21 +200,16 @@ export class PointService extends Service {
         debug('result...', result);
 
         return {
-            uuid: result.uuid,
-            resultInfo: {
-                status: result.result_info.status,
-                message: result.result_info.message
-            }
+            uuid: result.uuid
         };
     }
 
     /**
      * 8.仮充当解除
      */
-    public async tempRedeemCancel(args: pointFactory.ITempRedeemCancelArgs): Promise<pointFactory.ITempRedeemCancelResult> {
+    public async tempRedeemCancel(args: pointFactory.ITempRedeemCancelArgs): Promise<{}> {
         debug('requesting...', args);
         const form = {
-            kiin_cd: args.kiinCd,
             uuid: args.uuid
         };
         const options = {
@@ -262,10 +222,7 @@ export class PointService extends Service {
         debug('result...', result);
 
         return {
-            resultInfo: {
-                status: result.result_info.status,
-                message: result.result_info.message
-            }
+            status: 'OK'
         };
     }
 
@@ -308,14 +265,14 @@ export class PointService extends Service {
     /**
      * 10.通常ポイント付与
      */
-    public async grant(args: pointFactory.IGrantArgs): Promise<pointFactory.IGrantResult> {
+    public async grant(args: pointFactory.IGrantArgs): Promise<{}> {
         debug('requesting...', args);
         const form = {
             kiin_cd: args.kiinCd,
-            fy_pt: String(args.fyPt),
+            sus_pt: String(args.susPt),
             jy_typ: args.jyTyp,
-            jy_txt: args.jyTyp,
-            tntsha_cd: args.tntshaCd
+            ...(args.jyTxt !== undefined  ? {jy_txt: args.jyTxt} : {}),
+            usr_cd: args.usrCd
         };
         const options = {
             expectedStatusCodes: [OK],
@@ -327,24 +284,21 @@ export class PointService extends Service {
         debug('result...', result);
 
         return {
-            resultInfo: {
-                status: result.result_info.status,
-                message: result.result_info.message
-            }
+            status: 'OK'
         };
     }
 
     /**
      * 11.通常ポイント削除
      */
-    public async revoke(args: pointFactory.IRevokeArgs): Promise<pointFactory.IRevokeResult> {
+    public async revoke(args: pointFactory.IRevokeArgs): Promise<{}> {
         debug('requesting...', args);
         const form = {
             kiin_cd: args.kiinCd,
-            skj_pt: String(args.skjPt),
+            sus_pt: String(args.susPt),
             jy_typ: args.jyTyp,
-            jy_txt: args.jyTyp,
-            tntsha_cd: args.tntshaCd
+            ...(args.jyTxt !== undefined  ? {jy_txt: args.jyTxt} : {}),
+            usr_cd: args.usrCd
         };
         const options = {
             expectedStatusCodes: [OK],
@@ -356,25 +310,22 @@ export class PointService extends Service {
         debug('result...', result);
 
         return {
-            resultInfo: {
-                status: result.result_info.status,
-                message: result.result_info.message
-            }
+            status: 'OK'
         };
     }
 
     /**
      * 12.期間限定ポイント付与
      */
-    public async grantLimited(args: pointFactory.IGrantLimitedArgs): Promise<pointFactory.IGrantLimitedResult> {
+    public async grantLimited(args: pointFactory.IGrantLimitedArgs): Promise<{}> {
         debug('requesting...', args);
         const form = {
             kiin_cd: args.kiinCd,
-            ykkgnshry_ym: args.ykkgnshryYm,
-            fy_pt: String(args.fyPt),
+            sus_pt: String(args.susPt),
             jy_typ: args.jyTyp,
-            jy_txt: args.jyTyp,
-            tntsha_cd: args.tntshaCd
+            ...(args.jyTxt !== undefined  ? {jy_txt: args.jyTxt} : {}),
+            usr_cd: args.usrCd,
+            ykkgnshry_ym: args.ykkgnshryYm
         };
         const options = {
             expectedStatusCodes: [OK],
@@ -386,25 +337,22 @@ export class PointService extends Service {
         debug('result...', result);
 
         return {
-            resultInfo: {
-                status: result.result_info.status,
-                message: result.result_info.message
-            }
+            status: 'OK'
         };
     }
 
     /**
      * 13.期間限定ポイント削除
      */
-    public async revokeLimited(args: pointFactory.IRevokeLimitedArgs): Promise<pointFactory.IRevokeLimitedResult> {
+    public async revokeLimited(args: pointFactory.IRevokeLimitedArgs): Promise<{}> {
         debug('requesting...', args);
         const form = {
             kiin_cd: args.kiinCd,
-            ykkgnshry_ym: args.ykkgnshryYm,
-            skj_pt: String(args.skjPt),
+            sus_pt: String(args.susPt),
             jy_typ: args.jyTyp,
-            jy_txt: args.jyTyp,
-            tntsha_cd: args.tntshaCd
+            ...(args.jyTxt !== undefined  ? {jy_txt: args.jyTxt} : {}),
+            usr_cd: args.usrCd,
+            ykkgnshry_ym: args.ykkgnshryYm
         };
         const options = {
             expectedStatusCodes: [OK],
@@ -416,10 +364,7 @@ export class PointService extends Service {
         debug('result...', result);
 
         return {
-            resultInfo: {
-                status: result.result_info.status,
-                message: result.result_info.message
-            }
+            status: 'OK'
         };
     }
 
@@ -428,24 +373,17 @@ export class PointService extends Service {
      */
     public async percentage(args: pointFactory.IPercentageArgs): Promise<pointFactory.IPercentageResult> {
         debug('requesting...', args);
-        const form = {
-            skhn_cd: args.skhnCd
-        };
         const options = {
             expectedStatusCodes: [OK],
-            uri: '/api/point/percentage',
-            method: 'POST',
-            form: form
+            uri: `/api/point/percentage?skhn_cd=${args.skhnCd}`,
+            method: 'GET',
+            form: {}
         };
         const result = await this.request(options);
         debug('result...', result);
 
         return {
-            kktkptRt: Number(result.kktkpt_rt),
-            resultInfo: {
-                status: result.result_info.status,
-                message: result.result_info.message
-            }
+            kktkRt: Number(result.kktk_rt)
         };
     }
 }
