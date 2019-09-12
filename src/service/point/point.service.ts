@@ -186,7 +186,7 @@ export class PointService extends Service {
         debug('requesting...', args);
         const form = {
             kiin_cd: args.kiinCd,
-            krjuth_pt: String(args.krjuthchPt),
+            krjuth_pt: String(args.krjuthPt),
             tran_dt: args.tranDt,
             tkn_id: args.tknId
         };

@@ -152,7 +152,7 @@ export interface ITempRedeemArgs extends IPointRequest {
     /**
      * 仮充当中ポイント
      */
-    krjuthchPt: number;
+    krjuthPt: number;
     /**
      * 取引日時（日時形式 format：yyyy/MM/dd HH:mm:ss）
      */
