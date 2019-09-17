@@ -166,6 +166,45 @@ export class FilmService extends Service {
                         knshknhmbiUnip: res.knshknhmbi_unip
                     };
                 }
+            ),
+            bnnrInf: (result.bnnr_inf === null) ? [] : result.bnnr_inf.map(
+                (res: any): filmFactory.IBnnrInf => {
+                    return {
+                        bnnrCd: res.bnnr_cd,
+                        bnnrNm: res.bnnr_nm,
+                        bnnrhyjkshTyp: res.bnnrhyjksh_typ,
+                        bnnrgzUrl: res.bnnrgz_url,
+                        bnnrlnkskUrl: res.bnnrlnksk_url,
+                        bnnrstsmiTxt: res.bnnrstsmi_txt,
+                        bnnrkisikishYmd: res.bnnrkisikish_ymd,
+                        bnnrkisishryYmd: res.bnnrkisishry_ymd,
+                        cptktnbtndsTyp: res.cptktnbtnds_typ
+                    };
+                }
+            ),
+            dgtlincntvInf: (result.dgtlincntv_inf === null) ? [] : result.dgtlincntv_inf.map(
+                (res: any): filmFactory.IDgtlincntvInf => {
+                    return {
+                        dgtlincntvCd: res.dgtlincntv_cd,
+                        dgtlincntvTtl: res.dgtlincntv_ttl,
+                        dgtlincntvstsmiTxt: res.dgtlincntvstsmi_txt,
+                        smplgzUrl: res.smplgz_url,
+                        dgtlincntvknykishYmd: res.dgtlincntvknykish_ymd,
+                        dgtlincntvknyshryYmd: res.dgtlincntvknyshry_ymd,
+                        dgtlincntvdwnlodykTm: res.dgtlincntvdwnlodyk_tm,
+                        dgtlincntvdwnlodjgnkiNum: res.dgtlincntvdwnlodjgnki_num,
+                        skhndgtlincntvRmk: res.skhndgtlincntv_rmk
+                    };
+                }
+            ),
+            ykkhnInf: (result.ykkhn_inf === null) ? [] : result.ykkhn_inf.map(
+                (res: any): filmFactory.IYkkhnInf => {
+                    return {
+                        ykkhnNo: res.ykkhn_no,
+                        ykkhnTtl: res.ykkhn_ttl,
+                        ykkhnUrl: res.ykkhn_url
+                    };
+                }
             )
         };
     }

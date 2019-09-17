@@ -194,6 +194,116 @@ export interface IFilmDetailResult {
      * 鑑賞券情報
      */
     knshknInf: IKnshknInf[];
+    /**
+     * バナー情報
+     */
+    bnnrInf: IBnnrInf[];
+    /**
+     * デジタルインセンティブ情報
+     */
+    dgtlincntvInf: IDgtlincntvInf[];
+    /**
+     * 予告編情報
+     */
+    ykkhnInf: IYkkhnInf[]
+}
+
+export interface IBnnrInf {
+    /**
+     * バナーコード
+     */
+    bnnrCd: string;
+    /**
+     * バナー名称
+     */
+    bnnrNm: string;
+    /**
+     * バナー表示箇所区分（01:作品詳細画面右／02:作品詳細画面下／03:購入完了画面下）
+     */
+    bnnrhyjkshTyp: string;
+    /**
+     * バナー画像URL
+     */
+    bnnrgzUrl: string;
+    /**
+     * バナーリンク先URL
+     */
+    bnnrlnkskUrl?: string;
+    /**
+     * バナー説明本文
+     */
+    bnnrstsmiTxt?: string;
+    /**
+     * バナー掲載開始年月日（日付形式 format: yyyyMMdd）
+     */
+    bnnrkisikishYmd?: string;
+    /**
+     * バナー掲載終了年月日（日付形式 format: yyyyMMdd）
+     */
+    bnnrkisishryYmd?: string;
+    /**
+     * キャンペーン特典ボタン動作区分 (
+     * 01:キャンペーン情報（別ウィンドウ遷移）/
+     * 02:キャンペーン情報（バナーへスクロール）/
+     * 03:特典情報（別ウィンドウ遷移）/
+     * 04:特典情報（バナーへスクロール）/
+     * 05:バナー表示のみ（「キャンペーン情報」「特典情報」ボタンの表示なし。バナーへのスクロールなし)
+     */
+    cptktnbtndsTyp?: string;
+}
+
+export interface IDgtlincntvInf {
+    /**
+     * デジタルインセンティブコード
+     */
+    dgtlincntvCd: string;
+    /**
+     * デジタルインセンティブタイトル
+     */
+    dgtlincntvTtl: string;
+    /**
+     * デジタルインセンティブ説明本文
+     */
+    dgtlincntvstsmiTxt: string;
+    /**
+     * サンプル画像URL
+     */
+    smplgzUrl: string;
+    /**
+     * デジタルインセンティブ購入開始年月日
+     */
+    dgtlincntvknykishYmd: string;
+    /**
+     * デジタルインセンティブ購入終了年月日
+     */
+    dgtlincntvknyshryYmd: string;
+    /**
+     * デジタルインセンティブダウンロード有効期間（日付形式 format: yyyyMMdd）
+     */
+    dgtlincntvdwnlodykTm?: string;
+    /**
+     * デジタルインセンティブダウンロード上限回数
+     */
+    dgtlincntvdwnlodjgnkiNum?: number;
+    /**
+     * デジタルインセンティブ備考
+     */
+    skhndgtlincntvRmk?: string;
+}
+
+export interface IYkkhnInf {
+    /**
+     * 予告編番号
+     */
+    ykkhnNo: string;
+    /**
+     * 予告編タイトル
+     */
+    ykkhnTtl: string;
+    /**
+     * 予告編URL
+     */
+    ykkhnUrl: string;
 }
 
 export interface IFilmInfoArgs extends IFilmRequest {
