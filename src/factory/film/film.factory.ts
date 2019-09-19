@@ -205,7 +205,7 @@ export interface IFilmDetailResult {
     /**
      * 予告編情報
      */
-    ykkhnInf: IYkkhnInf[]
+    ykkhnInf: IYkkhnInf[];
 }
 
 export interface IBnnrInf {
