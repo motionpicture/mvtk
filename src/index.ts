@@ -14,6 +14,7 @@ import * as pointUtil from './utils/point/point.util';
 import { EigagiftService } from './service/eigagift/eigagift.service';
 import { FavoriteService } from './service/favorite/favorite.service';
 import { FilmService } from './service/film/film.service';
+import { HistoryService } from './service/history/history.service';
 import { PointService } from './service/point/point.service';
 import { PromotionCodeService } from './service/promotionCode/promotionCode.service';
 import { PurchaseService } from './service/purchase/purchase.service';
@@ -41,6 +42,11 @@ export namespace service {
      * 作品情報サービス
      */
     export class Film extends FilmService { }
+
+    /**
+     * 購入履歴
+     */
+    export class History extends HistoryService { }
 
     /**
      * ポイントサービス
