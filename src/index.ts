@@ -21,6 +21,7 @@ import { PurchaseService } from './service/purchase/purchase.service';
 import { ScheduleService } from './service/schedule/schedule.service';
 import { TheaterService } from './service/theater/theater.service';
 import { UserService } from './service/user/user.service';
+import { UtilityService } from './service/utility/utility.service';
 
 export import factory = factory;
 
@@ -44,7 +45,7 @@ export namespace service {
     export class Film extends FilmService { }
 
     /**
-     * 購入履歴
+     * 購入履歴サービス
      */
     export class History extends HistoryService { }
 
@@ -83,6 +84,12 @@ export namespace service {
      * @class
      */
     export class PromotionCode extends PromotionCodeService { }
+
+    /**
+     * ユーティリティサービス
+     * @class
+     */
+    export class Utility extends UtilityService { }
 }
 
 export namespace utils {
