@@ -208,3 +208,58 @@ export interface IPurchasableDateTimeResult {
      */
     knyDt: string;
 }
+
+export interface ITempPreserveBonusArgs {
+    /**
+     * 決済管理番号（16桁固定）
+     */
+    kssiknrNo: string;
+    /**
+     * 作品コード（6桁固定）
+     */
+    skhnCd: string;
+    /**
+     * 決済方法区分（00：クレジット／01：auかんたん決済／02：d払い／22：楽天ペイ）
+     */
+    kssihhTyp: string;
+    /**
+     * 併用決済フラグ（ムビチケ前売券GIFT利用時は 1 をそれ以外は null をセット）
+     */
+    hiykssiFlg: string | null;
+    /**
+     * 併用決済方法区分（ムビチケ前売券GIFT利用時は 04 を それ以外は null をセット）
+     */
+    hiykssihhTyp: string | null;
+    /**
+     * 購入日時（日時形式 format: yyyy/MM/dd HH:mm:ss）
+     */
+    knyDt: string;
+    /**
+     * 鑑賞券情報
+     */
+    knshknInf: {
+        /**
+         * 券種区分（2桁固定）
+         */
+        knshTyp: string;
+        /**
+         * 購入枚数
+         */
+        knymiNum: number;
+    }[];
+}
+
+export interface ITempPreserveBonusResult {
+    /**
+     * 特典在庫エラー情報ありフラグ
+     */
+    errjharFlg: string;
+    /**
+     * 特典コード確保番号リスト
+     */
+    tktncdkkhnoLst?: string[];
+    /**
+     * "特典在庫状況メッセージリスト ※HTMLタグを含む
+     */
+    tktnzikjkymsgLst?: string[];
+}

@@ -138,4 +138,40 @@ export class PurchaseService extends Service {
             knyDt: result.kny_dt
         };
     }
+
+    /**
+     * 特典一時確保
+     */
+    public async tempPreserveBonus(args: purchaseFactory.ITempPreserveBonusArgs): Promise<purchaseFactory.ITempPreserveBonusResult> {
+        const form = {
+            kssiknr_no: args.kssiknrNo,
+            skhn_cd: args.skhnCd,
+            kssihh_typ: args.kssihhTyp,
+            hiykssi_flg: args.hiykssiFlg,
+            hiykssihh_typ: args.hiykssihhTyp,
+            kny_dt: args.knyDt,
+            knshkn_inf: args.knshknInf.map((inf) => {
+                return {
+                    knsh_typ: inf.knshTyp,
+                    knymi_num: inf.knymiNum
+                };
+            })
+        };
+
+        const options = {
+            expectedStatusCodes: [OK],
+            uri: '/api/purchase/purchasableDateTime',
+            method: 'POST',
+            form: form
+        };
+
+        const result = await this.request(options);
+        debug('result...', result);
+
+        return {
+            errjharFlg: result.errjhar_flg,
+            tktncdkkhnoLst: result.tktncdkkhno_lst,
+            tktnzikjkymsgLst: result.tktnzikjkymsg_lst
+        };
+    }
 }

@@ -2,7 +2,7 @@
  * 上映スケジュール
  */
 // tslint:disable-next-line:no-empty-interface
-export interface IScheduleRequest {}
+export interface IScheduleRequest { }
 
 export interface IScheduleResult {
     /**
