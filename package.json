@@ -76,7 +76,7 @@
     "postversion": "git push origin --tags",
     "prepublishOnly": "npm run clean && npm run build && npm test && npm run doc"
   },
-  "version": "1.2.2-MWSR-306-alpha.2",
+  "version": "1.2.2-MWSR-306-alpha.3",
   "repository": {
     "type": "git",
     "url": "https://github.com/motionpicture/mvtk.git"

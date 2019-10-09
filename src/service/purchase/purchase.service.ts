@@ -160,7 +160,7 @@ export class PurchaseService extends Service {
 
         const options = {
             expectedStatusCodes: [OK],
-            uri: '/api/purchase/purchasableDateTime',
+            uri: '/api/purchase/tempPreserveBonus',
             method: 'POST',
             form: form
         };
