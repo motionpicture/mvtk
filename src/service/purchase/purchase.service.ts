@@ -149,6 +149,9 @@ export class PurchaseService extends Service {
             kssihh_typ: args.kssihhTyp,
             hiykssi_flg: args.hiykssiFlg,
             hiykssihh_typ: args.hiykssihhTyp,
+            pintry_flg: args.pintryFlg,
+            prmtncdry_flg: args.prmtncdryFlg,
+            eggftry_flg: args.eggftryFlg,
             kny_dt: args.knyDt,
             knshkn_inf: args.knshknInf.map((inf) => {
                 return {

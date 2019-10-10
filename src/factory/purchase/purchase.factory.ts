@@ -231,6 +231,18 @@ export interface ITempPreserveBonusArgs {
      */
     hiykssihhTyp: string | null;
     /**
+     * ポイント利用フラグ（ポイント利用時は 1 をそれ以外は null または 0 をセット）
+     */
+    pintryFlg: string | null;
+    /**
+     * プロモーションコード利用フラグ
+     */
+    prmtncdryFlg: string | null;
+    /**
+     * 映画ギフト利用フラグ
+     */
+    eggftryFlg: string | null;
+    /**
      * 購入日時（日時形式 format: yyyy/MM/dd HH:mm:ss）
      */
     knyDt: string;
