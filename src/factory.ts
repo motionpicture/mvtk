@@ -6,6 +6,7 @@
 import * as EigagiftFactory from './factory/eigagift/eigagift.factory';
 import * as FavoriteFactory from './factory/favorite/favorite.factory';
 import * as FilmFactory from './factory/film/film.factory';
+import * as GmoFactory from './factory/gmo/gmo.factory';
 import * as HistoryFactory from './factory/history/history.factory';
 import * as PointFactory from './factory/point/point.factory';
 import * as PromotionCodeFactory from './factory/promotionCode/promotionCode.factory';
@@ -24,3 +25,4 @@ export import purchase = PurchaseFactory;
 export import schedule = ScheduleFactory;
 export import theater = TheaterFactory;
 export import utility = UtilityFactory;
+export import gmo = GmoFactory;

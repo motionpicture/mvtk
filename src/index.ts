@@ -14,6 +14,7 @@ import * as pointUtil from './utils/point/point.util';
 import { EigagiftService } from './service/eigagift/eigagift.service';
 import { FavoriteService } from './service/favorite/favorite.service';
 import { FilmService } from './service/film/film.service';
+import { GmoService } from './service/gmo/gmo.service';
 import { HistoryService } from './service/history/history.service';
 import { PointService } from './service/point/point.service';
 import { PromotionCodeService } from './service/promotionCode/promotionCode.service';
@@ -90,6 +91,11 @@ export namespace service {
      * @class
      */
     export class Utility extends UtilityService { }
+    /**
+     * GMOサービス
+     * @class
+     */
+    export class Gmo extends GmoService { }
 }
 
 export namespace utils {

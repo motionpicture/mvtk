@@ -87,6 +87,10 @@ export interface ITempSettlementRegistArgs {
      */
     hiykssirygkiknGk: number;
     /**
+     * クレジットカード情報保存フラグ（クレジットカード情報保存チェックがONの場合は 1 をそれ以外は null をセット）
+     */
+    crdjhhznFlg: string | null;
+    /**
      * ギフトカード情報（ギフト利用がない場合は null をセット）
      */
     gftInf: {} | null;

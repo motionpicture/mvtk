@@ -38,6 +38,7 @@ export class PurchaseService extends Service {
             hiykssi_flg: args.hiykssiFlg,
             hiykssihh_typ: args.hiykssihhTyp,
             hiykssirygkikn_gk: args.hiykssirygkiknGk,
+            crdjhhzn_flg: args.crdjhhznFlg,
             gft_inf: args.gftInf,
             pintry_flg: args.pintryFlg,
             pintkssi_uuid: args.pintkssiUuid,
