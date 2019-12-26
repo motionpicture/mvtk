@@ -279,3 +279,18 @@ export interface ITempPreserveBonusResult {
      */
     tktnzikjkymsgLst?: string[];
 }
+
+export interface IinfoRecommend {
+    /**
+     * 購入作品コード
+     */
+    knyskhn_cd: string;
+    /**
+     * 会員コード（8桁固定）
+     */
+    kiin_cd: string;
+    /**
+     * 表示件数（指定しない場合は自動的に 5 をデフォルトとする）
+     */
+    hyj_num: string;
+}
