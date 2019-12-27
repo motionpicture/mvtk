@@ -178,4 +178,27 @@ export class PurchaseService extends Service {
             tktnzikjkymsgLst: result.tktnzikjkymsg_lst
         };
     }
+
+    /**
+     * 購入完了リコメンド取得
+     */
+    public async recommend(args: purchaseFactory.IRecommend): Promise<{}> {
+        debug('requesting...', args);
+        const kiinCd = (args.kiin_cd !== undefined && args.kiin_cd !== null) ? `&are_cd=${args.kiin_cd}` : '';
+        const hyjNum = (args.hyj_num !== undefined && args.hyj_num !== null) ? `&hyj_num=${args.hyj_num}` : '';
+        //const hyjNum = (args.hyj_num === undefined ? 5 : `&hyj_num=${args.hyj_num}`);
+        const options = {
+            expectedStatusCodes: [OK],
+            uri: `/api/purchase/recommend?knyskhn_cd=${args.knyskhn_cd}${kiinCd}${hyjNum}`,
+            method: 'GET',
+            form: {}
+        };
+
+        const result = await this.request(options);
+        debug('result...', result);
+
+        return {
+            status: 'OK'
+        };
+    }
 }

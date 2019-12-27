@@ -280,7 +280,7 @@ export interface ITempPreserveBonusResult {
     tktnzikjkymsgLst?: string[];
 }
 
-export interface IinfoRecommend {
+export interface IRecommend {
     /**
      * 購入作品コード
      */
@@ -292,5 +292,5 @@ export interface IinfoRecommend {
     /**
      * 表示件数（指定しない場合は自動的に 5 をデフォルトとする）
      */
-    hyj_num: string;
+    hyj_num: number;
 }
