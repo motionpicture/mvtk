@@ -295,7 +295,7 @@ export interface IRecommend {
     hyj_num: number;
 }
 
-export interface IRecommendDetailResult {
+export interface IRecommendResult {
     /**
      * 作品コード
      */
@@ -321,3 +321,5 @@ export interface IRecommendDetailResult {
      */
     knshknhmbishry_ymd: string;
 }
+
+export type IRecommendDetailResult = IRecommendResult[];

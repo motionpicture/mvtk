@@ -197,13 +197,17 @@ export class PurchaseService extends Service {
         const result = await this.request(options);
         debug('result...', result);
 
-        return {
-            skhn_cd: result.skhn_cd,
-            skhn_nm: result.skhn_nm,
-            pstrgz_url: result.pstrgz_url,
-            znkkkkikish_ymd: result.znkkkkikish_ymd,
-            znkkkkikish_dspt: result.znkkkkikish_dspt,
-            knshknhmbishry_ymd: result.knshknhmbishry_ymd
-        };
+        return (result === null) ? [] : result.map(
+            (res: any): purchaseFactory.IRecommendResult => {
+                return {
+                skhn_cd: res.skhn_cd,
+                skhn_nm: res.skhn_nm,
+                pstrgz_url: res.pstrgz_url,
+                znkkkkikish_ymd: res.znkkkkikish_ymd,
+                znkkkkikish_dspt: res.znkkkkikish_dspt,
+                knshknhmbishry_ymd: res.knshknhmbishry_ymd
+                };
+            }
+        );
     }
 }
