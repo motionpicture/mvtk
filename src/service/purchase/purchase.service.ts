@@ -182,7 +182,7 @@ export class PurchaseService extends Service {
     /**
      * 購入完了リコメンド取得
      */
-    public async recommend(args: purchaseFactory.IRecommend): Promise<{}> {
+    public async recommend(args: purchaseFactory.IRecommend): Promise<purchaseFactory.IRecommendDetailResult> {
         debug('requesting...', args);
         const kiinCd = (args.kiin_cd !== undefined && args.kiin_cd !== null) ? `&are_cd=${args.kiin_cd}` : '';
         const hyjNum = (args.hyj_num !== undefined && args.hyj_num !== null) ? `&hyj_num=${args.hyj_num}` : '';
@@ -198,7 +198,12 @@ export class PurchaseService extends Service {
         debug('result...', result);
 
         return {
-            status: 'OK'
+            skhn_cd: result.skhn_cd,
+            skhn_nm: result.skhn_nm,
+            pstrgz_url: result.pstrgz_url,
+            znkkkkikish_ymd: result.znkkkkikish_ymd,
+            znkkkkikish_dspt: result.znkkkkikish_dspt,
+            knshknhmbishry_ymd: result.knshknhmbishry_ymd
         };
     }
 }

@@ -294,3 +294,30 @@ export interface IRecommend {
      */
     hyj_num: number;
 }
+
+export interface IRecommendDetailResult {
+    /**
+     * 作品コード
+     */
+    skhn_cd: string;
+    /**
+     * 作品名称（最大240文字）
+     */
+    skhn_nm: string;
+    /**
+     * ポスター画像URL
+     */
+    pstrgz_url: string;
+    /**
+     * 全国公開年月日（年月日形式 format: yyyyMMdd）
+     */
+    znkkkkikish_ymd: string;
+    /**
+     * 全国公開開始日記述
+     */
+    znkkkkikish_dspt: string;
+    /**
+     * 鑑賞券販売終了年月日（日付形式 format: yyyyMMdd）
+     */
+    knshknhmbishry_ymd: string;
+}
