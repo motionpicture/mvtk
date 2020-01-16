@@ -184,7 +184,7 @@ export class PurchaseService extends Service {
      */
     public async recommend(args: purchaseFactory.IRecommend): Promise<purchaseFactory.IRecommendDetailResult> {
         debug('requesting...', args);
-        const kiinCd = (args.kiin_cd !== undefined && args.kiin_cd !== null) ? `&are_cd=${args.kiin_cd}` : '';
+        const kiinCd = (args.kiin_cd !== undefined && args.kiin_cd !== null) ? `&kiin_cd=${args.kiin_cd}` : '';
         const hyjNum = (args.hyj_num !== undefined && args.hyj_num !== null) ? `&hyj_num=${args.hyj_num}` : '';
         //const hyjNum = (args.hyj_num === undefined ? 5 : `&hyj_num=${args.hyj_num}`);
         const options = {
@@ -200,12 +200,12 @@ export class PurchaseService extends Service {
         return (result === null) ? [] : result.map(
             (res: any): purchaseFactory.IRecommendResult => {
                 return {
-                skhn_cd: res.skhn_cd,
-                skhn_nm: res.skhn_nm,
-                pstrgz_url: res.pstrgz_url,
-                znkkkkikish_ymd: res.znkkkkikish_ymd,
-                znkkkkikish_dspt: res.znkkkkikish_dspt,
-                knshknhmbishry_ymd: res.knshknhmbishry_ymd
+                    skhn_cd: res.skhn_cd,
+                    skhn_nm: res.skhn_nm,
+                    pstrgz_url: res.pstrgz_url,
+                    znkkkkikish_ymd: res.znkkkkikish_ymd,
+                    znkkkkikish_dspt: res.znkkkkikish_dspt,
+                    knshknhmbishry_ymd: res.knshknhmbishry_ymd
                 };
             }
         );
