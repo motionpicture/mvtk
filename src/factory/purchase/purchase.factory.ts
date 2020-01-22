@@ -284,42 +284,46 @@ export interface IRecommend {
     /**
      * 購入作品コード
      */
-    knyskhn_cd: string;
+    knyskhnCd: string;
     /**
      * 会員コード（8桁固定）
      */
-    kiin_cd: string;
+    kiinCd: string;
     /**
      * 表示件数（指定しない場合は自動的に 5 をデフォルトとする）
      */
-    hyj_num: number;
+    hyjNum: number;
 }
 
 export interface IRecommendResult {
     /**
      * 作品コード
      */
-    skhn_cd: string;
+    skhnCd: string;
     /**
      * 作品名称（最大240文字）
      */
-    skhn_nm: string;
+    skhnNm: string;
     /**
      * ポスター画像URL
      */
-    pstrgz_url: string;
+    pstrgzUrl: string;
     /**
      * 全国公開年月日（年月日形式 format: yyyyMMdd）
      */
-    znkkkkikish_ymd: string;
+    znkkkkikishYmd: string;
     /**
      * 全国公開開始日記述
      */
-    znkkkkikish_dspt: string;
+    znkkkkikishDspt: string;
     /**
      * 鑑賞券販売終了年月日（日付形式 format: yyyyMMdd）
      */
-    knshknhmbishry_ymd: string;
+    knshknhmbishryYmd: string;
+    /**
+     * 「観たい」登録者数
+     */
+    mtitrksyNum: number;
 }
 
 export type IRecommendDetailResult = IRecommendResult[];

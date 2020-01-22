@@ -184,12 +184,12 @@ export class PurchaseService extends Service {
      */
     public async recommend(args: purchaseFactory.IRecommend): Promise<purchaseFactory.IRecommendDetailResult> {
         debug('requesting...', args);
-        const kiinCd = (args.kiin_cd !== undefined && args.kiin_cd !== null) ? `&kiin_cd=${args.kiin_cd}` : '';
-        const hyjNum = (args.hyj_num !== undefined && args.hyj_num !== null) ? `&hyj_num=${args.hyj_num}` : '';
+        const kiinCd = (args.kiinCd !== undefined && args.kiinCd !== null) ? `&kiin_cd=${args.kiinCd}` : '';
+        const hyjNum = (args.hyjNum !== undefined && args.hyjNum !== null) ? `&hyj_num=${args.hyjNum}` : '';
         //const hyjNum = (args.hyj_num === undefined ? 5 : `&hyj_num=${args.hyj_num}`);
         const options = {
             expectedStatusCodes: [OK],
-            uri: `/api/purchase/recommend?knyskhn_cd=${args.knyskhn_cd}${kiinCd}${hyjNum}`,
+            uri: `/api/purchase/recommend?knyskhn_cd=${args.knyskhnCd}${kiinCd}${hyjNum}`,
             method: 'GET',
             form: {}
         };
@@ -200,12 +200,13 @@ export class PurchaseService extends Service {
         return (result === null) ? [] : result.map(
             (res: any): purchaseFactory.IRecommendResult => {
                 return {
-                    skhn_cd: res.skhn_cd,
-                    skhn_nm: res.skhn_nm,
-                    pstrgz_url: res.pstrgz_url,
-                    znkkkkikish_ymd: res.znkkkkikish_ymd,
-                    znkkkkikish_dspt: res.znkkkkikish_dspt,
-                    knshknhmbishry_ymd: res.knshknhmbishry_ymd
+                    skhnCd: res.skhn_cd,
+                    skhnNm: res.skhn_nm,
+                    pstrgzUrl: res.pstrgz_url,
+                    znkkkkikishYmd: res.znkkkkikish_ymd,
+                    znkkkkikishDspt: res.znkkkkikish_dspt,
+                    knshknhmbishryYmd: res.knshknhmbishry_ymd,
+                    mtitrksyNum: res.mtitrksy_num
                 };
             }
         );
