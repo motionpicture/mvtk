@@ -206,4 +206,26 @@ export class UserService extends Service {
         };
     }
 
+    /**
+     * アクセストークン発行
+     */
+    public async accessToken(args: userFactory.IAccessTokenArgs): Promise<userFactory.IAccessTokenResult> {
+        debug('requesting...', args);
+        const form = {
+            kiin_cd: args.kiinCd
+        };
+        const options = {
+            expectedStatusCodes: [OK],
+            uri: `/api/user/token`,
+            method: 'POST',
+            form: form
+        };
+        const result = await this.request(options);
+        debug('result...', result);
+
+        return {
+            accessToken: result.token
+        };
+    }
+
 }

@@ -221,3 +221,17 @@ export interface ITopInfoResult {
      */
     rymeskhnNum: number;
 }
+
+export interface IAccessTokenArgs {
+    /**
+     * 会員コード
+     */
+    kiinCd: string;
+}
+
+export interface IAccessTokenResult {
+    /**
+     * アクセストークン
+     */
+    accessToken: string;
+}
