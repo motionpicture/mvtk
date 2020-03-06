@@ -209,7 +209,7 @@ export class UserService extends Service {
     /**
      * アクセストークン発行
      */
-    public async accessToken(args: userFactory.IAccessTokenArgs): Promise<userFactory.IAccessTokenResult> {
+    public async token(args: userFactory.ITokenArgs): Promise<userFactory.ITokenResult> {
         debug('requesting...', args);
         const form = {
             kiin_cd: args.kiinCd

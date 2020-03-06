@@ -222,14 +222,14 @@ export interface ITopInfoResult {
     rymeskhnNum: number;
 }
 
-export interface IAccessTokenArgs {
+export interface ITokenArgs {
     /**
      * 会員コード
      */
     kiinCd: string;
 }
 
-export interface IAccessTokenResult {
+export interface ITokenResult {
     /**
      * アクセストークン
      */
