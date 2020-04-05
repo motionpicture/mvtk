@@ -235,3 +235,28 @@ export interface ITokenResult {
      */
     accessToken: string;
 }
+
+export interface ITokenArgs {
+    /**
+     * 会員コード
+     */
+    kiinCd: string;
+}
+
+export interface ITokenResult {
+    /**
+     * アクセストークン
+     */
+    accessToken: string;
+}
+
+export interface ICheckAuthenticationCodeArgs {
+    /**
+     * 会員コード
+     */
+    kiinCd: string;
+    /**
+     * 認証コード
+     */
+    authenticationCode: string;
+}
