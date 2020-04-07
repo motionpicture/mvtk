@@ -8,9 +8,12 @@
 // }
 
 import * as factory from './factory';
+
+import * as campaignUtil from './utils/campaign/campaign.util';
 import * as eigagiftUtil from './utils/eigagift/eigagift.util';
 import * as pointUtil from './utils/point/point.util';
 
+import { CampaignService } from './service/campaign/campaign.service';
 import { EigagiftService } from './service/eigagift/eigagift.service';
 import { FavoriteService } from './service/favorite/favorite.service';
 import { FilmService } from './service/film/film.service';
@@ -28,6 +31,11 @@ export import factory = factory;
 
 //tslint:disable:max-classes-per-file
 export namespace service {
+    /**
+     * キャンペーンサービス
+     * @class
+     */
+    export class Campaign extends CampaignService { }
     /**
      * 映画ギフトサービス
      * @class
@@ -101,4 +109,5 @@ export namespace service {
 export namespace utils {
     export import eigagift = eigagiftUtil;
     export import point = pointUtil;
+    export import campaign = campaignUtil;
 }
