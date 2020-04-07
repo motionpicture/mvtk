@@ -27,7 +27,7 @@ export class CampaignService extends Service {
 
         return {
             cmpgnsttsTyp: result.cmpgnstts_typ,
-            bnnrUrl: result.bnnr_url,
+            bnnrUrl: result.bnnr_url
         };
     }
     /**
@@ -35,9 +35,9 @@ export class CampaignService extends Service {
      */
     public async entry(args: campaignFactory.IEntryArgs): Promise<{}> {
         debug('requesting...', args);
-        const form: {cmpgnknr_no: string; kiin_cd: string} = {
+        const form: { cmpgnknr_no: string; kiin_cd: string } = {
             cmpgnknr_no: args.cmpgnknrNo,
-            kiin_cd:args.kiinCd
+            kiin_cd: args.kiinCd
         };
         const options = {
             expectedStatusCodes: [OK],

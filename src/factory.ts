@@ -14,8 +14,8 @@ import * as PromotionCodeFactory from './factory/promotionCode/promotionCode.fac
 import * as PurchaseFactory from './factory/purchase/purchase.factory';
 import * as ScheduleFactory from './factory/schedule/schedule.factory';
 import * as TheaterFactory from './factory/theater/theater.factory';
-import * as UtilityFactory from './factory/utility/utility.factory';
 import * as UserFactory from './factory/user/user.factory';
+import * as UtilityFactory from './factory/utility/utility.factory';
 
 export import campaign = CampaignFactory;
 export import eigagift = EigagiftFactory;
