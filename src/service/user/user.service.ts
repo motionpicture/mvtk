@@ -16,7 +16,7 @@ export class UserService extends Service {
      */
     public async tempRegist(args: userFactory.ITempRegistArgs): Promise<userFactory.ITempRegistResult> {
         debug('requesting...', args);
-        const form: {kiin_mladdr: string; kiintrkmekssiknr_no?: string} = {
+        const form: { kiin_mladdr: string; kiintrkmekssiknr_no?: string } = {
             kiin_mladdr: args.kiinMladdr
         };
         if (args.kiintrkmekssiknrNo !== undefined) {
@@ -87,13 +87,13 @@ export class UserService extends Service {
             kiinsi_ymd: args.kiinsiYmd,
             kiin_mladdr: args.kiinMladdr,
             mlmgznkb_flg: args.mlmgznkbFlg,
-            ...(args.kiinsiNm !== undefined ? {kiinsi_nm: args.kiinsiNm} : {}),
-            ...(args.kiimmiNm !== undefined ? {kiimmi_nm: args.kiimmiNm} : {}),
-            ...(args.sibtsTyp !== undefined ? {sibts_typ: args.sibtsTyp} : {}),
-            ...(args.tdfknCd !== undefined ? {tdfkn_cd: args.tdfknCd} : {}),
-            ...(args.kiinshgikykNo !== undefined ? {kiinshgikyk_no: args.kiinshgikykNo} : {}),
-            ...(args.kiinshnikykNo !== undefined ? {kiinshnikyk_no: args.kiinshnikykNo} : {}),
-            ...(args.kiinknyshNo !== undefined ? {kiinknysh_no: args.kiinknyshNo} : {})
+            ...(args.kiinsiNm !== undefined ? { kiinsi_nm: args.kiinsiNm } : {}),
+            ...(args.kiimmiNm !== undefined ? { kiimmi_nm: args.kiimmiNm } : {}),
+            ...(args.sibtsTyp !== undefined ? { sibts_typ: args.sibtsTyp } : {}),
+            ...(args.tdfknCd !== undefined ? { tdfkn_cd: args.tdfknCd } : {}),
+            ...(args.kiinshgikykNo !== undefined ? { kiinshgikyk_no: args.kiinshgikykNo } : {}),
+            ...(args.kiinshnikykNo !== undefined ? { kiinshnikyk_no: args.kiinshnikykNo } : {}),
+            ...(args.kiinknyshNo !== undefined ? { kiinknysh_no: args.kiinknyshNo } : {})
         };
         const options = {
             expectedStatusCodes: [OK],
@@ -234,12 +234,13 @@ export class UserService extends Service {
     public async checkAuthenticationCode(args: userFactory.ICheckAuthenticationCodeArgs): Promise<{}> {
         debug('requesting...', args);
         const form = {
-            kiin_cd: args.kiinCd
+            kiin_cd: args.kiinCd,
+            authentication_code: args.authenticationCode
         };
         const options = {
             expectedStatusCodes: [OK],
-            uri: `/api/user/checkAuthenticationCode?kiin_cd=${args.kiinCd}&authentication_code=${args.authenticationCode}`,
-            method: 'GET',
+            uri: `/api/user/checkAuthenticationCode`,
+            method: 'POST',
             form: form
         };
         const result = await this.request(options);
