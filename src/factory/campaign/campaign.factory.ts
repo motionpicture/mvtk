@@ -2,13 +2,6 @@
  * campaign.factory
  */
 
-export interface IUserCommon {
-    /**
-     * 会員コード
-     */
-    kiinCd: string;
-}
-
 export interface IEntryArgs {
     /**
      * キャンペーン管理番号（12桁）
@@ -20,130 +13,6 @@ export interface IEntryArgs {
     kiinCd: string;
 }
 
-export interface ITempRegistResult {
-    /**
-     * 会員コード
-     */
-    kiinCd: string;
-}
-
-export interface IRegistArgs {
-    /**
-     * 本番登録用URL
-     */
-    kiinCd: string;
-    /**
-     * 会員パスワード
-     */
-    kiinPwd: string;
-    /**
-     * 会員生年月日
-     */
-    kiinsiYmd: string;
-    /**
-     * メルマガ希望フラグ
-     */
-    mlmgznkbFlg: string;
-}
-
-export interface IEditArgs {
-    /**
-     * 会員コード
-     */
-    kiinCd: string;
-    /**
-     * 会員姓名称
-     */
-    kiinsiNm?: string;
-    /**
-     * 会員名名称
-     */
-    kiimmiNm?: string;
-    /**
-     * 性別区分
-     */
-    sibtsTyp?: string;
-    /**
-     * 会員生年月日
-     */
-    kiinsiYmd: string;
-    /**
-     * 都道府県コード
-     */
-    tdfknCd?: string;
-
-    kiinshgikykNo?: string;
-
-    kiinshnikykNo?: string;
-
-    kiinknyshNo?: string;
-    /**
-     * 会員メールアドレス
-     */
-    kiinMladdr: string;
-    /**
-     * メルマガ希望フラグ
-     */
-    mlmgznkbFlg: string;
-}
-
-export interface ITopInfoArgs {
-    /**
-     * 会員コード（8桁固定）
-     */
-    kiinCd: string;
-}
-
-export interface IEditResult {
-    /**
-     * 会員コード
-     */
-    kiinCd: string;
-}
-
-export interface IAuthentication {
-    /**
-     * 会員メールアドレス
-     */
-    kiinMladdr: string;
-    /**
-     * 会員パスワード
-     */
-    kiinPwd: string;
-}
-
-export interface IAuthenticationResult {
-    /**
-     * 会員コード
-     */
-    kiinCd: string;
-    /**
-     * 会員メールアドレス
-     */
-    kiinMladdr: string;
-    /**
-     * ムビチケ必須項目無フラグ
-     */
-    mvtckthsskmknshFlg: string;
-    /**
-     * 会員コード(暗号化)
-     */
-    encryptKiinCd: string;
-}
-
-export interface IUserError {
-    error: {
-        /**
-         * エラーコード
-         */
-        code: string;
-        /**
-         * エラーメッセージ
-         */
-        message: string;
-    };
-}
-
 export interface IDetailsResult {
     /**
      * キャンペーンステータス区分
@@ -153,62 +22,47 @@ export interface IDetailsResult {
      * バナーURL
      */
     bnnrUrl: string;
+    /**
+     * エントリー区分（01:ログイン方式／02:個人情報入力方式／03:購入番号認証方式）
+     */
+    entryTyp: String;
 }
 
-export interface ITopInfoResult {
+export interface IInfoResult {
     /**
-     * 表示名
+     * キャンペーンステータス区分（00:実施中／01:受付期間外（受付終了））
      */
-    hyjNm: string;
+    cmpgnsttsTyp: string;
     /**
-     * ポイント残高
+     * エントリー済フラグ（0:未エントリー／1:エントリー済）
      */
-    ptZndk: number;
+    entryzmFlg: string;
     /**
-     * 「観たい」登録数
+     * インセンティブ区分（01:ムビチケポイント／02:プロモーションコード／03:映画GIFT／04:ムビチケ前売券GIFT／05:その他）
      */
-    mtitrkNum: number;
+    incntvTyp: string;
     /**
-     * 利用前作品数
+     * バナーURL
      */
-    rymeskhnNum: number;
-}
-
-export interface ITokenArgs {
+    bnnrUrl: string;
     /**
-     * 会員コード
+     * バナーリンク先URL
      */
-    kiinCd: string;
-}
-
-export interface ITokenResult {
+    bnnrlnkUrl: string;
     /**
-     * アクセストークン
+     * エントリー受付終了日時
      */
-    accessToken: string;
-}
-
-export interface ITokenArgs {
+    uktskshryDt: string;
     /**
-     * 会員コード
+     * エントリー年月日
      */
-    kiinCd: string;
-}
-
-export interface ITokenResult {
+    entryYmd: string;
     /**
-     * アクセストークン
+     * ソート用エントリー受付終了日時
      */
-    accessToken: string;
-}
-
-export interface ICheckAuthenticationCodeArgs {
+    uktskshrysrtDt: string;
     /**
-     * 会員コード
+     * ソート用エントリー年月日
      */
-    kiinCd: string;
-    /**
-     * 認証コード
-     */
-    authenticationCode: string;
+    entrysrtYmd: string;
 }

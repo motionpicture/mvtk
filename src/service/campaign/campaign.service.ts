@@ -27,7 +27,8 @@ export class CampaignService extends Service {
 
         return {
             cmpgnsttsTyp: result.cmpgnstts_typ,
-            bnnrUrl: result.bnnr_url
+            bnnrUrl: result.bnnr_url,
+            entryTyp: result.entry_typ
         };
     }
     /**
@@ -51,5 +52,33 @@ export class CampaignService extends Service {
         return {
             status: 'OK'
         };
+    }
+    /**
+     * キャンペーン情報
+     */
+    public async info(kiinCd: string): Promise<campaignFactory.IInfoResult[]> {
+        debug('requesting...', kiinCd);
+        const options = {
+            expectedStatusCodes: [OK],
+            uri: `/api/campaign/info?kiin_cd=${kiinCd}`,
+            method: 'GET',
+            form: {}
+        };
+        const result = await this.request(options);
+        debug('result...', result);
+
+        return (result === null) ? [] : result.map((res: any) => {
+            return {
+                cmpgnsttsTyp: res.cmpgnstts_typ,
+                entryzmFlg: res.entryzm_flg,
+                incntvTyp: res.incntv_typ,
+                bnnrUrl: res.bnnr_url,
+                bnnrlnkUrl: res.bnnrlnk_url,
+                uktskshryDt: res.uktskshry_dt,
+                entryYmd: res.entry_ymd,
+                uktskshrysrtDt: res.uktskshrysrt_dt,
+                entrysrtYmd: res.entrysrt_ymd
+            };
+        });
     }
 }
