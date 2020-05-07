@@ -272,6 +272,13 @@ export interface ICcheckPasswordResetAuthenticationCodeArgs {
     authenticationCode: string;
 }
 
+export interface ICcheckPasswordResetAuthenticationCodeResult {
+    /**
+     * 会員コード
+     */
+    kiinCd: string;
+}
+
 export interface IEditPasswordArgs {
     /**
      * 会員コード
@@ -285,11 +292,4 @@ export interface IEditPasswordArgs {
      * 新パスワード
      */
     kiinSnpwd: string;
-}
-
-export interface IEditPasswordResult {
-    /**
-     * 会員コード
-     */
-    kiinCd: string;
 }

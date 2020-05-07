@@ -277,7 +277,7 @@ export class UserService extends Service {
     /**
      * パスワード再設定メール送信
      */
-    public async sendPasswordResetMail(kiinMladdr: string): Promise<{}> {
+    public async sendPasswordResetMail(kiinMladdr: string): Promise<userFactory.ICcheckPasswordResetAuthenticationCodeResult> {
         debug('requesting...', kiinMladdr);
         const form = {
             kiin_mladdr: kiinMladdr
@@ -292,14 +292,15 @@ export class UserService extends Service {
         debug('result...', result);
 
         return {
-            status: 'OK'
+            kiinCd: result.kiin_cd
         };
+
     }
 
     /**
      * パスワード更新
      */
-    public async editPassword(args: userFactory.IEditPasswordArgs): Promise<userFactory.ITempRegistResult> {
+    public async editPassword(args: userFactory.IEditPasswordArgs): Promise<{}> {
         debug('requesting...', args.kiinCd);
         const form = {
             kiin_cd: args.kiinCd,
@@ -316,7 +317,7 @@ export class UserService extends Service {
         debug('result...', result);
 
         return {
-            kiinCd: result.kiin_cd
+            status: 'OK'
         };
     }
 
