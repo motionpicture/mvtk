@@ -251,4 +251,73 @@ export class UserService extends Service {
         };
     }
 
+    /**
+     * パスワード再設定用認証コードチェック
+     */
+    public async checkPasswordResetAuthenticationCode(args: userFactory.ICcheckPasswordResetAuthenticationCodeArgs): Promise<{}> {
+        debug('requesting...', args);
+        const form = {
+            kiin_mladdr: args.kiinMladdr,
+            authentication_code: args.authenticationCode
+        };
+        const options = {
+            expectedStatusCodes: [OK],
+            uri: `/api/user/checkPasswordResetAuthenticationCode`,
+            method: 'POST',
+            form: form
+        };
+        const result = await this.request(options);
+        debug('result...', result);
+
+        return {
+            status: 'OK'
+        };
+    }
+
+    /**
+     * パスワード再設定メール送信
+     */
+    public async sendPasswordRestMail(kiinMladdr: string): Promise<{}> {
+        debug('requesting...', kiinMladdr);
+        const form = {
+            kiin_mladdr: kiinMladdr
+        };
+        const options = {
+            expectedStatusCodes: [OK],
+            uri: `/api/user/sendPasswordRestMail`,
+            method: 'POST',
+            form: form
+        };
+        const result = await this.request(options);
+        debug('result...', result);
+
+        return {
+            status: 'OK'
+        };
+    }
+
+    /**
+     * パスワード更新
+     */
+    public async editPassword(args: userFactory.IEditPasswordArgs): Promise<userFactory.ITempRegistResult> {
+        debug('requesting...', args.kiinCd);
+        const form = {
+            kiin_cd: args.kiinCd,
+            kiin_gnzipwd: args.kiinGnzipwd,
+            kiin_snpwd: args.kiinSnpwd
+        };
+        const options = {
+            expectedStatusCodes: [OK],
+            uri: `/api/user/editPassword`,
+            method: 'POST',
+            form: form
+        };
+        const result = await this.request(options);
+        debug('result...', result);
+
+        return {
+            kiinCd: result.kiin_cd
+        };
+    }
+
 }

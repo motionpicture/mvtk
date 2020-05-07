@@ -260,3 +260,36 @@ export interface ICheckAuthenticationCodeArgs {
      */
     authenticationCode: string;
 }
+
+export interface ICcheckPasswordResetAuthenticationCodeArgs {
+    /**
+     * メールアドレス
+     */
+    kiinMladdr: string;
+    /**
+     * 認証コード
+     */
+    authenticationCode: string;
+}
+
+export interface IEditPasswordArgs {
+    /**
+     * 会員コード
+     */
+    kiinCd: string;
+    /**
+     * 現在のパスワード
+     */
+    kiinGnzipwd: string;
+    /**
+     * 新パスワード
+     */
+    kiinSnpwd: string;
+}
+
+export interface IEditPasswordResult {
+    /**
+     * 会員コード
+     */
+    kiinCd: string;
+}
