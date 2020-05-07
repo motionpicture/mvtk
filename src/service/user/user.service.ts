@@ -277,14 +277,14 @@ export class UserService extends Service {
     /**
      * パスワード再設定メール送信
      */
-    public async sendPasswordRestMail(kiinMladdr: string): Promise<{}> {
+    public async sendPasswordResetMail(kiinMladdr: string): Promise<{}> {
         debug('requesting...', kiinMladdr);
         const form = {
             kiin_mladdr: kiinMladdr
         };
         const options = {
             expectedStatusCodes: [OK],
-            uri: `/api/user/sendPasswordRestMail`,
+            uri: `/api/user/sendPasswordResetMail`,
             method: 'POST',
             form: form
         };
