@@ -326,7 +326,6 @@ export interface IRecommendResult {
     mtitrksyNum: number;
 }
 
-
 export interface IForwardMail {
     /**
      * 購入管理番号

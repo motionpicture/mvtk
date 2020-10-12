@@ -211,14 +211,14 @@ export class PurchaseService extends Service {
             }
         );
     }
-    
+
     /**
      * メール転送
      */
     public async forwardMail(args: purchaseFactory.IForwardMail): Promise<{}> {
         const form = {
             knyknr_no: args.knyknrNo,
-            frwrd_mladdr: args.frwrdMladdr,
+            frwrd_mladdr: args.frwrdMladdr
         };
 
         const options = {
