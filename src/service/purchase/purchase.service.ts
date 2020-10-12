@@ -211,4 +211,28 @@ export class PurchaseService extends Service {
             }
         );
     }
+    
+    /**
+     * メール転送
+     */
+    public async forwardMail(args: purchaseFactory.IForwardMail): Promise<{}> {
+        const form = {
+            knyknr_no: args.knyknrNo,
+            frwrd_mladdr: args.frwrdMladdr,
+        };
+
+        const options = {
+            expectedStatusCodes: [OK],
+            uri: '/api/purchase/forwardMail',
+            method: 'POST',
+            form: form
+        };
+
+        const result = await this.request(options);
+        debug('result...', result);
+
+        return {
+            status: 'OK'
+        };
+    }
 }
