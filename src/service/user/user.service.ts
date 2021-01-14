@@ -322,4 +322,52 @@ export class UserService extends Service {
         };
     }
 
+    /**
+     * 会員コード復号化
+     */
+    public async codeDecrypt(encryptedKiinCd: string): Promise<{}> {
+        debug('requesting...', encryptedKiinCd);
+        const form = {
+            kiin_cd: encryptedKiinCd
+        };
+        const options = {
+            expectedStatusCodes: [OK],
+            uri: `/api/user/codeDecrypt`,
+            method: 'POST',
+            form: form
+        };
+        const result = await this.request(options);
+        debug('result...', result);
+
+        return {
+            kiinCd: result.kiin_cd
+        };
+    }
+
+    /**
+     * ログイン通知
+     */
+    public async loginNotify(args: userFactory.ILoginNotifyArgs): Promise<{}> {
+        debug('requesting...', args.kiinCd);
+        const form = {
+            kiin_cd: args.kiinCd,
+            lginip_addr: args.lginIpAddr,
+            lginusragnt_txt: args.lginusragntTxt,
+            lginshri_nm: args.lginshriNm,
+            lginmt_typ: args.lginmtTyp
+        };
+        const options = {
+            expectedStatusCodes: [OK],
+            uri: `/api/user/loginNotify`,
+            method: 'POST',
+            form: form
+        };
+        const result = await this.request(options);
+        debug('result...', result);
+
+        return {
+            status: 'OK'
+        };
+    }
+
 }

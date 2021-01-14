@@ -293,3 +293,26 @@ export interface IEditPasswordArgs {
      */
     kiinSnpwd: string;
 }
+
+export interface ILoginNotifyArgs {
+    /**
+     * 会員コード
+     */
+    kiinCd: string;
+    /**
+     * ログインIPアドレス
+     */
+    lginIpAddr: string;
+    /**
+     * ログインUser-Agent
+     */
+    lginusragntTxt: string;
+    /**
+     * ログイン種類名称（mail／facebook／twitter／yahoo／line／gplus／rakuten／apple）
+     */
+    lginshriNm: string;
+    /**
+     * ログイン元区分（01：ムビチケ／02：MWアプリ／03：MWPRESS）
+     */
+    lginmtTyp: string;
+}
