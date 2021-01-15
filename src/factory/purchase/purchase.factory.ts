@@ -87,6 +87,10 @@ export interface ITempSettlementRegistArgs {
      */
     hiykssirygkiknGk: number;
     /**
+     * クレジットカード情報保存フラグ（クレジットカード情報保存チェックがONの場合は 1 をそれ以外は null をセット）
+     */
+    crdjhhznFlg: string | null;
+    /**
      * ギフトカード情報（ギフト利用がない場合は null をセット）
      */
     gftInf: {} | null;
@@ -122,6 +126,40 @@ export interface ITempSettlementRegistArgs {
      * 特典情報
      */
     tktncdkkhInf: {};
+    /**
+     * プロモーションコード利用フラグ
+     */
+    prmtncdryFlg: string;
+    /**
+     * プロモーションコード
+     */
+    prmtnCd: string;
+    /**
+     * プロモーションコード決済UUID
+     */
+    prmtncdkssiUuid: string;
+    /**
+     * プロモーションコード割引額
+     */
+    prmtncdwrbkGk: number;
+    /**
+     * 映画ギフト利用フラグ
+     */
+    eggftryFlg: string;
+    /**
+     * 保有映画ギフト利用フラグ（保有映画ギフトからの利用の場合：1／それ以外：0）
+     */
+    myeggftryFlg: string;
+    /**
+     * 映画ギフト情報（映画ギフト利用がない場合は null をセット）
+     */
+    eggftInf: {
+        eggftCd: string;
+        eggftpinCd: string;
+        eggftkssiknrNo: string;
+        eggftykkgnYmd: string;
+        eggftryknGk: string;
+    }[] | null;
 }
 
 export interface IInfoArgs {
@@ -156,3 +194,147 @@ export interface INumberingSettlementNoResult {
      */
     kssiknr_no: string;
 }
+
+export interface IPurchasableDateTimeArgs {
+    /**
+     * 作品コード（6桁固定）
+     */
+    skhnCd: string;
+    /**
+     * 販売区分（00:前売り券／01:当日券）
+     */
+    hmbiTyp: string;
+}
+
+export interface IPurchasableDateTimeResult {
+    /**
+     * 購入日時（日時形式 format: yyyy/MM/dd HH:mm:ss）
+     */
+    knyDt: string;
+}
+
+export interface ITempPreserveBonusArgs {
+    /**
+     * 決済管理番号（16桁固定）
+     */
+    kssiknrNo: string;
+    /**
+     * 作品コード（6桁固定）
+     */
+    skhnCd: string;
+    /**
+     * 決済方法区分（00：クレジット／01：auかんたん決済／02：d払い／22：楽天ペイ）
+     */
+    kssihhTyp: string;
+    /**
+     * 併用決済フラグ（ムビチケ前売券GIFT利用時は 1 をそれ以外は null をセット）
+     */
+    hiykssiFlg: string | null;
+    /**
+     * 併用決済方法区分（ムビチケ前売券GIFT利用時は 04 を それ以外は null をセット）
+     */
+    hiykssihhTyp: string | null;
+    /**
+     * ポイント利用フラグ（ポイント利用時は 1 をそれ以外は null または 0 をセット）
+     */
+    pintryFlg: string | null;
+    /**
+     * プロモーションコード利用フラグ
+     */
+    prmtncdryFlg: string | null;
+    /**
+     * 映画ギフト利用フラグ
+     */
+    eggftryFlg: string | null;
+    /**
+     * 購入日時（日時形式 format: yyyy/MM/dd HH:mm:ss）
+     */
+    knyDt: string;
+    /**
+     * 鑑賞券情報
+     */
+    knshknInf: {
+        /**
+         * 券種区分（2桁固定）
+         */
+        knshTyp: string;
+        /**
+         * 購入枚数
+         */
+        knymiNum: number;
+    }[];
+}
+
+export interface ITempPreserveBonusResult {
+    /**
+     * 特典在庫エラー情報ありフラグ
+     */
+    errjharFlg: string;
+    /**
+     * 特典コード確保番号リスト
+     */
+    tktncdkkhnoLst?: string[];
+    /**
+     * "特典在庫状況メッセージリスト ※HTMLタグを含む
+     */
+    tktnzikjkymsgLst?: string[];
+}
+
+export interface IRecommend {
+    /**
+     * 購入作品コード
+     */
+    knyskhnCd: string;
+    /**
+     * 会員コード（8桁固定）
+     */
+    kiinCd: string;
+    /**
+     * 表示件数（指定しない場合は自動的に 5 をデフォルトとする）
+     */
+    hyjNum: number;
+}
+
+export interface IRecommendResult {
+    /**
+     * 作品コード
+     */
+    skhnCd: string;
+    /**
+     * 作品名称（最大240文字）
+     */
+    skhnNm: string;
+    /**
+     * ポスター画像URL
+     */
+    pstrgzUrl: string;
+    /**
+     * 全国公開年月日（年月日形式 format: yyyyMMdd）
+     */
+    znkkkkikishYmd: string;
+    /**
+     * 全国公開開始日記述
+     */
+    znkkkkikishDspt: string;
+    /**
+     * 鑑賞券販売終了年月日（日付形式 format: yyyyMMdd）
+     */
+    knshknhmbishryYmd: string;
+    /**
+     * 「観たい」登録者数
+     */
+    mtitrksyNum: number;
+}
+
+export interface IForwardMail {
+    /**
+     * 購入管理番号
+     */
+    knyknrNo: string;
+    /**
+     * 転送先メールアドレス
+     */
+    frwrdMladdr: string;
+}
+
+export type IRecommendDetailResult = IRecommendResult[];

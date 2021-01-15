@@ -36,7 +36,8 @@
       "parameter",
       "property-declaration",
       "member-variable-declaration"
-    ]
+    ],
+    "max-classes-per-file": [true, 5]
   },
   "rulesDirectory": [
     "node_modules/tslint-microsoft-contrib"

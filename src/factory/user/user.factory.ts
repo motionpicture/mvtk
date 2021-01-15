@@ -87,6 +87,13 @@ export interface IEditArgs {
     mlmgznkbFlg: string;
 }
 
+export interface ITopInfoArgs {
+    /**
+     * 会員コード（8桁固定）
+     */
+    kiinCd: string;
+}
+
 export interface IEditResult {
     /**
      * 会員コード
@@ -190,4 +197,122 @@ export interface IInfoResult {
      * メルマガ希望フラグ
      */
     mlmgznkbFlg: string;
+    /**
+     * 会員コード(暗号化)
+     */
+    encryptKiinCd: string;
+}
+
+export interface ITopInfoResult {
+    /**
+     * 表示名
+     */
+    hyjNm: string;
+    /**
+     * ポイント残高
+     */
+    ptZndk: number;
+    /**
+     * 「観たい」登録数
+     */
+    mtitrkNum: number;
+    /**
+     * 利用前作品数
+     */
+    rymeskhnNum: number;
+}
+
+export interface ITokenArgs {
+    /**
+     * 会員コード
+     */
+    kiinCd: string;
+}
+
+export interface ITokenResult {
+    /**
+     * アクセストークン
+     */
+    accessToken: string;
+}
+
+export interface ITokenArgs {
+    /**
+     * 会員コード
+     */
+    kiinCd: string;
+}
+
+export interface ITokenResult {
+    /**
+     * アクセストークン
+     */
+    accessToken: string;
+}
+
+export interface ICheckAuthenticationCodeArgs {
+    /**
+     * 会員コード
+     */
+    kiinCd: string;
+    /**
+     * 認証コード
+     */
+    authenticationCode: string;
+}
+
+export interface ICcheckPasswordResetAuthenticationCodeArgs {
+    /**
+     * メールアドレス
+     */
+    kiinMladdr: string;
+    /**
+     * 認証コード
+     */
+    authenticationCode: string;
+}
+
+export interface ICcheckPasswordResetAuthenticationCodeResult {
+    /**
+     * 会員コード
+     */
+    kiinCd: string;
+}
+
+export interface IEditPasswordArgs {
+    /**
+     * 会員コード
+     */
+    kiinCd: string;
+    /**
+     * 現在のパスワード
+     */
+    kiinGnzipwd: string;
+    /**
+     * 新パスワード
+     */
+    kiinSnpwd: string;
+}
+
+export interface ILoginNotifyArgs {
+    /**
+     * 会員コード
+     */
+    kiinCd: string;
+    /**
+     * ログインIPアドレス
+     */
+    lginIpAddr: string;
+    /**
+     * ログインUser-Agent
+     */
+    lginusragntTxt: string;
+    /**
+     * ログイン種類名称（mail／facebook／twitter／yahoo／line／gplus／rakuten／apple）
+     */
+    lginshriNm: string;
+    /**
+     * ログイン元区分（01：ムビチケ／02：MWアプリ／03：MWPRESS）
+     */
+    lginmtTyp: string;
 }

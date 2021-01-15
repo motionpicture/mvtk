@@ -16,7 +16,7 @@ export class UserService extends Service {
      */
     public async tempRegist(args: userFactory.ITempRegistArgs): Promise<userFactory.ITempRegistResult> {
         debug('requesting...', args);
-        const form: {kiin_mladdr: string; kiintrkmekssiknr_no?: string} = {
+        const form: { kiin_mladdr: string; kiintrkmekssiknr_no?: string } = {
             kiin_mladdr: args.kiinMladdr
         };
         if (args.kiintrkmekssiknrNo !== undefined) {
@@ -87,13 +87,13 @@ export class UserService extends Service {
             kiinsi_ymd: args.kiinsiYmd,
             kiin_mladdr: args.kiinMladdr,
             mlmgznkb_flg: args.mlmgznkbFlg,
-            ...(args.kiinsiNm !== undefined ? {kiinsi_nm: args.kiinsiNm} : {}),
-            ...(args.kiimmiNm !== undefined ? {kiimmi_nm: args.kiimmiNm} : {}),
-            ...(args.sibtsTyp !== undefined ? {sibts_typ: args.sibtsTyp} : {}),
-            ...(args.tdfknCd !== undefined ? {tdfkn_cd: args.tdfknCd} : {}),
-            ...(args.kiinshgikykNo !== undefined ? {kiinshgikyk_no: args.kiinshgikykNo} : {}),
-            ...(args.kiinshnikykNo !== undefined ? {kiinshnikyk_no: args.kiinshnikykNo} : {}),
-            ...(args.kiinknyshNo !== undefined ? {kiinknysh_no: args.kiinknyshNo} : {})
+            ...(args.kiinsiNm !== undefined ? { kiinsi_nm: args.kiinsiNm } : {}),
+            ...(args.kiimmiNm !== undefined ? { kiimmi_nm: args.kiimmiNm } : {}),
+            ...(args.sibtsTyp !== undefined ? { sibts_typ: args.sibtsTyp } : {}),
+            ...(args.tdfknCd !== undefined ? { tdfkn_cd: args.tdfknCd } : {}),
+            ...(args.kiinshgikykNo !== undefined ? { kiinshgikyk_no: args.kiinshgikykNo } : {}),
+            ...(args.kiinshnikykNo !== undefined ? { kiinshnikyk_no: args.kiinshnikykNo } : {}),
+            ...(args.kiinknyshNo !== undefined ? { kiinknysh_no: args.kiinknyshNo } : {})
         };
         const options = {
             expectedStatusCodes: [OK],
@@ -160,7 +160,8 @@ export class UserService extends Service {
             kiinshgikykNo: result.kiinshgikyk_no,
             kiinshnikykNo: result.kiinshnikyk_no,
             kiinknyshNo: result.kiinknysh_no,
-            mlmgznkbFlg: result.mlmgznkb_flg
+            mlmgznkbFlg: result.mlmgznkb_flg,
+            encryptKiinCd: result.encrypt_kiin_cd
         };
     }
 
@@ -182,4 +183,191 @@ export class UserService extends Service {
             kiinCd: result.kiin_cd
         };
     }
+
+    /**
+     * 51 会員ヘッダー情報取得
+     */
+    public async topInfo(args: userFactory.ITopInfoArgs): Promise<userFactory.ITopInfoResult> {
+        debug('requesting...', args);
+        const options = {
+            expectedStatusCodes: [OK],
+            uri: `/api/user/topInfo?kiin_cd=${args.kiinCd}`,
+            method: 'GET',
+            form: {}
+        };
+        const result = await this.request(options);
+        debug('result...', result);
+
+        return {
+            hyjNm: result.hyj_nm,
+            ptZndk: result.pt_zndk,
+            mtitrkNum: result.mtitrk_num,
+            rymeskhnNum: result.rymeskhn_num
+        };
+    }
+
+    /**
+     * アクセストークン発行
+     */
+    public async token(args: userFactory.ITokenArgs): Promise<userFactory.ITokenResult> {
+        debug('requesting...', args);
+        const form = {
+            kiin_cd: args.kiinCd
+        };
+        const options = {
+            expectedStatusCodes: [OK],
+            uri: `/api/user/token`,
+            method: 'POST',
+            form: form
+        };
+        const result = await this.request(options);
+        debug('result...', result);
+
+        return {
+            accessToken: result.token
+        };
+    }
+
+    /**
+     * 本番登録用認証コードチェック
+     */
+    public async checkAuthenticationCode(args: userFactory.ICheckAuthenticationCodeArgs): Promise<{}> {
+        debug('requesting...', args);
+        const form = {
+            kiin_cd: args.kiinCd,
+            authentication_code: args.authenticationCode
+        };
+        const options = {
+            expectedStatusCodes: [OK],
+            uri: `/api/user/checkAuthenticationCode`,
+            method: 'POST',
+            form: form
+        };
+        const result = await this.request(options);
+        debug('result...', result);
+
+        return {
+            status: 'OK'
+        };
+    }
+
+    /**
+     * パスワード再設定用認証コードチェック
+     */
+    public async checkPasswordResetAuthenticationCode(args: userFactory.ICcheckPasswordResetAuthenticationCodeArgs):
+        Promise<userFactory.ICcheckPasswordResetAuthenticationCodeResult> {
+        debug('requesting...', args);
+        const form = {
+            kiin_mladdr: args.kiinMladdr,
+            authentication_code: args.authenticationCode
+        };
+        const options = {
+            expectedStatusCodes: [OK],
+            uri: `/api/user/checkPasswordResetAuthenticationCode`,
+            method: 'POST',
+            form: form
+        };
+        const result = await this.request(options);
+        debug('result...', result);
+
+        return {
+            kiinCd: result.kiin_cd
+        };
+    }
+
+    /**
+     * パスワード再設定メール送信
+     */
+    public async sendPasswordResetMail(kiinMladdr: string): Promise<{}> {
+        debug('requesting...', kiinMladdr);
+        const form = {
+            kiin_mladdr: kiinMladdr
+        };
+        const options = {
+            expectedStatusCodes: [OK],
+            uri: `/api/user/sendPasswordResetMail`,
+            method: 'POST',
+            form: form
+        };
+        const result = await this.request(options);
+        debug('result...', result);
+
+        return {
+            status: 'OK'
+        };
+
+    }
+
+    /**
+     * パスワード更新
+     */
+    public async editPassword(args: userFactory.IEditPasswordArgs): Promise<{}> {
+        debug('requesting...', args.kiinCd);
+        const form = {
+            kiin_cd: args.kiinCd,
+            kiin_gnzipwd: args.kiinGnzipwd,
+            kiin_snpwd: args.kiinSnpwd
+        };
+        const options = {
+            expectedStatusCodes: [OK],
+            uri: `/api/user/editPassword`,
+            method: 'POST',
+            form: form
+        };
+        const result = await this.request(options);
+        debug('result...', result);
+
+        return {
+            status: 'OK'
+        };
+    }
+
+    /**
+     * 会員コード復号化
+     */
+    public async codeDecrypt(encryptedKiinCd: string): Promise<{}> {
+        debug('requesting...', encryptedKiinCd);
+        const form = {
+            kiin_cd: encryptedKiinCd
+        };
+        const options = {
+            expectedStatusCodes: [OK],
+            uri: `/api/user/codeDecrypt`,
+            method: 'POST',
+            form: form
+        };
+        const result = await this.request(options);
+        debug('result...', result);
+
+        return {
+            kiinCd: result.kiin_cd
+        };
+    }
+
+    /**
+     * ログイン通知
+     */
+    public async loginNotify(args: userFactory.ILoginNotifyArgs): Promise<{}> {
+        debug('requesting...', args.kiinCd);
+        const form = {
+            kiin_cd: args.kiinCd,
+            lginip_addr: args.lginIpAddr,
+            lginusragnt_txt: args.lginusragntTxt,
+            lginshri_nm: args.lginshriNm,
+            lginmt_typ: args.lginmtTyp
+        };
+        const options = {
+            expectedStatusCodes: [OK],
+            uri: `/api/user/loginNotify`,
+            method: 'POST',
+            form: form
+        };
+        const result = await this.request(options);
+        debug('result...', result);
+
+        return {
+            status: 'OK'
+        };
+    }
+
 }

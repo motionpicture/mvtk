@@ -20,6 +20,10 @@ export interface IOptions {
      */
     accessKey: string;
     /**
+     * subscriptionKey
+     */
+    subscriptionKey?: string;
+    /**
      * transporter object
      */
     transporter?: Transporter;
@@ -60,10 +64,17 @@ export class Service {
             ...options
         };
 
-        requestOptions.headers = {
-            Authorization: `ApiKey ${this.options.accessKey}`,
-            'Content-Type': 'application/json'
-        };
+        requestOptions.headers =
+            (this.options.subscriptionKey !== undefined) ?
+                {
+                    Authorization: `ApiKey ${this.options.accessKey}`,
+                    'Ocp-Apim-Subscription-Key': `${this.options.subscriptionKey}`,
+                    'Content-Type': 'application/json'
+                } :
+                {
+                    Authorization: `ApiKey ${this.options.accessKey}`,
+                    'Content-Type': 'application/json'
+                };
 
         delete requestOptions.uri;
 
