@@ -308,11 +308,11 @@ export interface ILoginNotifyArgs {
      */
     lginusragntTxt: string;
     /**
-     * ログイン種類名称（mail／facebook／twitter／yahoo／line／gplus／rakuten／apple）
+     * ログインアカウント名称（mail／facebook／twitter／yahoo／line／gplus／rakuten／apple）
      */
-    lginshriNm: string;
+    lginaccuntNm: string;
     /**
-     * ログイン元区分（01：ムビチケ／02：MWアプリ／03：MWPRESS）
+     * ログインサービス区分（01：ムビチケ／02：MWアプリ／03：MWPRESS）
      */
-    lginmtTyp: string;
+    lginsrvcTyp: string;
 }
