@@ -353,8 +353,8 @@ export class UserService extends Service {
             kiin_cd: args.kiinCd,
             lginip_addr: args.lginIpAddr,
             lginusragnt_txt: args.lginusragntTxt,
-            lginshri_nm: args.lginshriNm,
-            lginmt_typ: args.lginmtTyp
+            lginaccunt_nm: args.lginaccuntNm,
+            lginsrvc_typ: args.lginsrvcTyp
         };
         const options = {
             expectedStatusCodes: [OK],
