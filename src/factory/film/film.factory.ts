@@ -179,6 +179,10 @@ export interface IFilmDetailResult {
      */
     tktnzikjkymsgTxt?: string[];
     /**
+     * 鑑賞券販売開始年月日（日付形式 format: yyyyMMdd）
+     */
+    knshknhmbikishYmd?: string;
+    /**
      * 鑑賞券販売終了年月日（日付形式 format: yyyyMMdd）
      */
     knshknhmbishryYmd?: string;

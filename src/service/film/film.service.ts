@@ -154,6 +154,7 @@ export class FilmService extends Service {
             skhnchskknDspt: result.skhnchskkn_dspt,
             shknhikygishCd: result.shknhikygish_cd,
             tktnzikjkymsgTxt: result.tktnzikjkymsg_txt,
+            knshknhmbikishYmd: result.knshknhmbikish_ymd,
             knshknhmbishryYmd: result.knshknhmbishry_ymd,
             knyjgmmiNum: result.knyjgmmi_num,
             knshknknrNo: result.knshknknr_no,
