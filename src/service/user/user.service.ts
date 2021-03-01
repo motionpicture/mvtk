@@ -93,7 +93,8 @@ export class UserService extends Service {
             ...(args.tdfknCd !== undefined ? { tdfkn_cd: args.tdfknCd } : {}),
             ...(args.kiinshgikykNo !== undefined ? { kiinshgikyk_no: args.kiinshgikykNo } : {}),
             ...(args.kiinshnikykNo !== undefined ? { kiinshnikyk_no: args.kiinshnikykNo } : {}),
-            ...(args.kiinknyshNo !== undefined ? { kiinknysh_no: args.kiinknyshNo } : {})
+            ...(args.kiinknyshNo !== undefined ? { kiinknysh_no: args.kiinknyshNo } : {}),
+            ...(args.usrNm !== undefined ? { usr_nm: args.usrNm } : {})
         };
         const options = {
             expectedStatusCodes: [OK],

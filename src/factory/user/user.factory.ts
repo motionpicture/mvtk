@@ -85,6 +85,10 @@ export interface IEditArgs {
      * メルマガ希望フラグ
      */
     mlmgznkbFlg: string;
+    /**
+     * ユーザー名
+     */
+    usrNm?: string;
 }
 
 export interface ITopInfoArgs {
