@@ -161,7 +161,9 @@ export class UserService extends Service {
             kiinshnikykNo: result.kiinshnikyk_no,
             kiinknyshNo: result.kiinknysh_no,
             mlmgznkbFlg: result.mlmgznkb_flg,
-            encryptKiinCd: result.encrypt_kiin_cd
+            encryptKiinCd: result.encrypt_kiin_cd,
+            usrNm: result.usr_nm,
+            prflgzUrl: result.prflgz_url
         };
     }
 

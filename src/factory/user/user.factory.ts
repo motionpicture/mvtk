@@ -201,6 +201,14 @@ export interface IInfoResult {
      * 会員コード(暗号化)
      */
     encryptKiinCd: string;
+    /**
+     * ユーザー名
+     */
+    usrNm?: string;
+    /**
+     * プロフィール画像URL
+     */
+    prflgzUrl?: string;
 }
 
 export interface ITopInfoResult {
