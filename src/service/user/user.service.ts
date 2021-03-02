@@ -396,4 +396,26 @@ export class UserService extends Service {
             prflgzUrl: result.prflgz_url
         };
     }
+
+    /**
+     * プロフィール画像削除
+     */
+    public async deleteImage(kiinCd: string) {
+        debug('requesting...', kiinCd);
+        const form = {
+            kiin_cd: kiinCd
+        };
+        const options = {
+            expectedStatusCodes: [OK],
+            uri: `/api/user/registImage`,
+            method: 'POST',
+            form: form
+        };
+        const result = await this.request(options);
+        debug('result...', result);
+
+        return {
+            status: 'OK'
+        };
+    }
 }
