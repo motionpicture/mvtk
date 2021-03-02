@@ -208,11 +208,11 @@ export interface IInfoResult {
     /**
      * ユーザー名
      */
-    usrNm?: string;
+    usrNm: string | null;
     /**
      * プロフィール画像URL
      */
-    prflgzUrl?: string;
+    prflgzUrl: string | null;
 }
 
 export interface ITopInfoResult {
