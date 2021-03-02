@@ -407,7 +407,7 @@ export class UserService extends Service {
         };
         const options = {
             expectedStatusCodes: [OK],
-            uri: `/api/user/registImage`,
+            uri: `/api/user/deleteImage`,
             method: 'POST',
             form: form
         };
