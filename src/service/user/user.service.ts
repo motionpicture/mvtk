@@ -373,4 +373,27 @@ export class UserService extends Service {
         };
     }
 
+    /**
+     * プロフィール画像登録
+     */
+    public async registImage(kiinCd: string, args: userFactory.IRegistImageArgs): Promise<userFactory.IRegistImageResult> {
+        debug('requesting...', kiinCd);
+        const form = {
+            kiin_cd: kiinCd,
+            prflgz_fl: args.prflgzFl,
+            prflgz_typ: args.prflgzTyp
+        };
+        const options = {
+            expectedStatusCodes: [OK],
+            uri: `/api/user/registImage`,
+            method: 'POST',
+            form: form
+        };
+        const result = await this.request(options);
+        debug('result...', result);
+
+        return {
+            prflgzUrl: result.prflgz_url
+        };
+    }
 }

@@ -328,3 +328,21 @@ export interface ILoginNotifyArgs {
      */
     lginsrvcTyp: string;
 }
+
+export interface IRegistImageArgs {
+    /**
+     * プロフィール画像ファイル(Base64エンコード)
+     */
+    prflgzFl: string;
+    /**
+     * プロフィール画像MIMEタイプ
+     */
+    prflgzTyp: string;
+}
+
+export interface IRegistImageResult {
+    /**
+     * プロフィール画像URL
+     */
+    prflgzUrl: string;
+}
