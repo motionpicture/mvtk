@@ -353,3 +353,10 @@ export interface IRegistImageResult {
      */
     prflgzUrl: string;
 }
+
+export interface IDeleteImageResult {
+    /**
+     * プロフィール未設定画像URL
+     */
+    prflgzMstiUrl: string;
+}

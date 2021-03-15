@@ -401,7 +401,7 @@ export class UserService extends Service {
     /**
      * プロフィール画像削除
      */
-    public async deleteImage(kiinCd: string) {
+    public async deleteImage(kiinCd: string): Promise<userFactory.IDeleteImageResult> {
         debug('requesting...', kiinCd);
         const form = {
             kiin_cd: kiinCd
@@ -416,7 +416,7 @@ export class UserService extends Service {
         debug('result...', result);
 
         return {
-            status: 'OK'
+            prflgzMstiUrl: result.prflgz_msti_url
         };
     }
 }
