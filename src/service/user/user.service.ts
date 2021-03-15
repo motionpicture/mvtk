@@ -164,7 +164,8 @@ export class UserService extends Service {
             mlmgznkbFlg: result.mlmgznkb_flg,
             encryptKiinCd: result.encrypt_kiin_cd,
             usrNm: result.usr_nm,
-            prflgzUrl: result.prflgz_url
+            prflgzUrl: result.prflgz_url,
+            prflgzMstiFlg: result.prflgz_msti_flg === '1'
         };
     }
 

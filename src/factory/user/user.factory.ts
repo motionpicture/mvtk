@@ -211,8 +211,15 @@ export interface IInfoResult {
     usrNm: string | null;
     /**
      * プロフィール画像URL
+     *
+     * 未設定の場合はNoImage画像のURLがデフォルト値となる
      */
-    prflgzUrl: string | null;
+    prflgzUrl: string;
+
+    /**
+     * プロフィール画像未設定フラグ
+     */
+    prflgzMstiFlg: boolean;
 }
 
 export interface ITopInfoResult {
