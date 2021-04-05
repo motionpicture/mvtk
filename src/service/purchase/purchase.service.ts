@@ -235,4 +235,28 @@ export class PurchaseService extends Service {
             status: 'OK'
         };
     }
+
+    /**
+     * 本人認証
+     *
+     * @param {string} knyshMladdr 購入者メールアドレス
+     * @returns {string} 本人認証有フラグ
+     */
+    public async identityVerify(knyshMladdr: string): Promise<string> {
+        const form = {
+            knysh_mladdr: knyshMladdr
+        };
+
+        const options = {
+            expectedStatusCodes: [OK],
+            uri: '/api/purchase/identityVerify',
+            method: 'POST',
+            form: form
+        };
+
+        const result = await this.request(options);
+        debug('result...', result);
+
+        return result.hnnnnnshar_flg;
+    }
 }
