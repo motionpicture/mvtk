@@ -91,6 +91,10 @@ export interface ITempSettlementRegistArgs {
      */
     crdjhhznFlg: string | null;
     /**
+     * 本人認証有フラグ（0：本人確認を行わない／1：本人確認を行う／null：クレジットカード決済以外）
+     */
+    hnnnnnsharFlg: string | null;
+    /**
      * ギフトカード情報（ギフト利用がない場合は null をセット）
      */
     gftInf: {} | null;
