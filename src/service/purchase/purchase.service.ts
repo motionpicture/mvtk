@@ -240,12 +240,14 @@ export class PurchaseService extends Service {
     /**
      * 本人認証
      *
-     * @param {string} knyshMladdr 購入者メールアドレス
-     * @returns {string} 本人認証有フラグ
+     * @returns {string} 本人認証有フラグ（0：本人確認を行わない／1：本人確認を行う）
      */
-    public async identityVerify(knyshMladdr: string): Promise<string> {
+    public async identityVerify(args: purchaseFactory.IIdentityVerify): Promise<string> {
         const form = {
-            knysh_mladdr: knyshMladdr
+            kssiknr_no: args.kssiknrNo,
+            knysh_mladdr: args.knyshMladdr,
+            knysh_cd: args.knyshCd,
+            ip_addr: args.ipAddr
         };
 
         const options = {

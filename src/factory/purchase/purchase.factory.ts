@@ -341,4 +341,23 @@ export interface IForwardMail {
     frwrdMladdr: string;
 }
 
+export interface IIdentityVerify {
+    /**
+     * 決済管理番号
+     */
+    kssiknrNo: string;
+    /**
+     * 購入者メールアドレス
+     */
+    knyshMladdr: string;
+    /**
+     * 購入者コード（非会員の場合は null をセット）
+     */
+    knyshCd: string | null;
+    /**
+     * IPアドレス（IP取得ができない場合 null をセット）
+     */
+    ipAddr: string | null;
+}
+
 export type IRecommendDetailResult = IRecommendResult[];
