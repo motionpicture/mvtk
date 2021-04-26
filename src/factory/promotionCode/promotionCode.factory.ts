@@ -150,6 +150,11 @@ export interface IValidationArgs {
     skhn_cd: string;
 
     /**
+     * サイト識別コード（外部遷移元パラメータ）
+     */
+    stshkbts_cd?: string;
+
+    /**
      * 鑑賞券管理番号（8桁固定）
      */
     knshknknr_no: string;
