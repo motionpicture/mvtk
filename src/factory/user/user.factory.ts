@@ -371,7 +371,7 @@ export interface IContactUsArgs {
      * - 05:その他ご意見、お問い合わせ
      * - 06:MOVIE WALKER PRESS レビュー違反
      */
-    tiawsYyp: string;
+    tiawsTyp: string;
     /**
      * 問合せ者 姓（最大15文字）
      */
