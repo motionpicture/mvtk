@@ -426,7 +426,7 @@ export class UserService extends Service {
     public async contactUs(args: userFactory.IContactUsArgs): Promise<void> {
         debug('requesting...', args);
         const form = {
-            tiaws_typ: args.tiawsYyp,
+            tiaws_typ: args.tiawsTyp,
             tiawsshsi_nm: args.tiawsshsiNm,
             tiawsshmi_nm: args.tiawsshmiNm,
             tiawssh_mladdr: args.tiawsshMladdr,
