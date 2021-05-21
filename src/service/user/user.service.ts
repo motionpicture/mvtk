@@ -419,4 +419,33 @@ export class UserService extends Service {
             prflgzMstiUrl: result.prflgz_msti_url
         };
     }
+
+    /**
+     * 問合せ
+     */
+    public async contactUs(args: userFactory.IContactUsArgs): Promise<void> {
+        debug('requesting...', args);
+        const form = {
+            tiaws_typ: args.tiawsTyp,
+            tiawsshsi_nm: args.tiawsshsiNm,
+            tiawsshmi_nm: args.tiawsshmiNm,
+            tiawssh_mladdr: args.tiawsshMladdr,
+            tiawsshshgikyk_no: args.tiawsshshgikykNo,
+            tiawsshshnikyk_no: args.tiawsshshnikykNo,
+            tiawsshknysh_no: args.tiawsshknyshNo,
+            ryknky_typ: args.ryknkyTyp,
+            tiawsniy_txt: args.tiawsniyTxt,
+            tikiry_typ: args.tikiryTyp,
+            tikiryniy_txt: args.tikiryniyTxt,
+            kiin_cd: args.kiinCd
+        };
+        const options = {
+            expectedStatusCodes: [OK],
+            uri: `/api/user/contactUs`,
+            method: 'POST',
+            form: form
+        };
+        const result = await this.request(options);
+        debug('result...', result);
+    }
 }

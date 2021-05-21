@@ -360,3 +360,60 @@ export interface IDeleteImageResult {
      */
     prflgzMstiUrl: string;
 }
+
+export interface IContactUsArgs {
+    /**
+     * 問合せ区分
+     * - 01:ムビチケについて
+     * - 02:MOVIE WALKER PRESS について
+     * - 03:MOVIE WALKER 会員について
+     * - 04:MOVIE WALKER 会員退会希望
+     * - 05:その他ご意見、お問い合わせ
+     * - 06:MOVIE WALKER PRESS レビュー違反
+     */
+    tiawsTyp: string;
+    /**
+     * 問合せ者 姓（最大15文字）
+     */
+    tiawsshsiNm: string;
+    /**
+     * 問合せ者 名（最大15文字）
+     */
+    tiawsshmiNm: string;
+    /**
+     * 問合せ者メールアドレス（最大128文字）
+     */
+    tiawsshMladdr: string;
+    /**
+     * 問合せ者市外局番（最大5文字）
+     */
+    tiawsshshgikykNo: string;
+    /**
+     * 問合せ者市内局番（最大4文字）
+     */
+    tiawsshshnikykNo: string;
+    /**
+     * 問合せ者加入者番号（最大4文字）
+     */
+    tiawsshknyshNo: string;
+    /**
+     * 利用環境区分（01：PC／02：スマートフォン／03：その他）
+     */
+    ryknkyTyp: string;
+    /**
+     * 問合せ内容本文
+     */
+    tiawsniyTxt: string;
+    /**
+     * 退会理由区分（01：会員メリットを感じないから／02：欲しい機能がないから／03：欲しいムビチケがないから／04：ユーザー対応が悪いから／05：その他）※問合せ区分が04の場合にセット、それ以外は null をセット
+     */
+    tikiryTyp: string;
+    /**
+     * 退会理由本文
+     */
+    tikiryniyTxt: string;
+    /**
+     * 会員コード（会員の場合は 8桁の固定値 を それ以外は null をセット）
+     */
+    kiinCd: string;
+}
