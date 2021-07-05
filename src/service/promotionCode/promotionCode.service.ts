@@ -174,7 +174,8 @@ export class PromotionCodeService extends Service {
             prmtncd_cd: result.prmtncd_cd,
             prmtncd_txt: result.prmtncd_txt,
             wrbk_gk: result.wrbk_gk,
-            wrbk_dspt: result.wrbk_dspt
+            wrbk_dspt: result.wrbk_dspt,
+            krsyki_num: result.krsyki_num
         };
     }
 

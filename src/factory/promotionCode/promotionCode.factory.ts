@@ -213,6 +213,11 @@ export interface IValidationResult {
      * 割引記述
      */
     wrbk_dspt: string;
+
+    /**
+     * 仮使用回数
+     */
+    krsyki_num: number;
 }
 
 /**
