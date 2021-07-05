@@ -187,7 +187,8 @@ export class PromotionCodeService extends Service {
 
         const form = {
             prmtn_cd: args.prmtn_cd,
-            ...((args.kiin_cd !== undefined && args.kiin_cd !== null) ? { kiin_cd: args.kiin_cd } : {})
+            ...((args.kiin_cd !== undefined && args.kiin_cd !== null) ? { kiin_cd: args.kiin_cd } : {}),
+            krsyki_num: args.krsyki_num
         };
 
         const options = {

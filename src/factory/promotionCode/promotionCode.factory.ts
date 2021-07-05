@@ -297,6 +297,11 @@ export interface ITempUseArgs {
      * 会員コード（8桁固定）
      */
     kiin_cd?: string;
+
+    /**
+     * 仮使用回数
+     */
+    krsyki_num: number;
 }
 
 /**
