@@ -139,7 +139,7 @@ export interface ITempSettlementRegistArgs {
      */
     prmtnCd: string;
     /**
-     * プロモーションコード決済UUID
+     * プロモーションコード決済UUID（複数のプロモコードを利用する場合カンマ区切りで指定）
      */
     prmtncdkssiUuid: string;
     /**

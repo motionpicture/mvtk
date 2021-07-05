@@ -309,7 +309,7 @@ export interface ITempUseArgs {
  */
 export interface ITempUseResult {
     /**
-     * プロモーションコード決済UUID
+     * プロモーションコード決済UUID（仮使用回数が2以上の場合はカンマ区切りとなる）
      */
     uuid: string;
 }
