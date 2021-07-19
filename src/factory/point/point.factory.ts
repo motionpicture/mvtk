@@ -50,7 +50,7 @@ export interface IPtRrk {
     /**
      * 有効期限終了年月
      */
-    ykkgnshryYm: null;
+    ykkgnshryYm: null | string;
 }
 
 export interface IPointResult {
@@ -181,11 +181,11 @@ export interface IHistoryArgs extends IPointRequest {
     /**
      * 取得開始年月 YYYY/MM
      */
-    shtkkishYm: string;
+    shtkkishYm?: string;
     /**
      * 取得終了年月 YYYY/MM
      */
-    shtkshryYm: string;
+    shtkshryYm?: string;
 }
 
 export interface IHistoryResult extends IPointResult {
