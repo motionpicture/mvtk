@@ -63,7 +63,9 @@ export class PurchaseService extends Service {
                     eggftykkgn_ymd: info.eggftykkgnYmd,
                     eggftrykn_gk: info.eggftryknGk
                 };
-            }) : []
+            }) : [],
+            stshkbts_cd: args.stshkbtsCd,
+            usrshkbts_cd: args.usrshkbtsCd
         };
 
         const options = {

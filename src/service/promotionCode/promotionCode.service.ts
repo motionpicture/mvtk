@@ -147,6 +147,7 @@ export class PromotionCodeService extends Service {
             ...((args.kiin_cd !== undefined && args.kiin_cd !== null) ? { kiin_cd: args.kiin_cd } : {}),
             skhn_cd: args.skhn_cd,
             knshknknr_no: args.knshknknr_no,
+            stshkbts_cd: args.stshkbts_cd,
             knshkn_inf: Object.keys(args.knshkn_inf).map((key) => {
                 const ikey = parseInt(key, 10);
 
@@ -173,7 +174,8 @@ export class PromotionCodeService extends Service {
             prmtncd_cd: result.prmtncd_cd,
             prmtncd_txt: result.prmtncd_txt,
             wrbk_gk: result.wrbk_gk,
-            wrbk_dspt: result.wrbk_dspt
+            wrbk_dspt: result.wrbk_dspt,
+            krsyki_num: result.krsyki_num
         };
     }
 
@@ -185,7 +187,8 @@ export class PromotionCodeService extends Service {
 
         const form = {
             prmtn_cd: args.prmtn_cd,
-            ...((args.kiin_cd !== undefined && args.kiin_cd !== null) ? { kiin_cd: args.kiin_cd } : {})
+            ...((args.kiin_cd !== undefined && args.kiin_cd !== null) ? { kiin_cd: args.kiin_cd } : {}),
+            krsyki_num: args.krsyki_num
         };
 
         const options = {

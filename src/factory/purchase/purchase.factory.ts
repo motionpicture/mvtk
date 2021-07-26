@@ -139,7 +139,7 @@ export interface ITempSettlementRegistArgs {
      */
     prmtnCd: string;
     /**
-     * プロモーションコード決済UUID
+     * プロモーションコード決済UUID（複数のプロモコードを利用する場合カンマ区切りで指定）
      */
     prmtncdkssiUuid: string;
     /**
@@ -164,6 +164,14 @@ export interface ITempSettlementRegistArgs {
         eggftykkgnYmd: string;
         eggftryknGk: string;
     }[] | null;
+    /**
+     * サイト識別コード（外部遷移元パラメータ）※外部サイトから遷移してきた場合のみセット
+     */
+    stshkbtsCd?: string;
+    /**
+     * ユーザー識別コード（外部遷移元パラメータ）※外部サイトから遷移してきた場合のみセット
+     */
+    usrshkbtsCd?: string;
 }
 
 export interface IInfoArgs {

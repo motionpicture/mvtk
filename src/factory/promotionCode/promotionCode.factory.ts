@@ -150,6 +150,11 @@ export interface IValidationArgs {
     skhn_cd: string;
 
     /**
+     * サイト識別コード（外部遷移元パラメータ）
+     */
+    stshkbts_cd?: string;
+
+    /**
      * 鑑賞券管理番号（8桁固定）
      */
     knshknknr_no: string;
@@ -208,6 +213,11 @@ export interface IValidationResult {
      * 割引記述
      */
     wrbk_dspt: string;
+
+    /**
+     * 仮使用回数
+     */
+    krsyki_num: number;
 }
 
 /**
@@ -287,6 +297,11 @@ export interface ITempUseArgs {
      * 会員コード（8桁固定）
      */
     kiin_cd?: string;
+
+    /**
+     * 仮使用回数
+     */
+    krsyki_num: number;
 }
 
 /**
@@ -294,7 +309,7 @@ export interface ITempUseArgs {
  */
 export interface ITempUseResult {
     /**
-     * プロモーションコード決済UUID
+     * プロモーションコード決済UUID（仮使用回数が2以上の場合はカンマ区切りとなる）
      */
     uuid: string;
 }
