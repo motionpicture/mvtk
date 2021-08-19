@@ -172,6 +172,8 @@ export interface ITempSettlementRegistArgs {
      * ユーザー識別コード（外部遷移元パラメータ）※外部サイトから遷移してきた場合のみセット
      */
     usrshkbtsCd?: string;
+
+    snimtknshsntkgmnTyp?: string;
 }
 
 export interface IInfoArgs {
