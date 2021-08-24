@@ -172,6 +172,11 @@ export interface ITempSettlementRegistArgs {
      * ユーザー識別コード（外部遷移元パラメータ）※外部サイトから遷移してきた場合のみセット
      */
     usrshkbtsCd?: string;
+
+    /**
+     * 遷移元券種選択画面区分（01：ムビチケサイト／02：アプリ／03：ウィジェット）
+     */
+    snimtknshsntkgmnTyp?: string;
 }
 
 export interface IInfoArgs {
