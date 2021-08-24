@@ -173,6 +173,9 @@ export interface ITempSettlementRegistArgs {
      */
     usrshkbtsCd?: string;
 
+    /**
+     * 遷移元券種選択画面区分（01：ムビチケサイト／02：アプリ／03：ウィジェット）
+     */
     snimtknshsntkgmnTyp?: string;
 }
 
