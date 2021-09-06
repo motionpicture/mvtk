@@ -210,9 +210,9 @@ export interface IExchangeableResult {
      */
     chrgytiGk: number;
     /**
-     * eバウチャー交換有効期限（日時形式 format：yyyy/MM/dd HH:mm:ss）
+     * AMCクーポン交換有効期限（日時形式 format：yyyy/MM/dd HH:mm:ss）
      */
-    evuchrkknykkgnDt: string;
+    amccupnkknykkgnDt: string;
 }
 
 //-------------------------------- 保有映画ギフト情報取得 --------------------------------//

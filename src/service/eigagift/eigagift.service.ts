@@ -226,7 +226,7 @@ export class EigagiftService extends Service {
 
         return {
             chrgytiGk: result.chrgyti_gk,
-            evuchrkknykkgnDt: result.evuchrkknykkgn_dt
+            amccupnkknykkgnDt: result.amccupnkknykkgn_dt
         };
     }
 
