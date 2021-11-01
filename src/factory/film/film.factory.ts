@@ -2,6 +2,105 @@
  * 作品情報
  * film factory
  */
+export function factoryDetailResult(data: any): IFilmDetailResult {
+    return {
+        hmbiTyp: data.hmbi_typ,
+        hmbisttsTyp: data.hmbistts_typ,
+        skhnCd: data.skhn_cd,
+        skhnNm: data.skhn_nm,
+        pstrgzUrl: data.pstrgz_url,
+        eirnrtngCd: data.eirnrtng_cd,
+        slscpy1Txt: data.slscpy1_txt,
+        znkkkkikishDspt: data.znkkkkikish_dspt,
+        skhnkistsTxt: data.skhnkists_txt,
+        skhnmngtrTxt: data.skhnmngtr_txt,
+        skhnchshkkytsuTxt: data.skhnchshkkytsu_txt,
+        skhnchshkshsiTxt: data.skhnchshkshsi_txt,
+        mtitrksyNum: data.mtitrksy_num,
+        mtitrkzmFlg: data.mtitrkzm_flg,
+        kshkstUrl: data.kshkst_url,
+        stffInf: (data.stff_inf === null) ? [] : data.stff_inf.map(
+            (stff: any): IStffInf => {
+                return {
+                    hyjjnNo: stff.hyjjn_no,
+                    jmbtsNm: stff.jmbts_nm,
+                    ykwrNm: stff.ykwr_nm
+                };
+            }
+        ),
+        cstInf: (data.cst_inf === null) ? [] : data.cst_inf.map(
+            (cst: any): ICstInf => {
+                return {
+                    hyjjnNo: cst.hyjjn_no,
+                    jmbtsNm: cst.jmbts_nm,
+                    shenFlg: cst.shen_flg
+                };
+            }
+        ),
+        skhmmiorgnlNm: data.skhmmiorgnl_nm,
+        siskY: data.sisk_y,
+        siskkkNm: data.siskkk_nm,
+        hikygishNm: data.hikygish_nm,
+        jeiTmm: data.jei_tmm,
+        skhnchskknDspt: data.skhnchskkn_dspt,
+        shknhikygishCd: data.shknhikygish_cd,
+        tktnzikjkymsgTxt: data.tktnzikjkymsg_txt,
+        knshknhmbikishYmd: data.knshknhmbikish_ymd,
+        knshknhmbishryYmd: data.knshknhmbishry_ymd,
+        knyjgmmiNum: data.knyjgmmi_num,
+        knshknknrNo: data.knshknknr_no,
+        knshknInf: (data.knshkn_inf === null) ? [] : data.knshkn_inf.map(
+            (knshkn: any): IKnshknInf => {
+                return {
+                    knshknknrmisiNo: knshkn.knshknknrmisi_no,
+                    knshTyp: knshkn.knsh_typ,
+                    knshkbnNm: knshkn.knshkbn_nm,
+                    knshknhmbiUnip: knshkn.knshknhmbi_unip
+                };
+            }
+        ),
+        bnnrInf: (data.bnnr_inf === null) ? [] : data.bnnr_inf.map(
+            (bnnr: any): IBnnrInf => {
+                return {
+                    bnnrCd: bnnr.bnnr_cd,
+                    bnnrNm: bnnr.bnnr_nm,
+                    bnnrhyjkshTyp: bnnr.bnnrhyjksh_typ,
+                    bnnrgzUrl: bnnr.bnnrgz_url,
+                    bnnrlnkskUrl: bnnr.bnnrlnksk_url,
+                    bnnrstsmiTxt: bnnr.bnnrstsmi_txt,
+                    bnnrkisikishYmd: bnnr.bnnrkisikish_ymd,
+                    bnnrkisishryYmd: bnnr.bnnrkisishry_ymd,
+                    cptktnbtndsTyp: bnnr.cptktnbtnds_typ
+                };
+            }
+        ),
+        dgtlincntvInf: (data.dgtlincntv_inf === null) ? [] : data.dgtlincntv_inf.map(
+            (dgtlincntv: any): IDgtlincntvInf => {
+                return {
+                    dgtlincntvCd: dgtlincntv.dgtlincntv_cd,
+                    dgtlincntvTtl: dgtlincntv.dgtlincntv_ttl,
+                    dgtlincntvstsmiTxt: dgtlincntv.dgtlincntvstsmi_txt,
+                    smplgzUrl: dgtlincntv.smplgz_url,
+                    dgtlincntvknykishYmd: dgtlincntv.dgtlincntvknykish_ymd,
+                    dgtlincntvknyshryYmd: dgtlincntv.dgtlincntvknyshry_ymd,
+                    dgtlincntvdwnlodykTm: dgtlincntv.dgtlincntvdwnlodyk_tm,
+                    dgtlincntvdwnlodjgnkiNum: dgtlincntv.dgtlincntvdwnlodjgnki_num,
+                    skhndgtlincntvRmk: dgtlincntv.skhndgtlincntv_rmk
+                };
+            }
+        ),
+        ykkhnInf: (data.ykkhn_inf === null) ? [] : data.ykkhn_inf.map(
+            (ykkhn: any): IYkkhnInf => {
+                return {
+                    ykkhnNo: ykkhn.ykkhn_no,
+                    ykkhnTtl: ykkhn.ykkhn_ttl,
+                    ykkhnUrl: ykkhn.ykkhn_url
+                };
+            }
+        )
+    };
+}
+
 // tslint:disable-next-line:no-empty-interface
 export interface IFilmRequest {
 }

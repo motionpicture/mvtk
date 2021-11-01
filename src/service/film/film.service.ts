@@ -96,7 +96,6 @@ export class FilmService extends Service {
     /**
      * 23.作品詳細情報取得
      */
-    // tslint:disable-next-line: max-func-body-length
     public async detail(args: filmFactory.IFilmDetailArgs): Promise<filmFactory.IFilmDetailResult> {
         debug('requesting...', args);
         let kiinCdParam: string = '';
@@ -112,102 +111,7 @@ export class FilmService extends Service {
         const result = await this.request(options);
         debug('result...', result);
 
-        return {
-            hmbiTyp: result.hmbi_typ,
-            hmbisttsTyp: result.hmbistts_typ,
-            skhnCd: result.skhn_cd,
-            skhnNm: result.skhn_nm,
-            pstrgzUrl: result.pstrgz_url,
-            eirnrtngCd: result.eirnrtng_cd,
-            slscpy1Txt: result.slscpy1_txt,
-            znkkkkikishDspt: result.znkkkkikish_dspt,
-            skhnkistsTxt: result.skhnkists_txt,
-            skhnmngtrTxt: result.skhnmngtr_txt,
-            skhnchshkkytsuTxt: result.skhnchshkkytsu_txt,
-            skhnchshkshsiTxt: result.skhnchshkshsi_txt,
-            mtitrksyNum: result.mtitrksy_num,
-            mtitrkzmFlg: result.mtitrkzm_flg,
-            kshkstUrl: result.kshkst_url,
-            stffInf: (result.stff_inf === null) ? [] : result.stff_inf.map(
-                (res: any): filmFactory.IStffInf => {
-                    return {
-                        hyjjnNo: res.hyjjn_no,
-                        jmbtsNm: res.jmbts_nm,
-                        ykwrNm: res.ykwr_nm
-                    };
-                }
-            ),
-            cstInf: (result.cst_inf === null) ? [] : result.cst_inf.map(
-                (res: any): filmFactory.ICstInf => {
-                    return {
-                        hyjjnNo: res.hyjjn_no,
-                        jmbtsNm: res.jmbts_nm,
-                        shenFlg: res.shen_flg
-                    };
-                }
-            ),
-            skhmmiorgnlNm: result.skhmmiorgnl_nm,
-            siskY: result.sisk_y,
-            siskkkNm: result.siskkk_nm,
-            hikygishNm: result.hikygish_nm,
-            jeiTmm: result.jei_tmm,
-            skhnchskknDspt: result.skhnchskkn_dspt,
-            shknhikygishCd: result.shknhikygish_cd,
-            tktnzikjkymsgTxt: result.tktnzikjkymsg_txt,
-            knshknhmbikishYmd: result.knshknhmbikish_ymd,
-            knshknhmbishryYmd: result.knshknhmbishry_ymd,
-            knyjgmmiNum: result.knyjgmmi_num,
-            knshknknrNo: result.knshknknr_no,
-            knshknInf: (result.knshkn_inf === null) ? [] : result.knshkn_inf.map(
-                (res: any): filmFactory.IKnshknInf => {
-                    return {
-                        knshknknrmisiNo: res.knshknknrmisi_no,
-                        knshTyp: res.knsh_typ,
-                        knshkbnNm: res.knshkbn_nm,
-                        knshknhmbiUnip: res.knshknhmbi_unip
-                    };
-                }
-            ),
-            bnnrInf: (result.bnnr_inf === null) ? [] : result.bnnr_inf.map(
-                (res: any): filmFactory.IBnnrInf => {
-                    return {
-                        bnnrCd: res.bnnr_cd,
-                        bnnrNm: res.bnnr_nm,
-                        bnnrhyjkshTyp: res.bnnrhyjksh_typ,
-                        bnnrgzUrl: res.bnnrgz_url,
-                        bnnrlnkskUrl: res.bnnrlnksk_url,
-                        bnnrstsmiTxt: res.bnnrstsmi_txt,
-                        bnnrkisikishYmd: res.bnnrkisikish_ymd,
-                        bnnrkisishryYmd: res.bnnrkisishry_ymd,
-                        cptktnbtndsTyp: res.cptktnbtnds_typ
-                    };
-                }
-            ),
-            dgtlincntvInf: (result.dgtlincntv_inf === null) ? [] : result.dgtlincntv_inf.map(
-                (res: any): filmFactory.IDgtlincntvInf => {
-                    return {
-                        dgtlincntvCd: res.dgtlincntv_cd,
-                        dgtlincntvTtl: res.dgtlincntv_ttl,
-                        dgtlincntvstsmiTxt: res.dgtlincntvstsmi_txt,
-                        smplgzUrl: res.smplgz_url,
-                        dgtlincntvknykishYmd: res.dgtlincntvknykish_ymd,
-                        dgtlincntvknyshryYmd: res.dgtlincntvknyshry_ymd,
-                        dgtlincntvdwnlodykTm: res.dgtlincntvdwnlodyk_tm,
-                        dgtlincntvdwnlodjgnkiNum: res.dgtlincntvdwnlodjgnki_num,
-                        skhndgtlincntvRmk: res.skhndgtlincntv_rmk
-                    };
-                }
-            ),
-            ykkhnInf: (result.ykkhn_inf === null) ? [] : result.ykkhn_inf.map(
-                (res: any): filmFactory.IYkkhnInf => {
-                    return {
-                        ykkhnNo: res.ykkhn_no,
-                        ykkhnTtl: res.ykkhn_ttl,
-                        ykkhnUrl: res.ykkhn_url
-                    };
-                }
-            )
-        };
+        return filmFactory.factoryDetailResult(result);
     }
 
 }
