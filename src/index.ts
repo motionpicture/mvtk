@@ -19,6 +19,7 @@ import { FavoriteService } from './service/favorite/favorite.service';
 import { FilmService } from './service/film/film.service';
 import { GmoService } from './service/gmo/gmo.service';
 import { HistoryService } from './service/history/history.service';
+import { LimitedsalseService } from './service/limitedsalse/limitedsalse.service';
 import { PointService } from './service/point/point.service';
 import { PromotionCodeService } from './service/promotionCode/promotionCode.service';
 import { PurchaseService } from './service/purchase/purchase.service';
@@ -57,6 +58,11 @@ export namespace service {
      * 購入履歴サービス
      */
     export class History extends HistoryService { }
+
+    /**
+     * 限定販売作品サービス
+     */
+    export class Limitedsalse extends LimitedsalseService { }
 
     /**
      * ポイントサービス
