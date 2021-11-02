@@ -97,7 +97,9 @@ export function factoryDetailResult(data: any): IFilmDetailResult {
                     ykkhnUrl: ykkhn.ykkhn_url
                 };
             }
-        )
+        ),
+        gntihmbiNm: data.gntihmbi_nm,
+        gntihmbichshkTxt: data.gntihmbichshk_txt
     };
 }
 
@@ -309,6 +311,14 @@ export interface IFilmDetailResult {
      * 予告編情報
      */
     ykkhnInf: IYkkhnInf[];
+    /**
+     * 限定販売名称
+     */
+    gntihmbiNm: string;
+    /**
+     * 限定販売注釈
+     */
+    gntihmbichshkTxt: string;
 }
 
 export interface IBnnrInf {
@@ -321,7 +331,7 @@ export interface IBnnrInf {
      */
     bnnrNm: string;
     /**
-     * バナー表示箇所区分（01:作品詳細画面右／02:作品詳細画面下／03:購入完了画面下）
+     * バナー表示箇所区分（01:作品詳細画面右／02:作品詳細画面下／03:購入完了画面下／06:作品詳細画面(限定販売)／07:購入完了画面(限定販売)）
      */
     bnnrhyjkshTyp: string;
     /**
