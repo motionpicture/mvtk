@@ -10,7 +10,7 @@ const debug = createDebug('mvtk:service:film');
  * 限定販売作品サービス
  * @class
  */
-export class LimitedsalseService extends Service {
+export class LimitedsalesService extends Service {
     /**
      * 限定販売作品詳細情報取得
      */
@@ -18,7 +18,7 @@ export class LimitedsalseService extends Service {
         debug('requesting...', skhnCd);
         const options = {
             expectedStatusCodes: [OK],
-            uri: `/api/limitedsalse/filmdetails?skhn_cd=${skhnCd}`,
+            uri: `/api/limitedsales/filmdetails?skhn_cd=${skhnCd}`,
             method: 'GET',
             form: {}
         };
