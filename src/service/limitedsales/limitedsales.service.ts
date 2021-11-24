@@ -30,6 +30,6 @@ export class LimitedsalesService extends Service {
             return null;
         }
 
-        return filmFactory.factoryFilmDetailResult(result);
+        return filmFactory.factoryFilmDetailResult(result, true);
     }
 }

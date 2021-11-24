@@ -2,8 +2,9 @@
  * 作品情報
  * film factory
  */
-export function factoryFilmDetailResult(data: any): IFilmDetailResult {
+export function factoryFilmDetailResult(data: any, isLimitedsales: boolean): IFilmDetailResult {
     return {
+        isLimitedsales: isLimitedsales,
         hmbiTyp: data.hmbi_typ,
         hmbisttsTyp: data.hmbistts_typ,
         skhnCd: data.skhn_cd,
@@ -191,6 +192,10 @@ export interface IKnshknInf {
 }
 
 export interface IFilmDetailResult {
+    /**
+     * 限定販売の判定
+     */
+    isLimitedsales: boolean;
     /**
      * 販売区分（00:前売り券／01:当日券）
      */
