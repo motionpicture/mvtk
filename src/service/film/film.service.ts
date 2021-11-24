@@ -111,7 +111,7 @@ export class FilmService extends Service {
         const result = await this.request(options);
         debug('result...', result);
 
-        return filmFactory.factoryDetailResult(result);
+        return filmFactory.factoryFilmDetailResult(result);
     }
 
 }
