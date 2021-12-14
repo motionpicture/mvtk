@@ -245,7 +245,7 @@ export class PurchaseService extends Service {
      *
      * @returns {string} 本人認証有フラグ（0：本人確認を行わない／1：本人確認を行う）
      */
-    public async identityVerify(args: purchaseFactory.IIdentityVerify): Promise<string> {
+    public async identityVerify(args: purchaseFactory.IIdentityVerifyArgs): Promise<purchaseFactory.IIdentityVerifyResult> {
         const form = {
             kssiknr_no: args.kssiknrNo,
             knysh_mladdr: args.knyshMladdr,
@@ -263,6 +263,9 @@ export class PurchaseService extends Service {
         const result = await this.request(options);
         debug('result...', result);
 
-        return result.hnnnnnshar_flg;
+        return {
+            hnnnnnsharFlg: result.hnnnnnshar_flg,
+            hznzmcrdtcrdybdshFlg: result.hznzmcrdtcrdybdsh_flg
+        };
     }
 }

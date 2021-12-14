@@ -354,7 +354,7 @@ export interface IForwardMail {
     frwrdMladdr: string;
 }
 
-export interface IIdentityVerify {
+export interface IIdentityVerifyArgs {
     /**
      * 決済管理番号
      */
@@ -371,6 +371,17 @@ export interface IIdentityVerify {
      * IPアドレス（IP取得ができない場合 null をセット）
      */
     ipAddr: string | null;
+}
+
+export interface IIdentityVerifyResult {
+    /**
+     * 本人認証有フラグ（0：本人確認を行わない／1：本人確認を行う）
+     */
+    hnnnnnsharFlg: string;
+    /**
+     * 保存済クレジットカード呼出フラグ（0：クレジット情報を呼び出さない／1：クレジットカード情報を呼び出す）
+     */
+    hznzmcrdtcrdybdshFlg: string;
 }
 
 export type IRecommendDetailResult = IRecommendResult[];
