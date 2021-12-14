@@ -242,8 +242,6 @@ export class PurchaseService extends Service {
 
     /**
      * 本人認証
-     *
-     * @returns {string} 本人認証有フラグ（0：本人確認を行わない／1：本人確認を行う）
      */
     public async identityVerify(args: purchaseFactory.IIdentityVerifyArgs): Promise<purchaseFactory.IIdentityVerifyResult> {
         const form = {
