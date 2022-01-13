@@ -417,3 +417,18 @@ export interface IContactUsArgs {
      */
     kiinCd: string;
 }
+
+export interface IUnsubscribeArgs {
+    /**
+     * 会員コード（8桁の固定値をセット）
+     */
+    kiinCd: string;
+    /**
+     * 退会理由区分
+     */
+    tikiryTyp: string;
+    /**
+     * 退会理由本文
+     */
+    tikiryniyTxt: string;
+}

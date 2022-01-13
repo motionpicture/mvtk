@@ -448,4 +448,21 @@ export class UserService extends Service {
         const result = await this.request(options);
         debug('result...', result);
     }
+
+    public async unsubscribe(args: userFactory.IUnsubscribeArgs): Promise<void> {
+        debug('requesting...', args);
+        const form = {
+            kiin_cd: args.kiinCd,
+            tikiry_typ: args.tikiryTyp,
+            tikiryniy_txt: args.tikiryniyTxt
+        };
+        const options = {
+            expectedStatusCodes: [OK],
+            uri: `/api/user/unsubscribe`,
+            method: 'POST',
+            form: form
+        };
+        const result = await this.request(options);
+        debug('result...', result);
+    }
 }
