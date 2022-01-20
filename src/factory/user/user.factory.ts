@@ -407,11 +407,11 @@ export interface IContactUsArgs {
     /**
      * 退会理由区分（01：会員メリットを感じないから／02：欲しい機能がないから／03：欲しいムビチケがないから／04：ユーザー対応が悪いから／05：その他）※問合せ区分が04の場合にセット、それ以外は null をセット
      */
-    tikiryTyp: string;
+    tikiryTyp: string | null;
     /**
      * 退会理由本文
      */
-    tikiryniyTxt: string;
+    tikiryniyTxt: string | null;
     /**
      * 会員コード（会員の場合は 8桁の固定値 を それ以外は null をセット）
      */
