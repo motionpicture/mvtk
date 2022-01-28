@@ -449,6 +449,9 @@ export class UserService extends Service {
         debug('result...', result);
     }
 
+    /**
+     * 退会
+     */
     public async unsubscribe(args: userFactory.IUnsubscribeArgs): Promise<void> {
         debug('requesting...', args);
         const form = {
