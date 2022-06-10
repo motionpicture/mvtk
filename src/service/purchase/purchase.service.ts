@@ -145,6 +145,26 @@ export class PurchaseService extends Service {
     }
 
     /**
+     * 購入可能チェック
+     * @see https://api-reference.azurewebsites.net/#購入-購入可能チェック-get
+     */
+     public async isPurchasable(args: purchaseFactory.IIsPurchasableArgs): Promise<purchaseFactory.IIsPurchasableResult> {
+        const knyshCd = (args.knyshCd !== undefined && args.knyshCd !== null) ? `&knysh_cd=${args.knyshCd}` : '';
+        const options = {
+            expectedStatusCodes: [OK],
+            uri: `/api/purchase/isPurchasable?skhn_cd=${args.skhnCd}&hmbi_typ=${args.hmbiTyp}${knyshCd}`,
+            method: 'GET',
+            form: {}
+        };
+        const result = await this.request(options);
+        debug('result...', result);
+
+        return {
+            knyDt: result.kny_dt
+        };
+    }
+
+    /**
      * 特典一時確保
      */
     public async tempPreserveBonus(args: purchaseFactory.ITempPreserveBonusArgs): Promise<purchaseFactory.ITempPreserveBonusResult> {

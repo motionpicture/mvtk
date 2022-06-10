@@ -230,6 +230,28 @@ export interface IPurchasableDateTimeResult {
     knyDt: string;
 }
 
+export interface IIsPurchasableArgs {
+    /**
+     * 作品コード（6桁固定）
+     */
+    skhnCd: string;
+    /**
+     * 販売区分（00:前売り券／01:当日券）
+     */
+    hmbiTyp: string;
+    /**
+     * 購入者コード（会員の場合は 8桁の固定値 を それ以外は null をセット）
+     */
+    knyshCd: string | null;
+}
+
+export interface IIsPurchasableResult {
+    /**
+     * 購入日時（日時形式 format: yyyy/MM/dd HH:mm:ss）
+     */
+    knyDt: string;
+}
+
 export interface ITempPreserveBonusArgs {
     /**
      * 決済管理番号（16桁固定）
