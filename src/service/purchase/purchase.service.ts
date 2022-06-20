@@ -128,6 +128,7 @@ export class PurchaseService extends Service {
 
     /**
      * 購入日時チェック
+     * @deprecated MWSR-493の対応後に削除される予定
      */
     public async purchasableDateTime(args: purchaseFactory.IPurchasableDateTimeArgs): Promise<purchaseFactory.IPurchasableDateTimeResult> {
         const options = {
