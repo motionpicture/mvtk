@@ -432,3 +432,14 @@ export interface IUnsubscribeArgs {
      */
     tikiryniyTxt: string;
 }
+
+export interface ICheckEditMailAddressArgs {
+    /**
+     * 会員コード（8桁の固定値をセット）
+     */
+    kiinCd: string;
+    /**
+     * 変更予定メールアドレス（最大128文字）
+     */
+    hnkytiMladdr: string;
+}

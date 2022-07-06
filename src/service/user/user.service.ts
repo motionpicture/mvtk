@@ -468,4 +468,22 @@ export class UserService extends Service {
         const result = await this.request(options);
         debug('result...', result);
     }
+
+    /**
+     * 変更用メールアドレスチェック
+     */
+    public async checkEditMailAddress(args: userFactory.ICheckEditMailAddressArgs): Promise<void> {
+        const form = {
+            kiin_cd: args.kiinCd,
+            hnkyti_mladdr: args.hnkytiMladdr
+        };
+        const options = {
+            expectedStatusCodes: [OK],
+            uri: `/api/user/checkEditMailAddress`,
+            method: 'POST',
+            form: form
+        };
+        const result = await this.request(options);
+        debug('result...', result);
+    }
 }
