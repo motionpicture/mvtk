@@ -443,3 +443,14 @@ export interface ICheckEditMailAddressArgs {
      */
     hnkytiMladdr: string;
 }
+
+export interface IEditMailAddressArgs {
+    /**
+     * 会員コード（8桁の固定値をセット）
+     */
+    kiinCd: string;
+    /**
+     * メールアドレス変更用認証コード
+     */
+    nnshCd: string;
+}

@@ -486,4 +486,22 @@ export class UserService extends Service {
         const result = await this.request(options);
         debug('result...', result);
     }
+
+    /**
+     * メールアドレス更新
+     */
+    public async editMailAddress(args: userFactory.IEditMailAddressArgs): Promise<void> {
+        const form = {
+            kiin_cd: args.kiinCd,
+            nnsh_cd: args.nnshCd
+        };
+        const options = {
+            expectedStatusCodes: [OK],
+            uri: `/api/user/editMailAddress`,
+            method: 'POST',
+            form: form
+        };
+        const result = await this.request(options);
+        debug('result...', result);
+    }
 }
