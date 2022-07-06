@@ -78,10 +78,6 @@ export interface IEditArgs {
 
     kiinknyshNo?: string;
     /**
-     * 会員メールアドレス
-     */
-    kiinMladdr: string;
-    /**
      * メルマガ希望フラグ
      */
     mlmgznkbFlg: string;

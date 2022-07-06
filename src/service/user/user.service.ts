@@ -85,7 +85,6 @@ export class UserService extends Service {
         const form = {
             kiin_cd: args.kiinCd,
             kiinsi_ymd: args.kiinsiYmd,
-            kiin_mladdr: args.kiinMladdr,
             mlmgznkb_flg: args.mlmgznkbFlg,
             ...(args.kiinsiNm !== undefined ? { kiinsi_nm: args.kiinsiNm } : {}),
             ...(args.kiimmiNm !== undefined ? { kiimmi_nm: args.kiimmiNm } : {}),
