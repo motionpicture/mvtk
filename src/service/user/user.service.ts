@@ -85,7 +85,6 @@ export class UserService extends Service {
         const form = {
             kiin_cd: args.kiinCd,
             kiinsi_ymd: args.kiinsiYmd,
-            kiin_mladdr: args.kiinMladdr,
             mlmgznkb_flg: args.mlmgznkbFlg,
             ...(args.kiinsiNm !== undefined ? { kiinsi_nm: args.kiinsiNm } : {}),
             ...(args.kiimmiNm !== undefined ? { kiimmi_nm: args.kiimmiNm } : {}),
@@ -462,6 +461,42 @@ export class UserService extends Service {
         const options = {
             expectedStatusCodes: [OK],
             uri: `/api/user/unsubscribe`,
+            method: 'POST',
+            form: form
+        };
+        const result = await this.request(options);
+        debug('result...', result);
+    }
+
+    /**
+     * 変更用メールアドレスチェック
+     */
+    public async checkEditMailAddress(args: userFactory.ICheckEditMailAddressArgs): Promise<void> {
+        const form = {
+            kiin_cd: args.kiinCd,
+            hnkyti_mladdr: args.hnkytiMladdr
+        };
+        const options = {
+            expectedStatusCodes: [OK],
+            uri: `/api/user/checkEditMailAddress`,
+            method: 'POST',
+            form: form
+        };
+        const result = await this.request(options);
+        debug('result...', result);
+    }
+
+    /**
+     * メールアドレス更新
+     */
+    public async editMailAddress(args: userFactory.IEditMailAddressArgs): Promise<void> {
+        const form = {
+            kiin_cd: args.kiinCd,
+            nnsh_cd: args.nnshCd
+        };
+        const options = {
+            expectedStatusCodes: [OK],
+            uri: `/api/user/editMailAddress`,
             method: 'POST',
             form: form
         };

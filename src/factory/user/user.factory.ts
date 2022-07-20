@@ -78,10 +78,6 @@ export interface IEditArgs {
 
     kiinknyshNo?: string;
     /**
-     * 会員メールアドレス
-     */
-    kiinMladdr: string;
-    /**
      * メルマガ希望フラグ
      */
     mlmgznkbFlg: string;
@@ -431,4 +427,26 @@ export interface IUnsubscribeArgs {
      * 退会理由本文
      */
     tikiryniyTxt: string;
+}
+
+export interface ICheckEditMailAddressArgs {
+    /**
+     * 会員コード（8桁の固定値をセット）
+     */
+    kiinCd: string;
+    /**
+     * 変更予定メールアドレス（最大128文字）
+     */
+    hnkytiMladdr: string;
+}
+
+export interface IEditMailAddressArgs {
+    /**
+     * 会員コード（8桁の固定値をセット）
+     */
+    kiinCd: string;
+    /**
+     * メールアドレス変更用認証コード
+     */
+    nnshCd: string;
 }
