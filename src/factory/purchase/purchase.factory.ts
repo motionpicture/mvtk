@@ -327,11 +327,11 @@ export interface IRecommend {
     /**
      * 会員コード（8桁固定）
      */
-    kiinCd: string;
+    kiinCd?: string;
     /**
      * 表示件数（指定しない場合は自動的に 5 をデフォルトとする）
      */
-    hyjNum: number;
+    hyjNum?: number;
 }
 
 export interface IRecommendResult {

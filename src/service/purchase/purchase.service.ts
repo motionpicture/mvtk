@@ -209,12 +209,12 @@ export class PurchaseService extends Service {
      */
     public async recommend(args: purchaseFactory.IRecommend): Promise<purchaseFactory.IRecommendDetailResult> {
         debug('requesting...', args);
-        const kiinCd = (args.kiinCd !== undefined && args.kiinCd !== null) ? `&kiin_cd=${args.kiinCd}` : '';
-        const hyjNum = (args.hyjNum !== undefined && args.hyjNum !== null) ? `&hyj_num=${args.hyjNum}` : '';
-        //const hyjNum = (args.hyj_num === undefined ? 5 : `&hyj_num=${args.hyj_num}`);
+        const kiinCdQuery = args.kiinCd !== undefined ? `&kiin_cd=${args.kiinCd}` : '';
+        const hyjNumQuery = args.hyjNum !== undefined ? `&hyj_num=${args.hyjNum}` : '';
+        const query = `knyskhn_cd=${args.knyskhnCd}${kiinCdQuery}${hyjNumQuery}`;
         const options = {
             expectedStatusCodes: [OK],
-            uri: `/api/purchase/recommend?knyskhn_cd=${args.knyskhnCd}${kiinCd}${hyjNum}`,
+            uri: `/api/purchase/recommend?${query}`,
             method: 'GET',
             form: {}
         };
