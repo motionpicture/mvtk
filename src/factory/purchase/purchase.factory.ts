@@ -404,6 +404,22 @@ export interface IIdentityVerifyResult {
      * 保存済クレジットカード呼出フラグ（0：クレジット情報を呼び出さない／1：クレジットカード情報を呼び出す）
      */
     hznzmcrdtcrdybdshFlg: string;
+    /**
+     * 不審行為情報（1：不審な行動は見られなかった／2：不審な行動が見られた）
+     */
+    fshnkiJh: string;
+    /**
+     * 会員最終更新日（YYYYMMDD形式）※非会員の場合はnull
+     */
+    kiinSishkshnYmd: string;
+    /**
+     * 会員登録日（YYYYMMDD形式）※非会員の場合はnull
+     */
+    kiinTrkYmd: string;
+    /**
+     * 会員パスワード変更日（YYYYMMDD形式）※非会員の場合はnull
+     */
+    kiinPwdKshnYmd: string;
 }
 
 export type IRecommendDetailResult = IRecommendResult[];

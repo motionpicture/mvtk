@@ -149,7 +149,7 @@ export class PurchaseService extends Service {
      * 購入可能チェック
      * @see https://api-reference.azurewebsites.net/#購入-購入可能チェック-get
      */
-     public async isPurchasable(args: purchaseFactory.IIsPurchasableArgs): Promise<purchaseFactory.IIsPurchasableResult> {
+    public async isPurchasable(args: purchaseFactory.IIsPurchasableArgs): Promise<purchaseFactory.IIsPurchasableResult> {
         const knyshCd = (args.knyshCd !== undefined && args.knyshCd !== null) ? `&knysh_cd=${args.knyshCd}` : '';
         const options = {
             expectedStatusCodes: [OK],
@@ -284,7 +284,11 @@ export class PurchaseService extends Service {
 
         return {
             hnnnnnsharFlg: result.hnnnnnshar_flg,
-            hznzmcrdtcrdybdshFlg: result.hznzmcrdtcrdybdsh_flg
+            hznzmcrdtcrdybdshFlg: result.hznzmcrdtcrdybdsh_flg,
+            fshnkiJh: result.fshnkiJh,
+            kiinSishkshnYmd: result.kiinSishkshnYmd,
+            kiinTrkYmd: result.kiinTrkYmd,
+            kiinPwdKshnYmd: result.kiinPwdKshnYmd
         };
     }
 }
