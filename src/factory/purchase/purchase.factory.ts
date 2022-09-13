@@ -411,15 +411,15 @@ export interface IIdentityVerifyResult {
     /**
      * 会員最終更新日（YYYYMMDD形式）※非会員の場合はnull
      */
-    kiinSishkshnYmd: string;
+    kiinSishkshnYmd: string | null;
     /**
      * 会員登録日（YYYYMMDD形式）※非会員の場合はnull
      */
-    kiinTrkYmd: string;
+    kiinTrkYmd: string | null;
     /**
      * 会員パスワード変更日（YYYYMMDD形式）※非会員の場合はnull
      */
-    kiinPwdKshnYmd: string;
+    kiinPwdKshnYmd: string | null;
 }
 
 export type IRecommendDetailResult = IRecommendResult[];
