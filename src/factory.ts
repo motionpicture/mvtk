@@ -5,6 +5,7 @@
 
 import * as CampaignFactory from './factory/campaign/campaign.factory';
 import * as EigagiftFactory from './factory/eigagift/eigagift.factory';
+import * as EventFactory from './factory/event/event.factory';
 import * as FavoriteFactory from './factory/favorite/favorite.factory';
 import * as FilmFactory from './factory/film/film.factory';
 import * as GmoFactory from './factory/gmo/gmo.factory';
@@ -30,3 +31,4 @@ export import theater = TheaterFactory;
 export import utility = UtilityFactory;
 export import user = UserFactory;
 export import gmo = GmoFactory;
+export import event = EventFactory;

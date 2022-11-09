@@ -15,6 +15,7 @@ import * as pointUtil from './utils/point/point.util';
 
 import { CampaignService } from './service/campaign/campaign.service';
 import { EigagiftService } from './service/eigagift/eigagift.service';
+import { EventService } from './service/event/event.service';
 import { FavoriteService } from './service/favorite/favorite.service';
 import { FilmService } from './service/film/film.service';
 import { GmoService } from './service/gmo/gmo.service';
@@ -110,6 +111,12 @@ export namespace service {
      * @class
      */
     export class Gmo extends GmoService { }
+
+    /**
+     * イベント割
+     * @class
+     */
+    export class Event extends EventService { }
 }
 
 export namespace utils {

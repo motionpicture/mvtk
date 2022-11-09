@@ -66,7 +66,9 @@ export class PurchaseService extends Service {
             }) : [],
             stshkbts_cd: args.stshkbtsCd,
             usrshkbts_cd: args.usrshkbtsCd,
-            snimtknshsntkgmn_typ: args.snimtknshsntkgmnTyp
+            snimtknshsntkgmn_typ: args.snimtknshsntkgmnTyp,
+            stsshshmigzhtsufl_nm: args.stsshshmigzhtsuflNm,
+            stsshshmigznnifl_nm: args.stsshshmigznniflNm
         };
 
         const options = {

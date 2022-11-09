@@ -177,6 +177,16 @@ export interface ITempSettlementRegistArgs {
      * 遷移元券種選択画面区分（01：ムビチケサイト／02：アプリ／03：ウィジェット）
      */
     snimtknshsntkgmnTyp?: string;
+
+    /**
+     * 接種証明書必須画像ファイル名（イベント割用）
+     */
+    stsshshmigzhtsuflNm?: string;
+
+    /**
+     * 接種証明書任意画像ファイル名（イベント割用）
+     */
+    stsshshmigznniflNm?: string;
 }
 
 export interface IInfoArgs {
