@@ -41,7 +41,7 @@
     "typescript": "^2.9.2"
   },
   "engines": {
-    "node": ">=18.3.0",
+    "node": ">=16.17.0",
     "npm": ">=8.11.0"
   },
   "keywords": [],
@@ -77,7 +77,7 @@
     "prepublishOnly": "npm run clean && npm run build && npm test && npm run doc",
     "lintfix": "tslint --fix --exclude \"**/*.spec.ts\" \"src/**/*.ts\""
   },
-  "version": "3.3.1-alpha-eventwari.2",
+  "version": "3.3.1-alpha-eventwari.3",
   "repository": {
     "type": "git",
     "url": "https://github.com/motionpicture/mvtk.git"
