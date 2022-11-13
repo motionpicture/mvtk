@@ -58,7 +58,7 @@ export class EventService extends Service {
     const options = {
       expectedStatusCodes: [OK],
       uri: `/api/event/getUploadCredentialUrl`,
-      methods: 'POST',
+      method: 'POST',
       form: {
         stsshshmigzhtsu_typ: args.stsshshmigzhtsuTyp,
         stsshshmigznni_typ: args.stsshshmigznniTyp
