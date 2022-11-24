@@ -436,7 +436,8 @@ export class UserService extends Service {
             tiawsniy_txt: args.tiawsniyTxt,
             tikiry_typ: args.tikiryTyp,
             tikiryniy_txt: args.tikiryniyTxt,
-            kiin_cd: args.kiinCd
+            kiin_cd: args.kiinCd,
+            tiawsmvtk_typ: args.tiawsmvtkTyp
         };
         const options = {
             expectedStatusCodes: [OK],
