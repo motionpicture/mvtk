@@ -93,7 +93,8 @@ export class UserService extends Service {
             ...(args.kiinshgikykNo !== undefined ? { kiinshgikyk_no: args.kiinshgikykNo } : {}),
             ...(args.kiinshnikykNo !== undefined ? { kiinshnikyk_no: args.kiinshnikykNo } : {}),
             ...(args.kiinknyshNo !== undefined ? { kiinknysh_no: args.kiinknyshNo } : {}),
-            ...(args.usrNm !== undefined ? { usr_nm: args.usrNm } : {})
+            ...(args.usrNm !== undefined ? { usr_nm: args.usrNm } : {}), 
+            mtioshrskb_flg: args.mtioshrskbFlg
         };
         const options = {
             expectedStatusCodes: [OK],
@@ -164,7 +165,8 @@ export class UserService extends Service {
             encryptKiinCd: result.encrypt_kiin_cd,
             usrNm: result.usr_nm,
             prflgzUrl: result.prflgz_url,
-            prflgzMstiFlg: result.prflgz_msti_flg === '1'
+            prflgzMstiFlg: result.prflgz_msti_flg === '1',
+            mtioshrskbFlg: result.mtioshrskb_flg
         };
     }
 

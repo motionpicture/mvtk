@@ -71,11 +71,17 @@ export interface IEditArgs {
    * 都道府県コード
    */
   tdfknCd?: string;
-
+  /**
+   * 会員市外局番号
+   */
   kiinshgikykNo?: string;
-
+  /**
+   * 会員市内局番号
+   */
   kiinshnikykNo?: string;
-
+  /**
+   * 会員加入者番号
+   */
   kiinknyshNo?: string;
   /**
    * メルマガ希望フラグ
@@ -85,6 +91,10 @@ export interface IEditArgs {
    * ユーザー名
    */
   usrNm?: string;
+  /**
+   * みたいお知らせ希望フラグ
+   */
+  mtioshrskbFlg: string;
 }
 
 export interface ITopInfoArgs {
@@ -216,6 +226,10 @@ export interface IInfoResult {
    * プロフィール画像未設定フラグ
    */
   prflgzMstiFlg: boolean;
+  /**
+   * みたいお知らせ希望フラグ
+   */
+  mtioshrskbFlg: string;
 }
 
 export interface ITopInfoResult {
