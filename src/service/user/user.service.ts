@@ -93,7 +93,7 @@ export class UserService extends Service {
             ...(args.kiinshgikykNo !== undefined ? { kiinshgikyk_no: args.kiinshgikykNo } : {}),
             ...(args.kiinshnikykNo !== undefined ? { kiinshnikyk_no: args.kiinshnikykNo } : {}),
             ...(args.kiinknyshNo !== undefined ? { kiinknysh_no: args.kiinknyshNo } : {}),
-            ...(args.usrNm !== undefined ? { usr_nm: args.usrNm } : {}), 
+            ...(args.usrNm !== undefined ? { usr_nm: args.usrNm } : {}),
             mtioshrskb_flg: args.mtioshrskbFlg
         };
         const options = {
