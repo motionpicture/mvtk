@@ -62,7 +62,8 @@ export class UserService extends Service {
             kiin_cd: args.kiinCd,
             kiin_pwd: args.kiinPwd,
             kiinsi_ymd: args.kiinsiYmd,
-            mlmgznkb_flg: args.mlmgznkbFlg
+            mlmgznkb_flg: args.mlmgznkbFlg,
+            mtioshrskb_flg: args.mtioshrskbFlg
         };
         const options = {
             expectedStatusCodes: [OK],

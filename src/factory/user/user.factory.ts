@@ -44,7 +44,11 @@ export interface IRegistArgs {
    * メルマガ希望フラグ
    */
   mlmgznkbFlg: string;
-}
+  /**
+   * みたいお知らせ希望フラグ
+   */
+  mtioshrskbFlg: string;
+  }
 
 export interface IEditArgs {
   /**
