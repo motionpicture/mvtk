@@ -11,25 +11,27 @@ const debug = createDebug('mvtk:service:film');
  * @class
  */
 export class LimitedsalesService extends Service {
-    /**
-     * 限定販売作品詳細情報取得
-     */
-    public async filmdetails(skhnCd: string): Promise<filmFactory.IFilmDetailResult | null> {
-        debug('requesting...', skhnCd);
-        const options = {
-            expectedStatusCodes: [OK],
-            uri: `/api/limitedsales/filmdetails?skhn_cd=${skhnCd}`,
-            method: 'GET',
-            form: {}
-        };
-        const result = await this.request(options);
-        debug('result...', result);
+  /**
+   * 限定販売作品詳細情報取得
+   */
+  public async filmdetails(
+    skhnCd: string
+  ): Promise<filmFactory.IFilmDetailResultArray | null> {
+    debug('requesting...', skhnCd);
+    const options = {
+      expectedStatusCodes: [OK],
+      uri: `/api/limitedsales/filmdetails?skhn_cd=${skhnCd}`,
+      method: 'GET',
+      form: {}
+    };
+    const result = await this.request(options);
+    debug('result...', result);
 
-        // 返すべき作品が存在しないと、各フィールドがnullや空配列で返される
-        if (result.skhn_cd === null) {
-            return null;
-        }
-
-        return filmFactory.factoryFilmDetailResult(result, true);
+    // 返すべき作品が存在しないと、各フィールドがnullや空配列で返される
+    if (result.skhn_cd === null) {
+        return null;
     }
+
+    return filmFactory.factoryFilmDetailResult(result, true, false);
+  }
 }

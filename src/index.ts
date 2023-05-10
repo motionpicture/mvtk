@@ -14,6 +14,7 @@ import * as eigagiftUtil from './utils/eigagift/eigagift.util';
 import * as pointUtil from './utils/point/point.util';
 
 import { CampaignService } from './service/campaign/campaign.service';
+import { CommonticketService } from './service/commonticket/commonticket.service';
 import { EigagiftService } from './service/eigagift/eigagift.service';
 import { EventService } from './service/event/event.service';
 import { FavoriteService } from './service/favorite/favorite.service';
@@ -54,6 +55,11 @@ export namespace service {
      * 作品情報サービス
      */
     export class Film extends FilmService { }
+
+    /**
+     * 共通鑑賞券情報サービス
+     */
+    export class Commonticket extends CommonticketService { }
 
     /**
      * 購入履歴サービス

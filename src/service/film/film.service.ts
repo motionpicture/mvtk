@@ -93,25 +93,26 @@ export class FilmService extends Service {
         );
     }
 
-    /**
-     * 23.作品詳細情報取得
-     */
-    public async detail(args: filmFactory.IFilmDetailArgs): Promise<filmFactory.IFilmDetailResult> {
-        debug('requesting...', args);
-        let kiinCdParam: string = '';
-        if (args.kiinCd !== undefined && args.kiinCd !== '') {
-            kiinCdParam = `&kiin_cd=${args.kiinCd}`;
-        }
-        const options = {
-            expectedStatusCodes: [OK],
-            uri: `/api/film/details?skhn_cd=${args.skhnCd}${kiinCdParam}`,
-            method: 'GET',
-            form: {}
-        };
-        const result = await this.request(options);
-        debug('result...', result);
-
-        return filmFactory.factoryFilmDetailResult(result, false);
+  /**
+   * 23.作品詳細情報取得
+   */
+  public async detail(
+    args: filmFactory.IFilmDetailArgs
+  ): Promise<filmFactory.IFilmDetailResultArray> {
+    debug('requesting...', args);
+    let kiinCdParam: string = '';
+    if (args.kiinCd !== undefined && args.kiinCd !== '') {
+      kiinCdParam = `&kiin_cd=${args.kiinCd}`;
     }
+    const options = {
+      expectedStatusCodes: [OK],
+      uri: `/api/film/details?skhn_cd=${args.skhnCd}${kiinCdParam}`,
+      method: 'GET',
+      form: {}
+    };
+    const result = await this.request(options);
+    debug('result...', result);
 
+    return filmFactory.factoryFilmDetailResult(result, false, false);
+  }
 }
