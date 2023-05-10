@@ -187,6 +187,11 @@ export interface ITempSettlementRegistArgs {
      * 接種証明書任意画像ファイル名（イベント割用）
      */
     stsshshmigznniflNm?: string;
+
+    /**
+     * 販売区分（00:前売り券／01:当日券／02:共通券）
+     */
+    hmbiTyp: string;
 }
 
 export interface IInfoArgs {

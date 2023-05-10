@@ -2,195 +2,350 @@
  * 作品情報
  * film factory
  */
-export function factoryFilmDetailResult(data: any, isLimitedsales: boolean): IFilmDetailResult {
-    return {
-        isLimitedsales: isLimitedsales,
-        hmbiTyp: data.hmbi_typ,
-        hmbisttsTyp: data.hmbistts_typ,
-        skhnCd: data.skhn_cd,
-        skhnNm: data.skhn_nm,
-        pstrgzUrl: data.pstrgz_url,
-        eirnrtngCd: data.eirnrtng_cd,
-        slscpy1Txt: data.slscpy1_txt,
-        znkkkkikishDspt: data.znkkkkikish_dspt,
-        skhnkistsTxt: data.skhnkists_txt,
-        skhnmngtrTxt: data.skhnmngtr_txt,
-        skhnchshkkytsuTxt: data.skhnchshkkytsu_txt,
-        skhnchshkshsiTxt: data.skhnchshkshsi_txt,
-        mtitrksyNum: data.mtitrksy_num,
-        mtitrkzmFlg: data.mtitrkzm_flg,
-        kshkstUrl: data.kshkst_url,
-        stffInf: (data.stff_inf === null)
-            ? []
-            : data.stff_inf.map(factoryStffInf),
-        cstInf: (data.cst_inf === null)
-            ? []
-            : data.cst_inf.map(factoryCstInf),
-        skhmmiorgnlNm: data.skhmmiorgnl_nm,
-        siskY: data.sisk_y,
-        siskkkNm: data.siskkk_nm,
-        hikygishNm: data.hikygish_nm,
-        jeiTmm: data.jei_tmm,
-        skhnchskknDspt: data.skhnchskkn_dspt,
-        shknhikygishCd: data.shknhikygish_cd,
-        tktnzikjkymsgTxt: data.tktnzikjkymsg_txt,
-        knshknhmbikishYmd: data.knshknhmbikish_ymd,
-        knshknhmbishryYmd: data.knshknhmbishry_ymd,
-        knyjgmmiNum: data.knyjgmmi_num,
-        knshknknrNo: data.knshknknr_no,
-        knshknInf: (data.knshkn_inf === null)
-            ? []
-            : data.knshkn_inf.map(factoryKnshknInf),
-        bnnrInf: (data.bnnr_inf === null)
-            ? []
-            : data.bnnr_inf.map(factoryBnnrInf),
-        dgtlincntvInf: (data.dgtlincntv_inf === null)
-            ? []
-            : data.dgtlincntv_inf.map(factoryDgtlincntvInf),
-        ykkhnInf: (data.ykkhn_inf === null)
-            ? []
-            : data.ykkhn_inf.map(factoryYkkhnInf),
-        gntihmbiNm: data.gntihmbi_nm,
-        gntihmbichshkTxt: data.gntihmbichshk_txt
-    };
+export function factoryFilmDetailResult(
+  data: any,
+  isLimitedsales: boolean,
+  isCommonticket: boolean
+): IFilmDetailResultArray {
+  return {
+    isLimitedsales: isLimitedsales,
+    isCommonticket: isCommonticket,
+    hmbiTyp: data.hmbi_typ,
+    hmbisttsTyp: data.hmbistts_typ,
+    skhnKnrCd: data.skhn_cd,
+    skhnKnrNm: data.skhn_nm,
+    knshknhmbikishYmd: '',
+    knshknhmbishryYmd: '',
+    knyjgmmiNum: data.knyjgmmi_num,
+    knshknknrNo: data.knshknknr_no,
+    knshknInf:
+      data.knshkn_inf === null ? [] : data.knshkn_inf.map(factoryKnshknInf),
+    skhnInf:
+      data.skhn_cd === null
+        ? []
+        : [
+            {
+              skhnCd: data.skhn_cd,
+              skhnNm: data.skhn_nm,
+              pstrgzUrl: data.pstrgz_url,
+              eirnrtngCd: data.eirnrtng_cd,
+              slscpy1Txt: data.slscpy1_txt,
+              znkkkkikishDspt: data.znkkkkikish_dspt,
+              skhnkistsTxt: data.skhnkists_txt,
+              skhnmngtrTxt: data.skhnmngtr_txt,
+              skhnchshkkytsuTxt: data.skhnchshkkytsu_txt,
+              skhnchshkshsiTxt: data.skhnchshkshsi_txt,
+              mtitrksyNum: data.mtitrksy_num,
+              mtitrkzmFlg: data.mtitrkzm_flg,
+              kshkstUrl: data.kshkst_url,
+              stffInf:
+                data.stff_inf === null ? [] : data.stff_inf.map(factoryStffInf),
+              cstInf:
+                data.cst_inf === null ? [] : data.cst_inf.map(factoryCstInf),
+              skhmmiorgnlNm: data.skhmmiorgnl_nm,
+              siskY: data.sisk_y,
+              siskkkNm: data.siskkk_nm,
+              hikygishNm: data.hikygish_nm,
+              jeiTmm: data.jei_tmm,
+              skhnchskknDspt: data.skhnchskkn_dspt,
+              shknhikygishCd: data.shknhikygish_cd,
+              tktnzikjkymsgTxt: data.tktnzikjkymsg_txt,
+              knshknhmbikishYmd: data.knshknhmbikish_ymd,
+              knshknhmbishryYmd: data.knshknhmbishry_ymd,
+              knyjgmmiNum: data.knyjgmmi_num,
+              knshknknrNo: data.knshknknr_no,
+              bnnrInf:
+                data.bnnr_inf === null ? [] : data.bnnr_inf.map(factoryBnnrInf),
+              dgtlincntvInf:
+                data.dgtlincntv_inf === null
+                  ? []
+                  : data.dgtlincntv_inf.map(factoryDgtlincntvInf),
+              ykkhnInf:
+                data.ykkhn_inf === null
+                  ? []
+                  : data.ykkhn_inf.map(factoryYkkhnInf),
+              gntihmbiNm: data.gntihmbi_nm,
+              gntihmbichshkTxt: data.gntihmbichshk_txt
+            }
+          ]
+  };
+}
+/**
+ * 共通鑑賞券情報
+ * commonticket factory
+ */
+export function factoryCommonticketDetailResult(
+  data: any,
+  isLimitedsales: boolean,
+  isCommonticket: boolean
+): IFilmDetailResultArray {
+  return {
+    isLimitedsales: isLimitedsales,
+    isCommonticket: isCommonticket,
+    hmbiTyp: '02',
+    hmbisttsTyp: data.hmbistts_typ,
+    skhnKnrCd: data.kytsknshknknr_no,
+    skhnKnrNm: data.kytsknshkn_nm,
+    knshknhmbikishYmd: data.knshknhmbikish_ymd,
+    knshknhmbishryYmd: data.knshknhmbishry_ymd,
+    kytsknshknchshkTxt: data.kytsknshknchshk_txt,
+    kytsknshknchshkshsiTxt: data.kytsknshknchshkshsi_txt,
+    knyjgmmiNum: data.knyjgmmi_num,
+    knshknknrNo: data.kytsknshknknr_no,
+    knshknInf: (data.kytsknshkn_inf === null)
+    ? []
+    : data.kytsknshkn_inf.map(factoryKytsknshknInf),
+    skhnInf: (data.skhn_inf === null)
+    ? []
+    : data.skhn_inf.map(factorySkhnInf)
+  };
 }
 
-function factoryStffInf(data: any): IStffInf {
+function factoryKytsknshknInf(data: any) {
     return {
-        hyjjnNo: data.hyjjn_no,
-        jmbtsNm: data.jmbts_nm,
-        ykwrNm: data.ykwr_nm
-    };
-}
-
-function factoryCstInf(data: any): ICstInf {
-    return {
-        hyjjnNo: data.hyjjn_no,
-        jmbtsNm: data.jmbts_nm,
-        shenFlg: data.shen_flg
-    };
-}
-
-function factoryKnshknInf(data: any): IKnshknInf {
-    return {
-        knshknknrmisiNo: data.knshknknrmisi_no,
+        knshknknrmisiNo: data.kytsknshknknrmisi_no,
         knshTyp: data.knsh_typ,
         knshkbnNm: data.knshkbn_nm,
         knshknhmbiUnip: data.knshknhmbi_unip
     };
 }
 
+function factorySkhnInf(data: any): ISkhnInf {
+  return {
+    skhnCd: data.skhn_cd,
+    skhnNm: data.skhn_nm,
+    pstrgzUrl: data.pstrgz_url,
+    eirnrtngCd: data.eirnrtng_cd,
+    slscpy1Txt: data.slscpy1_txt,
+    znkkkkikishDspt: data.znkkkkikish_dspt,
+    skhnkistsTxt: data.skhnkists_txt,
+    skhnmngtrTxt: data.skhnmngtr_txt,
+    skhnchshkkytsuTxt: data.skhnchshkkytsu_txt,
+    skhnchshkshsiTxt: data.skhnchshkshsi_txt,
+    mtitrksyNum: null,
+    mtitrkzmFlg: null,
+    kshkstUrl: data.kshkst_url,
+    stffInf: (data.stff_inf === null)
+        ? []
+        : data.stff_inf.map(factoryStffInf),
+    cstInf: (data.cst_inf === null)
+        ? []
+        : data.cst_inf.map(factoryCstInf),
+    skhmmiorgnlNm: data.skhmmiorgnl_nm,
+    siskY: data.sisk_y,
+    siskkkNm: data.siskkk_nm,
+    hikygishNm: data.hikygish_nm,
+    jeiTmm: data.jei_tmm,
+    skhnchskknDspt: null,
+    shknhikygishCd: null,
+    tktnzikjkymsgTxt: [],
+    knshknhmbikishYmd: data.knshknhmbikish_ymd,
+    knshknhmbishryYmd: data.knshknhmbishry_ymd,
+    knyjgmmiNum: data.knyjgmmi_num,
+    knshknknrNo: data.knshknknr_no,
+    bnnrInf: [],
+    dgtlincntvInf: [],
+    ykkhnInf: (data.ykkhn_inf === null)
+        ? []
+        : data.ykkhn_inf.map(factoryYkkhnInf),
+    gntihmbiNm: null,
+    gntihmbichshkTxt: null
+  };
+}
+
+function factoryStffInf(data: any): IStffInf {
+  return {
+    hyjjnNo: data.hyjjn_no,
+    jmbtsNm: data.jmbts_nm,
+    ykwrNm: data.ykwr_nm
+  };
+}
+
+function factoryCstInf(data: any): ICstInf {
+  return {
+    hyjjnNo: data.hyjjn_no,
+    jmbtsNm: data.jmbts_nm,
+    shenFlg: data.shen_flg
+  };
+}
+
+function factoryKnshknInf(data: any): IKnshknInf {
+  return {
+    knshknknrmisiNo: data.knshknknrmisi_no ? data.knshknknrmisi_no : data.kytsknshknknrmisi_no,
+    knshTyp: data.knsh_typ,
+    knshkbnNm: data.knshkbn_nm,
+    knshknhmbiUnip: data.knshknhmbi_unip
+  };
+}
+
 function factoryBnnrInf(data: any): IBnnrInf {
-    return {
-        bnnrCd: data.bnnr_cd,
-        bnnrNm: data.bnnr_nm,
-        bnnrhyjkshTyp: data.bnnrhyjksh_typ,
-        bnnrgzUrl: data.bnnrgz_url,
-        bnnrlnkskUrl: data.bnnrlnksk_url,
-        bnnrstsmiTxt: data.bnnrstsmi_txt,
-        bnnrkisikishYmd: data.bnnrkisikish_ymd,
-        bnnrkisishryYmd: data.bnnrkisishry_ymd,
-        cptktnbtndsTyp: data.cptktnbtnds_typ
-    };
+  return {
+    bnnrCd: data.bnnr_cd,
+    bnnrNm: data.bnnr_nm,
+    bnnrhyjkshTyp: data.bnnrhyjksh_typ,
+    bnnrgzUrl: data.bnnrgz_url,
+    bnnrlnkskUrl: data.bnnrlnksk_url,
+    bnnrstsmiTxt: data.bnnrstsmi_txt,
+    bnnrkisikishYmd: data.bnnrkisikish_ymd,
+    bnnrkisishryYmd: data.bnnrkisishry_ymd,
+    cptktnbtndsTyp: data.cptktnbtnds_typ
+  };
 }
 
 function factoryDgtlincntvInf(data: any): IDgtlincntvInf {
-    return {
-        dgtlincntvCd: data.dgtlincntv_cd,
-        dgtlincntvTtl: data.dgtlincntv_ttl,
-        dgtlincntvstsmiTxt: data.dgtlincntvstsmi_txt,
-        smplgzUrl: data.smplgz_url,
-        dgtlincntvknykishYmd: data.dgtlincntvknykish_ymd,
-        dgtlincntvknyshryYmd: data.dgtlincntvknyshry_ymd,
-        dgtlincntvdwnlodykTm: data.dgtlincntvdwnlodyk_tm,
-        dgtlincntvdwnlodjgnkiNum: data.dgtlincntvdwnlodjgnki_num,
-        skhndgtlincntvRmk: data.skhndgtlincntv_rmk
-    };
+  return {
+    dgtlincntvCd: data.dgtlincntv_cd,
+    dgtlincntvTtl: data.dgtlincntv_ttl,
+    dgtlincntvstsmiTxt: data.dgtlincntvstsmi_txt,
+    smplgzUrl: data.smplgz_url,
+    dgtlincntvknykishYmd: data.dgtlincntvknykish_ymd,
+    dgtlincntvknyshryYmd: data.dgtlincntvknyshry_ymd,
+    dgtlincntvdwnlodykTm: data.dgtlincntvdwnlodyk_tm,
+    dgtlincntvdwnlodjgnkiNum: data.dgtlincntvdwnlodjgnki_num,
+    skhndgtlincntvRmk: data.skhndgtlincntv_rmk
+  };
 }
 
 function factoryYkkhnInf(data: any): IYkkhnInf {
-    return {
-        ykkhnNo: data.ykkhn_no,
-        ykkhnTtl: data.ykkhn_ttl,
-        ykkhnUrl: data.ykkhn_url
-    };
+  return {
+    ykkhnNo: data.ykkhn_no,
+    ykkhnTtl: data.ykkhn_ttl,
+    ykkhnUrl: data.ykkhn_url
+  };
 }
 
 // tslint:disable-next-line:no-empty-interface
-export interface IFilmRequest {
-}
+export interface IFilmRequest {}
 
 export interface IFilmResult {
+  /**
+   * 情報
+   */
+  resultInfo: {
     /**
-     * 情報
+     * ステータス
      */
-    resultInfo: {
-        /**
-         * ステータス
-         */
-        status: string;
-        /**
-         * メッセージ
-         */
-        message: string;
-    };
+    status: string;
+    /**
+     * メッセージ
+     */
+    message: string;
+  };
 }
 
 export interface IFilmDetailArgs extends IFilmRequest {
-    /**
-     * 作品コード
-     */
-    skhnCd: string;
-    /**
-     * 会員コード
-     */
-    kiinCd?: string;
+  /**
+   * 作品コード
+   */
+  skhnCd: string;
+  /**
+   * 会員コード
+   */
+  kiinCd?: string;
 }
 
 export interface IStffCommon {
-    /**
-     * スタッフ表示順番号
-     */
-    hyjjnNo?: number;
-    /**
-     * スタッフ名称
-     */
-    jmbtsNm?: string;
+  /**
+   * スタッフ表示順番号
+   */
+  hyjjnNo?: number;
+  /**
+   * スタッフ名称
+   */
+  jmbtsNm?: string;
 }
 
 export interface IStffInf extends IStffCommon {
-    /**
-     * スタッフ役割名称
-     */
-    ykwrNm?: string;
+  /**
+   * スタッフ役割名称
+   */
+  ykwrNm?: string;
 }
 
 export interface ICstInf extends IStffCommon {
-    /**
-     * 主演フラグ
-     */
-    shenFlg?: string;
+  /**
+   * 主演フラグ
+   */
+  shenFlg?: string;
 }
 
 export interface IKnshknInf {
-    /**
-     * 鑑賞券管理明細番号
-     */
-    knshknknrmisiNo: string;
-    /**
-     * 券種区分
-     */
-    knshTyp: string;
-    /**
-     * 券種区分名称
-     */
-    knshkbnNm: string;
-    /**
-     * 鑑賞券販売単価
-     */
-    knshknhmbiUnip: number;
+  /**
+   * 鑑賞券管理明細番号
+   */
+  knshknknrmisiNo: string;
+  /**
+   * 券種区分
+   */
+  knshTyp: string;
+  /**
+   * 券種区分名称
+   */
+  knshkbnNm: string;
+  /**
+   * 鑑賞券販売単価
+   */
+  knshknhmbiUnip: number;
 }
 
+export interface IFilmDetailResultArray {
+    /**
+     * 限定販売の判定
+     */
+    isLimitedsales: boolean;
+    /**
+     * 共通鑑賞券の判定
+     */
+    isCommonticket: boolean;
+    /**
+     * 販売区分（00:前売り券／01:当日券）
+     */
+    hmbiTyp: string;
+    /**
+     * 販売ステータス区分（01:近日発売／02:販売中／03:販売終了かつ上映中／04:販売終了かつ上映終了）
+     */
+    hmbisttsTyp: string;
+    /**
+     * 作品管理番号（共通券追加に伴い追加）（filmは作品コードと同様）
+     */
+    skhnKnrCd: string;
+    /**
+     * 作品管理名称（最大240文字）（共通券追加に伴い追加）
+     */
+    skhnKnrNm: string;
+    /**
+     * 鑑賞券販売開始年月日（日付形式 format: yyyyMMdd）
+     */
+    knshknhmbikishYmd?: string;
+    /**
+     * 鑑賞券販売終了年月日（日付形式 format: yyyyMMdd）
+     */
+    knshknhmbishryYmd?: string;
+    /**
+     * 共通鑑賞券注釈共通本文（最大500文字）
+     */
+    kytsknshknchshkTxt? : string;
+    /**
+     * 共通鑑賞券作品注釈詳細（最大500文字）
+     */
+    kytsknshknchshkshsiTxt?: string;
+    /**
+     * 購入上限枚数
+     */
+    knyjgmmiNum: number;
+    /**
+     * 鑑賞券管理番号
+     */
+    knshknknrNo: string;
+    /**
+     * 鑑賞券情報
+     */
+    knshknInf: IKnshknInf[];
+    /**
+     * 鑑賞券情報
+     */
+    skhnInf: ISkhnInf[];
+}
 export interface IFilmDetailResult {
     /**
      * 限定販売の判定
@@ -507,12 +662,10 @@ export interface IFilmInfoResult {
      * 全国公開開始日記述
      */
     znkkkkikishDspt?: string;
-
     /**
      * 注目度ランキング番号
      */
     chmkdrnkngNo?: number;
-
     /**
      * 作品著作権記述
      */
@@ -573,3 +726,134 @@ export interface IFilmSearchResult {
 }
 
 export type IFilmSearchLstResult = IFilmSearchResult[];
+
+export interface ISkhnInf {
+  /**
+   * 作品コード
+   */
+  skhnCd: string;
+  /**
+   * 作品名称（最大240文字）
+   */
+  skhnNm: string;
+  /**
+   * ポスター画像URL
+   */
+  pstrgzUrl?: string;
+  /**
+   * 映倫レイティングコード
+   */
+  eirnrtngCd?: string;
+  /**
+   * セールスコピー１
+   */
+  slscpy1Txt?: string;
+  /**
+   * 全国公開開始日記述
+   */
+  znkkkkikishDspt?: string;
+  /**
+   * 作品解説本文
+   */
+  skhnkistsTxt?: string;
+  /**
+   * 作品物語本文
+   */
+  skhnmngtrTxt?: string;
+  /**
+   * 作品注釈共通本文
+   */
+  skhnchshkkytsuTxt?: string;
+  /**
+   * 作品注釈詳細
+   */
+  skhnchshkshsiTxt?: string;
+  /**
+   * 「観たい」登録者数
+   */
+  mtitrksyNum: number | null;
+  /**
+   * 「観たい」登録済フラグ
+   */
+  mtitrkzmFlg: string | null;
+  /**
+   * 公式サイトURL
+   */
+  kshkstUrl?: string;
+  /**
+   * スタッフ情報
+   */
+  stffInf?: IStffInf[];
+  /**
+   * キャスト情報
+   */
+  cstInf?: ICstInf[];
+  /**
+   * 作品オリジナル名称
+   */
+  skhmmiorgnlNm?: string;
+  /**
+   * 製作年
+   */
+  siskY?: string;
+  /**
+   * 製作国名称
+   */
+  siskkkNm?: string;
+  /**
+   * 配給会社名称
+   */
+  hikygishNm?: string;
+  /**
+   * 上映時間
+   */
+  jeiTmm?: string;
+  /**
+   * 作品著作権記述
+   */
+  skhnchskknDspt?: string | null;
+  /**
+   * 主管配給会社コード
+   */
+  shknhikygishCd?: string | null;
+  /**
+   * 特典在庫状況メッセージ
+   */
+  tktnzikjkymsgTxt?: string[];
+  /**
+   * 鑑賞券販売開始年月日（日付形式 format: yyyyMMdd）
+   */
+  knshknhmbikishYmd?: string;
+  /**
+   * 鑑賞券販売終了年月日（日付形式 format: yyyyMMdd）
+   */
+  knshknhmbishryYmd?: string;
+  /**
+   * 購入上限枚数
+   */
+  knyjgmmiNum: number;
+  /**
+   * 鑑賞券管理番号
+   */
+  knshknknrNo: string;
+  /**
+   * バナー情報
+   */
+  bnnrInf: IBnnrInf[];
+  /**
+   * デジタルインセンティブ情報
+   */
+  dgtlincntvInf: IDgtlincntvInf[];
+  /**
+   * 予告編情報
+   */
+  ykkhnInf: IYkkhnInf[];
+  /**
+   * 限定販売名称
+   */
+  gntihmbiNm: string | null;
+  /**
+   * 限定販売注釈
+   */
+  gntihmbichshkTxt: string | null;
+}

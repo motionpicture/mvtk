@@ -68,7 +68,8 @@ export class PurchaseService extends Service {
             usrshkbts_cd: args.usrshkbtsCd,
             snimtknshsntkgmn_typ: args.snimtknshsntkgmnTyp,
             stsshshmigzhtsufl_nm: args.stsshshmigzhtsuflNm,
-            stsshshmigznnifl_nm: args.stsshshmigznniflNm
+            stsshshmigznnifl_nm: args.stsshshmigznniflNm,
+            hmbi_typ: args.hmbiTyp
         };
 
         const options = {
