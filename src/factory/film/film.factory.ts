@@ -82,20 +82,29 @@ export function factoryCommonticketDetailResult(
   return {
     isLimitedsales: isLimitedsales,
     isCommonticket: isCommonticket,
-    hmbiTyp: data.hmbi_typ,
+    hmbiTyp: '02',
     hmbisttsTyp: data.hmbistts_typ,
     skhnKnrCd: data.kytsknshknknr_no,
     skhnKnrNm: data.kytsknshkn_nm,
-    knshknhmbikishYmd: data.knshknhmbikish_ymd,
-    knshknhmbishryYmd: data.knshknhmbishry_ymd,
+    knshknhmbikishYmd: data.kytsknshknhmbikish_ymd,
+    knshknhmbishryYmd: data.kytsknshknhmbishry_ymd,
     knyjgmmiNum: data.knyjgmmi_num,
-    knshknknrNo: data.knshknknr_no,
+    knshknknrNo: data.kytsknshknknr_no,
     knshknInf: (data.kytsknshkn_inf === null)
     ? []
-    : data.kytsknshkn_inf.map(factoryKnshknInf),
+    : data.kytsknshkn_inf.map(factoryKytsknshknInf),
     skhnInf: (data.skhn_inf === null)
     ? []
     : data.skhn_inf.map(factorySkhnInf)
+  };
+}
+
+function factoryKytsknshknInf(data: any): IKnshknInf {
+  return {
+    knshknknrmisiNo: data.kytsknshknknrmisi_no,
+    knshTyp: data.knsh_typ,
+    knshkbnNm: data.knshkbn_nm,
+    knshknhmbiUnip: data.knshknhmbi_unip
   };
 }
 
