@@ -12,3 +12,10 @@ coverage/
 !.gitignore
 !.gitkeep
 lib/
+
+# docker
+Dockerfile
+.devcontainer/devcontainer.json
+
+# misc
+.DS_Store
