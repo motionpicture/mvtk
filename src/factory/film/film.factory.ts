@@ -14,8 +14,10 @@ export function factoryFilmDetailResult(
     hmbisttsTyp: data.hmbistts_typ,
     skhnKnrCd: data.skhn_cd,
     skhnKnrNm: data.skhn_nm,
-    knshknhmbikishYmd: '',
-    knshknhmbishryYmd: '',
+    skhnchshkkytsuTxt: data.skhnchshkkytsu_txt,
+    skhnchshkshsiTxt: data.skhnchshkshsi_txt,
+    knshknhmbikishYmd: data.knshknhmbikish_ymd,
+    knshknhmbishryYmd: data.knshknhmbishry_ymd,
     knyjgmmiNum: data.knyjgmmi_num,
     knshknknrNo: data.knshknknr_no,
     knshknInf:
@@ -33,8 +35,6 @@ export function factoryFilmDetailResult(
               znkkkkikishDspt: data.znkkkkikish_dspt,
               skhnkistsTxt: data.skhnkists_txt,
               skhnmngtrTxt: data.skhnmngtr_txt,
-              skhnchshkkytsuTxt: data.skhnchshkkytsu_txt,
-              skhnchshkshsiTxt: data.skhnchshkshsi_txt,
               mtitrksyNum: data.mtitrksy_num,
               mtitrkzmFlg: data.mtitrkzm_flg,
               kshkstUrl: data.kshkst_url,
@@ -50,8 +50,6 @@ export function factoryFilmDetailResult(
               skhnchskknDspt: data.skhnchskkn_dspt,
               shknhikygishCd: data.shknhikygish_cd,
               tktnzikjkymsgTxt: data.tktnzikjkymsg_txt,
-              knshknhmbikishYmd: data.knshknhmbikish_ymd,
-              knshknhmbishryYmd: data.knshknhmbishry_ymd,
               knyjgmmiNum: data.knyjgmmi_num,
               knshknknrNo: data.knshknknr_no,
               bnnrInf:
@@ -86,6 +84,8 @@ export function factoryCommonticketDetailResult(
     hmbisttsTyp: data.hmbistts_typ,
     skhnKnrCd: data.kytsknshknknr_no,
     skhnKnrNm: data.kytsknshkn_nm,
+    skhnchshkkytsuTxt: data.kytsknshknchshk_txt,
+    skhnchshkshsiTxt: data.kytsknshknchshkshsi_txt,
     knshknhmbikishYmd: data.kytsknshknhmbikish_ymd,
     knshknhmbishryYmd: data.kytsknshknhmbishry_ymd,
     knyjgmmiNum: data.knyjgmmi_num,
@@ -118,8 +118,6 @@ function factorySkhnInf(data: any): ISkhnInf {
     znkkkkikishDspt: data.znkkkkikish_dspt,
     skhnkistsTxt: data.skhnkists_txt,
     skhnmngtrTxt: data.skhnmngtr_txt,
-    skhnchshkkytsuTxt: data.skhnchshkkytsu_txt,
-    skhnchshkshsiTxt: data.skhnchshkshsi_txt,
     mtitrksyNum: null,
     mtitrkzmFlg: null,
     kshkstUrl: data.kshkst_url,
@@ -134,11 +132,9 @@ function factorySkhnInf(data: any): ISkhnInf {
     siskkkNm: data.siskkk_nm,
     hikygishNm: data.hikygish_nm,
     jeiTmm: data.jei_tmm,
-    skhnchskknDspt: null,
-    shknhikygishCd: null,
+    skhnchskknDspt: data.skhnchskkn_dspt,
+    shknhikygishCd: data.shknhikygish_cd,
     tktnzikjkymsgTxt: [],
-    knshknhmbikishYmd: data.knshknhmbikish_ymd,
-    knshknhmbishryYmd: data.knshknhmbishry_ymd,
     knyjgmmiNum: data.knyjgmmi_num,
     knshknknrNo: data.knshknknr_no,
     bnnrInf: [],
@@ -311,6 +307,14 @@ export interface IFilmDetailResultArray {
      * 作品管理名称（最大240文字）（共通券追加に伴い追加）
      */
     skhnKnrNm: string;
+    /**
+     * 共通鑑賞券注釈共通本文（最大500文字）
+     */
+    skhnchshkkytsuTxt: string;
+    /**
+     * 共通鑑賞券作品注釈詳細（最大500文字）
+     */
+    skhnchshkshsiTxt: string;
     /**
      * 鑑賞券販売開始年月日（日付形式 format: yyyyMMdd）
      */
@@ -751,14 +755,6 @@ export interface ISkhnInf {
    */
   skhnmngtrTxt?: string;
   /**
-   * 作品注釈共通本文
-   */
-  skhnchshkkytsuTxt?: string;
-  /**
-   * 作品注釈詳細
-   */
-  skhnchshkshsiTxt?: string;
-  /**
    * 「観たい」登録者数
    */
   mtitrksyNum: number | null;
@@ -810,14 +806,6 @@ export interface ISkhnInf {
    * 特典在庫状況メッセージ
    */
   tktnzikjkymsgTxt?: string[];
-  /**
-   * 鑑賞券販売開始年月日（日付形式 format: yyyyMMdd）
-   */
-  knshknhmbikishYmd?: string;
-  /**
-   * 鑑賞券販売終了年月日（日付形式 format: yyyyMMdd）
-   */
-  knshknhmbishryYmd?: string;
   /**
    * 購入上限枚数
    */
