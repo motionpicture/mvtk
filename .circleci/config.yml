@@ -24,8 +24,8 @@ jobs:
           key: dependency-cache-{{ checksum "package.json" }}
       - run:
           name: install npm packages
-          # command: npm install
-          command: npm ci
+          command: npm install
+          # command: npm ci
       - save_cache:
           key: dependency-cache-{{ checksum "package.json" }}
           paths:
@@ -57,8 +57,11 @@ jobs:
       - image: cimg/node:18.3.0
     steps:
       - checkout
-      # - restore_cache:
-      #     key: dependency-cache-{{ checksum "package.json" }}
+      - restore_cache:
+          key: dependency-cache-{{ checksum "package.json" }}
+      - npm install:
+          name: install npm packages
+          command: npm install
       - run:
           name: Generate docs
           command: |
