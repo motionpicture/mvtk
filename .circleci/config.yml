@@ -75,15 +75,15 @@ jobs:
       - restore_cache:
           key: dependency-cache-{{ checksum "package.json" }}
       - run:
-        name: install npm packages
-        command: npm install
-      - run:
           name: configure npm for private modules
           command: |
             npm config set //registry.npmjs.org/:_authToken=$NPM_TOKEN
             npm whoami
       #   - run:
       #       command: npm version 1.0.0-alpha.$CIRCLE_BUILD_NUM
+      - run:
+        name: install npm packages
+        command: npm install
       - run:
           command: npm publish --tag next
   deploy:
@@ -94,13 +94,13 @@ jobs:
       - restore_cache:
           key: dependency-cache-{{ checksum "package.json" }}
       - run:
-        name: install npm packages
-        command: npm install
-      - run:
           name: configure npm for private modules
           command: |
             npm config set //registry.npmjs.org/:_authToken=$NPM_TOKEN
             npm whoami
+      - run:
+        name: install npm packages
+        command: npm install
       - run:
           command: npm publish
 # Used for orchestrating all jobs.
