@@ -12,6 +12,7 @@ export function factoryFilmDetailResult(
     isCommonticket: isCommonticket,
     hmbiTyp: data.hmbi_typ,
     hmbisttsTyp: data.hmbistts_typ,
+    kytsknpstrgzUrl: '',
     skhnKnrCd: data.skhn_cd,
     skhnKnrNm: data.skhn_nm,
     skhnchshkkytsuTxt: data.skhnchshkkytsu_txt,
@@ -82,6 +83,7 @@ export function factoryCommonticketDetailResult(
     isCommonticket: isCommonticket,
     hmbiTyp: '02',
     hmbisttsTyp: data.hmbistts_typ,
+    kytsknpstrgzUrl: data.kytsknpstrgz_url,
     skhnKnrCd: data.kytsknshknknr_no,
     skhnKnrNm: data.kytsknshkn_nm,
     skhnchshkkytsuTxt: data.kytsknshknchshk_txt,
@@ -299,6 +301,10 @@ export interface IFilmDetailResultArray {
      * 販売ステータス区分（01:近日発売／02:販売中／03:販売終了かつ上映中／04:販売終了かつ上映終了）
      */
     hmbisttsTyp: string;
+    /**
+     * 共通鑑賞券ポスター画像URL
+     */
+    kytsknpstrgzUrl: string,
     /**
      * 作品管理番号（共通券追加に伴い追加）（filmは作品コードと同様）
      */
