@@ -304,7 +304,7 @@ export interface IFilmDetailResultArray {
     /**
      * 共通鑑賞券ポスター画像URL
      */
-    kytsknpstrgzUrl: string,
+    kytsknpstrgzUrl: string;
     /**
      * 作品管理番号（共通券追加に伴い追加）（filmは作品コードと同様）
      */

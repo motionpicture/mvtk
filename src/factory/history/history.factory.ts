@@ -54,6 +54,10 @@ export interface ITicket {
      * 鑑賞券情報
      */
     knshknInf: IKnshknInf[];
+    /**
+     * 共通券フラグ
+     */
+    kytsknFlg: boolean;
 }
 
 export interface ITicketsArgs {
@@ -68,6 +72,10 @@ export interface ITicketDetailsArgs {
      * ムビログ番号（16桁固定）
      */
     mvilgNo: string;
+    /**
+     * 共通券フラグ
+     */
+    kytsknFlg: string;
 }
 
 export interface ITicketDeleteArgs {

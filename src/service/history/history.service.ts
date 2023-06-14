@@ -44,7 +44,8 @@ export class HistoryService extends Service {
                                 knymiNum: knshknInf.knymi_num
                             };
                         }
-                    )
+                    ),
+                    kytsknFlg: res.kytskn_flg
                 };
             }
         );
@@ -57,7 +58,7 @@ export class HistoryService extends Service {
         debug('requesting...', args);
         const options = {
             expectedStatusCodes: [OK],
-            uri: `/api/history/ticketDetails?mvilg_no=${args.mvilgNo}`,
+            uri: `/api/history/ticketDetails?mvilg_no=${args.mvilgNo}&kytskn_flg=${args.kytsknFlg}`,
             method: 'GET',
             form: {}
         };
