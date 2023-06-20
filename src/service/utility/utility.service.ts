@@ -62,4 +62,49 @@ export class UtilityService extends Service {
             qrcdUrl: result.qrcd_url
         };
     }
+
+    /**
+     * チケット情報照会
+     */
+    public async ticketInfo(args: utilityFactory.ITicketInfoArgs): Promise<utilityFactory.ITicketInfoResult> {
+        debug('requesting...', args);
+        const options = {
+            expectedStatusCodes: [OK],
+            uri: `/api/utility/ticketInfo?knyknr_no=${args.knyknrNo}&pin_cd=${args.pinCd}`,
+            method: 'GET',
+            form: {}
+        };
+        const result = await this.request(options);
+        debug('result...', result);
+
+        return {
+            tcktjhhyjTyp: result.tcktjhhyj_typ,
+            knyknrNo: result.knyknr_no,
+            qrcdUrl: result.qrcd_url,
+            ykkgnYmd: result.knsh_hm,
+            ryknhstInf: (result.ryknhst_inf === null) ? [] : result.ryknhst_inf.map(
+                (res: any): utilityFactory.IRyknhstInf => {
+                    return {
+                        stNm: res.st_nm,
+                        sthyjjnNo: res.sthyjjn_no
+                    };
+                }
+            ),
+            gkmiNum: result.gkmi_num,
+            ryzmmiNum: result.ryzmmi_num,
+            ryknhmiNum: result.ryknhmi_num,
+            ryjkyInf: (result.ryjky_inf === null) ? [] : result.ryjky_inf.map(
+                (res: any): utilityFactory.IRyjkyInf => {
+                    return {
+                        ryzmFlg: res.ryzm_flg,
+                        knshkbnNm: res.knshkbn_nm,
+                        knshstNm: res.knshst_nm,
+                        knshskhnNm: res.knshskhn_nm,
+                        knshYmd: res.knsh_ymd,
+                        knshHm: res.knsh_hm
+                    };
+                }
+            )
+        };
+    }
 }
