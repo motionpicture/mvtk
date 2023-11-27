@@ -81,6 +81,7 @@ export class UtilityService extends Service {
             tcktjhhyjTyp: result.tcktjhhyj_typ,
             knyknrNo: result.knyknr_no,
             qrcdUrl: result.qrcd_url,
+            ykkgnkishYmd: result.ykkgnkish_ymd,
             ykkgnYmd: result.ykkgn_ymd,
             ryknhstInf: (result.ryknhst_inf === null) ? [] : result.ryknhst_inf.map(
                 (res: any): utilityFactory.IRyknhstInf => {

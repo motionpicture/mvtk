@@ -85,7 +85,11 @@ export interface ITicketInfoResult {
      */
     qrcdUrl: string;
     /**
-     * 有効期限年月日（形式：yyyyMMdd）
+     * 有効期間開始年月日（形式：yyyyMMdd）
+     */
+    ykkgnkishYmd?: string;
+    /**
+     * 有効期間終了年月日（形式：yyyyMMdd）
      */
     ykkgnYmd?: string;
     /**
