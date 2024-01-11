@@ -294,4 +294,31 @@ export class PurchaseService extends Service {
             kiinPwdKshnYmd: result.kiinPwdKshnYmd
         };
     }
+
+    /**
+     * 決済キャンセル
+     */
+    public async gmoCancel(args: purchaseFactory.IGmoCancel): Promise<{}> {
+        const form = {
+            kssiknr_no: args.kssiknrNo,
+            accss_id: args.accssId,
+            knyshmi_nm: args.knyshmiNm,
+            kssihh_typ: args.kssihhTyp,
+            ichjerrjhtrk_flg: args.ryknGk
+        };
+
+        const options = {
+            expectedStatusCodes: [OK],
+            uri: '/api/gmo/cancel',
+            method: 'POST',
+            form: form
+        };
+
+        const result = await this.request(options);
+        debug('result...', result);
+
+        return {
+            status: 'OK'
+        };
+    }
 }
