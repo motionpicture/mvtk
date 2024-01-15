@@ -449,7 +449,7 @@ export interface IGmoCancel {
   /**
    * 取引パスワード
    */
-  knyshmiNm: string;
+  accssPwd: string;
   /**
    * 決済方法区分
    */

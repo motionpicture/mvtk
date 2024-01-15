@@ -302,9 +302,9 @@ export class PurchaseService extends Service {
         const form = {
             kssiknr_no: args.kssiknrNo,
             accss_id: args.accssId,
-            knyshmi_nm: args.knyshmiNm,
+            accss_pwd: args.accssPwd,
             kssihh_typ: args.kssihhTyp,
-            ichjerrjhtrk_flg: args.ryknGk
+            rykn_gk: args.ryknGk
         };
 
         const options = {
