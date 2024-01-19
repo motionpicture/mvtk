@@ -437,4 +437,27 @@ export interface IIdentityVerifyResult {
   kiinPwdKshnYmd: string | null;
 }
 
+export interface IGmoCancel {
+  /**
+   * 決済管理番号（16桁固定）
+   */
+  kssiknrNo: string;
+  /**
+   * 取引ID
+   */
+  accssId: string;
+  /**
+   * 取引パスワード
+   */
+  accssPwd: string;
+  /**
+   * 決済方法区分
+   */
+  kssihhTyp: string;
+  /**
+   * 利用金額（前売券GIFT、ポイント、プロモコード、映画GIFT 利用分を差引いた利用金額）
+   */
+  ryknGk: string;
+}
+
 export type IRecommendDetailResult = IRecommendResult[];

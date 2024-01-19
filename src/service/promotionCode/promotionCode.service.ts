@@ -148,6 +148,7 @@ export class PromotionCodeService extends Service {
             skhn_cd: args.skhn_cd,
             knshknknr_no: args.knshknknr_no,
             stshkbts_cd: args.stshkbts_cd,
+            hmbichnnl_typ: args.hmbichnnl_typ,
             knshkn_inf: Object.keys(args.knshkn_inf).map((key) => {
                 const ikey = parseInt(key, 10);
 
