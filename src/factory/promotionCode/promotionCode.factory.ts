@@ -155,6 +155,11 @@ export interface IValidationArgs {
     stshkbts_cd?: string;
 
     /**
+     * 販売チャネル区分（2桁固定）
+     */
+    hmbichnnl_typ?: string;
+
+    /**
      * 鑑賞券管理番号（8桁固定）
      */
     knshknknr_no: string;
