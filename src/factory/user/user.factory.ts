@@ -253,6 +253,10 @@ export interface ITopInfoResult {
    * 利用前作品数
    */
   rymeskhnNum: number;
+  /**
+   * 購入数
+   */
+  allknyNum: number;
 }
 
 export interface ITokenArgs {
