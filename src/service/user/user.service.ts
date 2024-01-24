@@ -209,7 +209,7 @@ export class UserService extends Service {
             ptZndk: result.pt_zndk,
             mtitrkNum: result.mtitrk_num,
             rymeskhnNum: result.rymeskhn_num,
-            allknyNum: result.allknyNum
+            allknyNum: result.allkny_num
         };
     }
 
