@@ -21,6 +21,7 @@ import { FavoriteService } from './service/favorite/favorite.service';
 import { FilmService } from './service/film/film.service';
 import { GmoService } from './service/gmo/gmo.service';
 import { HistoryService } from './service/history/history.service';
+import { IncentiveService } from './service/incentive/incentive.service';
 import { LimitedsalesService } from './service/limitedsales/limitedsales.service';
 import { PointService } from './service/point/point.service';
 import { PromotionCodeService } from './service/promotionCode/promotionCode.service';
@@ -106,6 +107,12 @@ export namespace service {
      * @class
      */
     export class PromotionCode extends PromotionCodeService { }
+
+    /**
+     * インセンティブサービス
+     * @class
+     */
+    export class Incentive extends IncentiveService { }
 
     /**
      * ユーティリティサービス
