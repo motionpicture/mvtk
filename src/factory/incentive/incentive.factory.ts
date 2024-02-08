@@ -18,57 +18,57 @@ export interface IDownloadInfoResult {
     /**
      * デジタルインセンティブ情報
      */
-    dgtlincntvInf: IDgtlincntvInf[];
+    dgtlincntvInf?: IDgtlincntvInf[];
 }
 
 export interface IDgtlincntvInf {
     /**
      * デジタルインセンティブコード
      */
-    dgtlincntvCd: string;
+    dgtlincntvCd?: string;
     /**
      * デジタルインセンティブタイトル
      */
-    dgtlincntvTtl: string;
+    dgtlincntvTtl?: string;
     /**
      * デジタルインセンティブ説明本文
      */
-    dgtlincntvstsmiTxt: string;
+    dgtlincntvstsmiTxt?: string;
     /**
      * サンプル画像URL
      */
-    smplgzUrl: string;
+    smplgzUrl?: string;
     /**
      * デジタルインセンティブ購入開始年月日（日付形式 format: yyyyMMdd）
      */
-    dgtlincntvknykishYmd: string;
+    dgtlincntvknykishYmd?: string;
     /**
      * デジタルインセンティブ購入終了年月日（日付形式 format: yyyyMMdd）
      */
-    dgtlincntvknyshryYmd: string;
+    dgtlincntvknyshryYmd?: string;
     /**
      * デジタルインセンティブダウンロード有効期間
      */
-    dgtlincntvdwnlodykTm: number;
+    dgtlincntvdwnlodykTm?: number;
     /**
      * 作品デジタルインセンティブ備考
      */
-    skhndgtlincntvRmk: string;
+    skhndgtlincntvRmk?: string;
     /**
      * デジタルインセンティブ詳細情報
      */
-    dgtlincntvshsiInf: IDgtlincntvshsiInf[];
+    dgtlincntvshsiInf?: IDgtlincntvshsiInf[];
 }
 
 export interface IDgtlincntvshsiInf {
     /**
      * デジタルインセンティブ枝番号
      */
-    dgtlincntvedNo: string;
+    dgtlincntvedNo?: string;
     /**
      * デジタルインセンティブ詳細タイトル
      */
-    dgtlincntvshsiTtl: string;
+    dgtlincntvshsiTtl?: string;
 }
 //---------------------------- デジタルインセンティブダウンロード ----------------------------//
 export interface IDownloadArgs {

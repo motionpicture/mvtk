@@ -28,21 +28,21 @@ export class IncentiveService extends Service {
         return {
             knyknrNo: result.knyknr_no,
             dgtlincntvInf: (result.dgtlincntv_inf === null) ? [] : result.dgtlincntv_inf.map(
-                (res: any): incentiveFactory.IDgtlincntvInf => {
+                (dgtlincntvInfo: any): incentiveFactory.IDgtlincntvInf => {
                     return {
-                        dgtlincntvCd: res.dgtlincntv_cd,
-                        dgtlincntvTtl: res.dgtlincntv_ttl,
-                        dgtlincntvstsmiTxt: res.dgtlincntvstsmi_txt,
-                        smplgzUrl: res.smplgz_url,
-                        dgtlincntvknykishYmd: res.dgtlincntvknykish_ymd,
-                        dgtlincntvknyshryYmd: res.dgtlincntvknyshry_ymd,
-                        dgtlincntvdwnlodykTm: res.dgtlincntvdwnlodyk_tm,
-                        skhndgtlincntvRmk: res.skhndgtlincntv_rmk,
-                        dgtlincntvshsiInf: (result.dgtlincntvshsiInf === null) ? [] : result.dgtlincntvshsiInf.map(
-                            (resd: any): incentiveFactory.IDgtlincntvshsiInf => {
+                        dgtlincntvCd: dgtlincntvInfo.dgtlincntv_cd,
+                        dgtlincntvTtl: dgtlincntvInfo.dgtlincntv_ttl,
+                        dgtlincntvstsmiTxt: dgtlincntvInfo.dgtlincntvstsmi_txt,
+                        smplgzUrl: dgtlincntvInfo.smplgz_url,
+                        dgtlincntvknykishYmd: dgtlincntvInfo.dgtlincntvknykish_ymd,
+                        dgtlincntvknyshryYmd: dgtlincntvInfo.dgtlincntvknyshry_ymd,
+                        dgtlincntvdwnlodykTm: dgtlincntvInfo.dgtlincntvdwnlodyk_tm,
+                        skhndgtlincntvRmk: dgtlincntvInfo.skhndgtlincntv_rmk,
+                        dgtlincntvshsiInf: (dgtlincntvInfo.dgtlincntvshsi_inf === null) ? [] : dgtlincntvInfo.dgtlincntvshsi_inf.map(
+                            (dgtlincntvshsiInfo: any): incentiveFactory.IDgtlincntvshsiInf => {
                                 return {
-                                    dgtlincntvedNo: resd.dgtlincntved_no,
-                                    dgtlincntvshsiTtl: resd.dgtlincntvshsi_ttl
+                                    dgtlincntvedNo: dgtlincntvshsiInfo.dgtlincntved_no,
+                                    dgtlincntvshsiTtl: dgtlincntvshsiInfo.dgtlincntvshsi_ttl
                                 };
                             }
                         )
