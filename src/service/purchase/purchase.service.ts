@@ -321,4 +321,80 @@ export class PurchaseService extends Service {
             status: 'OK'
         };
     }
+
+    /**
+     * アンケート情報取得
+     */
+    public async questionary(args: purchaseFactory.IQuestionary): Promise<purchaseFactory.IQuestionaryDetailResult> {
+        debug('requesting...', args);
+        const hmbiTypQuery = args.hmbiTyp !== undefined ? `&hmbi_typ=${args.hmbiTyp}` : '';
+        const query = `skhn_cd=${args.skhnCd}${hmbiTypQuery}`;
+        const options = {
+            expectedStatusCodes: [OK],
+            uri: `/api/purchase/questionary?${query}`,
+            method: 'GET',
+            form: {}
+        };
+
+        const result = await this.request(options);
+        debug('result...', result);
+
+        return (result === null) ? [] : result.map(
+            (res: any): purchaseFactory.IQuestionaryResult => {
+                return {
+                    qustinnarNo: res.qustinnar_no,
+                    qustinnarTxt: res.qustinnar_txt,
+                    kithshkTyp: res.kithshk_typ,
+                    hyjkishkTyp: res.hyjkishk_typ,
+                    kitjgnNum: res.kitjgn_num,
+                    stsmnTyp: res.stsmn_typ,
+                    sntkshInf: (res.sntksh_inf === null) ? [] : res.sntksh_inf.map(
+                        (sntkshInfo: any): purchaseFactory.ISntkshInf => {
+                            return {
+                                sntkshNo: sntkshInfo.sntksh_no,
+                                sntkshNm: sntkshInfo.sntksh_nm
+                            };
+                        }
+                    )
+                };
+            }
+        );
+    }
+
+    /**
+     * アンケート登録
+     */
+    public async questionaryRegister(args: purchaseFactory.IQuestionaryRegisterArgs): Promise<{}> {
+        debug('requesting...', args);
+        const form = {
+            knyknr_no: args.knyknrNo,
+            skhn_cd: args.skhnCd,
+            kit_inf: args.kitInf != null ? args.kitInf.map((info) => {
+                return {
+                    qustinnar_no: info.qustinnarNo,
+                    kithshk_typ: info.kithshkTyp,
+                    kjtskit_txt: info.kjtskitTxt,
+                    sntkshkkit_inf: info.sntkshkkitInf != null ? info.sntkshkkitInf.map((sntkshkkitInfo) => {
+                        return {
+                            sntksh_no: sntkshkkitInfo.sntkshNo
+                        };
+                    }) : []
+                };
+            }) : []
+        };
+
+        const options = {
+            expectedStatusCodes: [OK],
+            uri: '/api/purchase/questionaryRegister',
+            method: 'POST',
+            form: form
+        };
+
+        const result = await this.request(options);
+        debug('result...', result);
+
+        return {
+            status: 'OK'
+        };
+    }
 }

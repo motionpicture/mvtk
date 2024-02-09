@@ -461,3 +461,95 @@ export interface IGmoCancel {
 }
 
 export type IRecommendDetailResult = IRecommendResult[];
+
+export interface IQuestionary {
+  /**
+   * 作品コード（6桁）
+   */
+  skhnCd: string;
+  /**
+   * 販売区分（00:前売券／01:鑑賞券）
+   */
+  hmbiTyp?: string;
+}
+
+export type IQuestionaryDetailResult = IQuestionaryResult[];
+
+export interface IQuestionaryResult {
+  /**
+   * アンケート設問番号
+   */
+  qustinnarNo: string;
+  /**
+   * アンケート設問本文
+   */
+  qustinnarTxt: string;
+  /**
+   * 回答方式区分（01:選択式／02:記述式）
+   */
+  kithshkTyp: string;
+  /**
+   * アンケート表示形式区分（01:チェックボックス／02:プルダウン／03:ラジオボタン）
+   */
+  hyjkishkTyp?: string;
+  /**
+   * 回答上限数
+   */
+  kitjgnNum?: number;
+  /**
+   * 設問区分（00:前売券・鑑賞券／01:前売券のみ／02:鑑賞券のみ）
+   */
+  stsmnTyp: string;
+  /**
+   * アンケート選択肢情報
+   */
+  sntkshInf?: ISntkshInf[];
+}
+
+export interface ISntkshInf {
+  /**
+   * 選択肢番号
+   */
+  sntkshNo: string;
+  /**
+   * 選択肢名称
+   */
+  sntkshNm: string;
+}
+
+export interface IQuestionaryRegisterArgs {
+  /**
+   * 購入管理番号（10桁）
+   */
+  knyknrNo: string;
+  /**
+   * 作品コード（6桁）
+   */
+  skhnCd: string;
+  /**
+   * アンケート回答情報
+   */
+  kitInf: {
+    /**
+     * アンケート設問番号
+     */
+    qustinnarNo: string;
+    /**
+     * 回答方式区分（01:選択式／02:記述式）
+     */
+    kithshkTyp: string;
+    /**
+     * 記述式回答本文
+     */
+    kjtskitTxt?: string;
+    /**
+     * 選択式アンケート回答情報
+     */
+    sntkshkkitInf?: {
+      /**
+       * 選択肢番号
+       */
+      sntkshNo: string;
+    }[];
+  }[];
+}
