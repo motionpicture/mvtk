@@ -553,3 +553,10 @@ export interface IQuestionaryRegisterArgs {
     }[];
   }[];
 }
+
+export interface IRegistArgs {
+    /**
+     * 決済管理番号（16桁固定）
+     */
+    kssiknrNo: string;
+}

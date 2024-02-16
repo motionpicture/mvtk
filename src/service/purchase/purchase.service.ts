@@ -397,4 +397,28 @@ export class PurchaseService extends Service {
             status: 'OK'
         };
     }
+
+    /**
+     * 購入確定
+     */
+    public async register(args: purchaseFactory.IRegistArgs): Promise<{}> {
+        debug('requesting...', args);
+        const form = {
+            kssiknr_no: args.kssiknrNo
+        };
+
+        const options = {
+            expectedStatusCodes: [OK],
+            uri: '/api/purchase/register',
+            method: 'POST',
+            form: form
+        };
+
+        const result = await this.request(options);
+        debug('result...', result);
+
+        return {
+            status: 'OK'
+        };
+    }
 }
